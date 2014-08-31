@@ -19,6 +19,8 @@
 		1BBD2DD019B15F6600C98014 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BBD2DB819B15F6600C98014 /* UIKit.framework */; };
 		1BBD2DD819B15F6600C98014 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1BBD2DD619B15F6600C98014 /* InfoPlist.strings */; };
 		1BBD2DDA19B15F6600C98014 /* UW_QuestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBD2DD919B15F6600C98014 /* UW_QuestTests.m */; };
+		1BC43C1119B368FB00DED58B /* ZHHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC43C0F19B368FB00DED58B /* ZHHLoginViewController.m */; };
+		1BC43C1219B368FB00DED58B /* ZHHLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BC43C1019B368FB00DED58B /* ZHHLoginViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,9 @@
 		1BBD2DD519B15F6600C98014 /* UW-QuestTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UW-QuestTests-Info.plist"; sourceTree = "<group>"; };
 		1BBD2DD719B15F6600C98014 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1BBD2DD919B15F6600C98014 /* UW_QuestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UW_QuestTests.m; sourceTree = "<group>"; };
+		1BC43C0E19B368FB00DED58B /* ZHHLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZHHLoginViewController.h; path = Controller/ZHHLoginViewController.h; sourceTree = "<group>"; };
+		1BC43C0F19B368FB00DED58B /* ZHHLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZHHLoginViewController.m; path = Controller/ZHHLoginViewController.m; sourceTree = "<group>"; };
+		1BC43C1019B368FB00DED58B /* ZHHLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ZHHLoginViewController.xib; path = Controller/ZHHLoginViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +114,7 @@
 			children = (
 				1BBD2DC319B15F6600C98014 /* ZHHAppDelegate.h */,
 				1BBD2DC419B15F6600C98014 /* ZHHAppDelegate.m */,
+				1BC43C1319B3690400DED58B /* Controller */,
 				1BBD2DC619B15F6600C98014 /* Images.xcassets */,
 				1BBD2DBB19B15F6600C98014 /* Supporting Files */,
 			);
@@ -142,6 +148,16 @@
 				1BBD2DD619B15F6600C98014 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1BC43C1319B3690400DED58B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1BC43C0E19B368FB00DED58B /* ZHHLoginViewController.h */,
+				1BC43C0F19B368FB00DED58B /* ZHHLoginViewController.m */,
+				1BC43C1019B368FB00DED58B /* ZHHLoginViewController.xib */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,6 +236,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BC43C1219B368FB00DED58B /* ZHHLoginViewController.xib in Resources */,
 				1BBD2DBF19B15F6600C98014 /* InfoPlist.strings in Resources */,
 				1BBD2DC719B15F6600C98014 /* Images.xcassets in Resources */,
 			);
@@ -241,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BBD2DC119B15F6600C98014 /* main.m in Sources */,
+				1BC43C1119B368FB00DED58B /* ZHHLoginViewController.m in Sources */,
 				1BBD2DC519B15F6600C98014 /* ZHHAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,7 +379,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UW-Quest/UW-Quest-Prefix.pch";
 				INFOPLIST_FILE = "UW-Quest/UW-Quest-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -376,7 +394,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UW-Quest/UW-Quest-Prefix.pch";
 				INFOPLIST_FILE = "UW-Quest/UW-Quest-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;

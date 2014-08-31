@@ -7,6 +7,7 @@
 //
 
 #import "ZHHAppDelegate.h"
+#import "ZHHLoginViewController.h"
 
 @implementation ZHHAppDelegate
 
@@ -15,6 +16,10 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    ZHHLoginViewController *newLoginVC = [[ZHHLoginViewController alloc] init];
+    self.window.rootViewController = newLoginVC;
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
