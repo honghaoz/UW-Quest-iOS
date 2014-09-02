@@ -10,6 +10,8 @@
 		1BA3B8AF19B56A4C0048D87F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA3B8AE19B56A4C0048D87F /* AppDelegate.swift */; };
 		1BA3B8B119B56A4C0048D87F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BA3B8B019B56A4C0048D87F /* Images.xcassets */; };
 		1BA3B8BD19B56A4C0048D87F /* UW_QuestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA3B8BC19B56A4C0048D87F /* UW_QuestTests.swift */; };
+		1BA3B8C819B56B2B0048D87F /* ZHHLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA3B8C619B56B2B0048D87F /* ZHHLoginViewController.swift */; };
+		1BA3B8C919B56B2B0048D87F /* ZHHLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BA3B8C719B56B2B0048D87F /* ZHHLoginViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +32,8 @@
 		1BA3B8B619B56A4C0048D87F /* UW QuestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UW QuestTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BA3B8BB19B56A4C0048D87F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BA3B8BC19B56A4C0048D87F /* UW_QuestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UW_QuestTests.swift; sourceTree = "<group>"; };
+		1BA3B8C619B56B2B0048D87F /* ZHHLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZHHLoginViewController.swift; path = Controller/ZHHLoginViewController.swift; sourceTree = "<group>"; };
+		1BA3B8C719B56B2B0048D87F /* ZHHLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ZHHLoginViewController.xib; path = Controller/ZHHLoginViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				1BA3B8AE19B56A4C0048D87F /* AppDelegate.swift */,
+				1BA3B8CA19B56B350048D87F /* Controller */,
 				1BA3B8B019B56A4C0048D87F /* Images.xcassets */,
 				1BA3B8AC19B56A4C0048D87F /* Supporting Files */,
 			);
@@ -101,6 +106,15 @@
 				1BA3B8BB19B56A4C0048D87F /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1BA3B8CA19B56B350048D87F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1BA3B8C619B56B2B0048D87F /* ZHHLoginViewController.swift */,
+				1BA3B8C719B56B2B0048D87F /* ZHHLoginViewController.xib */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,6 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BA3B8B119B56A4C0048D87F /* Images.xcassets in Resources */,
+				1BA3B8C919B56B2B0048D87F /* ZHHLoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BA3B8AF19B56A4C0048D87F /* AppDelegate.swift in Sources */,
+				1BA3B8C819B56B2B0048D87F /* ZHHLoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

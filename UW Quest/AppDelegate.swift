@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         // Override point for customization after application launch.
         self.window!.backgroundColor = UIColor.whiteColor()
+        var newLoginVC: ZHHLoginViewController? = ZHHLoginViewController(nibName: "ZHHLoginViewController", bundle: nil)
+        self.window!.rootViewController = newLoginVC
         self.window!.makeKeyAndVisible()
         return true
     }
