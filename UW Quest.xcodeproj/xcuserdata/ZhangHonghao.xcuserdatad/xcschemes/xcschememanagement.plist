@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>UW-Quest.xcscheme</key>
+		<key>UW Quest.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,12 +12,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1BBD2DB019B15F6600C98014</key>
+		<key>1BA3B8A819B56A4C0048D87F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1BBD2DCB19B15F6600C98014</key>
+		<key>1BA3B8B519B56A4C0048D87F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
