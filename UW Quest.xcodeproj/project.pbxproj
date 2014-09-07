@@ -402,6 +402,7 @@
 				1B7CF12219BCEF28007A157D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1B7CF12319BCEF28007A157D /* Build configuration list for PBXNativeTarget "UW QuestTests" */ = {
 			isa = XCConfigurationList;
@@ -410,6 +411,7 @@
 				1B7CF12519BCEF28007A157D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
