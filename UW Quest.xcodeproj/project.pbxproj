@@ -7,44 +7,44 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1BA3B8AF19B56A4C0048D87F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA3B8AE19B56A4C0048D87F /* AppDelegate.swift */; };
-		1BA3B8B119B56A4C0048D87F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BA3B8B019B56A4C0048D87F /* Images.xcassets */; };
-		1BA3B8BD19B56A4C0048D87F /* UW_QuestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA3B8BC19B56A4C0048D87F /* UW_QuestTests.swift */; };
-		1BA3B8C819B56B2B0048D87F /* ZHHLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA3B8C619B56B2B0048D87F /* ZHHLoginViewController.swift */; };
-		1BA3B8C919B56B2B0048D87F /* ZHHLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BA3B8C719B56B2B0048D87F /* ZHHLoginViewController.xib */; };
+		1B7CF10A19BCEF28007A157D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7CF10919BCEF28007A157D /* AppDelegate.swift */; };
+		1B7CF10C19BCEF28007A157D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7CF10B19BCEF28007A157D /* ViewController.swift */; };
+		1B7CF10F19BCEF28007A157D /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B7CF10D19BCEF28007A157D /* Login.storyboard */; };
+		1B7CF11119BCEF28007A157D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B7CF11019BCEF28007A157D /* Images.xcassets */; };
+		1B7CF11D19BCEF28007A157D /* UW_QuestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7CF11C19BCEF28007A157D /* UW_QuestTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		1BA3B8B719B56A4C0048D87F /* PBXContainerItemProxy */ = {
+		1B7CF11719BCEF28007A157D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 1BA3B8A119B56A4C0048D87F /* Project object */;
+			containerPortal = 1B7CF0FC19BCEF28007A157D /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 1BA3B8A819B56A4C0048D87F;
+			remoteGlobalIDString = 1B7CF10319BCEF28007A157D;
 			remoteInfo = "UW Quest";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1BA3B8A919B56A4C0048D87F /* UW Quest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UW Quest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1BA3B8AD19B56A4C0048D87F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1BA3B8AE19B56A4C0048D87F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1BA3B8B019B56A4C0048D87F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		1BA3B8B619B56A4C0048D87F /* UW QuestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UW QuestTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1BA3B8BB19B56A4C0048D87F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1BA3B8BC19B56A4C0048D87F /* UW_QuestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UW_QuestTests.swift; sourceTree = "<group>"; };
-		1BA3B8C619B56B2B0048D87F /* ZHHLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZHHLoginViewController.swift; path = Controller/ZHHLoginViewController.swift; sourceTree = "<group>"; };
-		1BA3B8C719B56B2B0048D87F /* ZHHLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ZHHLoginViewController.xib; path = Controller/ZHHLoginViewController.xib; sourceTree = "<group>"; };
+		1B7CF10419BCEF28007A157D /* UW Quest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UW Quest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B7CF10819BCEF28007A157D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B7CF10919BCEF28007A157D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1B7CF10B19BCEF28007A157D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1B7CF10E19BCEF28007A157D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
+		1B7CF11019BCEF28007A157D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		1B7CF11619BCEF28007A157D /* UW QuestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UW QuestTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B7CF11B19BCEF28007A157D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B7CF11C19BCEF28007A157D /* UW_QuestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UW_QuestTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		1BA3B8A619B56A4C0048D87F /* Frameworks */ = {
+		1B7CF10119BCEF28007A157D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1BA3B8B319B56A4C0048D87F /* Frameworks */ = {
+		1B7CF11319BCEF28007A157D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -54,79 +54,71 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1BA3B8A019B56A4C0048D87F = {
+		1B7CF0FB19BCEF28007A157D = {
 			isa = PBXGroup;
 			children = (
-				1BA3B8AB19B56A4C0048D87F /* UW Quest */,
-				1BA3B8B919B56A4C0048D87F /* UW QuestTests */,
-				1BA3B8AA19B56A4C0048D87F /* Products */,
+				1B7CF10619BCEF28007A157D /* UW Quest */,
+				1B7CF11919BCEF28007A157D /* UW QuestTests */,
+				1B7CF10519BCEF28007A157D /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		1BA3B8AA19B56A4C0048D87F /* Products */ = {
+		1B7CF10519BCEF28007A157D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1BA3B8A919B56A4C0048D87F /* UW Quest.app */,
-				1BA3B8B619B56A4C0048D87F /* UW QuestTests.xctest */,
+				1B7CF10419BCEF28007A157D /* UW Quest.app */,
+				1B7CF11619BCEF28007A157D /* UW QuestTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1BA3B8AB19B56A4C0048D87F /* UW Quest */ = {
+		1B7CF10619BCEF28007A157D /* UW Quest */ = {
 			isa = PBXGroup;
 			children = (
-				1BA3B8AE19B56A4C0048D87F /* AppDelegate.swift */,
-				1BA3B8CA19B56B350048D87F /* Controller */,
-				1BA3B8B019B56A4C0048D87F /* Images.xcassets */,
-				1BA3B8AC19B56A4C0048D87F /* Supporting Files */,
+				1B7CF10919BCEF28007A157D /* AppDelegate.swift */,
+				1B7CF10B19BCEF28007A157D /* ViewController.swift */,
+				1B7CF10D19BCEF28007A157D /* Login.storyboard */,
+				1B7CF11019BCEF28007A157D /* Images.xcassets */,
+				1B7CF10719BCEF28007A157D /* Supporting Files */,
 			);
 			path = "UW Quest";
 			sourceTree = "<group>";
 		};
-		1BA3B8AC19B56A4C0048D87F /* Supporting Files */ = {
+		1B7CF10719BCEF28007A157D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				1BA3B8AD19B56A4C0048D87F /* Info.plist */,
+				1B7CF10819BCEF28007A157D /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		1BA3B8B919B56A4C0048D87F /* UW QuestTests */ = {
+		1B7CF11919BCEF28007A157D /* UW QuestTests */ = {
 			isa = PBXGroup;
 			children = (
-				1BA3B8BC19B56A4C0048D87F /* UW_QuestTests.swift */,
-				1BA3B8BA19B56A4C0048D87F /* Supporting Files */,
+				1B7CF11C19BCEF28007A157D /* UW_QuestTests.swift */,
+				1B7CF11A19BCEF28007A157D /* Supporting Files */,
 			);
 			path = "UW QuestTests";
 			sourceTree = "<group>";
 		};
-		1BA3B8BA19B56A4C0048D87F /* Supporting Files */ = {
+		1B7CF11A19BCEF28007A157D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				1BA3B8BB19B56A4C0048D87F /* Info.plist */,
+				1B7CF11B19BCEF28007A157D /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		1BA3B8CA19B56B350048D87F /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				1BA3B8C619B56B2B0048D87F /* ZHHLoginViewController.swift */,
-				1BA3B8C719B56B2B0048D87F /* ZHHLoginViewController.xib */,
-			);
-			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1BA3B8A819B56A4C0048D87F /* UW Quest */ = {
+		1B7CF10319BCEF28007A157D /* UW Quest */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1BA3B8C019B56A4C0048D87F /* Build configuration list for PBXNativeTarget "UW Quest" */;
+			buildConfigurationList = 1B7CF12019BCEF28007A157D /* Build configuration list for PBXNativeTarget "UW Quest" */;
 			buildPhases = (
-				1BA3B8A519B56A4C0048D87F /* Sources */,
-				1BA3B8A619B56A4C0048D87F /* Frameworks */,
-				1BA3B8A719B56A4C0048D87F /* Resources */,
+				1B7CF10019BCEF28007A157D /* Sources */,
+				1B7CF10119BCEF28007A157D /* Frameworks */,
+				1B7CF10219BCEF28007A157D /* Resources */,
 			);
 			buildRules = (
 			);
@@ -134,74 +126,76 @@
 			);
 			name = "UW Quest";
 			productName = "UW Quest";
-			productReference = 1BA3B8A919B56A4C0048D87F /* UW Quest.app */;
+			productReference = 1B7CF10419BCEF28007A157D /* UW Quest.app */;
 			productType = "com.apple.product-type.application";
 		};
-		1BA3B8B519B56A4C0048D87F /* UW QuestTests */ = {
+		1B7CF11519BCEF28007A157D /* UW QuestTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1BA3B8C319B56A4C0048D87F /* Build configuration list for PBXNativeTarget "UW QuestTests" */;
+			buildConfigurationList = 1B7CF12319BCEF28007A157D /* Build configuration list for PBXNativeTarget "UW QuestTests" */;
 			buildPhases = (
-				1BA3B8B219B56A4C0048D87F /* Sources */,
-				1BA3B8B319B56A4C0048D87F /* Frameworks */,
-				1BA3B8B419B56A4C0048D87F /* Resources */,
+				1B7CF11219BCEF28007A157D /* Sources */,
+				1B7CF11319BCEF28007A157D /* Frameworks */,
+				1B7CF11419BCEF28007A157D /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				1BA3B8B819B56A4C0048D87F /* PBXTargetDependency */,
+				1B7CF11819BCEF28007A157D /* PBXTargetDependency */,
 			);
 			name = "UW QuestTests";
 			productName = "UW QuestTests";
-			productReference = 1BA3B8B619B56A4C0048D87F /* UW QuestTests.xctest */;
+			productReference = 1B7CF11619BCEF28007A157D /* UW QuestTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		1BA3B8A119B56A4C0048D87F /* Project object */ = {
+		1B7CF0FC19BCEF28007A157D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = Honghao;
 				TargetAttributes = {
-					1BA3B8A819B56A4C0048D87F = {
+					1B7CF10319BCEF28007A157D = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = UYW9ZSKZAQ;
 					};
-					1BA3B8B519B56A4C0048D87F = {
+					1B7CF11519BCEF28007A157D = {
 						CreatedOnToolsVersion = 6.0;
-						TestTargetID = 1BA3B8A819B56A4C0048D87F;
+						TestTargetID = 1B7CF10319BCEF28007A157D;
 					};
 				};
 			};
-			buildConfigurationList = 1BA3B8A419B56A4C0048D87F /* Build configuration list for PBXProject "UW Quest" */;
+			buildConfigurationList = 1B7CF0FF19BCEF28007A157D /* Build configuration list for PBXProject "UW Quest" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
-			mainGroup = 1BA3B8A019B56A4C0048D87F;
-			productRefGroup = 1BA3B8AA19B56A4C0048D87F /* Products */;
+			mainGroup = 1B7CF0FB19BCEF28007A157D;
+			productRefGroup = 1B7CF10519BCEF28007A157D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1BA3B8A819B56A4C0048D87F /* UW Quest */,
-				1BA3B8B519B56A4C0048D87F /* UW QuestTests */,
+				1B7CF10319BCEF28007A157D /* UW Quest */,
+				1B7CF11519BCEF28007A157D /* UW QuestTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		1BA3B8A719B56A4C0048D87F /* Resources */ = {
+		1B7CF10219BCEF28007A157D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1BA3B8B119B56A4C0048D87F /* Images.xcassets in Resources */,
-				1BA3B8C919B56B2B0048D87F /* ZHHLoginViewController.xib in Resources */,
+				1B7CF10F19BCEF28007A157D /* Login.storyboard in Resources */,
+				1B7CF11119BCEF28007A157D /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1BA3B8B419B56A4C0048D87F /* Resources */ = {
+		1B7CF11419BCEF28007A157D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -211,35 +205,46 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1BA3B8A519B56A4C0048D87F /* Sources */ = {
+		1B7CF10019BCEF28007A157D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1BA3B8AF19B56A4C0048D87F /* AppDelegate.swift in Sources */,
-				1BA3B8C819B56B2B0048D87F /* ZHHLoginViewController.swift in Sources */,
+				1B7CF10C19BCEF28007A157D /* ViewController.swift in Sources */,
+				1B7CF10A19BCEF28007A157D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1BA3B8B219B56A4C0048D87F /* Sources */ = {
+		1B7CF11219BCEF28007A157D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1BA3B8BD19B56A4C0048D87F /* UW_QuestTests.swift in Sources */,
+				1B7CF11D19BCEF28007A157D /* UW_QuestTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		1BA3B8B819B56A4C0048D87F /* PBXTargetDependency */ = {
+		1B7CF11819BCEF28007A157D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 1BA3B8A819B56A4C0048D87F /* UW Quest */;
-			targetProxy = 1BA3B8B719B56A4C0048D87F /* PBXContainerItemProxy */;
+			target = 1B7CF10319BCEF28007A157D /* UW Quest */;
+			targetProxy = 1B7CF11719BCEF28007A157D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		1B7CF10D19BCEF28007A157D /* Login.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1B7CF10E19BCEF28007A157D /* Base */,
+			);
+			name = Login.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
-		1BA3B8BE19B56A4C0048D87F /* Debug */ = {
+		1B7CF11E19BCEF28007A157D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -282,7 +287,7 @@
 			};
 			name = Debug;
 		};
-		1BA3B8BF19B56A4C0048D87F /* Release */ = {
+		1B7CF11F19BCEF28007A157D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -318,11 +323,12 @@
 			};
 			name = Release;
 		};
-		1BA3B8C119B56A4C0048D87F /* Debug */ = {
+		1B7CF12119BCEF28007A157D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "UW Quest/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -330,11 +336,12 @@
 			};
 			name = Debug;
 		};
-		1BA3B8C219B56A4C0048D87F /* Release */ = {
+		1B7CF12219BCEF28007A157D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "UW Quest/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -342,7 +349,7 @@
 			};
 			name = Release;
 		};
-		1BA3B8C419B56A4C0048D87F /* Debug */ = {
+		1B7CF12419BCEF28007A157D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -361,7 +368,7 @@
 			};
 			name = Debug;
 		};
-		1BA3B8C519B56A4C0048D87F /* Release */ = {
+		1B7CF12519BCEF28007A157D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -379,34 +386,32 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1BA3B8A419B56A4C0048D87F /* Build configuration list for PBXProject "UW Quest" */ = {
+		1B7CF0FF19BCEF28007A157D /* Build configuration list for PBXProject "UW Quest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1BA3B8BE19B56A4C0048D87F /* Debug */,
-				1BA3B8BF19B56A4C0048D87F /* Release */,
+				1B7CF11E19BCEF28007A157D /* Debug */,
+				1B7CF11F19BCEF28007A157D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1BA3B8C019B56A4C0048D87F /* Build configuration list for PBXNativeTarget "UW Quest" */ = {
+		1B7CF12019BCEF28007A157D /* Build configuration list for PBXNativeTarget "UW Quest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1BA3B8C119B56A4C0048D87F /* Debug */,
-				1BA3B8C219B56A4C0048D87F /* Release */,
+				1B7CF12119BCEF28007A157D /* Debug */,
+				1B7CF12219BCEF28007A157D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
-		1BA3B8C319B56A4C0048D87F /* Build configuration list for PBXNativeTarget "UW QuestTests" */ = {
+		1B7CF12319BCEF28007A157D /* Build configuration list for PBXNativeTarget "UW QuestTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1BA3B8C419B56A4C0048D87F /* Debug */,
-				1BA3B8C519B56A4C0048D87F /* Release */,
+				1B7CF12419BCEF28007A157D /* Debug */,
+				1B7CF12519BCEF28007A157D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 1BA3B8A119B56A4C0048D87F /* Project object */;
+	rootObject = 1B7CF0FC19BCEF28007A157D /* Project object */;
 }

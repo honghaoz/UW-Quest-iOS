@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>F1860A1A-4420-4B92-AFDA-6C121B57BEF6</string>
+	<string>C108D776-D414-45C2-AD12-95992F0D6090</string>
 	<key>IDESourceControlProjectName</key>
 	<string>UW Quest</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -14,11 +14,11 @@
 		<string>https://github.com/honghaoz/UW-Quest-iOS.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>UW Quest.xcodeproj</string>
+	<string>UW Quest/UW Quest.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>4E66E3EBF678FBC03D2B7A05930E47EF37DCC3F2</key>
-		<string>../..</string>
+		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/honghaoz/UW-Quest-iOS.git</string>
