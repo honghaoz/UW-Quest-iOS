@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UQLoginViewController: UIViewController {
+class UQLoginViewController: UIViewController, UITextFieldDelegate {
     
     let kBorderColor: UIColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
     let kBorderCornerRadius: CGFloat = 5.0
@@ -16,14 +16,21 @@ class UQLoginViewController: UIViewController {
     
     let kButtonColor: UIColor = UIColor(red: 0.22, green: 0.48, blue: 0.69, alpha: 1)
     
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subTitleLabel: UILabel!
+    
     @IBOutlet weak var loginView: UIView!
     @IBOutlet weak var userIdTextField: UITextField!
     @IBOutlet weak var separatorLineView: UIView!
     @IBOutlet weak var passwordTextField: UITextField!
+    
     @IBOutlet weak var loginButton: UIButton!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        titleLabel.textColor = kButtonColor
+        subTitleLabel.textColor = kButtonColor
         
         userIdTextField.backgroundColor = UIColor.clearColor()
         userIdTextField.borderStyle = UITextBorderStyle.None
@@ -41,7 +48,21 @@ class UQLoginViewController: UIViewController {
         loginButton.layer.borderColor = kButtonColor.CGColor
         loginButton.layer.cornerRadius = kBorderCornerRadius
         loginButton.layer.borderWidth = kBorderWidth
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        userIdTextField.delegate = self
+        passwordTextField.delegate = self
         
+        let tapAction: Selector = "viewTapped:"
+        var tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action:tapAction)
+        tapGesture.numberOfTouchesRequired = 1
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         userIdTextField.becomeFirstResponder()
     }
 
@@ -50,7 +71,20 @@ class UQLoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    // MARK: UITextFieldDelegate
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        //TODO: complete next responder
+        return true
+    }
+    
+    // MARK: Actions
+    
+    func viewTapped(sender: AnyObject) {
+        userIdTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+    }
+    
     /*
     // MARK: - Navigation
 

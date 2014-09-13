@@ -25,12 +25,12 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="gNc-is-4sp"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Student Information System" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gX0-Yk-l9x">
-                                        <rect key="frame" x="0.0" y="31" width="250" height="44"/>
+                                        <rect key="frame" x="0.0" y="24" width="250" height="44"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -39,9 +39,9 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="POh-WN-orQ" secondAttribute="trailing" id="0rY-La-hl3"/>
                                     <constraint firstItem="POh-WN-orQ" firstAttribute="top" secondItem="ldA-PZ-VOh" secondAttribute="top" id="87r-oK-4ix"/>
-                                    <constraint firstAttribute="bottom" secondItem="gX0-Yk-l9x" secondAttribute="bottom" id="8KJ-lk-iPt"/>
+                                    <constraint firstAttribute="bottom" secondItem="gX0-Yk-l9x" secondAttribute="bottom" constant="7" id="8KJ-lk-iPt"/>
                                     <constraint firstItem="gX0-Yk-l9x" firstAttribute="leading" secondItem="ldA-PZ-VOh" secondAttribute="leading" id="8VT-Qs-Cdj"/>
-                                    <constraint firstItem="gX0-Yk-l9x" firstAttribute="top" secondItem="POh-WN-orQ" secondAttribute="bottom" constant="1" id="FaT-BS-MTm"/>
+                                    <constraint firstItem="gX0-Yk-l9x" firstAttribute="top" secondItem="POh-WN-orQ" secondAttribute="bottom" constant="-6" id="FaT-BS-MTm"/>
                                     <constraint firstItem="POh-WN-orQ" firstAttribute="leading" secondItem="ldA-PZ-VOh" secondAttribute="leading" id="Jfb-vU-pcb"/>
                                     <constraint firstAttribute="height" constant="75" id="Uau-zo-qjp"/>
                                     <constraint firstAttribute="width" constant="250" id="lVC-HK-rCz"/>
@@ -164,6 +164,8 @@
                         <outlet property="loginView" destination="jfM-kv-6Sy" id="tBX-m0-HPB"/>
                         <outlet property="passwordTextField" destination="x8S-rR-MAg" id="XRx-VP-TYu"/>
                         <outlet property="separatorLineView" destination="Wst-rv-4Bd" id="R43-MR-TU5"/>
+                        <outlet property="subTitleLabel" destination="gX0-Yk-l9x" id="71a-hU-Ity"/>
+                        <outlet property="titleLabel" destination="POh-WN-orQ" id="uX8-xn-MBk"/>
                         <outlet property="userIdTextField" destination="flV-vM-SfL" id="3fA-Mf-Hdp"/>
                     </connections>
                 </viewController>
