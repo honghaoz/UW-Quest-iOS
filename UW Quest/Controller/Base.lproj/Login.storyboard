@@ -136,7 +136,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.96999999999999997" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.95000000000000007" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="8cc-sJ-OKk" firstAttribute="top" secondItem="b9X-qX-Gzo" secondAttribute="bottom" constant="4" id="1pO-wV-IL1"/>
                             <constraint firstItem="ldA-PZ-VOh" firstAttribute="top" relation="greaterThanOrEqual" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="4en-HM-gWH"/>
