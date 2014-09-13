@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B5BF35219C3F8470005626F /* UQLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5BF35119C3F8470005626F /* UQLoginViewController.swift */; };
 		1B7CF10A19BCEF28007A157D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7CF10919BCEF28007A157D /* AppDelegate.swift */; };
-		1B7CF10C19BCEF28007A157D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7CF10B19BCEF28007A157D /* ViewController.swift */; };
-		1B7CF10F19BCEF28007A157D /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B7CF10D19BCEF28007A157D /* Login.storyboard */; };
+		1B7CF10F19BCEF28007A157D /* UQLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B7CF10D19BCEF28007A157D /* UQLogin.storyboard */; };
 		1B7CF11119BCEF28007A157D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B7CF11019BCEF28007A157D /* Images.xcassets */; };
 		1B7CF11D19BCEF28007A157D /* UW_QuestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7CF11C19BCEF28007A157D /* UW_QuestTests.swift */; };
 /* End PBXBuildFile section */
@@ -25,11 +25,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B5BF35119C3F8470005626F /* UQLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UQLoginViewController.swift; sourceTree = "<group>"; };
 		1B7CF10419BCEF28007A157D /* UW Quest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UW Quest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B7CF10819BCEF28007A157D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1B7CF10919BCEF28007A157D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1B7CF10B19BCEF28007A157D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		1B7CF10E19BCEF28007A157D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
+		1B7CF10E19BCEF28007A157D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UQLogin.storyboard; sourceTree = "<group>"; };
 		1B7CF11019BCEF28007A157D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1B7CF11619BCEF28007A157D /* UW QuestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UW QuestTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B7CF11B19BCEF28007A157D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -54,6 +54,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B2AFE8C19BD27E4008A75EF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1B5BF35119C3F8470005626F /* UQLoginViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1B2AFE8D19BD2821008A75EF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1B2AFE8E19BD2826008A75EF /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1B66542619C3F443003DCD1D /* Client */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Client;
+			sourceTree = "<group>";
+		};
 		1B7CF0FB19BCEF28007A157D = {
 			isa = PBXGroup;
 			children = (
@@ -76,9 +105,12 @@
 			isa = PBXGroup;
 			children = (
 				1B7CF10919BCEF28007A157D /* AppDelegate.swift */,
-				1B7CF10B19BCEF28007A157D /* ViewController.swift */,
-				1B7CF10D19BCEF28007A157D /* Login.storyboard */,
+				1B7CF10D19BCEF28007A157D /* UQLogin.storyboard */,
 				1B7CF11019BCEF28007A157D /* Images.xcassets */,
+				1B66542619C3F443003DCD1D /* Client */,
+				1B2AFE8D19BD2821008A75EF /* Model */,
+				1B2AFE8E19BD2826008A75EF /* View */,
+				1B2AFE8C19BD27E4008A75EF /* Controller */,
 				1B7CF10719BCEF28007A157D /* Supporting Files */,
 			);
 			path = "UW Quest";
@@ -153,6 +185,7 @@
 		1B7CF0FC19BCEF28007A157D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = UQ;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = Honghao;
 				TargetAttributes = {
@@ -190,7 +223,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B7CF10F19BCEF28007A157D /* Login.storyboard in Resources */,
+				1B7CF10F19BCEF28007A157D /* UQLogin.storyboard in Resources */,
 				1B7CF11119BCEF28007A157D /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -209,7 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B7CF10C19BCEF28007A157D /* ViewController.swift in Sources */,
+				1B5BF35219C3F8470005626F /* UQLoginViewController.swift in Sources */,
 				1B7CF10A19BCEF28007A157D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -233,12 +266,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		1B7CF10D19BCEF28007A157D /* Login.storyboard */ = {
+		1B7CF10D19BCEF28007A157D /* UQLogin.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				1B7CF10E19BCEF28007A157D /* Base */,
 			);
-			name = Login.storyboard;
+			name = UQLogin.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
