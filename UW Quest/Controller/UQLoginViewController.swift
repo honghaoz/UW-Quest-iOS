@@ -28,7 +28,7 @@ class UQLoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var separatorLineView: UIView!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var loginButton: UQButton!
     @IBOutlet weak var rememberSwitch: UISwitch!
     @IBOutlet weak var switchToLoginButtonLeading: NSLayoutConstraint!
     @IBOutlet weak var rememberLabel: UILabel!
@@ -57,6 +57,7 @@ class UQLoginViewController: UIViewController, UITextFieldDelegate {
         loginButton.layer.borderColor = kButtonColor.CGColor
         loginButton.layer.cornerRadius = kBorderCornerRadius
         loginButton.layer.borderWidth = kBorderWidth
+        loginButton.layer.masksToBounds = true
         
         let switchScaleFactor: CGFloat = 0.65
         let switchWidth: CGFloat = rememberSwitch.bounds.size.width

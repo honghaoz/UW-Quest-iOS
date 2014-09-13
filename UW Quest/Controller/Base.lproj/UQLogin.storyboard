@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A343f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -117,7 +118,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b9X-qX-Gzo" userLabel="LoginButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b9X-qX-Gzo" userLabel="LoginButton" customClass="UQButton" customModule="UW_Quest" customModuleProvider="target">
                                 <rect key="frame" x="175" y="250" width="250" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.57056949013157898" blue="0.9024979440789459" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -151,8 +152,12 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Made by HonghaoZ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6eQ-zh-QjS">
-                                <rect key="frame" x="240" y="563" width="120" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Made by HonghaoZ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6eQ-zh-QjS">
+                                <rect key="frame" x="210" y="550" width="180" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="YU0-Jv-dwm"/>
+                                    <constraint firstAttribute="width" constant="180" id="wLv-qI-Igy"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                 <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -162,7 +167,7 @@
                         <constraints>
                             <constraint firstItem="8cc-sJ-OKk" firstAttribute="top" secondItem="b9X-qX-Gzo" secondAttribute="bottom" constant="4" id="1pO-wV-IL1"/>
                             <constraint firstItem="ldA-PZ-VOh" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="33" id="55t-Ql-U0F"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="6eQ-zh-QjS" secondAttribute="bottom" constant="20" id="5zQ-iu-0Wa"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="6eQ-zh-QjS" secondAttribute="bottom" constant="10" id="5zQ-iu-0Wa"/>
                             <constraint firstItem="8cc-sJ-OKk" firstAttribute="centerY" secondItem="JDJ-OV-g8u" secondAttribute="centerY" id="C6G-oo-0WD"/>
                             <constraint firstItem="b9X-qX-Gzo" firstAttribute="width" secondItem="jfM-kv-6Sy" secondAttribute="width" id="DTZ-a6-i6w"/>
                             <constraint firstItem="jfM-kv-6Sy" firstAttribute="top" secondItem="ldA-PZ-VOh" secondAttribute="bottom" constant="15" id="ES6-w7-cbp"/>

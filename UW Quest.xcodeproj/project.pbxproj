@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B2FCD1C19C4A64400FDF4D8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2FCD1B19C4A64400FDF4D8 /* Extensions.swift */; };
 		1B563F9619C496BF001785D9 /* UQButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B563F9519C496BF001785D9 /* UQButton.swift */; };
 		1B563F9819C4981F001785D9 /* UQMainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B563F9719C4981F001785D9 /* UQMainTabViewController.swift */; };
 		1B563F9919C4986A001785D9 /* UQMainTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B563F9B19C4986A001785D9 /* UQMainTab.storyboard */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B2FCD1B19C4A64400FDF4D8 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1B563F9519C496BF001785D9 /* UQButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UQButton.swift; sourceTree = "<group>"; };
 		1B563F9719C4981F001785D9 /* UQMainTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UQMainTabViewController.swift; sourceTree = "<group>"; };
 		1B563F9A19C4986A001785D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UQMainTab.storyboard; sourceTree = "<group>"; };
@@ -86,6 +88,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		1B563F9D19C49BBD001785D9 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1B2FCD1B19C4A64400FDF4D8 /* Extensions.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		1B66542619C3F443003DCD1D /* Client */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +126,7 @@
 			children = (
 				1B7CF10919BCEF28007A157D /* AppDelegate.swift */,
 				1B7CF11019BCEF28007A157D /* Images.xcassets */,
+				1B563F9D19C49BBD001785D9 /* Extension */,
 				1B66542619C3F443003DCD1D /* Client */,
 				1B2AFE8D19BD2821008A75EF /* Model */,
 				1B2AFE8E19BD2826008A75EF /* View */,
@@ -252,6 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B2FCD1C19C4A64400FDF4D8 /* Extensions.swift in Sources */,
 				1B5BF35219C3F8470005626F /* UQLoginViewController.swift in Sources */,
 				1B563F9819C4981F001785D9 /* UQMainTabViewController.swift in Sources */,
 				1B563F9619C496BF001785D9 /* UQButton.swift in Sources */,
