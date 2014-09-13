@@ -15,6 +15,10 @@ class UQLoginViewController: UIViewController, UITextFieldDelegate {
     let kBorderWidth: CGFloat = 1.0
     
     let kButtonColor: UIColor = UIColor(red: 0.22, green: 0.48, blue: 0.69, alpha: 1)
+    let kRememberTitleColor: UIColor = UIColor(white: 0.4, alpha: 1)
+    
+    let watiamURLString = "https://watiam.uwaterloo.ca/idm/user/login.jsp"
+    let honghaozURLString = "http://honghaoz.com"
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
@@ -25,19 +29,24 @@ class UQLoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordTextField: UITextField!
     
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var rememberSwitch: UISwitch!
+    @IBOutlet weak var switchToLoginButtonLeading: NSLayoutConstraint!
+    @IBOutlet weak var rememberLabel: UILabel!
+    @IBOutlet weak var forgotPasswordButton: UIButton!
     
+    @IBOutlet weak var copyRightLabel: UILabel!
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         titleLabel.textColor = kButtonColor
         subTitleLabel.textColor = kButtonColor
         
-        userIdTextField.backgroundColor = UIColor.clearColor()
+        userIdTextField.backgroundColor = UIColor.whiteColor()
         userIdTextField.borderStyle = UITextBorderStyle.None
         
         separatorLineView.backgroundColor = kBorderColor
         
-        passwordTextField.backgroundColor = UIColor.clearColor()
+        passwordTextField.backgroundColor = UIColor.whiteColor()
         passwordTextField.borderStyle = UITextBorderStyle.None
         
         loginView.layer.borderColor = kBorderColor.CGColor
@@ -48,6 +57,19 @@ class UQLoginViewController: UIViewController, UITextFieldDelegate {
         loginButton.layer.borderColor = kButtonColor.CGColor
         loginButton.layer.cornerRadius = kBorderCornerRadius
         loginButton.layer.borderWidth = kBorderWidth
+        
+        let switchScaleFactor: CGFloat = 0.65
+        let switchWidth: CGFloat = rememberSwitch.bounds.size.width
+        let switchHeight: CGFloat = rememberSwitch.bounds.size.height
+        let offsetX = (1.0 - switchScaleFactor) * switchWidth / 2.0
+        let makeItSmaller: CGAffineTransform = CGAffineTransformMakeScale(switchScaleFactor, switchScaleFactor)
+        rememberSwitch.transform = CGAffineTransformMakeScale(switchScaleFactor, switchScaleFactor)
+        switchToLoginButtonLeading.constant = -offsetX
+        rememberSwitch.onTintColor = kButtonColor
+        
+        rememberLabel.textColor = kRememberTitleColor
+        forgotPasswordButton.tintColor = kRememberTitleColor
+        
     }
     
     override func viewDidLoad() {
@@ -56,14 +78,26 @@ class UQLoginViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.delegate = self
         
         let tapAction: Selector = "viewTapped:"
-        var tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action:tapAction)
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action:tapAction)
         tapGesture.numberOfTouchesRequired = 1
         self.view.addGestureRecognizer(tapGesture)
+        
+        let panAction: Selector = "viewPanned:"
+        let panGesture: UIPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: panAction)
+        self.view.addGestureRecognizer(panGesture)
+        
+        forgotPasswordButton.addTarget(self, action: "forgotPasswordButtonTapped:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        let copyRightTapAction: Selector = "copyRightLabelTapped:"
+        
+        var copyRightTapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action:copyRightTapAction)
+        copyRightTapGesture.numberOfTouchesRequired = 1
+        copyRightLabel.addGestureRecognizer(copyRightTapGesture)
+        copyRightLabel.userInteractionEnabled = true
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        userIdTextField.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
@@ -74,15 +108,45 @@ class UQLoginViewController: UIViewController, UITextFieldDelegate {
     // MARK: UITextFieldDelegate
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        //TODO: complete next responder
+        let newTag = textField.tag + 1
+        var nextTextField: UITextField? = textField.superview?.viewWithTag(newTag) as UITextField?
+        if let realTextField = nextTextField {
+            nextTextField?.becomeFirstResponder()
+            //TODO: call login
+        } else {
+            textField.resignFirstResponder()
+        }
         return true
     }
     
     // MARK: Actions
     
-    func viewTapped(sender: AnyObject) {
+    func viewTapped(recognizer: UIGestureRecognizer) {
+        self.dismissKeyboard()
+    }
+    
+    func viewPanned(recognizer: UIGestureRecognizer) {
+        self.dismissKeyboard()
+    }
+    
+    func dismissKeyboard() {
         userIdTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
+    }
+    
+    func forgotPasswordButtonTapped(recognizer: UIGestureRecognizer) {
+        println("Go to WATIAM website")
+        // TODO: Ask user when leaving app
+        UIApplication.sharedApplication().openURL(NSURL(string: watiamURLString))
+    }
+    
+    func copyRightLabelTapped(recognizer: UIGestureRecognizer) {
+        println("Go to HonghaoZ website")
+        // TODO: Ask user when leaving app
+        if (recognizer.state == UIGestureRecognizerState.Ended) {
+            UIApplication.sharedApplication().openURL(NSURL(string: honghaozURLString))
+        }
+        
     }
     
     /*

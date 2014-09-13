@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A343f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -49,7 +48,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jfM-kv-6Sy" userLabel="LoginView">
-                                <rect key="frame" x="175" y="148" width="250" height="87"/>
+                                <rect key="frame" x="175" y="143" width="250" height="87"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="QUEST User ID" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="flV-vM-SfL" userLabel="User ID Text Field">
                                         <rect key="frame" x="12" y="3" width="226" height="40"/>
@@ -119,7 +118,7 @@
                                 </variation>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b9X-qX-Gzo" userLabel="LoginButton">
-                                <rect key="frame" x="175" y="255" width="250" height="40"/>
+                                <rect key="frame" x="175" y="250" width="250" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.57056949013157898" blue="0.9024979440789459" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="4tN-ic-Jul"/>
@@ -129,29 +128,54 @@
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="Login"/>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot Password?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahZ-aF-b47">
-                                <rect key="frame" x="175" y="303" width="250" height="23"/>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8cc-sJ-OKk" userLabel="RememberPassSwitch">
+                                <rect key="frame" x="175" y="294" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDJ-OV-g8u" userLabel="RememberPassword">
+                                <rect key="frame" x="224" y="298" width="67" height="23"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="23" id="QnP-MY-CKF"/>
+                                    <constraint firstAttribute="height" constant="23" id="rw6-PJ-D3l"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHO-ch-tVK">
+                                <rect key="frame" x="314" y="298" width="111" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="ho2-VA-rqn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                <state key="normal" title="Forgot Password?">
+                                    <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Made by HonghaoZ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6eQ-zh-QjS">
+                                <rect key="frame" x="240" y="563" width="120" height="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                 <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.96999999999999997" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="8cc-sJ-OKk" firstAttribute="top" secondItem="b9X-qX-Gzo" secondAttribute="bottom" constant="4" id="1pO-wV-IL1"/>
                             <constraint firstItem="ldA-PZ-VOh" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="33" id="55t-Ql-U0F"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="6eQ-zh-QjS" secondAttribute="bottom" constant="20" id="5zQ-iu-0Wa"/>
+                            <constraint firstItem="8cc-sJ-OKk" firstAttribute="centerY" secondItem="JDJ-OV-g8u" secondAttribute="centerY" id="C6G-oo-0WD"/>
                             <constraint firstItem="b9X-qX-Gzo" firstAttribute="width" secondItem="jfM-kv-6Sy" secondAttribute="width" id="DTZ-a6-i6w"/>
-                            <constraint firstItem="jfM-kv-6Sy" firstAttribute="top" secondItem="ldA-PZ-VOh" secondAttribute="bottom" constant="20" id="ES6-w7-cbp"/>
-                            <constraint firstItem="ahZ-aF-b47" firstAttribute="top" secondItem="b9X-qX-Gzo" secondAttribute="bottom" constant="8" id="Ipg-mI-dEF"/>
+                            <constraint firstItem="jfM-kv-6Sy" firstAttribute="top" secondItem="ldA-PZ-VOh" secondAttribute="bottom" constant="15" id="ES6-w7-cbp"/>
+                            <constraint firstItem="yHO-ch-tVK" firstAttribute="trailing" secondItem="b9X-qX-Gzo" secondAttribute="trailing" id="HVA-sJ-Xjz"/>
                             <constraint firstAttribute="centerX" secondItem="ldA-PZ-VOh" secondAttribute="centerX" id="LWf-0x-rn7"/>
+                            <constraint firstItem="8cc-sJ-OKk" firstAttribute="leading" secondItem="b9X-qX-Gzo" secondAttribute="leading" id="Ljs-mv-wJM"/>
                             <constraint firstItem="b9X-qX-Gzo" firstAttribute="top" secondItem="jfM-kv-6Sy" secondAttribute="bottom" constant="20" id="P7j-7I-B3y"/>
-                            <constraint firstItem="b9X-qX-Gzo" firstAttribute="centerX" secondItem="ahZ-aF-b47" secondAttribute="centerX" id="ZaW-ai-Lba"/>
+                            <constraint firstAttribute="centerX" secondItem="6eQ-zh-QjS" secondAttribute="centerX" id="VUO-Eg-xe2"/>
+                            <constraint firstItem="JDJ-OV-g8u" firstAttribute="leading" secondItem="8cc-sJ-OKk" secondAttribute="trailing" id="d1v-wS-4c9"/>
                             <constraint firstAttribute="centerX" secondItem="jfM-kv-6Sy" secondAttribute="centerX" id="ddr-gZ-lDu"/>
+                            <constraint firstItem="yHO-ch-tVK" firstAttribute="centerY" secondItem="JDJ-OV-g8u" secondAttribute="centerY" id="dej-MP-Ili"/>
                             <constraint firstItem="b9X-qX-Gzo" firstAttribute="centerX" secondItem="jfM-kv-6Sy" secondAttribute="centerX" id="erX-q7-se0"/>
                             <constraint firstAttribute="centerX" secondItem="jfM-kv-6Sy" secondAttribute="centerX" constant="32" id="tsr-FS-ccm"/>
-                            <constraint firstItem="b9X-qX-Gzo" firstAttribute="width" secondItem="ahZ-aF-b47" secondAttribute="width" id="wMz-Qg-ipZ"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -160,11 +184,16 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="copyRightLabel" destination="6eQ-zh-QjS" id="XLA-ON-reT"/>
+                        <outlet property="forgotPasswordButton" destination="yHO-ch-tVK" id="Eha-jc-PAR"/>
                         <outlet property="loginButton" destination="b9X-qX-Gzo" id="frL-7s-mKP"/>
                         <outlet property="loginView" destination="jfM-kv-6Sy" id="tBX-m0-HPB"/>
                         <outlet property="passwordTextField" destination="x8S-rR-MAg" id="XRx-VP-TYu"/>
+                        <outlet property="rememberLabel" destination="JDJ-OV-g8u" id="0IA-dq-r4R"/>
+                        <outlet property="rememberSwitch" destination="8cc-sJ-OKk" id="vlD-g9-u6l"/>
                         <outlet property="separatorLineView" destination="Wst-rv-4Bd" id="R43-MR-TU5"/>
                         <outlet property="subTitleLabel" destination="gX0-Yk-l9x" id="71a-hU-Ity"/>
+                        <outlet property="switchToLoginButtonLeading" destination="Ljs-mv-wJM" id="rq4-Ot-DrT"/>
                         <outlet property="titleLabel" destination="POh-WN-orQ" id="uX8-xn-MBk"/>
                         <outlet property="userIdTextField" destination="flV-vM-SfL" id="3fA-Mf-Hdp"/>
                     </connections>

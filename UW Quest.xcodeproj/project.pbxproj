@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B563F9619C496BF001785D9 /* UQButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B563F9519C496BF001785D9 /* UQButton.swift */; };
+		1B563F9819C4981F001785D9 /* UQMainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B563F9719C4981F001785D9 /* UQMainTabViewController.swift */; };
+		1B563F9919C4986A001785D9 /* UQMainTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B563F9B19C4986A001785D9 /* UQMainTab.storyboard */; };
 		1B5BF35219C3F8470005626F /* UQLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5BF35119C3F8470005626F /* UQLoginViewController.swift */; };
 		1B7CF10A19BCEF28007A157D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7CF10919BCEF28007A157D /* AppDelegate.swift */; };
 		1B7CF10F19BCEF28007A157D /* UQLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B7CF10D19BCEF28007A157D /* UQLogin.storyboard */; };
@@ -25,6 +28,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B563F9519C496BF001785D9 /* UQButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UQButton.swift; sourceTree = "<group>"; };
+		1B563F9719C4981F001785D9 /* UQMainTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UQMainTabViewController.swift; sourceTree = "<group>"; };
+		1B563F9A19C4986A001785D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UQMainTab.storyboard; sourceTree = "<group>"; };
 		1B5BF35119C3F8470005626F /* UQLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UQLoginViewController.swift; sourceTree = "<group>"; };
 		1B7CF10419BCEF28007A157D /* UW Quest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UW Quest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B7CF10819BCEF28007A157D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -57,7 +63,10 @@
 		1B2AFE8C19BD27E4008A75EF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1B7CF10D19BCEF28007A157D /* UQLogin.storyboard */,
 				1B5BF35119C3F8470005626F /* UQLoginViewController.swift */,
+				1B563F9B19C4986A001785D9 /* UQMainTab.storyboard */,
+				1B563F9719C4981F001785D9 /* UQMainTabViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -72,6 +81,7 @@
 		1B2AFE8E19BD2826008A75EF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1B563F9519C496BF001785D9 /* UQButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -105,7 +115,6 @@
 			isa = PBXGroup;
 			children = (
 				1B7CF10919BCEF28007A157D /* AppDelegate.swift */,
-				1B7CF10D19BCEF28007A157D /* UQLogin.storyboard */,
 				1B7CF11019BCEF28007A157D /* Images.xcassets */,
 				1B66542619C3F443003DCD1D /* Client */,
 				1B2AFE8D19BD2821008A75EF /* Model */,
@@ -225,6 +234,7 @@
 			files = (
 				1B7CF10F19BCEF28007A157D /* UQLogin.storyboard in Resources */,
 				1B7CF11119BCEF28007A157D /* Images.xcassets in Resources */,
+				1B563F9919C4986A001785D9 /* UQMainTab.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +253,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B5BF35219C3F8470005626F /* UQLoginViewController.swift in Sources */,
+				1B563F9819C4981F001785D9 /* UQMainTabViewController.swift in Sources */,
+				1B563F9619C496BF001785D9 /* UQButton.swift in Sources */,
 				1B7CF10A19BCEF28007A157D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,13 +278,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		1B563F9B19C4986A001785D9 /* UQMainTab.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1B563F9A19C4986A001785D9 /* Base */,
+			);
+			name = UQMainTab.storyboard;
+			sourceTree = "<group>";
+		};
 		1B7CF10D19BCEF28007A157D /* UQLogin.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				1B7CF10E19BCEF28007A157D /* Base */,
 			);
 			name = UQLogin.storyboard;
-			sourceTree = "<group>";
+			path = "UW Quest/Controller";
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXVariantGroup section */
 
