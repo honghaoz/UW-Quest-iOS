@@ -1,5 +1,5 @@
 //
-//  UQButton.swift
+//  BaseButton.swift
 //  UW Quest
 //
 //  Created by Honghao on 9/13/14.
@@ -8,23 +8,8 @@
 
 import UIKit
 
-class UQButton: UIButton {
-    
-//    override var backgroundColor: UIColor? {
-//        get {
-//            return self.backgroundColor
-//        }
-//        set {
-//            println("called")
-//            super.backgroundColor = newValue
-////            if let realBackgroundColor:UIColor = newValue {
-////                self.setBackgroundColor(realBackgroundColor, forState: UIControlState.Normal)
-////                let dimmedBackground: UIColor = realBackgroundColor.colorWithAlphaComponent(realBackgroundColor.getAlphaComponent() - 0.3)
-////                self.setBackgroundColor(realBackgroundColor, forState: UIControlState.Highlighted)
-////            }
-//        }
-//    }
-    
+class BaseButton: UIButton {
+        
     func setBackgroundColor(backgroundColor: UIColor?, forState state: UIControlState) {
         var colorView: UIView = UIView(frame: self.frame)
         colorView.backgroundColor = backgroundColor

@@ -1,5 +1,5 @@
 //
-//  UQMainTabViewController.swift
+//  MainTabViewController.swift
 //  UW Quest
 //
 //  Created by Honghao on 9/13/14.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UQMainTabViewController: UIViewController {
+class MainTabViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

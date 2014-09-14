@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		1B2FCD1C19C4A64400FDF4D8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2FCD1B19C4A64400FDF4D8 /* Extensions.swift */; };
-		1B563F9619C496BF001785D9 /* UQButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B563F9519C496BF001785D9 /* UQButton.swift */; };
-		1B563F9819C4981F001785D9 /* UQMainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B563F9719C4981F001785D9 /* UQMainTabViewController.swift */; };
-		1B563F9919C4986A001785D9 /* UQMainTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B563F9B19C4986A001785D9 /* UQMainTab.storyboard */; };
-		1B5BF35219C3F8470005626F /* UQLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5BF35119C3F8470005626F /* UQLoginViewController.swift */; };
+		1B563F9619C496BF001785D9 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B563F9519C496BF001785D9 /* BaseButton.swift */; };
+		1B563F9819C4981F001785D9 /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B563F9719C4981F001785D9 /* MainTabViewController.swift */; };
+		1B563F9919C4986A001785D9 /* MainTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B563F9B19C4986A001785D9 /* MainTab.storyboard */; };
+		1B5BF35219C3F8470005626F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5BF35119C3F8470005626F /* LoginViewController.swift */; };
 		1B7CF10A19BCEF28007A157D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7CF10919BCEF28007A157D /* AppDelegate.swift */; };
-		1B7CF10F19BCEF28007A157D /* UQLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B7CF10D19BCEF28007A157D /* UQLogin.storyboard */; };
+		1B7CF10F19BCEF28007A157D /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B7CF10D19BCEF28007A157D /* Login.storyboard */; };
 		1B7CF11119BCEF28007A157D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B7CF11019BCEF28007A157D /* Images.xcassets */; };
 		1B7CF11D19BCEF28007A157D /* UW_QuestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7CF11C19BCEF28007A157D /* UW_QuestTests.swift */; };
 /* End PBXBuildFile section */
@@ -30,14 +30,14 @@
 
 /* Begin PBXFileReference section */
 		1B2FCD1B19C4A64400FDF4D8 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		1B563F9519C496BF001785D9 /* UQButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UQButton.swift; sourceTree = "<group>"; };
-		1B563F9719C4981F001785D9 /* UQMainTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UQMainTabViewController.swift; sourceTree = "<group>"; };
-		1B563F9A19C4986A001785D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UQMainTab.storyboard; sourceTree = "<group>"; };
-		1B5BF35119C3F8470005626F /* UQLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UQLoginViewController.swift; sourceTree = "<group>"; };
+		1B563F9519C496BF001785D9 /* BaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
+		1B563F9719C4981F001785D9 /* MainTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
+		1B563F9A19C4986A001785D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainTab.storyboard; sourceTree = "<group>"; };
+		1B5BF35119C3F8470005626F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1B7CF10419BCEF28007A157D /* UW Quest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UW Quest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B7CF10819BCEF28007A157D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1B7CF10919BCEF28007A157D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1B7CF10E19BCEF28007A157D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UQLogin.storyboard; sourceTree = "<group>"; };
+		1B7CF10E19BCEF28007A157D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		1B7CF11019BCEF28007A157D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1B7CF11619BCEF28007A157D /* UW QuestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UW QuestTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B7CF11B19BCEF28007A157D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -65,10 +65,10 @@
 		1B2AFE8C19BD27E4008A75EF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				1B7CF10D19BCEF28007A157D /* UQLogin.storyboard */,
-				1B5BF35119C3F8470005626F /* UQLoginViewController.swift */,
-				1B563F9B19C4986A001785D9 /* UQMainTab.storyboard */,
-				1B563F9719C4981F001785D9 /* UQMainTabViewController.swift */,
+				1B7CF10D19BCEF28007A157D /* Login.storyboard */,
+				1B5BF35119C3F8470005626F /* LoginViewController.swift */,
+				1B563F9B19C4986A001785D9 /* MainTab.storyboard */,
+				1B563F9719C4981F001785D9 /* MainTabViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -83,7 +83,7 @@
 		1B2AFE8E19BD2826008A75EF /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1B563F9519C496BF001785D9 /* UQButton.swift */,
+				1B563F9519C496BF001785D9 /* BaseButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -126,6 +126,7 @@
 			children = (
 				1B7CF10919BCEF28007A157D /* AppDelegate.swift */,
 				1B7CF11019BCEF28007A157D /* Images.xcassets */,
+				FA23728119C63E68000F5D4F /* Helper */,
 				1B563F9D19C49BBD001785D9 /* Extension */,
 				1B66542619C3F443003DCD1D /* Client */,
 				1B2AFE8D19BD2821008A75EF /* Model */,
@@ -159,6 +160,13 @@
 				1B7CF11B19BCEF28007A157D /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FA23728119C63E68000F5D4F /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,9 +251,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B7CF10F19BCEF28007A157D /* UQLogin.storyboard in Resources */,
+				1B7CF10F19BCEF28007A157D /* Login.storyboard in Resources */,
 				1B7CF11119BCEF28007A157D /* Images.xcassets in Resources */,
-				1B563F9919C4986A001785D9 /* UQMainTab.storyboard in Resources */,
+				1B563F9919C4986A001785D9 /* MainTab.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,9 +272,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B2FCD1C19C4A64400FDF4D8 /* Extensions.swift in Sources */,
-				1B5BF35219C3F8470005626F /* UQLoginViewController.swift in Sources */,
-				1B563F9819C4981F001785D9 /* UQMainTabViewController.swift in Sources */,
-				1B563F9619C496BF001785D9 /* UQButton.swift in Sources */,
+				1B5BF35219C3F8470005626F /* LoginViewController.swift in Sources */,
+				1B563F9819C4981F001785D9 /* MainTabViewController.swift in Sources */,
+				1B563F9619C496BF001785D9 /* BaseButton.swift in Sources */,
 				1B7CF10A19BCEF28007A157D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -290,20 +298,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		1B563F9B19C4986A001785D9 /* UQMainTab.storyboard */ = {
+		1B563F9B19C4986A001785D9 /* MainTab.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				1B563F9A19C4986A001785D9 /* Base */,
 			);
-			name = UQMainTab.storyboard;
+			name = MainTab.storyboard;
 			sourceTree = "<group>";
 		};
-		1B7CF10D19BCEF28007A157D /* UQLogin.storyboard */ = {
+		1B7CF10D19BCEF28007A157D /* Login.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				1B7CF10E19BCEF28007A157D /* Base */,
 			);
-			name = UQLogin.storyboard;
+			name = Login.storyboard;
 			path = "UW Quest/Controller";
 			sourceTree = SOURCE_ROOT;
 		};

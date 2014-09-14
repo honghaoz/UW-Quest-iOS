@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 extension UIColor {
+    
     func colorWithNewAlphaComponent(alpha: CGFloat) -> UIColor {
         var red: CGFloat = 0.0
         var green: CGFloat = 0.0

@@ -17,9 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window!.backgroundColor = UIColor.whiteColor()
-        var loginStoryboard: UIStoryboard = UIStoryboard(name: "UQLogin", bundle: nil)
+        var loginStoryboard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
         
-        var newLoginVC = loginStoryboard.instantiateViewControllerWithIdentifier("UQLoginViewController") as UIViewController
+        var newLoginVC = loginStoryboard.instantiateViewControllerWithIdentifier("LoginViewController") as UIViewController
     
         self.window!.rootViewController = newLoginVC
         self.window!.makeKeyAndVisible()

@@ -1,5 +1,5 @@
 //
-//  UQLoginViewController.swift
+//  LoginViewController.swift
 //  UW Quest
 //
 //  Created by Honghao on 9/12/14.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UQLoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     let kBorderColor: UIColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
     let kBorderCornerRadius: CGFloat = 5.0
@@ -28,7 +28,7 @@ class UQLoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var separatorLineView: UIView!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    @IBOutlet weak var loginButton: UQButton!
+    @IBOutlet weak var loginButton: BaseButton!
     @IBOutlet weak var rememberSwitch: UISwitch!
     @IBOutlet weak var switchToLoginButtonLeading: NSLayoutConstraint!
     @IBOutlet weak var rememberLabel: UILabel!
