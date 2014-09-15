@@ -23,6 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
         self.window!.rootViewController = newLoginVC
         self.window!.makeKeyAndVisible()
+        
+        // Parse set up
+        
         return true
     }
 

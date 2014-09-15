@@ -91,7 +91,7 @@
                                     <constraint firstItem="Wst-rv-4Bd" firstAttribute="leading" secondItem="jfM-kv-6Sy" secondAttribute="leading" id="zno-3N-bPI"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b9X-qX-Gzo" userLabel="LoginButton" customClass="UQButton" customModule="UW_Quest" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b9X-qX-Gzo" userLabel="LoginButton" customClass="BaseButton" customModule="UW_Quest" customModuleProvider="target">
                                 <rect key="frame" x="175" y="250" width="250" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.57056949013157898" blue="0.9024979440789459" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -167,9 +167,9 @@
                         <outlet property="passwordTextField" destination="x8S-rR-MAg" id="XRx-VP-TYu"/>
                         <outlet property="rememberLabel" destination="JDJ-OV-g8u" id="0IA-dq-r4R"/>
                         <outlet property="rememberSwitch" destination="8cc-sJ-OKk" id="vlD-g9-u6l"/>
+                        <outlet property="rememberSwitch_LoginButton_Leading" destination="Ljs-mv-wJM" id="xcb-vg-S4m"/>
                         <outlet property="separatorLineView" destination="Wst-rv-4Bd" id="R43-MR-TU5"/>
                         <outlet property="subTitleLabel" destination="gX0-Yk-l9x" id="71a-hU-Ity"/>
-                        <outlet property="switchToLoginButtonLeading" destination="Ljs-mv-wJM" id="rq4-Ot-DrT"/>
                         <outlet property="titleLabel" destination="POh-WN-orQ" id="uX8-xn-MBk"/>
                         <outlet property="userIdTextField" destination="flV-vM-SfL" id="3fA-Mf-Hdp"/>
                     </connections>

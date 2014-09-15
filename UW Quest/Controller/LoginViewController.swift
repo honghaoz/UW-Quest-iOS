@@ -10,16 +10,6 @@ import UIKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
-    let kBorderColor: UIColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
-    let kBorderCornerRadius: CGFloat = 5.0
-    let kBorderWidth: CGFloat = 1.0
-    
-    let kButtonColor: UIColor = UIColor(red: 0.22, green: 0.48, blue: 0.69, alpha: 1)
-    let kRememberTitleColor: UIColor = UIColor(white: 0.4, alpha: 1)
-    
-    let watiamURLString = "https://watiam.uwaterloo.ca/idm/user/login.jsp"
-    let honghaozURLString = "http://honghaoz.com"
-    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
     
@@ -30,16 +20,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var loginButton: BaseButton!
     @IBOutlet weak var rememberSwitch: UISwitch!
-    @IBOutlet weak var switchToLoginButtonLeading: NSLayoutConstraint!
     @IBOutlet weak var rememberLabel: UILabel!
+    @IBOutlet weak var rememberSwitch_LoginButton_Leading: NSLayoutConstraint!
     @IBOutlet weak var forgotPasswordButton: UIButton!
     
     @IBOutlet weak var copyRightLabel: UILabel!
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        titleLabel.textColor = kButtonColor
-        subTitleLabel.textColor = kButtonColor
+        titleLabel.textColor = UQBlueColor
+        subTitleLabel.textColor = UQBlueColor
         
         userIdTextField.backgroundColor = UIColor.whiteColor()
         userIdTextField.borderStyle = UITextBorderStyle.None
@@ -53,8 +44,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         loginView.layer.cornerRadius = kBorderCornerRadius
         loginView.layer.borderWidth = kBorderWidth
         
-        loginButton.backgroundColor = kButtonColor
-        loginButton.layer.borderColor = kButtonColor.CGColor
+        loginButton.backgroundColor = UQBlueColor
+        loginButton.layer.borderColor = UQBlueColor.CGColor
         loginButton.layer.cornerRadius = kBorderCornerRadius
         loginButton.layer.borderWidth = kBorderWidth
         loginButton.layer.masksToBounds = true
@@ -65,12 +56,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let offsetX = (1.0 - switchScaleFactor) * switchWidth / 2.0
         let makeItSmaller: CGAffineTransform = CGAffineTransformMakeScale(switchScaleFactor, switchScaleFactor)
         rememberSwitch.transform = CGAffineTransformMakeScale(switchScaleFactor, switchScaleFactor)
-        switchToLoginButtonLeading.constant = -offsetX
-        rememberSwitch.onTintColor = kButtonColor
+        rememberSwitch_LoginButton_Leading.constant = -offsetX
+        rememberSwitch.onTintColor = UQBlueColor
         
-        rememberLabel.textColor = kRememberTitleColor
-        forgotPasswordButton.tintColor = kRememberTitleColor
-        
+        rememberLabel.textColor = UQFontGrayColor
+        forgotPasswordButton.tintColor = UQFontGrayColor
     }
     
     override func viewDidLoad() {
@@ -78,6 +68,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         userIdTextField.delegate = self
         passwordTextField.delegate = self
         
+        // Gestures for view
         let tapAction: Selector = "viewTapped:"
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action:tapAction)
         tapGesture.numberOfTouchesRequired = 1
@@ -86,11 +77,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let panAction: Selector = "viewPanned:"
         let panGesture: UIPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: panAction)
         self.view.addGestureRecognizer(panGesture)
-        
         forgotPasswordButton.addTarget(self, action: "forgotPasswordButtonTapped:", forControlEvents: UIControlEvents.TouchUpInside)
         
-        let copyRightTapAction: Selector = "copyRightLabelTapped:"
+        let rememberSwitchAction: Selector = "rememberSwitchChanged:"
+        rememberSwitch.addTarget(self, action: rememberSwitchAction, forControlEvents: UIControlEvents.ValueChanged)
+        let rememberTapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action:"rememberLabelTapped:" as Selector)
+        rememberTapGesture.numberOfTouchesRequired = 1
+        rememberLabel.addGestureRecognizer(rememberTapGesture)
+        rememberLabel.userInteractionEnabled = true
         
+        // Gesture for copyLable
+        let copyRightTapAction: Selector = "copyRightLabelTapped:"
         var copyRightTapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action:copyRightTapAction)
         copyRightTapGesture.numberOfTouchesRequired = 1
         copyRightLabel.addGestureRecognizer(copyRightTapGesture)
@@ -133,6 +130,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func dismissKeyboard() {
         userIdTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
+    }
+    
+    func rememberLabelTapped(recognizer: UIGestureRecognizer) {
+        if (recognizer.state == UIGestureRecognizerState.Ended) {
+            rememberSwitch.setOn(!rememberSwitch.on, animated: true)
+            self.rememberSwitchChanged(nil)
+        }
+    }
+    
+    func rememberSwitchChanged(sender: AnyObject?) {
+        println("Remember: \(rememberSwitch.on)")
+        User.sharedUser.isRemembered = rememberSwitch.on
     }
     
     func forgotPasswordButtonTapped(recognizer: UIGestureRecognizer) {
