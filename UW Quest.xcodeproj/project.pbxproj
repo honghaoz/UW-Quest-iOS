@@ -27,8 +27,9 @@
 		FA23729619C72E8B000F5D4F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA23729519C72E8B000F5D4F /* StoreKit.framework */; };
 		FA23729819C72E91000F5D4F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA23729719C72E91000F5D4F /* SystemConfiguration.framework */; };
 		FA23729E19C74167000F5D4F /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23729D19C74167000F5D4F /* Constant.swift */; };
+		FA547F5B19C89D330073F65D /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA547F5A19C89D330073F65D /* Parse.framework */; };
+		FA547F5D19C89E020073F65D /* QuestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA547F5C19C89E020073F65D /* QuestClient.swift */; };
 		FA8C1D6419C75B0800D6E158 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8C1D6319C75B0800D6E158 /* User.swift */; };
-		FA8C1D6619C75BED00D6E158 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA8C1D6519C75BED00D6E158 /* Parse.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,8 +68,9 @@
 		FA23729719C72E91000F5D4F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		FA23729A19C72F9A000F5D4F /* UW Quest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UW Quest-Bridging-Header.h"; sourceTree = "<group>"; };
 		FA23729D19C74167000F5D4F /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		FA547F5A19C89D330073F65D /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		FA547F5C19C89E020073F65D /* QuestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestClient.swift; sourceTree = SOURCE_ROOT; };
 		FA8C1D6319C75B0800D6E158 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		FA8C1D6519C75BED00D6E158 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +84,7 @@
 				FA23729219C72E83000F5D4F /* QuartzCore.framework in Frameworks */,
 				FA23729019C72E7F000F5D4F /* MobileCoreServices.framework in Frameworks */,
 				FA23728E19C72E79000F5D4F /* libz.dylib in Frameworks */,
-				FA8C1D6619C75BED00D6E158 /* Parse.framework in Frameworks */,
+				FA547F5B19C89D330073F65D /* Parse.framework in Frameworks */,
 				FA23728C19C72E73000F5D4F /* CoreLocation.framework in Frameworks */,
 				FA23728A19C72E6E000F5D4F /* CoreGraphics.framework in Frameworks */,
 				FA23728819C72E67000F5D4F /* CFNetwork.framework in Frameworks */,
@@ -130,6 +132,7 @@
 		1B66542619C3F443003DCD1D /* Client */ = {
 			isa = PBXGroup;
 			children = (
+				FA547F5C19C89E020073F65D /* QuestClient.swift */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -207,7 +210,7 @@
 		FA23728219C72D53000F5D4F /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
-				FA8C1D6519C75BED00D6E158 /* Parse.framework */,
+				FA547F5A19C89D330073F65D /* Parse.framework */,
 			);
 			path = ThirdParty;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				1B563F9819C4981F001785D9 /* MainTabViewController.swift in Sources */,
 				1B563F9619C496BF001785D9 /* BaseButton.swift in Sources */,
 				1B7CF10A19BCEF28007A157D /* AppDelegate.swift in Sources */,
+				FA547F5D19C89E020073F65D /* QuestClient.swift in Sources */,
 				FA23729E19C74167000F5D4F /* Constant.swift in Sources */,
 				FA8C1D6419C75B0800D6E158 /* User.swift in Sources */,
 			);
@@ -392,7 +396,7 @@
 		1B7CF11E19BCEF28007A157D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -435,7 +439,7 @@
 		1B7CF11F19BCEF28007A157D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -477,8 +481,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/UW",
-					Quest/ThirdParty,
+					"$(PROJECT_DIR)/**",
 				);
 				INFOPLIST_FILE = "UW Quest/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -498,8 +501,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/UW",
-					Quest/ThirdParty,
+					"$(PROJECT_DIR)/**",
 				);
 				INFOPLIST_FILE = "UW Quest/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
