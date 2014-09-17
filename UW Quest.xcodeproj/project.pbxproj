@@ -16,6 +16,7 @@
 		1B7CF10F19BCEF28007A157D /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B7CF10D19BCEF28007A157D /* Login.storyboard */; };
 		1B7CF11119BCEF28007A157D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B7CF11019BCEF28007A157D /* Images.xcassets */; };
 		1B7CF11D19BCEF28007A157D /* UW_QuestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7CF11C19BCEF28007A157D /* UW_QuestTests.swift */; };
+		9DF10D05EB6E460CBD79B4E4 /* libPods-UW Quest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 413651466CD74FE09FCED094 /* libPods-UW Quest.a */; };
 		FA23728619C72E62000F5D4F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA23728519C72E62000F5D4F /* AudioToolbox.framework */; };
 		FA23728819C72E67000F5D4F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA23728719C72E67000F5D4F /* CFNetwork.framework */; };
 		FA23728A19C72E6E000F5D4F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA23728919C72E6E000F5D4F /* CoreGraphics.framework */; };
@@ -24,14 +25,15 @@
 		FA23729019C72E7F000F5D4F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA23728F19C72E7F000F5D4F /* MobileCoreServices.framework */; };
 		FA23729219C72E83000F5D4F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA23729119C72E83000F5D4F /* QuartzCore.framework */; };
 		FA23729419C72E87000F5D4F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA23729319C72E87000F5D4F /* Security.framework */; };
-		FA23729619C72E8B000F5D4F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA23729519C72E8B000F5D4F /* StoreKit.framework */; };
 		FA23729819C72E91000F5D4F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA23729719C72E91000F5D4F /* SystemConfiguration.framework */; };
 		FA23729E19C74167000F5D4F /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23729D19C74167000F5D4F /* Constant.swift */; };
-		FA547F5B19C89D330073F65D /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA547F5A19C89D330073F65D /* Parse.framework */; };
 		FA547F5D19C89E020073F65D /* QuestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA547F5C19C89E020073F65D /* QuestClient.swift */; };
 		FA79657619C9079F00852C84 /* Locator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA79657519C9079F00852C84 /* Locator.swift */; };
 		FA79657819C90BB000852C84 /* LaunchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA79657719C90BB000852C84 /* LaunchView.xib */; };
 		FA8C1D6419C75B0800D6E158 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8C1D6319C75B0800D6E158 /* User.swift */; };
+		FAF2291F19C937180041C36F /* ZHHParseDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF2291E19C937180041C36F /* ZHHParseDevice.m */; };
+		FAF2292419C937620041C36F /* UIApplication+AppVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF2292119C937620041C36F /* UIApplication+AppVersion.m */; };
+		FAF2292519C937620041C36F /* UIDevice-Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF2292319C937620041C36F /* UIDevice-Hardware.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,8 @@
 		1B7CF11619BCEF28007A157D /* UW QuestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UW QuestTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B7CF11B19BCEF28007A157D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1B7CF11C19BCEF28007A157D /* UW_QuestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UW_QuestTests.swift; sourceTree = "<group>"; };
+		413651466CD74FE09FCED094 /* libPods-UW Quest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UW Quest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		80BCD76903A94C5EB7727E34 /* Pods-UW Quest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UW Quest.xcconfig"; path = "Pods/Pods-UW Quest.xcconfig"; sourceTree = "<group>"; };
 		FA23728519C72E62000F5D4F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		FA23728719C72E67000F5D4F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		FA23728919C72E6E000F5D4F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -66,15 +70,19 @@
 		FA23728F19C72E7F000F5D4F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		FA23729119C72E83000F5D4F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		FA23729319C72E87000F5D4F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		FA23729519C72E8B000F5D4F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		FA23729719C72E91000F5D4F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		FA23729A19C72F9A000F5D4F /* UW Quest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UW Quest-Bridging-Header.h"; sourceTree = "<group>"; };
 		FA23729D19C74167000F5D4F /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
-		FA547F5A19C89D330073F65D /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		FA547F5C19C89E020073F65D /* QuestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestClient.swift; sourceTree = SOURCE_ROOT; };
 		FA79657519C9079F00852C84 /* Locator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locator.swift; sourceTree = "<group>"; };
 		FA79657719C90BB000852C84 /* LaunchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchView.xib; sourceTree = "<group>"; };
 		FA8C1D6319C75B0800D6E158 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FAF2291D19C937180041C36F /* ZHHParseDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHHParseDevice.h; sourceTree = "<group>"; };
+		FAF2291E19C937180041C36F /* ZHHParseDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHHParseDevice.m; sourceTree = "<group>"; };
+		FAF2292019C937620041C36F /* UIApplication+AppVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+AppVersion.h"; sourceTree = "<group>"; };
+		FAF2292119C937620041C36F /* UIApplication+AppVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+AppVersion.m"; sourceTree = "<group>"; };
+		FAF2292219C937620041C36F /* UIDevice-Hardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice-Hardware.h"; sourceTree = "<group>"; };
+		FAF2292319C937620041C36F /* UIDevice-Hardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice-Hardware.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,16 +91,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA23729819C72E91000F5D4F /* SystemConfiguration.framework in Frameworks */,
-				FA23729619C72E8B000F5D4F /* StoreKit.framework in Frameworks */,
 				FA23729419C72E87000F5D4F /* Security.framework in Frameworks */,
 				FA23729219C72E83000F5D4F /* QuartzCore.framework in Frameworks */,
 				FA23729019C72E7F000F5D4F /* MobileCoreServices.framework in Frameworks */,
 				FA23728E19C72E79000F5D4F /* libz.dylib in Frameworks */,
-				FA547F5B19C89D330073F65D /* Parse.framework in Frameworks */,
 				FA23728C19C72E73000F5D4F /* CoreLocation.framework in Frameworks */,
 				FA23728A19C72E6E000F5D4F /* CoreGraphics.framework in Frameworks */,
 				FA23728819C72E67000F5D4F /* CFNetwork.framework in Frameworks */,
 				FA23728619C72E62000F5D4F /* AudioToolbox.framework in Frameworks */,
+				9DF10D05EB6E460CBD79B4E4 /* libPods-UW Quest.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,6 +136,10 @@
 			isa = PBXGroup;
 			children = (
 				1B2FCD1B19C4A64400FDF4D8 /* Extension.swift */,
+				FAF2292019C937620041C36F /* UIApplication+AppVersion.h */,
+				FAF2292119C937620041C36F /* UIApplication+AppVersion.m */,
+				FAF2292219C937620041C36F /* UIDevice-Hardware.h */,
+				FAF2292319C937620041C36F /* UIDevice-Hardware.m */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -148,6 +159,8 @@
 				1B7CF11919BCEF28007A157D /* UW QuestTests */,
 				FA23729919C72EA7000F5D4F /* Framework */,
 				1B7CF10519BCEF28007A157D /* Products */,
+				80BCD76903A94C5EB7727E34 /* Pods-UW Quest.xcconfig */,
+				B94156B808E14E00AB78F713 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -167,7 +180,7 @@
 				1B7CF10919BCEF28007A157D /* AppDelegate.swift */,
 				FA79657719C90BB000852C84 /* LaunchView.xib */,
 				1B7CF11019BCEF28007A157D /* Images.xcassets */,
-				FA23728219C72D53000F5D4F /* ThirdParty */,
+				FAF2291C19C937050041C36F /* OpenSource */,
 				1B563F9D19C49BBD001785D9 /* Extension */,
 				FA23728119C63E68000F5D4F /* Helper */,
 				1B66542619C3F443003DCD1D /* Client */,
@@ -204,6 +217,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		B94156B808E14E00AB78F713 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				413651466CD74FE09FCED094 /* libPods-UW Quest.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FA23728119C63E68000F5D4F /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,19 +234,10 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
-		FA23728219C72D53000F5D4F /* ThirdParty */ = {
-			isa = PBXGroup;
-			children = (
-				FA547F5A19C89D330073F65D /* Parse.framework */,
-			);
-			path = ThirdParty;
-			sourceTree = "<group>";
-		};
 		FA23729919C72EA7000F5D4F /* Framework */ = {
 			isa = PBXGroup;
 			children = (
 				FA23729719C72E91000F5D4F /* SystemConfiguration.framework */,
-				FA23729519C72E8B000F5D4F /* StoreKit.framework */,
 				FA23729319C72E87000F5D4F /* Security.framework */,
 				FA23729119C72E83000F5D4F /* QuartzCore.framework */,
 				FA23728F19C72E7F000F5D4F /* MobileCoreServices.framework */,
@@ -247,6 +259,15 @@
 			path = "UW Quest/Model";
 			sourceTree = SOURCE_ROOT;
 		};
+		FAF2291C19C937050041C36F /* OpenSource */ = {
+			isa = PBXGroup;
+			children = (
+				FAF2291D19C937180041C36F /* ZHHParseDevice.h */,
+				FAF2291E19C937180041C36F /* ZHHParseDevice.m */,
+			);
+			path = OpenSource;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -254,9 +275,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1B7CF12019BCEF28007A157D /* Build configuration list for PBXNativeTarget "UW Quest" */;
 			buildPhases = (
+				74923F04F71C4B119FF7FE6C /* Check Pods Manifest.lock */,
 				1B7CF10019BCEF28007A157D /* Sources */,
 				1B7CF10119BCEF28007A157D /* Frameworks */,
 				1B7CF10219BCEF28007A157D /* Resources */,
+				8751D1AADF5C44DE95744EFC /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -298,6 +321,11 @@
 					1B7CF10319BCEF28007A157D = {
 						CreatedOnToolsVersion = 6.0;
 						DevelopmentTeam = UYW9ZSKZAQ;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 					1B7CF11519BCEF28007A157D = {
 						CreatedOnToolsVersion = 6.0;
@@ -345,16 +373,52 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		74923F04F71C4B119FF7FE6C /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8751D1AADF5C44DE95744EFC /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-UW Quest-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1B7CF10019BCEF28007A157D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAF2291F19C937180041C36F /* ZHHParseDevice.m in Sources */,
 				1B2FCD1C19C4A64400FDF4D8 /* Extension.swift in Sources */,
 				1B5BF35219C3F8470005626F /* LoginViewController.swift in Sources */,
+				FAF2292419C937620041C36F /* UIApplication+AppVersion.m in Sources */,
 				1B563F9819C4981F001785D9 /* MainTabBarController.swift in Sources */,
 				1B563F9619C496BF001785D9 /* BaseButton.swift in Sources */,
 				1B7CF10A19BCEF28007A157D /* AppDelegate.swift in Sources */,
+				FAF2292519C937620041C36F /* UIDevice-Hardware.m in Sources */,
 				FA79657619C9079F00852C84 /* Locator.swift in Sources */,
 				FA547F5D19C89E020073F65D /* QuestClient.swift in Sources */,
 				FA23729E19C74167000F5D4F /* Constant.swift in Sources */,
@@ -482,6 +546,7 @@
 		};
 		1B7CF12119BCEF28007A157D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 80BCD76903A94C5EB7727E34 /* Pods-UW Quest.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -501,6 +566,7 @@
 		};
 		1B7CF12219BCEF28007A157D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 80BCD76903A94C5EB7727E34 /* Pods-UW Quest.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
