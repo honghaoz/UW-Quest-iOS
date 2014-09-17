@@ -27,10 +27,10 @@
 		FA23729419C72E87000F5D4F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA23729319C72E87000F5D4F /* Security.framework */; };
 		FA23729819C72E91000F5D4F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA23729719C72E91000F5D4F /* SystemConfiguration.framework */; };
 		FA23729E19C74167000F5D4F /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23729D19C74167000F5D4F /* Constant.swift */; };
-		FA547F5D19C89E020073F65D /* QuestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA547F5C19C89E020073F65D /* QuestClient.swift */; };
 		FA79657619C9079F00852C84 /* Locator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA79657519C9079F00852C84 /* Locator.swift */; };
 		FA79657819C90BB000852C84 /* LaunchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA79657719C90BB000852C84 /* LaunchView.xib */; };
 		FA8C1D6419C75B0800D6E158 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8C1D6319C75B0800D6E158 /* User.swift */; };
+		FACE198719C9EB05001FD4C9 /* QuestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACE198619C9EB05001FD4C9 /* QuestClient.swift */; };
 		FAF2291F19C937180041C36F /* ZHHParseDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF2291E19C937180041C36F /* ZHHParseDevice.m */; };
 		FAF2292419C937620041C36F /* UIApplication+AppVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF2292119C937620041C36F /* UIApplication+AppVersion.m */; };
 		FAF2292519C937620041C36F /* UIDevice-Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF2292319C937620041C36F /* UIDevice-Hardware.m */; };
@@ -78,10 +78,10 @@
 		FA23729719C72E91000F5D4F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		FA23729A19C72F9A000F5D4F /* UW Quest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UW Quest-Bridging-Header.h"; sourceTree = "<group>"; };
 		FA23729D19C74167000F5D4F /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
-		FA547F5C19C89E020073F65D /* QuestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestClient.swift; sourceTree = SOURCE_ROOT; };
 		FA79657519C9079F00852C84 /* Locator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locator.swift; sourceTree = "<group>"; };
 		FA79657719C90BB000852C84 /* LaunchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchView.xib; sourceTree = "<group>"; };
 		FA8C1D6319C75B0800D6E158 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FACE198619C9EB05001FD4C9 /* QuestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestClient.swift; sourceTree = "<group>"; };
 		FAF2291D19C937180041C36F /* ZHHParseDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHHParseDevice.h; sourceTree = "<group>"; };
 		FAF2291E19C937180041C36F /* ZHHParseDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHHParseDevice.m; sourceTree = "<group>"; };
 		FAF2292019C937620041C36F /* UIApplication+AppVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+AppVersion.h"; sourceTree = "<group>"; };
@@ -159,14 +159,6 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		1B66542619C3F443003DCD1D /* Client */ = {
-			isa = PBXGroup;
-			children = (
-				FA547F5C19C89E020073F65D /* QuestClient.swift */,
-			);
-			path = Client;
-			sourceTree = "<group>";
-		};
 		1B7CF0FB19BCEF28007A157D = {
 			isa = PBXGroup;
 			children = (
@@ -194,10 +186,11 @@
 				1B7CF10919BCEF28007A157D /* AppDelegate.swift */,
 				FA79657719C90BB000852C84 /* LaunchView.xib */,
 				1B7CF11019BCEF28007A157D /* Images.xcassets */,
+				FACE198819C9EB38001FD4C9 /* ThirdParty */,
 				FAF2291C19C937050041C36F /* OpenSource */,
 				1B563F9D19C49BBD001785D9 /* Extension */,
 				FA23728119C63E68000F5D4F /* Helper */,
-				1B66542619C3F443003DCD1D /* Client */,
+				FACE198519C9EB05001FD4C9 /* Network */,
 				FA8C1D6219C75B0800D6E158 /* Model */,
 				1B2AFE8E19BD2826008A75EF /* View */,
 				1B2AFE8C19BD27E4008A75EF /* Controller */,
@@ -270,6 +263,21 @@
 			name = Model;
 			path = "UW Quest/Model";
 			sourceTree = SOURCE_ROOT;
+		};
+		FACE198519C9EB05001FD4C9 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				FACE198619C9EB05001FD4C9 /* QuestClient.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		FACE198819C9EB38001FD4C9 /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ThirdParty;
+			sourceTree = "<group>";
 		};
 		FAF2291C19C937050041C36F /* OpenSource */ = {
 			isa = PBXGroup;
@@ -424,6 +432,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAF2291F19C937180041C36F /* ZHHParseDevice.m in Sources */,
+				FACE198719C9EB05001FD4C9 /* QuestClient.swift in Sources */,
 				1B2FCD1C19C4A64400FDF4D8 /* Extension.swift in Sources */,
 				1B5BF35219C3F8470005626F /* LoginViewController.swift in Sources */,
 				FAF2292419C937620041C36F /* UIApplication+AppVersion.m in Sources */,
@@ -432,7 +441,6 @@
 				1B7CF10A19BCEF28007A157D /* AppDelegate.swift in Sources */,
 				FAF2292519C937620041C36F /* UIDevice-Hardware.m in Sources */,
 				FA79657619C9079F00852C84 /* Locator.swift in Sources */,
-				FA547F5D19C89E020073F65D /* QuestClient.swift in Sources */,
 				FA23729E19C74167000F5D4F /* Constant.swift in Sources */,
 				FA8C1D6419C75B0800D6E158 /* User.swift in Sources */,
 			);
