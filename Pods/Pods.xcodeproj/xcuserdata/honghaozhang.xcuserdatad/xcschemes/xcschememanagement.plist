@@ -9,7 +9,37 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-UW Quest-ARAnalytics.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-UW Quest-Appsee.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-UW Quest-Bolts.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-UW Quest-Countly.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-UW Quest-FlurrySDK.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-UW Quest-GoogleAnalytics-iOS-SDK.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-UW Quest-Localytics-iOS-Client.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -27,22 +57,52 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1A84984B0B7B4100A5CE56FC</key>
+		<key>03BE72D327F140FE9EA374AE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2EB9CCE727724715A76564C4</key>
+		<key>05BB0925E8184C6DB6C5F104</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>85650C86F3964E7F97B59A06</key>
+		<key>448011FD3B844D4591EAE567</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>964B0F9BE0FB4175BD38277F</key>
+		<key>4CEA120C87954E358986C6C5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4EF2EBA9AC9E4C05A501DD8C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>58FCFD71FE8D422F9D251B66</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>63251868D82E44C4803D1281</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6A928427DE29438CB5B72B81</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8440908BF8D84CA59BC522B3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F656851DFE6E44FC9D440BD6</key>
 		<dict>
 			<key>primary</key>
 			<true/>

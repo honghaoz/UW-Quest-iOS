@@ -34,6 +34,11 @@
 		FAF2291F19C937180041C36F /* ZHHParseDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF2291E19C937180041C36F /* ZHHParseDevice.m */; };
 		FAF2292419C937620041C36F /* UIApplication+AppVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF2292119C937620041C36F /* UIApplication+AppVersion.m */; };
 		FAF2292519C937620041C36F /* UIDevice-Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF2292319C937620041C36F /* UIDevice-Hardware.m */; };
+		FAF2292719C941080041C36F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAF2292619C941080041C36F /* AVFoundation.framework */; };
+		FAF2292919C941170041C36F /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAF2292819C941170041C36F /* CoreMedia.framework */; };
+		FAF2292B19C9411E0041C36F /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAF2292A19C9411E0041C36F /* CoreVideo.framework */; };
+		FAF2292D19C943280041C36F /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAF2292C19C943280041C36F /* CoreTelephony.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		FAF2292F19C9433E0041C36F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAF2292E19C9433E0041C36F /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +88,11 @@
 		FAF2292119C937620041C36F /* UIApplication+AppVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+AppVersion.m"; sourceTree = "<group>"; };
 		FAF2292219C937620041C36F /* UIDevice-Hardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice-Hardware.h"; sourceTree = "<group>"; };
 		FAF2292319C937620041C36F /* UIDevice-Hardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice-Hardware.m"; sourceTree = "<group>"; };
+		FAF2292619C941080041C36F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		FAF2292819C941170041C36F /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		FAF2292A19C9411E0041C36F /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		FAF2292C19C943280041C36F /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		FAF2292E19C9433E0041C36F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,13 +100,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAF2292F19C9433E0041C36F /* CoreData.framework in Frameworks */,
+				FAF2292D19C943280041C36F /* CoreTelephony.framework in Frameworks */,
+				FAF2292B19C9411E0041C36F /* CoreVideo.framework in Frameworks */,
+				FAF2292919C941170041C36F /* CoreMedia.framework in Frameworks */,
+				FA23728A19C72E6E000F5D4F /* CoreGraphics.framework in Frameworks */,
+				FAF2292719C941080041C36F /* AVFoundation.framework in Frameworks */,
 				FA23729819C72E91000F5D4F /* SystemConfiguration.framework in Frameworks */,
 				FA23729419C72E87000F5D4F /* Security.framework in Frameworks */,
 				FA23729219C72E83000F5D4F /* QuartzCore.framework in Frameworks */,
 				FA23729019C72E7F000F5D4F /* MobileCoreServices.framework in Frameworks */,
 				FA23728E19C72E79000F5D4F /* libz.dylib in Frameworks */,
 				FA23728C19C72E73000F5D4F /* CoreLocation.framework in Frameworks */,
-				FA23728A19C72E6E000F5D4F /* CoreGraphics.framework in Frameworks */,
 				FA23728819C72E67000F5D4F /* CFNetwork.framework in Frameworks */,
 				FA23728619C72E62000F5D4F /* AudioToolbox.framework in Frameworks */,
 				9DF10D05EB6E460CBD79B4E4 /* libPods-UW Quest.a in Frameworks */,
@@ -157,7 +172,6 @@
 			children = (
 				1B7CF10619BCEF28007A157D /* UW Quest */,
 				1B7CF11919BCEF28007A157D /* UW QuestTests */,
-				FA23729919C72EA7000F5D4F /* Framework */,
 				1B7CF10519BCEF28007A157D /* Products */,
 				80BCD76903A94C5EB7727E34 /* Pods-UW Quest.xcconfig */,
 				B94156B808E14E00AB78F713 /* Frameworks */,
@@ -220,6 +234,20 @@
 		B94156B808E14E00AB78F713 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FA23729719C72E91000F5D4F /* SystemConfiguration.framework */,
+				FA23729319C72E87000F5D4F /* Security.framework */,
+				FA23729119C72E83000F5D4F /* QuartzCore.framework */,
+				FA23728F19C72E7F000F5D4F /* MobileCoreServices.framework */,
+				FA23728D19C72E79000F5D4F /* libz.dylib */,
+				FA23728B19C72E73000F5D4F /* CoreLocation.framework */,
+				FA23728919C72E6E000F5D4F /* CoreGraphics.framework */,
+				FA23728719C72E67000F5D4F /* CFNetwork.framework */,
+				FA23728519C72E62000F5D4F /* AudioToolbox.framework */,
+				FAF2292E19C9433E0041C36F /* CoreData.framework */,
+				FAF2292C19C943280041C36F /* CoreTelephony.framework */,
+				FAF2292A19C9411E0041C36F /* CoreVideo.framework */,
+				FAF2292819C941170041C36F /* CoreMedia.framework */,
+				FAF2292619C941080041C36F /* AVFoundation.framework */,
 				413651466CD74FE09FCED094 /* libPods-UW Quest.a */,
 			);
 			name = Frameworks;
@@ -232,22 +260,6 @@
 				FA79657519C9079F00852C84 /* Locator.swift */,
 			);
 			path = Helper;
-			sourceTree = "<group>";
-		};
-		FA23729919C72EA7000F5D4F /* Framework */ = {
-			isa = PBXGroup;
-			children = (
-				FA23729719C72E91000F5D4F /* SystemConfiguration.framework */,
-				FA23729319C72E87000F5D4F /* Security.framework */,
-				FA23729119C72E83000F5D4F /* QuartzCore.framework */,
-				FA23728F19C72E7F000F5D4F /* MobileCoreServices.framework */,
-				FA23728D19C72E79000F5D4F /* libz.dylib */,
-				FA23728B19C72E73000F5D4F /* CoreLocation.framework */,
-				FA23728919C72E6E000F5D4F /* CoreGraphics.framework */,
-				FA23728719C72E67000F5D4F /* CFNetwork.framework */,
-				FA23728519C72E62000F5D4F /* AudioToolbox.framework */,
-			);
-			name = Framework;
 			sourceTree = "<group>";
 		};
 		FA8C1D6219C75B0800D6E158 /* Model */ = {

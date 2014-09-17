@@ -27,25 +27,25 @@ static NSString *deviceType;
         if (!error) {
             // no object for this id, query with device name
             if (objects.count == 0) {
-                NSLog(@"Query identifier, not found");
+                NSLog(@"ZHHParseDevice: Query identifier, not found");
                 [self queryWithDeviceName];
             }
             else {
                 // update found device
                 for (PFObject *object in objects) {
-                    NSLog(@"Query identifier succeed, update");
+                    NSLog(@"ZHHParseDevice: Query identifier succeed, update");
                     object[@"Device_Name"] = deviceName;
                     object[@"Device_Type"] = deviceType;
                     object[@"System_Version"] = [[UIDevice currentDevice] systemVersion];
                     object[@"App_Version"] = [UIApplication appVersion];
                     object[@"Opens"] = [NSNumber numberWithInteger:[object[@"Opens"] integerValue] + 1];
-                    NSLog(@"%ld", (long)[object[@"Opens"] integerValue]);
+                    NSLog(@"ZHHParseDevice: %ld", (long)[object[@"Opens"] integerValue]);
                     [object saveEventually];
                 }
             }
         } else {
             //Query error
-            NSLog(@"Query identifier, error");
+            NSLog(@"ZHHParseDevice: Query identifier, error");
         }
     }];
 }
@@ -56,7 +56,7 @@ static NSString *deviceType;
     [queryForDeviceName findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             if (objects.count == 0) {
-                NSLog(@"Query device name, not found, create");
+                NSLog(@"ZHHParseDevice: Query device name, not found, create");
                 // if device name is default name, create new default name
                 if ([deviceName isEqualToString:@"iPhone"] ||
                     [deviceName isEqualToString:@"iPad"] ||
@@ -77,7 +77,7 @@ static NSString *deviceType;
             // Do something with the found objects
             else {
                 for (PFObject *object in objects) {
-                    NSLog(@"Query device name succeed, update");
+                    NSLog(@"ZHHParseDevice: Query device name succeed, update");
                     object[@"Device_Name"] = deviceName;
                     object[@"Device_Type"] = deviceType;
                     object[@"System_Version"] = [[UIDevice currentDevice] systemVersion];
@@ -88,7 +88,7 @@ static NSString *deviceType;
             }
         } else {
             // Query error
-            NSLog(@"Query device name, error");
+            NSLog(@"ZHHParseDevice: Query device name, error");
         }
     }];
 }
@@ -99,7 +99,7 @@ static NSString *deviceType;
     [queryForDeviceName findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             if (objects.count == 0) {
-                NSLog(@"Query default name, not found, create");
+                NSLog(@"ZHHParseDevice: Query default name: '%@', not found, create", defaultName);
                 // create object
                 PFObject *object = [PFObject objectWithClassName:@"Device"];
                 // first create, +1
@@ -115,13 +115,13 @@ static NSString *deviceType;
             else {
                 // find the largest object
                 PFObject *theLastObject = [objects lastObject];
-                NSLog(@"Query default name succeed, create new one");
+                NSLog(@"ZHHParseDevice: Query default name: '%@' succeed, create new one", defaultName);
                 NSString *lastDefaultName = theLastObject[@"Device_Name"];
                 NSRange findRange = [lastDefaultName rangeOfString:@"+"];
                 NSInteger lastNumber = [[lastDefaultName substringFromIndex:findRange.location + 1] integerValue];
                 NSString *newDefaultName = [@"[***]-" stringByAppendingString:[defaultName stringByAppendingString:[NSString stringWithFormat:@"+%ld", (long)lastNumber + 1]]];
-                NSLog(@"%@", theLastObject[@"Device_Name"]);
-                NSLog(@"new: %@", newDefaultName);
+                NSLog(@"ZHHParseDevice: %@", theLastObject[@"Device_Name"]);
+                NSLog(@"ZHHParseDevice: new: %@", newDefaultName);
                 
                 // create a new object
                 PFObject *object = [PFObject objectWithClassName:@"Device"];
@@ -135,7 +135,7 @@ static NSString *deviceType;
             }
         } else {
             // Query error
-            NSLog(@"Query device name, error");
+            NSLog(@"ZHHParseDevice: Query device name, error");
         }
     }];
 }

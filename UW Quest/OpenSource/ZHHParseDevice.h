@@ -15,6 +15,5 @@
 @property (nonatomic, copy) NSString *clientKey;
 
 + (void)trackDevice;
-+ (void)queryDeviceWithDefaultName:(NSString *)defaultName;
 
 @end
