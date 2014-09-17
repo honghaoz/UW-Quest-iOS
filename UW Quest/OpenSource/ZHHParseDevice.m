@@ -83,6 +83,7 @@ static NSString *deviceType;
                     object[@"System_Version"] = [[UIDevice currentDevice] systemVersion];
                     object[@"App_Version"] = [UIApplication appVersion];
                     object[@"Opens"] = [NSNumber numberWithInteger:[object[@"Opens"] integerValue] + 1];
+                    NSLog(@"ZHHParseDevice: %ld", (long)[object[@"Opens"] integerValue]);
                     [object saveEventually];
                 }
             }

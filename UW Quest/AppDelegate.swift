@@ -35,12 +35,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ZHHParseDevice.trackDevice()
         
         // Analytics set up
-        ARAnalytics.setupCountlyWithAppKey("7ab61899f0a5b444643df1c779ab724bdf16fd93", andHost: nil)
-        ARAnalytics.setupGoogleAnalyticsWithID("UA-45146473-5")
         ARAnalytics.setupFlurryWithAPIKey("JBBY49SKN3T4GJWZVXFX")
+        ARAnalytics.setupGoogleAnalyticsWithID("UA-45146473-5")
         ARAnalytics.setupLocalyticsWithAppKey("4d84d1e95bd335fd372f8d0-9fcc6ef2-3e2a-11e4-a411-009c5fda0a25")
         ARAnalytics.setupParseAnalyticsWithApplicationID("JcvEfa2LZ6tdQQjDZ5nYAaJUslEOuU5qTrU9d4Yb", clientKey: "F66Ch6rXmkE75BcDXqS4cISJVcU4yh6CHmx5UZMP")
-        Appsee.start("08b50ff621ef460dbf6b69fe7d936da0")
+        ARAnalytics.setupCountlyWithAppKey("7ab61899f0a5b444643df1c779ab724bdf16fd93", andHost: nil)
+        
+        Appsee.start("7f914911dabe41878792302113000594")
         
         ARAnalytics.event("App Launch")
         
