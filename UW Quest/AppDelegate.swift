@@ -13,15 +13,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window!.backgroundColor = UIColor.whiteColor()
-        var loginStoryboard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
         
-        var newLoginVC = loginStoryboard.instantiateViewControllerWithIdentifier("LoginViewController") as UIViewController
-    
-        self.window!.rootViewController = newLoginVC
+        var rootViewController: UIViewController?
+        
+        if (Locator.sharedLocator.user.isLoggedIn) {
+            rootViewController = Locator.sharedLocator.tabBarController
+        }
+        else {
+            rootViewController = Locator.sharedLocator.loginViewController
+        }
+        
+        self.window!.rootViewController = rootViewController
         self.window!.makeKeyAndVisible()
         
         // Parse set up

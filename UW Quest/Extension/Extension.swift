@@ -43,5 +43,12 @@ extension UIColor {
         self.getRed(nil, green: nil, blue: nil, alpha: &alpha)
         return alpha
     }
-    
+}
+
+extension UIViewController {
+    class func viewControllerInStoryboard(storyboardName: String , viewControllerName: String) -> UIViewController {
+        var storyboard: UIStoryboard = UIStoryboard(name: storyboardName, bundle: nil)
+        var viewController = storyboard.instantiateViewControllerWithIdentifier(viewControllerName) as UIViewController
+        return viewController
+    }
 }

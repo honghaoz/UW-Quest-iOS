@@ -1,5 +1,5 @@
 //
-//  MainTabViewController.swift
+//  MainTabBarController.swift
 //  UW Quest
 //
 //  Created by Honghao on 9/13/14.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainTabViewController: UIViewController {
+class MainTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -156,7 +156,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         if (recognizer.state == UIGestureRecognizerState.Ended) {
             UIApplication.sharedApplication().openURL(NSURL(string: honghaozURLString))
         }
-        
     }
     
     /*

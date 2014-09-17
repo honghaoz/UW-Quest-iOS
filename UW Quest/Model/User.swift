@@ -14,6 +14,7 @@ class User {
     var userName: String = ""
     var password: String = ""
     var isRemembered: Bool = true
+    var isLoggedIn: Bool = false
     
     init() {
         println("User inited")
