@@ -31,6 +31,7 @@
 		FA79657819C90BB000852C84 /* LaunchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA79657719C90BB000852C84 /* LaunchView.xib */; };
 		FA8C1D6419C75B0800D6E158 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8C1D6319C75B0800D6E158 /* User.swift */; };
 		FACE198719C9EB05001FD4C9 /* QuestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACE198619C9EB05001FD4C9 /* QuestClient.swift */; };
+		FACE198A19C9EC2D001FD4C9 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FACE198919C9EC2D001FD4C9 /* Crashlytics.framework */; };
 		FAF2291F19C937180041C36F /* ZHHParseDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF2291E19C937180041C36F /* ZHHParseDevice.m */; };
 		FAF2292419C937620041C36F /* UIApplication+AppVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF2292119C937620041C36F /* UIApplication+AppVersion.m */; };
 		FAF2292519C937620041C36F /* UIDevice-Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF2292319C937620041C36F /* UIDevice-Hardware.m */; };
@@ -82,6 +83,7 @@
 		FA79657719C90BB000852C84 /* LaunchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchView.xib; sourceTree = "<group>"; };
 		FA8C1D6319C75B0800D6E158 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FACE198619C9EB05001FD4C9 /* QuestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestClient.swift; sourceTree = "<group>"; };
+		FACE198919C9EC2D001FD4C9 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		FAF2291D19C937180041C36F /* ZHHParseDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHHParseDevice.h; sourceTree = "<group>"; };
 		FAF2291E19C937180041C36F /* ZHHParseDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHHParseDevice.m; sourceTree = "<group>"; };
 		FAF2292019C937620041C36F /* UIApplication+AppVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+AppVersion.h"; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				FA23729419C72E87000F5D4F /* Security.framework in Frameworks */,
 				FA23729219C72E83000F5D4F /* QuartzCore.framework in Frameworks */,
 				FA23729019C72E7F000F5D4F /* MobileCoreServices.framework in Frameworks */,
+				FACE198A19C9EC2D001FD4C9 /* Crashlytics.framework in Frameworks */,
 				FA23728E19C72E79000F5D4F /* libz.dylib in Frameworks */,
 				FA23728C19C72E73000F5D4F /* CoreLocation.framework in Frameworks */,
 				FA23728819C72E67000F5D4F /* CFNetwork.framework in Frameworks */,
@@ -275,6 +278,7 @@
 		FACE198819C9EB38001FD4C9 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				FACE198919C9EC2D001FD4C9 /* Crashlytics.framework */,
 			);
 			path = ThirdParty;
 			sourceTree = "<group>";
@@ -421,8 +425,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-UW Quest-resources.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "\"${SRCROOT}/Pods/Pods-UW Quest-resources.sh\"\n./UW\\ Quest/ThirdParty/Crashlytics.framework/run d3ec53bc16086eec715f67dbf095bf3be047762c 37b6e8e6a6b6beb34ee493bc8a85ab2ce06e2be2d913f04406cda5d9f8deae20";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -574,6 +577,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/**",
+					"$(PROJECT_DIR)/UW\\ Quest/ThirdParty",
 				);
 				INFOPLIST_FILE = "UW Quest/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -594,6 +598,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/**",
+					"$(PROJECT_DIR)/UW\\ Quest/ThirdParty",
 				);
 				INFOPLIST_FILE = "UW Quest/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;

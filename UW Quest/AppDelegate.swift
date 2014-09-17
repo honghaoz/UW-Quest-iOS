@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -42,6 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ARAnalytics.setupCountlyWithAppKey("7ab61899f0a5b444643df1c779ab724bdf16fd93", andHost: nil)
         
         Appsee.start("7f914911dabe41878792302113000594")
+        
+        Crashlytics.startWithAPIKey("d3ec53bc16086eec715f67dbf095bf3be047762c")
         
         ARAnalytics.event("App Launch")
         
