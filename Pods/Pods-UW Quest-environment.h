@@ -60,6 +60,12 @@
 #define COCOAPODS_VERSION_MINOR_ARAnalytics_Countly 8
 #define COCOAPODS_VERSION_PATCH_ARAnalytics_Countly 0
 
+// ARAnalytics/Crashlytics
+#define COCOAPODS_POD_AVAILABLE_ARAnalytics_Crashlytics
+#define COCOAPODS_VERSION_MAJOR_ARAnalytics_Crashlytics 2
+#define COCOAPODS_VERSION_MINOR_ARAnalytics_Crashlytics 8
+#define COCOAPODS_VERSION_PATCH_ARAnalytics_Crashlytics 0
+
 // ARAnalytics/Flurry
 #define COCOAPODS_POD_AVAILABLE_ARAnalytics_Flurry
 #define COCOAPODS_VERSION_MAJOR_ARAnalytics_Flurry 2

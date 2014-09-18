@@ -10,6 +10,7 @@ pod 'AFNetworking' #, '~> 2.4'
 pod 'Parse'
 
 pod "ARAnalytics/GoogleAnalytics"
+pod "ARAnalytics/Crashlytics"
 pod "ARAnalytics/Countly"
 pod "ARAnalytics/Flurry"
 pod "ARAnalytics/Localytics", :inhibit_warnings => true

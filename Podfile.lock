@@ -25,6 +25,8 @@ PODS:
   - ARAnalytics/Countly (2.8.0):
     - ARAnalytics/CoreIOS
     - Countly
+  - ARAnalytics/Crashlytics (2.8.0):
+    - ARAnalytics/CoreIOS
   - ARAnalytics/Flurry (2.8.0):
     - ARAnalytics/CoreIOS
     - FlurrySDK
@@ -48,6 +50,7 @@ DEPENDENCIES:
   - AFNetworking
   - Appsee
   - ARAnalytics/Countly
+  - ARAnalytics/Crashlytics
   - ARAnalytics/Flurry
   - ARAnalytics/GoogleAnalytics
   - ARAnalytics/Localytics
