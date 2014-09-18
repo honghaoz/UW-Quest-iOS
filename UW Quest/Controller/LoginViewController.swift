@@ -28,7 +28,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-
+        println("viewDidLayoutSubview");
         titleLabel.textColor = UQBlueColor
         subTitleLabel.textColor = UQBlueColor
         
@@ -50,21 +50,51 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         loginButton.layer.borderWidth = kBorderWidth
         loginButton.layer.masksToBounds = true
         
-        let switchScaleFactor: CGFloat = 0.65
-        let switchWidth: CGFloat = rememberSwitch.bounds.size.width
-        let switchHeight: CGFloat = rememberSwitch.bounds.size.height
-        let offsetX = (1.0 - switchScaleFactor) * switchWidth / 2.0
-        let makeItSmaller: CGAffineTransform = CGAffineTransformMakeScale(switchScaleFactor, switchScaleFactor)
-        rememberSwitch.transform = CGAffineTransformMakeScale(switchScaleFactor, switchScaleFactor)
-        rememberSwitch_LoginButton_Leading.constant = -offsetX
         rememberSwitch.onTintColor = UQBlueColor
         
         rememberLabel.textColor = UQFontGrayColor
         forgotPasswordButton.tintColor = UQFontGrayColor
+        
+        println("111button: \(loginButton.frame)")
+        println("111old : \(rememberSwitch.frame)")
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let switchScaleFactor: CGFloat = 0.65
+        let switchWidth: CGFloat = rememberSwitch.bounds.size.width
+        let switchHeight: CGFloat = rememberSwitch.bounds.size.height
+        let offsetX = (1.0 - switchScaleFactor) * switchWidth / 2.0
+        
+        println("old \(rememberSwitch_LoginButton_Leading.constant)")
+        println("old anchor \(rememberSwitch.layer.anchorPoint)")
+        
+        rememberSwitch.clipsToBounds = true
+        println("button: \(loginButton.frame)")
+        println("old center: \(rememberSwitch.center)")
+        println("old: \(rememberSwitch.frame)")
+        rememberSwitch.transform = CGAffineTransformMakeScale(switchScaleFactor, switchScaleFactor)
+//        rememberSwitch_LoginButton_Leading.constant = -offsetX
+        println("new center: \(rememberSwitch.center)")
+        println("new: \(rememberSwitch.frame)")
+        println("new anchor \(rememberSwitch.layer.anchorPoint)")
+        println("new \(rememberSwitch_LoginButton_Leading.constant)")
+//        self.view.layoutSubviews()
+//        self.view.layoutIfNeeded()
+        self.view.updateConstraints()
+        self.view.updateConstraintsIfNeeded()
+        self.view.setNeedsUpdateConstraints()
+        self.view.setNeedsLayout()
+        
+//        func updateConstraintsIfNeeded() // Updates the constraints from the bottom up for the view hierarchy rooted at the receiver. UIWindow's implementation creates a layout engine if necessary first.
+//        @availability(iOS, introduced=6.0)
+//        func updateConstraints() // Override this to adjust your special constraints during a constraints update pass
+//        @availability(iOS, introduced=6.0)
+//        func needsUpdateConstraints() -> Bool
+//        @availability(iOS, introduced=6.0)
+//        func setNeedsUpdateConstraints()
+        
         userIdTextField.delegate = self
         passwordTextField.delegate = self
         
