@@ -10,6 +10,8 @@ import UIKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
+    let kSwitchScaleFactor: CGFloat = 0.65
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
     
@@ -21,9 +23,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginButton: BaseButton!
     @IBOutlet weak var rememberSwitch: UISwitch!
     @IBOutlet weak var rememberLabel: UILabel!
-    @IBOutlet weak var rememberSwitch_LoginButton_Leading: NSLayoutConstraint!
-    @IBOutlet weak var forgotPasswordButton: UIButton!
     
+    @IBOutlet weak var constraintRememberContainerWidth: NSLayoutConstraint!
+    @IBOutlet weak var constraintRememberContainerHeight: NSLayoutConstraint!
+    @IBOutlet weak var constraintRememberSwitchLeading: NSLayoutConstraint!
+    @IBOutlet weak var constraintRememberSwitchTop: NSLayoutConstraint!
+    
+    @IBOutlet weak var forgotPasswordButton: UIButton!
     @IBOutlet weak var copyRightLabel: UILabel!
     
     override func viewDidLayoutSubviews() {
@@ -49,30 +55,33 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         loginButton.layer.borderWidth = kBorderWidth
         loginButton.layer.masksToBounds = true
         
+        rememberSwitch.clipsToBounds = true
         rememberSwitch.onTintColor = UQBlueColor
         
-        rememberLabel.textColor = UQFontGrayColor
-        forgotPasswordButton.tintColor = UQFontGrayColor
+        // Scale switch
+        rememberSwitch.transform = CGAffineTransformMakeScale(kSwitchScaleFactor, kSwitchScaleFactor)
         
+        if (isIOS8) {
+            let switchWidth: CGFloat = rememberSwitch.bounds.size.width
+            let switchHeight: CGFloat = rememberSwitch.bounds.size.height
+            let offsetX = (1.0 - kSwitchScaleFactor) * switchWidth / 2.0
+            let offsetY = (1.0 - kSwitchScaleFactor) * switchHeight / 2.0
+            let shrinkWidth = (1.0 - kSwitchScaleFactor) * switchWidth
+            let shrinkHeight = (1.0 - kSwitchScaleFactor) * switchHeight
+            constraintRememberSwitchLeading.constant = offsetX
+            constraintRememberSwitchTop.constant = offsetY
+            constraintRememberContainerWidth.constant = -shrinkWidth
+            constraintRememberContainerHeight.constant = -shrinkHeight
+        }
+        
+        rememberLabel.textColor = UQFontGrayColor
+        forgotPasswordButton.setTitleColor(UQFontGrayColor, forState: UIControlState.Normal)
+        forgotPasswordButton.tintColor = UQFontGrayColor
+        self.view.layoutIfNeeded()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let switchScaleFactor: CGFloat = 0.65
-        let switchWidth: CGFloat = rememberSwitch.bounds.size.width
-        let switchHeight: CGFloat = rememberSwitch.bounds.size.height
-        let offsetX = (1.0 - switchScaleFactor) * switchWidth / 2.0
-        
-        rememberSwitch.clipsToBounds = true
-        rememberSwitch.transform = CGAffineTransformMakeScale(switchScaleFactor, switchScaleFactor)
-//        rememberSwitch_LoginButton_Leading.constant = -offsetX
-
-//        self.view.layoutSubviews()
-        self.view.layoutIfNeeded()
-//        self.view.updateConstraints()
-//        self.view.updateConstraintsIfNeeded()
-//        self.view.setNeedsUpdateConstraints()
-//        self.view.setNeedsLayout()
         
         userIdTextField.delegate = self
         passwordTextField.delegate = self
@@ -113,7 +122,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: UITextFieldDelegate
-    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         let newTag = textField.tag + 1
         var nextTextField: UITextField? = textField.superview?.viewWithTag(newTag) as UITextField?

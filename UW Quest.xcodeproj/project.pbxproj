@@ -338,7 +338,7 @@
 		1B7CF0FC19BCEF28007A157D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = "";
+				CLASSPREFIX = UQ;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = Honghao;
 				TargetAttributes = {

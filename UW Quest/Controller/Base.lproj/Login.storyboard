@@ -102,20 +102,22 @@
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="Login"/>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8cc-sJ-OKk" userLabel="RememberPassSwitch">
-                                <rect key="frame" x="35" y="294" width="51" height="31"/>
-                            </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDJ-OV-g8u" userLabel="RememberPassword">
-                                <rect key="frame" x="84" y="298" width="67" height="23"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ibe-cY-YAv" userLabel="RememberSwitchContainer">
+                                <rect key="frame" x="35" y="295" width="50" height="31"/>
+                                <subviews>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8cc-sJ-OKk" userLabel="RememberPassSwitch">
+                                        <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
+                                    </switch>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="23" id="rw6-PJ-D3l"/>
+                                    <constraint firstAttribute="top" secondItem="8cc-sJ-OKk" secondAttribute="top" id="CaW-bK-QNh"/>
+                                    <constraint firstAttribute="height" secondItem="8cc-sJ-OKk" secondAttribute="height" id="L36-T5-uJh"/>
+                                    <constraint firstAttribute="leading" secondItem="8cc-sJ-OKk" secondAttribute="leading" id="PrX-sr-W04"/>
+                                    <constraint firstAttribute="width" secondItem="8cc-sJ-OKk" secondAttribute="width" constant="1" id="zEA-cX-2MF"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
-                                <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHO-ch-tVK">
-                                <rect key="frame" x="174" y="298" width="111" height="23"/>
+                                <rect key="frame" x="174" y="299" width="111" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="23" id="ho2-VA-rqn"/>
                                 </constraints>
@@ -135,32 +137,45 @@
                                 <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDJ-OV-g8u" userLabel="RememberPassword">
+                                <rect key="frame" x="90" y="299" width="72" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="rw6-PJ-D3l"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.95000000000000007" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="8cc-sJ-OKk" firstAttribute="top" secondItem="b9X-qX-Gzo" secondAttribute="bottom" constant="4" id="1pO-wV-IL1"/>
+                            <constraint firstItem="ibe-cY-YAv" firstAttribute="top" secondItem="b9X-qX-Gzo" secondAttribute="bottom" constant="5" id="1AE-VP-H3Y"/>
                             <constraint firstItem="ldA-PZ-VOh" firstAttribute="top" relation="greaterThanOrEqual" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="4en-HM-gWH"/>
                             <constraint firstItem="ldA-PZ-VOh" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" priority="900" constant="33" id="55t-Ql-U0F"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="6eQ-zh-QjS" secondAttribute="bottom" priority="900" constant="10" id="5zQ-iu-0Wa"/>
-                            <constraint firstItem="8cc-sJ-OKk" firstAttribute="centerY" secondItem="JDJ-OV-g8u" secondAttribute="centerY" id="C6G-oo-0WD"/>
                             <constraint firstItem="b9X-qX-Gzo" firstAttribute="width" secondItem="jfM-kv-6Sy" secondAttribute="width" id="DTZ-a6-i6w"/>
                             <constraint firstItem="jfM-kv-6Sy" firstAttribute="top" secondItem="ldA-PZ-VOh" secondAttribute="bottom" constant="15" id="ES6-w7-cbp"/>
                             <constraint firstItem="yHO-ch-tVK" firstAttribute="trailing" secondItem="b9X-qX-Gzo" secondAttribute="trailing" id="HVA-sJ-Xjz"/>
+                            <constraint firstItem="JDJ-OV-g8u" firstAttribute="leading" secondItem="ibe-cY-YAv" secondAttribute="trailing" constant="5" id="IHK-P3-uC2"/>
                             <constraint firstAttribute="centerX" secondItem="ldA-PZ-VOh" secondAttribute="centerX" id="LWf-0x-rn7"/>
-                            <constraint firstItem="8cc-sJ-OKk" firstAttribute="leading" secondItem="b9X-qX-Gzo" secondAttribute="leading" id="Ljs-mv-wJM"/>
                             <constraint firstItem="b9X-qX-Gzo" firstAttribute="top" secondItem="jfM-kv-6Sy" secondAttribute="bottom" constant="20" id="P7j-7I-B3y"/>
                             <constraint firstAttribute="centerX" secondItem="6eQ-zh-QjS" secondAttribute="centerX" id="VUO-Eg-xe2"/>
+                            <constraint firstItem="JDJ-OV-g8u" firstAttribute="centerY" secondItem="ibe-cY-YAv" secondAttribute="centerY" id="WNY-Ci-1a4"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" relation="lessThanOrEqual" secondItem="6eQ-zh-QjS" secondAttribute="bottom" constant="12" id="Z2n-ni-xhw"/>
-                            <constraint firstItem="JDJ-OV-g8u" firstAttribute="leading" secondItem="8cc-sJ-OKk" secondAttribute="trailing" id="d1v-wS-4c9"/>
                             <constraint firstAttribute="centerX" secondItem="jfM-kv-6Sy" secondAttribute="centerX" id="ddr-gZ-lDu"/>
                             <constraint firstItem="yHO-ch-tVK" firstAttribute="centerY" secondItem="JDJ-OV-g8u" secondAttribute="centerY" id="dej-MP-Ili"/>
                             <constraint firstItem="b9X-qX-Gzo" firstAttribute="centerX" secondItem="jfM-kv-6Sy" secondAttribute="centerX" id="erX-q7-se0"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6eQ-zh-QjS" secondAttribute="bottom" constant="3" id="o1r-Jj-xgo"/>
+                            <constraint firstItem="b9X-qX-Gzo" firstAttribute="leading" secondItem="ibe-cY-YAv" secondAttribute="leading" id="qSN-I1-p9c"/>
                             <constraint firstItem="6eQ-zh-QjS" firstAttribute="top" relation="greaterThanOrEqual" secondItem="jfM-kv-6Sy" secondAttribute="bottom" constant="100" id="zwv-xa-0Kl"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="constraintRememberContainerHeight" destination="L36-T5-uJh" id="NhM-WO-zSm"/>
+                        <outlet property="constraintRememberContainerWidth" destination="zEA-cX-2MF" id="wGD-n9-HPr"/>
+                        <outlet property="constraintRememberSwitchLeading" destination="PrX-sr-W04" id="qF8-gI-ETI"/>
+                        <outlet property="constraintRememberSwitchTop" destination="CaW-bK-QNh" id="puS-BJ-daA"/>
                         <outlet property="copyRightLabel" destination="6eQ-zh-QjS" id="XLA-ON-reT"/>
                         <outlet property="forgotPasswordButton" destination="yHO-ch-tVK" id="Eha-jc-PAR"/>
                         <outlet property="loginButton" destination="b9X-qX-Gzo" id="frL-7s-mKP"/>
@@ -168,7 +183,6 @@
                         <outlet property="passwordTextField" destination="x8S-rR-MAg" id="XRx-VP-TYu"/>
                         <outlet property="rememberLabel" destination="JDJ-OV-g8u" id="0IA-dq-r4R"/>
                         <outlet property="rememberSwitch" destination="8cc-sJ-OKk" id="vlD-g9-u6l"/>
-                        <outlet property="rememberSwitch_LoginButton_Leading" destination="Ljs-mv-wJM" id="xcb-vg-S4m"/>
                         <outlet property="separatorLineView" destination="Wst-rv-4Bd" id="R43-MR-TU5"/>
                         <outlet property="subTitleLabel" destination="gX0-Yk-l9x" id="71a-hU-Ity"/>
                         <outlet property="titleLabel" destination="POh-WN-orQ" id="uX8-xn-MBk"/>
