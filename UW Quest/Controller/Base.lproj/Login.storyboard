@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -13,11 +14,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ldA-PZ-VOh" userLabel="TitleView">
-                                <rect key="frame" x="175" y="53" width="250" height="75"/>
+                                <rect key="frame" x="35" y="53" width="250" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QUEST" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="POh-WN-orQ">
                                         <rect key="frame" x="0.0" y="0.0" width="250" height="30"/>
@@ -48,7 +49,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jfM-kv-6Sy" userLabel="LoginView">
-                                <rect key="frame" x="175" y="143" width="250" height="87"/>
+                                <rect key="frame" x="35" y="143" width="250" height="87"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="QUEST User ID" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="flV-vM-SfL" userLabel="User ID Text Field">
                                         <rect key="frame" x="12" y="3" width="226" height="40"/>
@@ -91,7 +92,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b9X-qX-Gzo" userLabel="LoginButton" customClass="BaseButton" customModule="UW_Quest" customModuleProvider="target">
-                                <rect key="frame" x="175" y="250" width="250" height="40"/>
+                                <rect key="frame" x="35" y="250" width="250" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.57056949013157898" blue="0.9024979440789459" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="4tN-ic-Jul"/>
@@ -102,10 +103,10 @@
                                 <state key="normal" title="Login"/>
                             </button>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8cc-sJ-OKk" userLabel="RememberPassSwitch">
-                                <rect key="frame" x="175" y="294" width="51" height="31"/>
+                                <rect key="frame" x="35" y="294" width="51" height="31"/>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDJ-OV-g8u" userLabel="RememberPassword">
-                                <rect key="frame" x="224" y="298" width="67" height="23"/>
+                                <rect key="frame" x="84" y="298" width="67" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="23" id="rw6-PJ-D3l"/>
                                 </constraints>
@@ -114,7 +115,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHO-ch-tVK">
-                                <rect key="frame" x="314" y="298" width="111" height="23"/>
+                                <rect key="frame" x="174" y="298" width="111" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="23" id="ho2-VA-rqn"/>
                                 </constraints>
@@ -125,7 +126,7 @@
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Made by HonghaoZ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6eQ-zh-QjS">
-                                <rect key="frame" x="210" y="550" width="180" height="40"/>
+                                <rect key="frame" x="70" y="518" width="180" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="YU0-Jv-dwm"/>
                                     <constraint firstAttribute="width" constant="180" id="wLv-qI-Igy"/>
@@ -158,6 +159,7 @@
                             <constraint firstItem="6eQ-zh-QjS" firstAttribute="top" relation="greaterThanOrEqual" secondItem="jfM-kv-6Sy" secondAttribute="bottom" constant="100" id="zwv-xa-0Kl"/>
                         </constraints>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="copyRightLabel" destination="6eQ-zh-QjS" id="XLA-ON-reT"/>
                         <outlet property="forgotPasswordButton" destination="yHO-ch-tVK" id="Eha-jc-PAR"/>
