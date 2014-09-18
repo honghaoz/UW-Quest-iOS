@@ -20,3 +20,17 @@ let kBorderWidth: CGFloat = 1.0
 // URLs
 let watiamURLString = "https://watiam.uwaterloo.ca/idm/user/login.jsp"
 let honghaozURLString = "http://ca.linkedin.com/in/honghaozhang"
+
+
+//var NSFoundationVersionNumber_iOS_5_1: Double { get }
+//var NSFoundationVersionNumber_iOS_6_0: Double { get }
+//var NSFoundationVersionNumber_iOS_6_1: Double { get }
+//var NSFoundationVersionNumber_iOS_7_0: Double { get }
+//var NSFoundationVersionNumber_iOS_7_1: Double { get }
+//
+//// Check System Version
+//let isIOS6: Bool = floor(NSFoundationVersionNumber) < NSFoundationVersionNumber_iOS_7_0
+//let isIOS8: Bool = floor(<#Double#>)
+//let isIOS7: Bool = !isIOS6 && (floor(NSFoundationVersionNumber)
+//#define isIOS6
+//#define isIOS7 floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1
