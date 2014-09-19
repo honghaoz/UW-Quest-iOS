@@ -15,6 +15,7 @@ pod "ARAnalytics/Countly"
 pod "ARAnalytics/Flurry"
 pod "ARAnalytics/Localytics", :inhibit_warnings => true
 pod 'Appsee'
+pod 'PureLayout'
 
 end
 

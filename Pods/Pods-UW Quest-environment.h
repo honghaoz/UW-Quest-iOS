@@ -87,8 +87,8 @@
 // Appsee
 #define COCOAPODS_POD_AVAILABLE_Appsee
 #define COCOAPODS_VERSION_MAJOR_Appsee 2
-#define COCOAPODS_VERSION_MINOR_Appsee 0
-#define COCOAPODS_VERSION_PATCH_Appsee 8
+#define COCOAPODS_VERSION_MINOR_Appsee 1
+#define COCOAPODS_VERSION_PATCH_Appsee 0
 
 // Bolts
 #define COCOAPODS_POD_AVAILABLE_Bolts
@@ -128,8 +128,13 @@
 
 // Parse
 #define COCOAPODS_POD_AVAILABLE_Parse
-// This library does not follow semantic-versioning,
-// so we were not able to define version macros.
-// Please contact the author.
-// Version: 1.3.0.1.
+#define COCOAPODS_VERSION_MAJOR_Parse 1
+#define COCOAPODS_VERSION_MINOR_Parse 4
+#define COCOAPODS_VERSION_PATCH_Parse 0
+
+// PureLayout
+#define COCOAPODS_POD_AVAILABLE_PureLayout
+#define COCOAPODS_VERSION_MAJOR_PureLayout 1
+#define COCOAPODS_VERSION_MINOR_PureLayout 1
+#define COCOAPODS_VERSION_PATCH_PureLayout 0
 

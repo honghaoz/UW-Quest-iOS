@@ -162,16 +162,34 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func forgotPasswordButtonTapped(recognizer: UIGestureRecognizer) {
-        println("Go to WATIAM website")
-        // TODO: Ask user when leaving app
-        UIApplication.sharedApplication().openURL(NSURL(string: watiamURLString))
+        var alert = UIAlertController(title: "Go to WATIAM website", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: { alertAction in
+            println("Go to WATIAM website")
+            ARAnalytics.event("Go to WATIAM website")
+            UIApplication.sharedApplication().openURL(NSURL(string: watiamURLString))
+            alert.dismissViewControllerAnimated(true, completion: nil)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: {alertAction in
+            ARAnalytics.event("Cancel go to WATIAM website")
+            alert.dismissViewControllerAnimated(true, completion: nil)
+        }))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     func copyRightLabelTapped(recognizer: UIGestureRecognizer) {
-        println("Go to HonghaoZ website")
-        // TODO: Ask user when leaving app
         if (recognizer.state == UIGestureRecognizerState.Ended) {
-            UIApplication.sharedApplication().openURL(NSURL(string: honghaozURLString))
+            var alert = UIAlertController(title: "Open Honghao's website", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: { alertAction in
+                println("Go to HonghaoZ website")
+                ARAnalytics.event("Go to HonghaoZ website")
+                UIApplication.sharedApplication().openURL(NSURL(string: honghaoLinkedInURLString))
+                alert.dismissViewControllerAnimated(true, completion: nil)
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: {alertAction in
+                ARAnalytics.event("Cancel go to HonghaoZ website")
+                alert.dismissViewControllerAnimated(true, completion: nil)
+            }))
+            self.presentViewController(alert, animated: true, completion: nil)
         }
     }
     

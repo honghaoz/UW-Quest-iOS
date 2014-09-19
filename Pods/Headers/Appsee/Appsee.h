@@ -1,1 +1,1 @@
-../../Appsee/Appsee/Appsee.framework/Versions/A/Headers/Appsee.h
+../../Appsee/Appsee/Appsee.framework/Headers/Appsee.h
