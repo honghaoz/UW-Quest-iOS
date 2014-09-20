@@ -138,7 +138,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func loginButtonPressed(sender: AnyObject) {
         dismissKeyboard()
-        self.showHud("Login...")
+        self.showHud("Login...   ")
         Locator.sharedLocator.client.login(userIdTextField.text, password: passwordTextField.text)
     }
     
