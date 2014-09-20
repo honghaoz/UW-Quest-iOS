@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0600"
+   LastUpgradeVersion = "0510"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8A78CBF2915E4A048FBD2543"
+               BlueprintIdentifier = "1CC8B75C48B14DCB83C9B057"
                BuildableName = "libPods-UW Quest-GoogleAnalytics-iOS-SDK.a"
                BlueprintName = "Pods-UW Quest-GoogleAnalytics-iOS-SDK"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -39,15 +39,6 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8A78CBF2915E4A048FBD2543"
-            BuildableName = "libPods-UW Quest-GoogleAnalytics-iOS-SDK.a"
-            BlueprintName = "Pods-UW Quest-GoogleAnalytics-iOS-SDK"
-            ReferencedContainer = "container:Pods.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -57,15 +48,6 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8A78CBF2915E4A048FBD2543"
-            BuildableName = "libPods-UW Quest-GoogleAnalytics-iOS-SDK.a"
-            BlueprintName = "Pods-UW Quest-GoogleAnalytics-iOS-SDK"
-            ReferencedContainer = "container:Pods.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

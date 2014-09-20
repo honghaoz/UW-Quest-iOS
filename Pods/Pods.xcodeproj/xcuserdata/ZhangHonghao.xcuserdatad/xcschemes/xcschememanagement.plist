@@ -6,113 +6,123 @@
 	<dict>
 		<key>Pods-UW Quest-AFNetworking.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-UW Quest-ARAnalytics.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>3</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-UW Quest-Appsee.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>4</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-UW Quest-Bolts.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>5</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-UW Quest-Countly.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>6</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-UW Quest-FlurrySDK.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>7</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-UW Quest-GoogleAnalytics-iOS-SDK.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>8</integer>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-UW Quest-JGProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-UW Quest-Localytics-iOS-Client.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>9</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-UW Quest-Parse.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>10</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-UW Quest-PureLayout.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>11</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-UW Quest.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>04DE55FF4AE7447381B22B86</key>
+		<key>13664997857E423C8826392D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3AB04D63626B487885BF2D54</key>
+		<key>184031C1E21F4D07A390A27A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6605B3313E0C4F389EAFF1EE</key>
+		<key>1CC8B75C48B14DCB83C9B057</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8A78CBF2915E4A048FBD2543</key>
+		<key>2A44372CFD78441F95339213</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>942EE23B46054AE682DE44EB</key>
+		<key>2E9BF8DC0F534A7EAD26105C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AF721813F322476294EB0C9D</key>
+		<key>32F52C1BF3854F0AAC9BC906</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BD86227F5EBA4C26AB1C2F06</key>
+		<key>37F0304A5F3041DFA6B820BD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BE948EA67B45453DA2E483F0</key>
+		<key>38A9564E058348E69E5B9534</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C4EC0AE39B9C42A1948AEF23</key>
+		<key>66CDF662CA0E497D979246B8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E543CBD2D0084A15BD8F6734</key>
+		<key>737D29C9B6B1432FA64D705F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FE5D12FB44AE4EED8B3D33DC</key>
+		<key>8CD6169F5E6C404C91B583C2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AF3727F551794BB8AF7D373A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

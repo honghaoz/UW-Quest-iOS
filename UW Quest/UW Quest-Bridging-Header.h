@@ -5,6 +5,7 @@
 #import <Parse/Parse.h>
 #import <AFNetworking/AFNetworking.h>
 #import "ZHHParseDevice.h"
+#import <JGProgressHUD/JGProgressHUD.h>
 
 // Analytics
 #import <Appsee/Appsee.h>

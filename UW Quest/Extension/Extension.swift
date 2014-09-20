@@ -51,4 +51,9 @@ extension UIViewController {
         var viewController = storyboard.instantiateViewControllerWithIdentifier(viewControllerName) as UIViewController
         return viewController
     }
+    
+    func showHud(title: String) {
+        Locator.sharedLocator.sharedHud.textLabel.text = title
+        Locator.sharedLocator.sharedHud.showInView(self.view, animated: true)
+    }
 }

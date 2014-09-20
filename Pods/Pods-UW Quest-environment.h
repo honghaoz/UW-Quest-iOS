@@ -120,6 +120,12 @@
 #define COCOAPODS_VERSION_MINOR_GoogleAnalytics_iOS_SDK 0
 #define COCOAPODS_VERSION_PATCH_GoogleAnalytics_iOS_SDK 9
 
+// JGProgressHUD
+#define COCOAPODS_POD_AVAILABLE_JGProgressHUD
+#define COCOAPODS_VERSION_MAJOR_JGProgressHUD 1
+#define COCOAPODS_VERSION_MINOR_JGProgressHUD 2
+#define COCOAPODS_VERSION_PATCH_JGProgressHUD 2
+
 // Localytics-iOS-Client
 #define COCOAPODS_POD_AVAILABLE_Localytics_iOS_Client
 #define COCOAPODS_VERSION_MAJOR_Localytics_iOS_Client 2

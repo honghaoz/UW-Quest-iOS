@@ -40,6 +40,10 @@ class QuestClient: AFHTTPSessionManager {
     }
     
     func login(username: String!, password: String!) {
+        if username.isEmpty || password.isEmpty {
+            Locator.sharedLocator.sharedHud.dismissAfterDelay(0.2)
+            return
+        }
         let path = "login"
         let parameters: Dictionary = [
             "userid": username,
@@ -49,8 +53,15 @@ class QuestClient: AFHTTPSessionManager {
         println("Login: userid: \(username), password: \(password)")
         self.POST(path, parameters: parameters, success: { (task, responseObject) -> Void in
             println(responseObject)
+            self.dismissHud()
         }) { (task, error) -> Void in
             println(error.localizedDescription)
+            self.dismissHud()
         }
+    }
+    
+    private func dismissHud() {
+        Locator.sharedLocator.sharedHud.textLabel.text = ""
+        Locator.sharedLocator.sharedHud.dismiss()
     }
 }

@@ -33,6 +33,11 @@ class Locator {
         return QuestClient.sharedClient
     }()
     
+    lazy var sharedHud: JGProgressHUD = {
+        var hud: JGProgressHUD = JGProgressHUD(style: JGProgressHUDStyle.Light)
+        return hud
+    }()
+    
     init() {
         println("Locator inited")
     }

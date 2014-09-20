@@ -16,6 +16,7 @@ pod "ARAnalytics/Flurry"
 pod "ARAnalytics/Localytics", :inhibit_warnings => true
 pod 'Appsee'
 pod 'PureLayout'
+pod 'JGProgressHUD'
 
 end
 
