@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Pods-UW Quest-AFNetworking.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>Pods-UW Quest-ARAnalytics.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>Pods-UW Quest-Appsee.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>Pods-UW Quest-Bolts.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+		<key>Pods-UW Quest-Countly.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
+		<key>Pods-UW Quest-FlurrySDK.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
+		<key>Pods-UW Quest-GoogleAnalytics-iOS-SDK.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
+		<key>Pods-UW Quest-Localytics-iOS-Client.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
+		<key>Pods-UW Quest-Parse.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>10</integer>
+		</dict>
+		<key>Pods-UW Quest-PureLayout.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>11</integer>
+		</dict>
+		<key>Pods-UW Quest.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>04DE55FF4AE7447381B22B86</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3AB04D63626B487885BF2D54</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6605B3313E0C4F389EAFF1EE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8A78CBF2915E4A048FBD2543</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>942EE23B46054AE682DE44EB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AF721813F322476294EB0C9D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BD86227F5EBA4C26AB1C2F06</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BE948EA67B45453DA2E483F0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C4EC0AE39B9C42A1948AEF23</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E543CBD2D0084A15BD8F6734</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FE5D12FB44AE4EED8B3D33DC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

@@ -127,14 +127,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         var nextTextField: UITextField? = textField.superview?.viewWithTag(newTag) as UITextField?
         if let realTextField = nextTextField {
             nextTextField?.becomeFirstResponder()
-            //TODO: call login
         } else {
             textField.resignFirstResponder()
+            self.loginButtonPressed(textField)
         }
         return true
     }
     
     // MARK: Actions
+    
+    
+    @IBAction func loginButtonPressed(sender: AnyObject) {
+        Locator.sharedLocator.client.login(userIdTextField.text, password: passwordTextField.text)
+    }
     
     func viewTapped(recognizer: UIGestureRecognizer) {
         self.dismissKeyboard()

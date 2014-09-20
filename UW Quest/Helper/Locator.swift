@@ -29,6 +29,10 @@ class Locator {
         return User.sharedUser
     }()
     
+    lazy var client: QuestClient = {
+        return QuestClient.sharedClient
+    }()
+    
     init() {
         println("Locator inited")
     }

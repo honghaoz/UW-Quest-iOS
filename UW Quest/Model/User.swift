@@ -11,7 +11,7 @@ import Foundation
 private let _sharedUser = User()
 
 class User {
-    var userName: String = ""
+    var username: String = ""
     var password: String = ""
     var isRemembered: Bool = true
     var isLoggedIn: Bool = false
