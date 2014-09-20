@@ -18,11 +18,17 @@ let kErrorCodeInvalidSession: Int = 3
 let kErrorCodeInvalidUseridPassword: Int = 4
 let kErrorCodeParseContent: Int = 5
 let kErrorCodeOther: Int = 6
+let kErrorNetwork: Int = 11
+
+@objc protocol QuestClientDelegate {
+    optional func didFinishLogin(loginResult: Bool, errorCode: Int, errorMessage: String)
+}
 
 private let _sharedClient = QuestClient(baseURL: NSURL(string: kUWQuestAPIBaseURL))
 
 class QuestClient: AFHTTPSessionManager {
     
+    var delegate: QuestClientDelegate?
     var sid: String? = ""
     
     override init(baseURL url: NSURL!) {
@@ -51,7 +57,7 @@ class QuestClient: AFHTTPSessionManager {
     
     func login(username: String!, password: String!) {
         if username.isEmpty || password.isEmpty {
-            JGProgressHUD.showFailure("Failed!")
+            JGProgressHUD.showFailure("Failed!", duration: 1.5)
             return
         }
         
@@ -74,17 +80,17 @@ class QuestClient: AFHTTPSessionManager {
                 self.sid = self.getSid(responseDict)
                 if (self.sid != nil) {
                     // Login successfully
-                    Locator.sharedLocator.user.isLoggedIn = true
-                    JGProgressHUD.showSuccess("Success!")
+                    self.delegate?.didFinishLogin!(true, errorCode: 0, errorMessage: "")
                     return
                 }
             }
             // Login failed
-            Locator.sharedLocator.user.isLoggedIn = false
-            self.showErrorWithCode(self.getErrorCode(responseDict))
+            let errorCode = self.getErrorCode(responseDict)
+            self.delegate?.didFinishLogin!(false, errorCode: errorCode, errorMessage: self.errorMessageWithErrorCode(errorCode))
         }) { (task, error) -> Void in
+            // Network error
             println(error.localizedDescription)
-            JGProgressHUD.showFailure("Network Error!")
+            self.delegate?.didFinishLogin!(false, errorCode: kErrorNetwork, errorMessage: self.errorMessageWithErrorCode(kErrorNetwork))
             ARAnalytics.error(error, withMessage: "Login Error")
         }
     }
@@ -118,19 +124,23 @@ class QuestClient: AFHTTPSessionManager {
         return false
     }
     
-    private func showErrorWithCode(code: Int) {
+    func errorMessageWithErrorCode(code: Int) -> String {
+        var message: String = ""
         switch (code) {
         case kErrorCodeInvalidUseridPassword:
-            JGProgressHUD.showFailure("Invalid UserID/Password")
+            message = "Invalid UserID/Password"
         case kErrorCodeInvalidKey:
-            JGProgressHUD.showFailure("Invalid Key")
+            message = "Invalid Key"
         case kErrorCodeInvalidSession:
-            JGProgressHUD.showFailure("Invalid Session")
+            message = "Invalid Session"
         case kErrorCodeParseContent:
-            JGProgressHUD.showFailure("Invalid Content")
+            message = "Invalid Content"
+        case kErrorNetwork:
+            message = "Network Error"
         default:
+            message = ""
             ARAnalytics.error(NSError(domain: "", code: code, userInfo: nil), withMessage: "")
         }
-        
+        return message
     }
 }

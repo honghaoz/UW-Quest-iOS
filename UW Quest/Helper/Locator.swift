@@ -11,6 +11,12 @@ import Foundation
 private let _sharedLocator = Locator()
 
 class Locator {
+    
+    lazy var appDelegate: AppDelegate = {
+        var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        return appDelegate
+    }()
+
     // Controllers
     lazy var tabBarController: UIViewController = {
         println("tabBarController inited")

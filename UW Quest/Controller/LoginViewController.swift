@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: UIViewController, UITextFieldDelegate, QuestClientDelegate {
     
     let kSwitchScaleFactor: CGFloat = 0.65
     
@@ -153,11 +153,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-//    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-//        println("\(string)")
-//        return true
-//    }
-    
     func textFieldDidChanged(sender: AnyObject) {
         self.updateViews()
     }
@@ -167,7 +162,28 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func loginButtonPressed(sender: AnyObject) {
         dismissKeyboard()
         self.showHud("Login...   ")
+        Locator.sharedLocator.client.delegate = self
         Locator.sharedLocator.client.login(userIdTextField.text, password: passwordTextField.text)
+    }
+    
+    func didFinishLogin(loginResult: Bool, errorCode: Int, errorMessage: String) {
+        println("Login \(loginResult)")
+        if (loginResult) {
+            Locator.sharedLocator.user.isLoggedIn = true
+            JGProgressHUD.showSuccess("Success!", duration: 1.0)
+            
+            // Enter 
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1.25 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
+                Locator.sharedLocator.appDelegate.window?.rootViewController = Locator.sharedLocator.tabBarController
+                UIView.transitionWithView(Locator.sharedLocator.appDelegate.window!, duration: 0.3, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
+                    Locator.sharedLocator.appDelegate.window?.rootViewController = Locator.sharedLocator.tabBarController
+                    println("")
+                    }, completion: nil)
+            })
+        } else {
+            Locator.sharedLocator.user.isLoggedIn = false
+            JGProgressHUD.showFailure(errorMessage,  duration: 1.5)
+        }
     }
     
     func viewTapped(recognizer: UIGestureRecognizer) {

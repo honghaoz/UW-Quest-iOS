@@ -76,7 +76,7 @@ extension JGProgressHUD {
         Locator.sharedLocator.sharedHud.indicatorView = JGProgressHUDIndeterminateIndicatorView()
     }
     
-    class func showSuccess(text: String) {
+    class func showSuccess(text: String, duration: NSTimeInterval) {
         // Keep current view
         var currentPresentingView = Locator.sharedLocator.sharedHud.targetView
         // Throw the old hud, make sure the old one is dismissed eventually
@@ -86,17 +86,17 @@ extension JGProgressHUD {
         Locator.sharedLocator.sharedHud.textLabel.text = text
         Locator.sharedLocator.sharedHud.indicatorView = JGProgressHUDSuccessIndicatorView()
         Locator.sharedLocator.sharedHud.showInView(currentPresentingView, animated: true)
-        JGProgressHUD.dismiss(1.5, animated: true)
+        JGProgressHUD.dismiss(duration, animated: true)
     }
     
-    class func showFailure(text: String) {
+    class func showFailure(text: String, duration: NSTimeInterval) {
         var currentPresentingView = Locator.sharedLocator.sharedHud.targetView
         JGProgressHUD.dismiss(0, animated: false)
         Locator.sharedLocator.sharedHud = JGProgressHUD.prototype()
         Locator.sharedLocator.sharedHud.textLabel.text = text
         Locator.sharedLocator.sharedHud.indicatorView = JGProgressHUDErrorIndicatorView()
         Locator.sharedLocator.sharedHud.showInView(currentPresentingView, animated: true)
-        JGProgressHUD.dismiss(1.5, animated: true)
+        JGProgressHUD.dismiss(duration, animated: true)
     }
     
     // Dismiss current shared HUD
