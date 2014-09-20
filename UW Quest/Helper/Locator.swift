@@ -34,7 +34,7 @@ class Locator {
     }()
     
     lazy var sharedHud: JGProgressHUD = {
-        var hud: JGProgressHUD = JGProgressHUD(style: JGProgressHUDStyle.Light)
+        var hud: JGProgressHUD = JGProgressHUD.prototype()
         return hud
     }()
     

@@ -53,7 +53,54 @@ extension UIViewController {
     }
     
     func showHud(title: String) {
+        JGProgressHUD.dismiss(0, animated: false)
+        // Creat new shared hud
+        Locator.sharedLocator.sharedHud = JGProgressHUD.prototype()
         Locator.sharedLocator.sharedHud.textLabel.text = title
         Locator.sharedLocator.sharedHud.showInView(self.view, animated: true)
+    }
+}
+
+extension JGProgressHUD {
+    
+    class func prototype() -> JGProgressHUD {
+        var hud: JGProgressHUD = JGProgressHUD(style: JGProgressHUDStyle.Light)
+        let animation: JGProgressHUDFadeZoomAnimation = JGProgressHUDFadeZoomAnimation()
+        hud.animation = animation
+        hud.interactionType = JGProgressHUDInteractionType.BlockAllTouches
+        return hud
+    }
+    
+    class func restore() {
+        Locator.sharedLocator.sharedHud.textLabel.text = ""
+        Locator.sharedLocator.sharedHud.indicatorView = JGProgressHUDIndeterminateIndicatorView()
+    }
+    
+    class func showSuccess(text: String) {
+        // Keep current view
+        var currentPresentingView = Locator.sharedLocator.sharedHud.targetView
+        // Throw the old hud, make sure the old one is dismissed eventually
+        JGProgressHUD.dismiss(0, animated: false)
+        // Creat new shared hud
+        Locator.sharedLocator.sharedHud = JGProgressHUD.prototype()
+        Locator.sharedLocator.sharedHud.textLabel.text = text
+        Locator.sharedLocator.sharedHud.indicatorView = JGProgressHUDSuccessIndicatorView()
+        Locator.sharedLocator.sharedHud.showInView(currentPresentingView, animated: true)
+        JGProgressHUD.dismiss(1.5, animated: true)
+    }
+    
+    class func showFailure(text: String) {
+        var currentPresentingView = Locator.sharedLocator.sharedHud.targetView
+        JGProgressHUD.dismiss(0, animated: false)
+        Locator.sharedLocator.sharedHud = JGProgressHUD.prototype()
+        Locator.sharedLocator.sharedHud.textLabel.text = text
+        Locator.sharedLocator.sharedHud.indicatorView = JGProgressHUDErrorIndicatorView()
+        Locator.sharedLocator.sharedHud.showInView(currentPresentingView, animated: true)
+        JGProgressHUD.dismiss(1.5, animated: true)
+    }
+    
+    // Dismiss current shared HUD
+    class func dismiss(delay: NSTimeInterval, animated: Bool) {
+        Locator.sharedLocator.sharedHud.dismissAfterDelay(delay, animated: animated)
     }
 }

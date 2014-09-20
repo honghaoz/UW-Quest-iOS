@@ -6,6 +6,12 @@
 #import <AFNetworking/AFNetworking.h>
 #import "ZHHParseDevice.h"
 #import <JGProgressHUD/JGProgressHUD.h>
+#import "JGProgressHUDPieIndicatorView.h"
+#import "JGProgressHUDRingIndicatorView.h"
+#import "JGProgressHUDFadeZoomAnimation.h"
+#import "JGProgressHUDSuccessIndicatorView.h"
+#import "JGProgressHUDErrorIndicatorView.h"
+#import "JGProgressHUDIndeterminateIndicatorView.h"
 
 // Analytics
 #import <Appsee/Appsee.h>

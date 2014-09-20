@@ -55,6 +55,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         loginButton.layer.borderWidth = kBorderWidth
         loginButton.layer.masksToBounds = true
         
+        rememberSwitch.on = true
         rememberSwitch.clipsToBounds = true
         rememberSwitch.onTintColor = UQBlueColor
         
@@ -86,6 +87,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         userIdTextField.delegate = self
         passwordTextField.delegate = self
         
+        // Model
+        Locator.sharedLocator.user.isRemembered = rememberSwitch.on
+        
+        // TextField target
+        let textChangedAction: Selector = "textFieldDidChanged:"
+        userIdTextField.addTarget(self, action: textChangedAction, forControlEvents: UIControlEvents.EditingChanged)
+        passwordTextField.addTarget(self, action: textChangedAction, forControlEvents: UIControlEvents.EditingChanged)
+        
         // Gestures for view
         let tapAction: Selector = "viewTapped:"
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action:tapAction)
@@ -110,6 +119,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         copyRightTapGesture.numberOfTouchesRequired = 1
         copyRightLabel.addGestureRecognizer(copyRightTapGesture)
         copyRightLabel.userInteractionEnabled = true
+        
+        self.updateViews()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -119,6 +130,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func updateViews() {
+        if (userIdTextField.text.isEmpty || passwordTextField.text.isEmpty) {
+            loginButton.enabled = false
+        } else {
+            loginButton.enabled = true
+        }
     }
     
     // MARK: UITextFieldDelegate
@@ -132,6 +151,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.loginButtonPressed(textField)
         }
         return true
+    }
+    
+//    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+//        println("\(string)")
+//        return true
+//    }
+    
+    func textFieldDidChanged(sender: AnyObject) {
+        self.updateViews()
     }
     
     // MARK: Actions
@@ -198,6 +226,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.presentViewController(alert, animated: true, completion: nil)
         }
     }
+    
+    // MARK: Helper
     
     /*
     // MARK: - Navigation
