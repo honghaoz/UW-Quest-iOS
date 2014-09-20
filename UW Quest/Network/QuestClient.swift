@@ -61,7 +61,7 @@ class QuestClient: AFHTTPSessionManager {
     }
     
     private func dismissHud() {
+        Locator.sharedLocator.sharedHud.dismissAnimated(true)
         Locator.sharedLocator.sharedHud.textLabel.text = ""
-        Locator.sharedLocator.sharedHud.dismiss()
     }
 }
