@@ -27,6 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             rootViewController = Locator.sharedLocator.loginViewController
         }
         
+        UINavigationBar.appearance().barTintColor = UQBlueColor
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        
         self.window!.rootViewController = rootViewController
         self.window!.makeKeyAndVisible()
         

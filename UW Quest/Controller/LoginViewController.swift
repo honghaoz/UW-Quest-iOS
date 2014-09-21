@@ -87,6 +87,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, QuestClientDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.Default, animated: true)
+
         userIdTextField.delegate = self
         passwordTextField.delegate = self
         

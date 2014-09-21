@@ -9,18 +9,20 @@
 import UIKit
 
 class PersonalInfoViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        self.navigationController?.title = "Personal Information"
+        self.navigationController?.view.addGestureRecognizer(self.slidingViewController().panGesture)
     }
     
+    override func viewDidAppear(animated: Bool) {
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
+    }
+    
+    @IBAction func menuButtonTapped(sender: AnyObject) {
+        self.slidingViewController().anchorTopViewToRightAnimated(true)
+    }
 
     /*
     // MARK: - Navigation

@@ -13,6 +13,9 @@
 #import "JGProgressHUDErrorIndicatorView.h"
 #import "JGProgressHUDIndeterminateIndicatorView.h"
 
+#import "ECSlidingViewController.h"
+#import "UIViewController+ECSlidingViewController.h"
+
 // Analytics
 #import <Appsee/Appsee.h>
 #import <ARAnalytics/ARAnalytics.h>

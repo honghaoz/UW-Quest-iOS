@@ -22,9 +22,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2vU-VU-AHL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-135.5" y="530.5"/>
+            <point key="canvasLocation" x="-569.5" y="530.5"/>
         </scene>
-        <!--Personal Info View Controller-->
+        <!--Personal Information-->
         <scene sceneID="hUP-NC-11x">
             <objects>
                 <viewController storyboardIdentifier="PersonalInfoViewController" id="9Ob-g8-4Ym" customClass="PersonalInfoViewController" customModule="UW_Quest" customModuleProvider="target" sceneMemberID="viewController">
@@ -35,13 +35,22 @@
                     <view key="view" contentMode="scaleToFill" id="iuJ-u7-W3v">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.6705882353" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Personal Information" id="4qJ-cB-gkm">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="gW4-MQ-q3j">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="menuButtonTapped:" destination="9Ob-g8-4Ym" id="qe1-1G-PYJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fq2-HH-S4v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="360.5" y="530.5"/>
+            <point key="canvasLocation" x="299.5" y="530.5"/>
         </scene>
         <!--Sliding View Controller-->
         <scene sceneID="2pN-iq-Rv1">
@@ -59,12 +68,37 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="underLeftViewControllerStoryboardId" value="MenuViewController"/>
-                        <userDefinedRuntimeAttribute type="string" keyPath="topViewControllerStoryboardId" value="PersonalInfoViewController"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="topViewControllerStoryboardId" value="PersonalInfoNavigationViewController"/>
                     </userDefinedRuntimeAttributes>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rTR-e9-hEv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-135.5" y="-205.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="yxn-5M-FZj">
+            <objects>
+                <navigationController storyboardIdentifier="PersonalInfoNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="W9M-A2-YS9" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4Qk-me-Nw0">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.57056949010000002" blue="0.90249794409999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="0.0"/>
+                            <color key="textColor" white="1" alpha="0.90000000000000002" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9Ob-g8-4Ym" kind="relationship" relationship="rootViewController" id="dyG-un-KwJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wgZ-oC-GOk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-135.5" y="530.5"/>
         </scene>
     </scenes>
 </document>
