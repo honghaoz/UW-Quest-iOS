@@ -64,7 +64,8 @@ extension UIViewController {
 extension JGProgressHUD {
     
     class func prototype() -> JGProgressHUD {
-        var hud: JGProgressHUD = JGProgressHUD(style: JGProgressHUDStyle.Light)
+        var hud: JGProgressHUD = JGProgressHUD(style: isIOS7 ? JGProgressHUDStyle.ExtraLight :
+            JGProgressHUDStyle.Light)
         let animation: JGProgressHUDFadeZoomAnimation = JGProgressHUDFadeZoomAnimation()
         hud.animation = animation
         hud.interactionType = JGProgressHUDInteractionType.BlockAllTouches

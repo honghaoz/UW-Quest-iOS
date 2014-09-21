@@ -37,30 +37,35 @@ class LoginViewController: UIViewController, UITextFieldDelegate, QuestClientDel
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        titleLabel.textColor = UQBlueColor
-        subTitleLabel.textColor = UQBlueColor
+        
+        self.view.backgroundColor = UQBackgroundColor
+        
+        titleLabel.textColor = UQMainColor
+        subTitleLabel.textColor = UQMainColor
         
         userIdTextField.backgroundColor = UIColor.whiteColor()
         userIdTextField.borderStyle = UITextBorderStyle.None
+        userIdTextField.textColor = UQTextFieldFontColor
         
         separatorLineView.backgroundColor = kBorderColor
         
         passwordTextField.backgroundColor = UIColor.whiteColor()
         passwordTextField.borderStyle = UITextBorderStyle.None
+        passwordTextField.textColor = UQTextFieldFontColor
         
         loginView.layer.borderColor = kBorderColor.CGColor
         loginView.layer.cornerRadius = kBorderCornerRadius
         loginView.layer.borderWidth = kBorderWidth
         
-        loginButton.backgroundColor = UQBlueColor
-        loginButton.layer.borderColor = UQBlueColor.CGColor
+        loginButton.backgroundColor = UQMainColor
+        loginButton.layer.borderColor = UQMainColor.CGColor
         loginButton.layer.cornerRadius = kBorderCornerRadius
         loginButton.layer.borderWidth = kBorderWidth
         loginButton.layer.masksToBounds = true
         
         rememberSwitch.on = true
         rememberSwitch.clipsToBounds = true
-        rememberSwitch.onTintColor = UQBlueColor
+        rememberSwitch.onTintColor = UQMainColor
         
         // Scale switch
         rememberSwitch.transform = CGAffineTransformMakeScale(kSwitchScaleFactor, kSwitchScaleFactor)
