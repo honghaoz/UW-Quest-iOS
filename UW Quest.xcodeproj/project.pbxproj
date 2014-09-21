@@ -17,6 +17,7 @@
 		1B7CF10F19BCEF28007A157D /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B7CF10D19BCEF28007A157D /* Login.storyboard */; };
 		1B7CF11119BCEF28007A157D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B7CF11019BCEF28007A157D /* Images.xcassets */; };
 		1B7CF11D19BCEF28007A157D /* UW_QuestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7CF11C19BCEF28007A157D /* UW_QuestTests.swift */; };
+		1BF1B17919CF814E00411109 /* UQCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF1B17819CF814E00411109 /* UQCollectionReusableView.swift */; };
 		9DF10D05EB6E460CBD79B4E4 /* libPods-UW Quest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 413651466CD74FE09FCED094 /* libPods-UW Quest.a */; };
 		FA23728619C72E62000F5D4F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA23728519C72E62000F5D4F /* AudioToolbox.framework */; };
 		FA23728819C72E67000F5D4F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA23728719C72E67000F5D4F /* CFNetwork.framework */; };
@@ -68,6 +69,7 @@
 		1B7CF11619BCEF28007A157D /* UW QuestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UW QuestTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B7CF11B19BCEF28007A157D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1B7CF11C19BCEF28007A157D /* UW_QuestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UW_QuestTests.swift; sourceTree = "<group>"; };
+		1BF1B17819CF814E00411109 /* UQCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UQCollectionReusableView.swift; sourceTree = "<group>"; };
 		413651466CD74FE09FCED094 /* libPods-UW Quest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UW Quest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		80BCD76903A94C5EB7727E34 /* Pods-UW Quest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UW Quest.xcconfig"; path = "Pods/Pods-UW Quest.xcconfig"; sourceTree = "<group>"; };
 		FA23728519C72E62000F5D4F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -140,7 +142,7 @@
 				1B5BF35119C3F8470005626F /* LoginViewController.swift */,
 				1B520C5619CE8EB900A0ADE6 /* MainSlide.storyboard */,
 				1B520C4E19CE888300A0ADE6 /* MenuViewController.swift */,
-				1B520C5219CE8A2000A0ADE6 /* PersonalInfoViewController.swift */,
+				1BF1B17719CF811400411109 /* PersonalInformation */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -149,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				1B563F9519C496BF001785D9 /* BaseButton.swift */,
+				1BF1B17819CF814E00411109 /* UQCollectionReusableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -228,6 +231,14 @@
 				1B7CF11B19BCEF28007A157D /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1BF1B17719CF811400411109 /* PersonalInformation */ = {
+			isa = PBXGroup;
+			children = (
+				1B520C5219CE8A2000A0ADE6 /* PersonalInfoViewController.swift */,
+			);
+			name = PersonalInformation;
 			sourceTree = "<group>";
 		};
 		B94156B808E14E00AB78F713 /* Frameworks */ = {
@@ -440,6 +451,7 @@
 				FAF2291F19C937180041C36F /* ZHHParseDevice.m in Sources */,
 				FACE198719C9EB05001FD4C9 /* QuestClient.swift in Sources */,
 				1B2FCD1C19C4A64400FDF4D8 /* Extension.swift in Sources */,
+				1BF1B17919CF814E00411109 /* UQCollectionReusableView.swift in Sources */,
 				1B5BF35219C3F8470005626F /* LoginViewController.swift in Sources */,
 				1B520C5319CE8A2000A0ADE6 /* PersonalInfoViewController.swift in Sources */,
 				FAF2292419C937620041C36F /* UIApplication+AppVersion.m in Sources */,

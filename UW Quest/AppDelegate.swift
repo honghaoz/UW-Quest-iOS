@@ -20,7 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var rootViewController: UIViewController?
         
-        if (Locator.sharedLocator.user.isLoggedIn) {
+        // FIXME: Remove ! 
+        if (!Locator.sharedLocator.user.isLoggedIn) {
             rootViewController = Locator.sharedLocator.slidingViewController
         }
         else {
