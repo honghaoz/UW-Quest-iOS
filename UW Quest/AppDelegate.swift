@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var rootViewController: UIViewController?
         
         if (Locator.sharedLocator.user.isLoggedIn) {
-            rootViewController = Locator.sharedLocator.tabBarController
+            rootViewController = Locator.sharedLocator.slidingViewController
         }
         else {
             rootViewController = Locator.sharedLocator.loginViewController

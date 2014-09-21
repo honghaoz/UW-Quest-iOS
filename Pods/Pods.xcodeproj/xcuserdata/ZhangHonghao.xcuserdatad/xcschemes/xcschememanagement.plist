@@ -29,6 +29,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-UW Quest-ECSlidingViewController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-UW Quest-FlurrySDK.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -67,62 +72,67 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>13664997857E423C8826392D</key>
+		<key>1AE746FEB384470ABDC65C04</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>184031C1E21F4D07A390A27A</key>
+		<key>2AE2145655134D0A825EDF95</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1CC8B75C48B14DCB83C9B057</key>
+		<key>3C118E7654A946F095B2CE99</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2A44372CFD78441F95339213</key>
+		<key>473135F5A1AA4D86B215D4F5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2E9BF8DC0F534A7EAD26105C</key>
+		<key>542C881A910D40DBB0735D57</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>32F52C1BF3854F0AAC9BC906</key>
+		<key>54C6F6D74FA64A78A676A6BC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>37F0304A5F3041DFA6B820BD</key>
+		<key>704E5D802B534DBD88EF1997</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>38A9564E058348E69E5B9534</key>
+		<key>91A34E7A1F49421E90038903</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>66CDF662CA0E497D979246B8</key>
+		<key>A0B5B2BCE7964DC6998DD79C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>737D29C9B6B1432FA64D705F</key>
+		<key>BB00B2635F26441182D981F2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8CD6169F5E6C404C91B583C2</key>
+		<key>CCF5EC7455454C7B93823B61</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AF3727F551794BB8AF7D373A</key>
+		<key>FE566D497D0F44418109C3B4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FFE1F90D337A4308B748C6CD</key>
 		<dict>
 			<key>primary</key>
 			<true/>

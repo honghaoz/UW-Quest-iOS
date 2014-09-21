@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2E9BF8DC0F534A7EAD26105C"
+               BlueprintIdentifier = "BB00B2635F26441182D981F2"
                BuildableName = "libPods-UW Quest-Localytics-iOS-Client.a"
                BlueprintName = "Pods-UW Quest-Localytics-iOS-Client"
                ReferencedContainer = "container:Pods.xcodeproj">

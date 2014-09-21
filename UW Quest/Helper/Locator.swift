@@ -30,6 +30,12 @@ class Locator {
         return controller
     }()
     
+    lazy var slidingViewController: UIViewController = {
+        println("slidingViewController inited")
+        var controller: UIViewController = UIViewController.viewControllerInStoryboard("MainSlide", viewControllerName: "SlidingViewController")
+        return controller
+        }()
+    
     // Shared Instance
     lazy var user: User = {
         return User.sharedUser

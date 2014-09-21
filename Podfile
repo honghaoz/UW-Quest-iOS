@@ -17,6 +17,7 @@ pod "ARAnalytics/Localytics", :inhibit_warnings => true
 pod 'Appsee'
 pod 'PureLayout'
 pod 'JGProgressHUD'
+pod 'ECSlidingViewController'
 
 end
 

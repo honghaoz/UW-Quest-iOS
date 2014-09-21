@@ -8,6 +8,9 @@
 
 import UIKit
 
+// TODO: Change loginButton appearance,
+// TODO: Add cross indicator for textFields
+
 class LoginViewController: UIViewController, UITextFieldDelegate, QuestClientDelegate {
     
     let kSwitchScaleFactor: CGFloat = 0.65
@@ -174,9 +177,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate, QuestClientDel
             
             // Enter 
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1.25 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
-                Locator.sharedLocator.appDelegate.window?.rootViewController = Locator.sharedLocator.tabBarController
+                Locator.sharedLocator.appDelegate.window?.rootViewController = Locator.sharedLocator.slidingViewController
                 UIView.transitionWithView(Locator.sharedLocator.appDelegate.window!, duration: 0.3, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
-                    Locator.sharedLocator.appDelegate.window?.rootViewController = Locator.sharedLocator.tabBarController
+                    Locator.sharedLocator.appDelegate.window?.rootViewController = Locator.sharedLocator.slidingViewController
                     println("")
                     }, completion: nil)
             })

@@ -8,6 +8,8 @@
 
 import Foundation
 
+//TODO: Add reachability manager
+
 let kUWQuestAPIKey: String = "77881122"
 let kUWQuestAPIBaseURL: String = "http://uw-quest.appspot.com"
 
