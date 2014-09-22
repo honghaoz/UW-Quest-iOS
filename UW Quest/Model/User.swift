@@ -26,6 +26,7 @@ class User {
         case CitizenshipImmigrationDocuments = "Citizenship/Immigration Documents"
     }
     
+    
     init() {
         println("User inited")
     }
