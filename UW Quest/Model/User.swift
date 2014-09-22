@@ -55,6 +55,7 @@ class User {
         }
         
         Locator.sharedLocator.client.getPersonalInformation(type, success: { (dataDict) -> () in
+            println("\(dataDict)")
             // User dataDict to init personal information
             success!()
         }) { (errorMessage, error) -> () in

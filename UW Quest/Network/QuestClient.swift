@@ -115,12 +115,17 @@ class QuestClient: AFHTTPSessionManager {
         ]
         
         self.POST(path, parameters: parameters, success: { (task, responseObject) -> Void in
-            println(responseObject)
+//            println(responseObject)
             let responseDict = responseObject as Dictionary<String, AnyObject>
             if self.statusIsSuccess(responseDict) {
                 // Get data successfully
                 if let data: AnyObject = responseDict["data"] {
-                    success(data: data as Dictionary<String, AnyObject>)
+                    println("\(data[0])")
+                    let country: String = data["date_received"] as String
+                    println("\(country)")
+                    let dataDict = data as? NSDictionary//<NSString, AnyObject>
+                    println("\(dataDict)")
+//                    success(data: data as Dictionary<String, AnyObject>)
                 }
             } else {
                 // Get data failed
