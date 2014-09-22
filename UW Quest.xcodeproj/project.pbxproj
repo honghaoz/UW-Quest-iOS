@@ -18,6 +18,7 @@
 		1B7CF11119BCEF28007A157D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B7CF11019BCEF28007A157D /* Images.xcassets */; };
 		1B7CF11D19BCEF28007A157D /* UW_QuestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7CF11C19BCEF28007A157D /* UW_QuestTests.swift */; };
 		1B8615AC19CFC6A20064505C /* PersonalInformations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8615AB19CFC6A20064505C /* PersonalInformations.swift */; };
+		1B8615AE19CFD79A0064505C /* AddressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8615AD19CFD79A0064505C /* AddressCollectionViewCell.swift */; };
 		1BF1B17919CF814E00411109 /* UQCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF1B17819CF814E00411109 /* UQCollectionReusableView.swift */; };
 		9DF10D05EB6E460CBD79B4E4 /* libPods-UW Quest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 413651466CD74FE09FCED094 /* libPods-UW Quest.a */; };
 		FA23728619C72E62000F5D4F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA23728519C72E62000F5D4F /* AudioToolbox.framework */; };
@@ -71,6 +72,7 @@
 		1B7CF11B19BCEF28007A157D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1B7CF11C19BCEF28007A157D /* UW_QuestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UW_QuestTests.swift; sourceTree = "<group>"; };
 		1B8615AB19CFC6A20064505C /* PersonalInformations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalInformations.swift; sourceTree = "<group>"; };
+		1B8615AD19CFD79A0064505C /* AddressCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCollectionViewCell.swift; sourceTree = "<group>"; };
 		1BF1B17819CF814E00411109 /* UQCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UQCollectionReusableView.swift; sourceTree = "<group>"; };
 		413651466CD74FE09FCED094 /* libPods-UW Quest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UW Quest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		80BCD76903A94C5EB7727E34 /* Pods-UW Quest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UW Quest.xcconfig"; path = "Pods/Pods-UW Quest.xcconfig"; sourceTree = "<group>"; };
@@ -239,8 +241,9 @@
 			isa = PBXGroup;
 			children = (
 				1B520C5219CE8A2000A0ADE6 /* PersonalInfoViewController.swift */,
+				1B8615AD19CFD79A0064505C /* AddressCollectionViewCell.swift */,
 			);
-			name = PersonalInformation;
+			path = PersonalInformation;
 			sourceTree = "<group>";
 		};
 		B94156B808E14E00AB78F713 /* Frameworks */ = {
@@ -458,6 +461,7 @@
 				1B8615AC19CFC6A20064505C /* PersonalInformations.swift in Sources */,
 				1B5BF35219C3F8470005626F /* LoginViewController.swift in Sources */,
 				1B520C5319CE8A2000A0ADE6 /* PersonalInfoViewController.swift in Sources */,
+				1B8615AE19CFD79A0064505C /* AddressCollectionViewCell.swift in Sources */,
 				FAF2292419C937620041C36F /* UIApplication+AppVersion.m in Sources */,
 				1B563F9619C496BF001785D9 /* BaseButton.swift in Sources */,
 				1B520C4F19CE888300A0ADE6 /* MenuViewController.swift in Sources */,
