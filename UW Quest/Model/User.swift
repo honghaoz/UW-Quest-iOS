@@ -23,4 +23,18 @@ class User {
     class var sharedUser: User {
         return _sharedUser
     }
+    
+    func login(success:() -> (), failure:(errorMessage: String, error: NSError?) -> ()) {
+        println("Login: userid: \(username), password: \(password)")
+        assert(!username.isEmpty && !password.isEmpty, "userid or password must be non-empty")
+        Locator.sharedLocator.client.login(username, password: password, success: { () -> () in
+            self.isLoggedIn = true
+            ARAnalytics.event("Login successfully")
+            success()
+        }) { (errorMessage, error) -> () in
+            self.isLoggedIn = false
+            ARAnalytics.error(error, withMessage: errorMessage)
+            failure(errorMessage: errorMessage, error: error)
+        }
+    }
 }

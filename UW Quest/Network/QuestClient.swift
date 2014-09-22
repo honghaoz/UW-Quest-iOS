@@ -22,15 +22,10 @@ let kErrorCodeParseContent: Int = 5
 let kErrorCodeOther: Int = 6
 let kErrorNetwork: Int = 11
 
-@objc protocol QuestClientDelegate {
-    optional func didFinishLogin(loginResult: Bool, errorCode: Int, errorMessage: String)
-}
-
 private let _sharedClient = QuestClient(baseURL: NSURL(string: kUWQuestAPIBaseURL))
 
 class QuestClient: AFHTTPSessionManager {
     
-    var delegate: QuestClientDelegate?
     var sid: String? = ""
     
     override init(baseURL url: NSURL!) {
@@ -57,15 +52,12 @@ class QuestClient: AFHTTPSessionManager {
         return _sharedClient
     }
     
-    func login(username: String!, password: String!) {
+    // MARK: Operations
+    func login(username: String!, password: String!, success:() -> (), failure:(errorMessage: String, error: NSError?) -> ()) {
         if username.isEmpty || password.isEmpty {
-            JGProgressHUD.showFailure("Failed!", duration: 1.5)
+            failure(errorMessage: "Userid or password can not be emptys", error: nil)
             return
         }
-        
-        // Set User
-        Locator.sharedLocator.user.username = username
-        Locator.sharedLocator.user.password = password
         
         let path = "login"
         let parameters: Dictionary = [
@@ -73,7 +65,7 @@ class QuestClient: AFHTTPSessionManager {
             "password": password,
             "key": kUWQuestAPIKey
         ]
-        println("Login: userid: \(username), password: \(password)")
+        
         self.POST(path, parameters: parameters, success: { (task, responseObject) -> Void in
             println(responseObject)
             
@@ -82,23 +74,21 @@ class QuestClient: AFHTTPSessionManager {
                 self.sid = self.getSid(responseDict)
                 if (self.sid != nil) {
                     // Login successfully
-                    self.delegate?.didFinishLogin!(true, errorCode: 0, errorMessage: "")
+                    success()
                     return
                 }
             }
             // Login failed
             let errorCode = self.getErrorCode(responseDict)
-            self.delegate?.didFinishLogin!(false, errorCode: errorCode, errorMessage: self.errorMessageWithErrorCode(errorCode))
+            failure(errorMessage: self.errorMessageWithErrorCode(errorCode), error: NSError(domain: "Not network error", code: 1, userInfo: nil))
         }) { (task, error) -> Void in
             // Network error
             println(error.localizedDescription)
-            self.delegate?.didFinishLogin!(false, errorCode: kErrorNetwork, errorMessage: self.errorMessageWithErrorCode(kErrorNetwork))
-            ARAnalytics.error(error, withMessage: "Login Error")
+            failure(errorMessage: self.errorMessageWithErrorCode(kErrorNetwork), error: error)
         }
     }
     
     //MARK: Helpers
-    
     private func getSid(responseDict: Dictionary<String, AnyObject>) -> String? {
         if let data: AnyObject = responseDict["data"] {
             if let sid = data["sid"] as? String {

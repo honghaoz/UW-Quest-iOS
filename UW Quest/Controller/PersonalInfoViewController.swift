@@ -10,10 +10,27 @@ import UIKit
 
 class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
+//    let kAddressesTitle = "Addresses"
+//    let kNamesTitle = "Names"
+//    let kPhoneNumbersTitle = "Phone Numbers"
+//    let kEmailAddressesTitle = "Email Addresses"
+//    let kEmergencyContactsTitle = "Emergency Contacts"
+//    let kDemographicInformationTitle = "Demographic Information"
+//    let kCitizenshipImmigrationDocumentsTitle = "Citizenship/Immigration Documents"
+//    
     let kHeaderViewReuseIdentifier = "HeaderView"
     let kAddressCellReuseIdentifier = "AddressCell"
-    var numberOfCells = 0
+//    let kNameCellResueIdentifier = "NameCell"
+//    let kPhoneNumberCellResueIdentifier = "PhoneNumberCell"
+//    let kEmailAddressCellResueIdentifier = "EmailAddressCell"
+//    let kEmergencyContactCellResueIdentifier = "EmergencyContactCell"
+//    let kDemograhicCellResueIdentifier = "DemographicCell"
+//    let kCitizenshipCellResueIdentifier = "CitizenshipCell"
+//    
+//    var titlesArray: [String] = [kAddressesTitle, kNamesTitle, kPhoneNumbersTitle, kEmailAddressesTitle, kEmergencyContactsTitle, kDemographicInformationTitle, kCitizenshipImmigrationDocumentsTitle]
     
+    var numberOfCells = 0
+
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -49,11 +66,11 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
     
     // MARK: - UICollectionViewDataSource
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 2
+//        return self.titlesArray.count
+        return 1
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        println("section: \(section) items: \(numberOfCells)")
         return numberOfCells
     }
     

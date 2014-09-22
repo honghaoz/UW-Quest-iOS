@@ -11,7 +11,7 @@ import UIKit
 // TODO: Change loginButton appearance,
 // TODO: Add cross indicator for textFields
 
-class LoginViewController: UIViewController, UITextFieldDelegate, QuestClientDelegate {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     let kSwitchScaleFactor: CGFloat = 0.65
     
@@ -172,28 +172,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate, QuestClientDel
     @IBAction func loginButtonPressed(sender: AnyObject) {
         dismissKeyboard()
         self.showHud("Login...   ")
-        Locator.sharedLocator.client.delegate = self
-        Locator.sharedLocator.client.login(userIdTextField.text, password: passwordTextField.text)
-    }
-    
-    func didFinishLogin(loginResult: Bool, errorCode: Int, errorMessage: String) {
-        println("Login \(loginResult)")
-        if (loginResult) {
-            Locator.sharedLocator.user.isLoggedIn = true
+        Locator.sharedLocator.user.username = userIdTextField.text
+        Locator.sharedLocator.user.password = passwordTextField.text
+        Locator.sharedLocator.user.login({ () -> () in
+            println("Login Successfully")
             JGProgressHUD.showSuccess("Success!", duration: 1.0)
-            
-            // Enter 
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1.25 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
-                Locator.sharedLocator.appDelegate.window?.rootViewController = Locator.sharedLocator.slidingViewController
-                UIView.transitionWithView(Locator.sharedLocator.appDelegate.window!, duration: 0.3, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
-                    Locator.sharedLocator.appDelegate.window?.rootViewController = Locator.sharedLocator.slidingViewController
-                    println("")
-                    }, completion: nil)
-            })
-        } else {
-            Locator.sharedLocator.user.isLoggedIn = false
+            self.enterToMainScreen()
+        }, failure: { (errorMessage, error) -> () in
+            println("Login Failed")
             JGProgressHUD.showFailure(errorMessage,  duration: 1.5)
-        }
+        })
     }
     
     func viewTapped(recognizer: UIGestureRecognizer) {
@@ -254,6 +242,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate, QuestClientDel
     }
     
     // MARK: Helper
+    
+    func enterToMainScreen() {
+        // Enter
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1.25 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
+            Locator.sharedLocator.appDelegate.window?.rootViewController = Locator.sharedLocator.slidingViewController
+            UIView.transitionWithView(Locator.sharedLocator.appDelegate.window!, duration: 0.3, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
+                Locator.sharedLocator.appDelegate.window?.rootViewController = Locator.sharedLocator.slidingViewController
+                println("")
+                }, completion: nil)
+        })
+    }
     
     /*
     // MARK: - Navigation
