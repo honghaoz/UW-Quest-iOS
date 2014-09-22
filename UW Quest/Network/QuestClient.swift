@@ -88,6 +88,52 @@ class QuestClient: AFHTTPSessionManager {
         }
     }
     
+    func getPersonalInformation(type: User.PersonalInfomation, success:(data: Dictionary<String, AnyObject>) -> (), failure:(errorMessage: String, error: NSError?) -> ()) {
+        assert(((self.sid != nil) && (!self.sid!.isEmpty)) as Bool, "SID must be non-empty")
+        var path = "personalinformation/"
+        switch type {
+        case .Addresses:
+            path += "addresses"
+        case .Names:
+            path += "names"
+        case .PhoneNumbers:
+            path += "phone_numbers"
+        case .EmailAddresses:
+            path += "email_addresses"
+        case .EmergencyContacts:
+            path += "emergency_contacts"
+        case .DemographicInformation:
+            path += "demographic_information"
+        case .CitizenshipImmigrationDocuments:
+            path += "citizenship_immigration_documents"
+        default: assert(false, "Wrong PersonalInformation Type")
+        }
+        
+        let parameters: Dictionary = [
+            "sid": self.sid!,
+            "key": kUWQuestAPIKey
+        ]
+        
+        self.POST(path, parameters: parameters, success: { (task, responseObject) -> Void in
+            println(responseObject)
+            let responseDict = responseObject as Dictionary<String, AnyObject>
+            if self.statusIsSuccess(responseDict) {
+                // Get data successfully
+                if let data: AnyObject = responseDict["data"] {
+                    success(data: data as Dictionary<String, AnyObject>)
+                }
+            } else {
+                // Get data failed
+                // TODO:
+                failure(errorMessage: "TODOTODO", error: nil)
+            }
+            
+        }) { (task, error) -> Void in
+            println(error.localizedDescription)
+            failure(errorMessage: self.errorMessageWithErrorCode(kErrorNetwork), error: error)
+        }
+    }
+    
     //MARK: Helpers
     private func getSid(responseDict: Dictionary<String, AnyObject>) -> String? {
         if let data: AnyObject = responseDict["data"] {

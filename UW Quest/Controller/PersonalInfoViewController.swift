@@ -117,6 +117,8 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
         self.numberOfCells = self.numberOfCells == 0 ? 1: 0
         
         self.collectionView.reloadSections(NSIndexSet(index: tappedSection))
+        
+        Locator.sharedLocator.user.getPersonalInformation(User.PersonalInfomation.Names, success: nil, failure: nil)
     }
     
     // MARK: - Helper
