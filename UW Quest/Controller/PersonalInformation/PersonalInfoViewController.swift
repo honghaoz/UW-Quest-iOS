@@ -9,7 +9,7 @@
 import UIKit
 
 class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    
+
 //    let kAddressesTitle = "Addresses"
 //    let kNamesTitle = "Names"
 //    let kPhoneNumbersTitle = "Phone Numbers"
@@ -28,6 +28,11 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
 //    let kCitizenshipCellResueIdentifier = "CitizenshipCell"
 //    
 //    var titlesArray: [String] = [kAddressesTitle, kNamesTitle, kPhoneNumbersTitle, kEmailAddressesTitle, kEmergencyContactsTitle, kDemographicInformationTitle, kCitizenshipImmigrationDocumentsTitle]
+    
+    // A dictionary of offscreen cells that are used within the tableView:heightForRowAtIndexPath: method to
+    // handle the height calculations. These are never drawn onscreen. The dictionary is in the format:
+    //      { NSString *reuseIdentifier : UITableViewCell *offscreenCell, ... }
+    var offscreenCells = Dictionary<String, UICollectionViewCell>();
     
     var numberOfCells = 0
 
@@ -66,20 +71,25 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
     
     // MARK: - UICollectionViewDataSource
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-//        return self.titlesArray.count
+        logMethod()
         return 1
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        logMethod()
         return numberOfCells
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        logMethod()
         var cell: UICollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(kAddressCellReuseIdentifier, forIndexPath: indexPath) as UICollectionViewCell
+        cell.setNeedsUpdateConstraints()
+        cell.updateConstraintsIfNeeded()
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        logMethod()
         var headerView: UQCollectionReusableView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: kHeaderViewReuseIdentifier, forIndexPath: indexPath) as UQCollectionReusableView
         
         // First section header, hide topSeparator line
@@ -101,10 +111,37 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
     
     // MARK: - UICollectionViewFlowLayout Delegate
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake(50, 100)
+        logMethod()
+////        let reuseIdentifier = kAddressCellReuseIdentifier
+////        var cell: AddressCollectionViewCell?
+//////        var cell: AddressCollectionViewCell? = self.offscreenCells[reuseIdentifier] as? AddressCollectionViewCell
+//////        if cell == nil {
+////            cell = collectionView.dequeueReusableCellWithReuseIdentifier(kAddressCellReuseIdentifier, forIndexPath: indexPath) as? AddressCollectionViewCell
+//////            self.offscreenCells[reuseIdentifier] = cell
+//////        }
+////        
+////        cell!.setNeedsUpdateConstraints()
+////        cell!.updateConstraintsIfNeeded()
+////        
+////        cell!.bounds = CGRectMake(0, 0, collectionView.contentSize.width - 20, CGRectGetHeight(cell!.bounds))
+////        
+////        cell!.setNeedsLayout()
+////        cell!.layoutIfNeeded()
+////        
+////        //
+//////        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kAddressCellReuseIdentifier, forIndexPath: indexPath) as UICollectionViewCell//self.collectionView(collectionView, cellForItemAtIndexPath: indexPath)
+//////        cell.setNeedsLayout()
+//////        cell.layoutIfNeeded()
+////        var size = cell!.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
+////        size.width = collectionView.contentSize.width - 20
+////        println("size: \(size)")
+////        return size
+        println("size: \(CGSizeMake(collectionView.contentSize.width - 20, 100))")
+        return CGSizeMake(collectionView.contentSize.width - 20, 100)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        logMethod()
         return UIEdgeInsetsMake(10, 10, 10, 10)
     }
     
@@ -118,9 +155,9 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
         
         self.collectionView.reloadSections(NSIndexSet(index: tappedSection))
         
-        Locator.sharedLocator.user.getPersonalInformation(User.PersonalInformationType.Addresses, success:{ _ in
-            println("\(Locator.sharedLocator.user.personalInformation.addresses!)")
-            }, failure: nil)
+//        Locator.sharedLocator.user.getPersonalInformation(User.PersonalInformationType.Addresses, success:{ _ in
+//            println("\(Locator.sharedLocator.user.personalInformation.addresses!)")
+//            }, failure: nil)
 //        Locator.sharedLocator.user.getPersonalInformation(User.PersonalInformation.PhoneNumbers, success: nil, failure: nil)
 //        Locator.sharedLocator.user.getPersonalInformation(User.PersonalInformation.EmailAddresses, success: nil, failure: nil)
 //        Locator.sharedLocator.user.getPersonalInformation(User.PersonalInformation.EmergencyContacts, success: nil, failure: nil)

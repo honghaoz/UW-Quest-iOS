@@ -105,3 +105,13 @@ extension JGProgressHUD {
         Locator.sharedLocator.sharedHud.dismissAfterDelay(delay, animated: animated)
     }
 }
+
+// Debug Helpers
+func logMethod(logMessage: String? = nil, functionName: String = __FUNCTION__) {
+    if let realLogMessage = logMessage {
+        println("\(functionName): \(logMessage)")
+    }
+    else {
+        println("\(functionName)")
+    }
+}
