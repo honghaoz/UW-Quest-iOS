@@ -46,12 +46,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         userIdTextField.backgroundColor = UIColor.whiteColor()
         userIdTextField.borderStyle = UITextBorderStyle.None
         userIdTextField.textColor = UQTextFieldFontColor
+        userIdTextField.tintColor = UQMainColor
         
         separatorLineView.backgroundColor = kBorderColor
         
         passwordTextField.backgroundColor = UIColor.whiteColor()
         passwordTextField.borderStyle = UITextBorderStyle.None
         passwordTextField.textColor = UQTextFieldFontColor
+        passwordTextField.tintColor = UQMainColor
         
         loginView.layer.borderColor = kBorderColor.CGColor
         loginView.layer.cornerRadius = kBorderCornerRadius

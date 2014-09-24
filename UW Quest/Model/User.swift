@@ -26,7 +26,6 @@ class User {
         case CitizenshipImmigrationDocuments = "Citizenship/Immigration Documents"
     }
     
-    
     init() {
         println("User inited")
     }
@@ -41,11 +40,15 @@ class User {
         Locator.sharedLocator.client.login(username, password: password, success: { () -> () in
             self.isLoggedIn = true
             ARAnalytics.event("Login successfully")
-            success!()
+            if success != nil {
+                success!()
+            }
         }) { (errorMessage, error) -> () in
             self.isLoggedIn = false
             ARAnalytics.error(error, withMessage: errorMessage)
-            failure!(errorMessage: errorMessage, error: error)
+            if failure != nil {
+                failure!(errorMessage: errorMessage, error: error)
+            }
         }
     }
     
@@ -53,17 +56,21 @@ class User {
         if !self.isLoggedIn {
             failure!(errorMessage: "User is not logged in", error: nil)
         }
-        
-        Locator.sharedLocator.client.getPersonalInformation(type, success: { (dataDict) -> () in
-            println("\(dataDict)")
-            // User dataDict to init personal information
-            success!()
+
+        Locator.sharedLocator.client.getPersonalInformation(type, success: { (dataResponse) -> () in
+            self.processPersonalInformation(dataResponse)
+            if success != nil {
+                success!()
+            }
         }) { (errorMessage, error) -> () in
-            failure!(errorMessage: errorMessage, error: error)
+            if failure != nil {
+                failure!(errorMessage: errorMessage, error: error)
+            }
         }
     }
     
-    func processPersonalInformation(data: Dictionary<String, AnyObject>) {
-        
+    // User dataResponse (either Dict or Array) to init personal information
+    func processPersonalInformation(data: AnyObject) {
+        println("\(data)")
     }
 }

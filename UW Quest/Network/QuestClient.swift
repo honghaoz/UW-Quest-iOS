@@ -88,7 +88,7 @@ class QuestClient: AFHTTPSessionManager {
         }
     }
     
-    func getPersonalInformation(type: User.PersonalInfomation, success:(data: Dictionary<String, AnyObject>) -> (), failure:(errorMessage: String, error: NSError?) -> ()) {
+    func getPersonalInformation(type: User.PersonalInfomation, success:(data: AnyObject!) -> (), failure:(errorMessage: String, error: NSError?) -> ()) {
         assert(((self.sid != nil) && (!self.sid!.isEmpty)) as Bool, "SID must be non-empty")
         var path = "personalinformation/"
         switch type {
@@ -115,17 +115,11 @@ class QuestClient: AFHTTPSessionManager {
         ]
         
         self.POST(path, parameters: parameters, success: { (task, responseObject) -> Void in
-//            println(responseObject)
             let responseDict = responseObject as Dictionary<String, AnyObject>
             if self.statusIsSuccess(responseDict) {
                 // Get data successfully
                 if let data: AnyObject = responseDict["data"] {
-                    println("\(data[0])")
-                    let country: String = data["date_received"] as String
-                    println("\(country)")
-                    let dataDict = data as? NSDictionary//<NSString, AnyObject>
-                    println("\(dataDict)")
-//                    success(data: data as Dictionary<String, AnyObject>)
+                    success(data: data)
                 }
             } else {
                 // Get data failed
