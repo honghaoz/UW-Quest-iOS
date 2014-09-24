@@ -88,7 +88,7 @@ class QuestClient: AFHTTPSessionManager {
         }
     }
     
-    func getPersonalInformation(type: User.PersonalInfomation, success:(data: AnyObject!) -> (), failure:(errorMessage: String, error: NSError?) -> ()) {
+    func getPersonalInformation(type: User.PersonalInformationType, success:(data: AnyObject!) -> (), failure:(errorMessage: String, error: NSError?) -> ()) {
         assert(((self.sid != nil) && (!self.sid!.isEmpty)) as Bool, "SID must be non-empty")
         var path = "personalinformation/"
         switch type {

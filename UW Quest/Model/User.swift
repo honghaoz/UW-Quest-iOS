@@ -16,7 +16,9 @@ class User {
     var isRemembered: Bool = true
     var isLoggedIn: Bool = false
     
-    enum PersonalInfomation: String {
+    var personalInformation: PersonalInformation = PersonalInformation()
+    
+    enum PersonalInformationType: String {
         case Addresses = "Addresses"
         case Names = "Names"
         case PhoneNumbers = "Phone Numbers"
@@ -40,37 +42,52 @@ class User {
         Locator.sharedLocator.client.login(username, password: password, success: { () -> () in
             self.isLoggedIn = true
             ARAnalytics.event("Login successfully")
-            if success != nil {
-                success!()
-            }
+            success?()
         }) { (errorMessage, error) -> () in
             self.isLoggedIn = false
             ARAnalytics.error(error, withMessage: errorMessage)
-            if failure != nil {
-                failure!(errorMessage: errorMessage, error: error)
-            }
+            failure?(errorMessage: errorMessage, error: error)
+            return
         }
     }
     
-    func getPersonalInformation(type: PersonalInfomation, success: (() -> ())?, failure:((errorMessage: String, error: NSError?) -> ())?) {
+    func getPersonalInformation(type: PersonalInformationType, success: (() -> ())?, failure:((errorMessage: String, error: NSError?) -> ())?) {
         if !self.isLoggedIn {
             failure!(errorMessage: "User is not logged in", error: nil)
         }
 
         Locator.sharedLocator.client.getPersonalInformation(type, success: { (dataResponse) -> () in
-            self.processPersonalInformation(dataResponse)
-            if success != nil {
-                success!()
+            if self.processPersonalInformation(type, data: dataResponse) {
+                success?()
             }
         }) { (errorMessage, error) -> () in
-            if failure != nil {
-                failure!(errorMessage: errorMessage, error: error)
-            }
+            failure?(errorMessage: errorMessage, error: error)
+            return
         }
     }
     
     // User dataResponse (either Dict or Array) to init personal information
-    func processPersonalInformation(data: AnyObject) {
-        println("\(data)")
+    func processPersonalInformation(type: PersonalInformationType, data: AnyObject) -> Bool {
+        println("Type: \(type.toRaw())")
+        println("Data: \(data)")
+        switch type {
+        case .Addresses:
+            return self.personalInformation.initAddresses(data)
+        case .Names:
+            break
+        case .PhoneNumbers:
+            break
+        case .EmailAddresses:
+            break
+        case .EmergencyContacts:
+            break
+        case .DemographicInformation:
+            break
+        case .CitizenshipImmigrationDocuments:
+            break
+        default:
+            assert(false, "Wrong PersonalInformation Type")
+        }
+        return false
     }
 }

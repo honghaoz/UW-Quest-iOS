@@ -118,12 +118,14 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
         
         self.collectionView.reloadSections(NSIndexSet(index: tappedSection))
         
-        Locator.sharedLocator.user.getPersonalInformation(User.PersonalInfomation.Addresses, success: nil, failure: nil)
-//        Locator.sharedLocator.user.getPersonalInformation(User.PersonalInfomation.PhoneNumbers, success: nil, failure: nil)
-//        Locator.sharedLocator.user.getPersonalInformation(User.PersonalInfomation.EmailAddresses, success: nil, failure: nil)
-//        Locator.sharedLocator.user.getPersonalInformation(User.PersonalInfomation.EmergencyContacts, success: nil, failure: nil)
-//        Locator.sharedLocator.user.getPersonalInformation(User.PersonalInfomation.DemographicInformation, success: nil, failure: nil)
-//        Locator.sharedLocator.user.getPersonalInformation(User.PersonalInfomation.CitizenshipImmigrationDocuments, success: nil, failure: nil)
+        Locator.sharedLocator.user.getPersonalInformation(User.PersonalInformationType.Addresses, success:{ _ in
+            println("\(Locator.sharedLocator.user.personalInformation.addresses!)")
+            }, failure: nil)
+//        Locator.sharedLocator.user.getPersonalInformation(User.PersonalInformation.PhoneNumbers, success: nil, failure: nil)
+//        Locator.sharedLocator.user.getPersonalInformation(User.PersonalInformation.EmailAddresses, success: nil, failure: nil)
+//        Locator.sharedLocator.user.getPersonalInformation(User.PersonalInformation.EmergencyContacts, success: nil, failure: nil)
+//        Locator.sharedLocator.user.getPersonalInformation(User.PersonalInformation.DemographicInformation, success: nil, failure: nil)
+//        Locator.sharedLocator.user.getPersonalInformation(User.PersonalInformation.CitizenshipImmigrationDocuments, success: nil, failure: nil)
     }
     
     // MARK: - Helper

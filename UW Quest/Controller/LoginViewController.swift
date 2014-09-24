@@ -251,7 +251,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             Locator.sharedLocator.appDelegate.window?.rootViewController = Locator.sharedLocator.slidingViewController
             UIView.transitionWithView(Locator.sharedLocator.appDelegate.window!, duration: 0.3, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
                 Locator.sharedLocator.appDelegate.window?.rootViewController = Locator.sharedLocator.slidingViewController
-                println("")
+                return
                 }, completion: nil)
         })
     }
