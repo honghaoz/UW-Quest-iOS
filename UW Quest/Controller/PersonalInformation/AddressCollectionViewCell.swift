@@ -25,14 +25,13 @@ class AddressCollectionViewCell: UICollectionViewCell {
         Setup up cell's appearance
     */
     func setup() {
-//        self.setTranslatesAutoresizingMaskIntoConstraints(false)
-//        self.contentView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        
+        self.addressLabel.text = "<NSAutoresizingMaskLayoutConstraint:0x7fd979fcc9f0 h=-&- v=-&- UIView:0x7fd979f90580.midX == UW_Quest.AddressCollectionViewCell:0x7fd979f90010.midX>, <NSAutoresizingMaskLayoutConstraint:0x7fd979fcca50 h=-&- v=-&- UIView:0x7fd979f90580.width == UW_Quest.AddressCollectionViewCell:0x7fd979f90010.width>, <NSAutoresizingMaskLayoutConstraint:0x7fd979fccaa0 h=-&- v=-&- UIView:0x7fd979f90580.midY == UW_Quest.AddressCollectionViewCell:0x7fd979f90010.midY>, <NSAutoresizingMaskLayoutConstraint:0x7fd979fccb10 h=-&- v=-&- UIView:0x7fd979f90580.height == UW_Quest.AddressCollectionViewCe"
+        
         if isIOS7 {
+            // Need set autoresizingMask to let contentView always occupy this view's bounds
             self.contentView.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth
         }
-        
-        println("typeLabel: \(typeLabel.frame)")
-        println("addressLabel: \(addressLabel.frame)")
         self.layer.borderColor = UQCellBackgroundColor.CGColor
         self.layer.masksToBounds = true
         self.layer.cornerRadius = kBorderCornerRadius
@@ -43,36 +42,10 @@ class AddressCollectionViewCell: UICollectionViewCell {
         println("bounds: \(self.bounds)")
         println("contentView.bounds: \(self.contentView.bounds)")
     }
-    
-    override func updateConstraints() {
-        addressLabel.preferredMaxLayoutWidth = self.bounds.width - 2 * kLabelHorizontalInsets
-        println("set max width: \(addressLabel.preferredMaxLayoutWidth)")
-        super.updateConstraints()
-//        println("\(addressLabel.constraintsAffectingLayoutForAxis(UILayoutConstraintAxis.Horizontal))")
-        println("self constrains: \(self.constraints())")
-        println("self.contentView constrains: \(self.constraints())")
-//        for eachConstraint in self.constraints() {
-//            if eachConstraint.isKindOfClass(NSAutoresizingMaskLayoutConstraint.self) {
-//                self.removeConstraint(eachConstraint)
-//            }
-//        }
-        
-        autoRemoveConstraintsAffectingView()
-    }
 
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//        logMethod()
-//        println("typeLabel: \(typeLabel.frame)")
-//        println("addressLabel: \(addressLabel.frame)")
-//        println("asdhakjdhkjashdjkashdjkasdasdkjhasdkjhaskjdhkajshd")
-//        println("bounds: \(self.bounds)")
-//        println("contentView.bounds: \(self.contentView.bounds)")
-//        addressLabel.preferredMaxLayoutWidth = self.bounds.width - 2 * kLabelHorizontalInsets
-////        addressLabel.bounds = CGRectMake(0, 0, addressLabel.preferredMaxLayoutWidth, addressLabel.bounds.height)
-//        println("typeLabel: \(typeLabel.frame)")
-//        println("addressLabel: \(addressLabel.frame)")
-////        self.contentView.bounds = self.bounds
-//    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        addressLabel.preferredMaxLayoutWidth = self.bounds.width - 2 * kLabelHorizontalInsets
+    }
     
 }

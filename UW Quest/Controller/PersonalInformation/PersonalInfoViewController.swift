@@ -90,8 +90,9 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         logMethod()
         var cell: AddressCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(kAddressCellReuseIdentifier, forIndexPath: indexPath) as AddressCollectionViewCell
-        cell.setNeedsUpdateConstraints()
-        cell.updateConstraintsIfNeeded()
+        // There's no need to update constraints
+//        cell.setNeedsUpdateConstraints()
+//        cell.updateConstraintsIfNeeded()
         
         cell.setNeedsLayout()
         cell.layoutIfNeeded()
@@ -140,10 +141,10 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
         cell!.bounds = CGRectMake(0, 0, targetWidth, cell!.bounds.height)
         cell!.contentView.bounds = cell!.bounds
         
-//        // Not sure whether need to update constraint
-        cell!.setNeedsUpdateConstraints()
-        cell!.updateConstraintsIfNeeded()
-//
+//        // Not sure whether need to update constraint, no need
+//        cell!.setNeedsUpdateConstraints()
+//        cell!.updateConstraintsIfNeeded()
+
         // Layout subviews, this will let labels on this cell to set preferredMaxLayoutWidth
         cell!.setNeedsLayout()
         cell!.layoutIfNeeded()
