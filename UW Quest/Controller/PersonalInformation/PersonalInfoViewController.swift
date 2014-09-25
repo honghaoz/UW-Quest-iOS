@@ -139,10 +139,10 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
 //        println("contentView.bounds: \(cell!.contentView.bounds)")
 //
 //////        cell!.bounds = CGRectMake(0, 0, collectionView.contentSize.width - 20, CGRectGetHeight(cell!.bounds))
-//////        
-        cell!.setNeedsLayout()
-        cell!.layoutIfNeeded()
-        
+////////        
+//        cell!.setNeedsLayout()
+//        cell!.layoutIfNeeded()
+//        
         println("bounds: \(cell!.bounds)")
         println("contentView.bounds: \(cell!.contentView.bounds)")
 //

@@ -56,8 +56,14 @@ class AddressCollectionViewCell: UICollectionViewCell {
 
     override func layoutSubviews() {
         logMethod()
+        println("view constrains count: \(self.constraints().count)")
+        println("content constrains count: \(self.contentView.constraints().count)")
+        println("bounds: \(self.bounds)")
+        println("contentView.bounds: \(self.contentView.bounds)")
         super.layoutSubviews()
-        addressLabel.preferredMaxLayoutWidth = self.contentView.bounds.width - 2 * kLabelHorizontalInsets
+        println("adhkjashdjkashdjkahsdkjahsdjkhasjkdhkjashd")
+        addressLabel.preferredMaxLayoutWidth = self.bounds.width - 2 * kLabelHorizontalInsets
+        self.contentView.bounds = self.bounds
         println("view constrains count: \(self.constraints().count)")
         println("content constrains count: \(self.contentView.constraints().count)")
         println("bounds: \(self.bounds)")
