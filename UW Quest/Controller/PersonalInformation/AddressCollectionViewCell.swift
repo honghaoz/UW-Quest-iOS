@@ -16,22 +16,26 @@ class AddressCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     
-//    override init() {
-//        super.init()
-//        self.setup()
-//    }
-//    
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        self.setup()
-//    }
-//    
+    override init() {
+        logMethod()
+        super.init()
+        self.setup()
+    }
+    
+    override init(frame: CGRect) {
+        logMethod()
+        super.init(frame: frame)
+        self.setup()
+    }
+
     required init(coder aDecoder: NSCoder) {
+        logMethod()
         super.init(coder: aDecoder)
         self.setup()
     }
 
     func setup() {
+        logMethod()
         self.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.contentView.setTranslatesAutoresizingMaskIntoConstraints(false)
 //        logMethod(logMessage: "Cell Frame: \(self.frame)")
@@ -39,11 +43,18 @@ class AddressCollectionViewCell: UICollectionViewCell {
         self.layer.masksToBounds = true
         self.layer.cornerRadius = kBorderCornerRadius
         self.layer.borderWidth = kBorderWidth
+        println("bounds: \(self.bounds)")
+        println("contentView.bounds: \(self.contentView.bounds)")
     }
 //
     override func layoutSubviews() {
+        logMethod()
         super.layoutSubviews()
         addressLabel.preferredMaxLayoutWidth = self.contentView.bounds.width - 2 * kLabelHorizontalInsets
+        println("view constrains count: \(self.constraints().count)")
+        println("content constrains count: \(self.contentView.constraints().count)")
+        println("bounds: \(self.bounds)")
+        println("contentView.bounds: \(self.contentView.bounds)")
     }
     
 }

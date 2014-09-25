@@ -77,7 +77,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         logMethod()
-        return numberOfCells
+        return 1//numberOfCells
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -112,32 +112,48 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
     // MARK: - UICollectionViewFlowLayout Delegate
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         logMethod()
-////        let reuseIdentifier = kAddressCellReuseIdentifier
+        let reuseIdentifier = kAddressCellReuseIdentifier
 ////        var cell: AddressCollectionViewCell?
-//////        var cell: AddressCollectionViewCell? = self.offscreenCells[reuseIdentifier] as? AddressCollectionViewCell
-//////        if cell == nil {
-////            cell = collectionView.dequeueReusableCellWithReuseIdentifier(kAddressCellReuseIdentifier, forIndexPath: indexPath) as? AddressCollectionViewCell
-//////            self.offscreenCells[reuseIdentifier] = cell
-//////        }
-////        
-////        cell!.setNeedsUpdateConstraints()
-////        cell!.updateConstraintsIfNeeded()
-////        
+        var cell: AddressCollectionViewCell? = self.offscreenCells[reuseIdentifier] as? AddressCollectionViewCell
+        if cell == nil {
+            println("dequeue")
+            cell = collectionView.dequeueReusableCellWithReuseIdentifier(kAddressCellReuseIdentifier, forIndexPath: indexPath) as? AddressCollectionViewCell
+            self.offscreenCells[reuseIdentifier] = cell
+        }
+        
+        println("init cell!!!!!")
+        
+        println("bounds: \(cell!.bounds)")
+        println("contentView.bounds: \(cell!.contentView.bounds)")
+
+        cell!.setNeedsUpdateConstraints()
+        cell!.updateConstraintsIfNeeded()
+        
+        
+        println("bounds: \(cell!.bounds)")
+        println("contentView.bounds: \(cell!.contentView.bounds)")
+
 ////        cell!.bounds = CGRectMake(0, 0, collectionView.contentSize.width - 20, CGRectGetHeight(cell!.bounds))
 ////        
-////        cell!.setNeedsLayout()
-////        cell!.layoutIfNeeded()
-////        
+        cell!.setNeedsLayout()
+        cell!.layoutIfNeeded()
+        
+        println("bounds: \(cell!.bounds)")
+        println("contentView.bounds: \(cell!.contentView.bounds)")
+////
 ////        //
 //////        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kAddressCellReuseIdentifier, forIndexPath: indexPath) as UICollectionViewCell//self.collectionView(collectionView, cellForItemAtIndexPath: indexPath)
 //////        cell.setNeedsLayout()
 //////        cell.layoutIfNeeded()
-////        var size = cell!.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
-////        size.width = collectionView.contentSize.width - 20
-////        println("size: \(size)")
-////        return size
-        println("size: \(CGSizeMake(collectionView.contentSize.width - 20, 100))")
-        return CGSizeMake(collectionView.contentSize.width - 20, 100)
+        
+        
+        var size = cell!.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
+        println("old size: \(size)")
+        size.width = collectionView.contentSize.width - 20
+        println("new size: \(size)")
+        return size
+//        println("size: \(CGSizeMake(collectionView.contentSize.width - 20, 100))")
+//        return CGSizeMake(collectionView.contentSize.width - 20, 100)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
