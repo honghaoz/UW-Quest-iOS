@@ -10,6 +10,9 @@ import UIKit
 
 class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
+    let kSectionHorizontalInsets: CGFloat = 10.0
+    let kSectionVerticalInsets: CGFloat = 10.0
+    
 //    let kAddressesTitle = "Addresses"
 //    let kNamesTitle = "Names"
 //    let kPhoneNumbersTitle = "Phone Numbers"
@@ -81,7 +84,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         logMethod()
-        return 1//numberOfCells
+        return numberOfCells
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -89,7 +92,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
         var cell: UICollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(kAddressCellReuseIdentifier, forIndexPath: indexPath) as UICollectionViewCell
 //        cell.setNeedsUpdateConstraints()
 //        cell.updateConstraintsIfNeeded()
-        println("end cell for")
+
         return cell
     }
     
@@ -117,49 +120,39 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
     // MARK: - UICollectionViewFlowLayout Delegate
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         logMethod()
+        // Set up desired width
+        let targetWidth = collectionView.bounds.width - 2 * kSectionHorizontalInsets
+        
+        // Use fake cell to calculate height
         let reuseIdentifier = kAddressCellReuseIdentifier
-//////        var cell: AddressCollectionViewCell?
         var cell: AddressCollectionViewCell? = self.offscreenCells[reuseIdentifier] as? AddressCollectionViewCell
         if cell == nil {
-            println("dequeue")
             cell = NSBundle.mainBundle().loadNibNamed("AddressCollectionViewCell", owner: self, options: nil)[0] as? AddressCollectionViewCell
             self.offscreenCells[reuseIdentifier] = cell
         }
-
-        println("init cell!!!!!")
-//
-        println("bounds: \(cell!.bounds)")
-        println("contentView.bounds: \(cell!.contentView.bounds)")
-//
-//        cell!.setNeedsUpdateConstraints()
-//        cell!.updateConstraintsIfNeeded()
-//
-//        
-//        println("bounds: \(cell!.bounds)")
-//        println("contentView.bounds: \(cell!.contentView.bounds)")
-//
-//////        cell!.bounds = CGRectMake(0, 0, collectionView.contentSize.width - 20, CGRectGetHeight(cell!.bounds))
-////////        
-//        cell!.setNeedsLayout()
-//        cell!.layoutIfNeeded()
-//        
-        println("bounds: \(cell!.bounds)")
-        println("contentView.bounds: \(cell!.contentView.bounds)")
-//
-//        
-//        
+        
+        // Cell's size is determined in nib file, need to set it's width (in this case), and inside, use this cell's width to set label's preferredMaxLayoutWidth, thus, height can be determined, this size will be returned for real cell initialization
+        cell!.bounds = CGRectMake(0, 0, targetWidth, cell!.bounds.height)
+        cell!.contentView.bounds = cell!.bounds
+        
+        // Not sure whether need to update constraint
+        cell!.setNeedsUpdateConstraints()
+        cell!.updateConstraintsIfNeeded()
+        
+        // Layout subviews, this will let labels on this cell to set preferredMaxLayoutWidth
+        cell!.setNeedsLayout()
+        cell!.layoutIfNeeded()
+ 
         var size = cell!.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
-        println("old size: \(size)")
-        size.width = collectionView.bounds.width - 20
-        println("new size: \(size)")
+        // Still need to force the width, since width can be smalled due to break mode of labels
+        size.width = targetWidth
+        println("size: \(size)")
         return size
-//        println("size: \(CGSizeMake(collectionView.bounds.width - 20, 120))")
-//        return CGSizeMake(collectionView.bounds.width - 20, 120)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         logMethod()
-        return UIEdgeInsetsMake(10, 10, 10, 10)
+        return UIEdgeInsetsMake(kSectionVerticalInsets, kSectionHorizontalInsets, kSectionVerticalInsets, kSectionHorizontalInsets)
     }
     
     // MARK: - Header tap gesture action
@@ -171,7 +164,6 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
         self.numberOfCells = self.numberOfCells == 0 ? 1: 0
         
         self.collectionView.reloadSections(NSIndexSet(index: tappedSection))
-        
 //        Locator.sharedLocator.user.getPersonalInformation(User.PersonalInformationType.Addresses, success:{ _ in
 //            println("\(Locator.sharedLocator.user.personalInformation.addresses!)")
 //            }, failure: nil)

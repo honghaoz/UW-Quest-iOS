@@ -16,58 +16,38 @@ class AddressCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     
-//    override init() {
-//        logMethod()
-//        super.init()
-//        self.setup()
-//    }
-//    
-//    override init(frame: CGRect) {
-//        logMethod()
-//        super.init(frame: frame)
-//        self.setup()
-//    }
-//
-//    required init(coder aDecoder: NSCoder) {
-//        logMethod()
-//        super.init(coder: aDecoder)
-//        self.setup()
-//    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-        logMethod()
         setup()
-        // Initialization code
     }
-
+    
+    /**
+        Setup up cell's appearance
+    */
     func setup() {
-        logMethod()
-//        self.setTranslatesAutoresizingMaskIntoConstraints(false)
-//        self.contentView.setTranslatesAutoresizingMaskIntoConstraints(false)
-//        logMethod(logMessage: "Cell Frame: \(self.frame)")
+        println("typeLabel: \(typeLabel.frame)")
+        println("addressLabel: \(addressLabel.frame)")
         self.layer.borderColor = UQCellBackgroundColor.CGColor
         self.layer.masksToBounds = true
         self.layer.cornerRadius = kBorderCornerRadius
         self.layer.borderWidth = kBorderWidth
+        logMethod()
         println("bounds: \(self.bounds)")
         println("contentView.bounds: \(self.contentView.bounds)")
     }
 
     override func layoutSubviews() {
-        logMethod()
-        println("view constrains count: \(self.constraints().count)")
-        println("content constrains count: \(self.contentView.constraints().count)")
-        println("bounds: \(self.bounds)")
-        println("contentView.bounds: \(self.contentView.bounds)")
         super.layoutSubviews()
-        println("adhkjashdjkashdjkahsdkjahsdjkhasjkdhkjashd")
-        addressLabel.preferredMaxLayoutWidth = self.bounds.width - 2 * kLabelHorizontalInsets
-        self.contentView.bounds = self.bounds
-        println("view constrains count: \(self.constraints().count)")
-        println("content constrains count: \(self.contentView.constraints().count)")
-        println("bounds: \(self.bounds)")
-        println("contentView.bounds: \(self.contentView.bounds)")
+        logMethod()
+        println("typeLabel: \(typeLabel.frame)")
+        println("addressLabel: \(addressLabel.frame)")
+        println("asdhakjdhkjashdjkashdjkasdasdkjhasdkjhaskjdhkajshd")
+//        println("bounds: \(self.bounds)")
+//        println("contentView.bounds: \(self.contentView.bounds)")
+        addressLabel.preferredMaxLayoutWidth = self.contentView.bounds.width - 2 * kLabelHorizontalInsets
+        println("typeLabel: \(typeLabel.frame)")
+        println("addressLabel: \(addressLabel.frame)")
+//        self.contentView.bounds = self.bounds
     }
     
 }
