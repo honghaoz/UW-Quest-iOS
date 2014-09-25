@@ -44,6 +44,9 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
         self.navigationController?.view.addGestureRecognizer(self.slidingViewController().panGesture)
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+        // Register cells
+        collectionView.registerClass(AddressCollectionViewCell.self, forCellWithReuseIdentifier: kAddressCellReuseIdentifier)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -112,32 +115,37 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
     // MARK: - UICollectionViewFlowLayout Delegate
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         logMethod()
-////        let reuseIdentifier = kAddressCellReuseIdentifier
-////        var cell: AddressCollectionViewCell?
-//////        var cell: AddressCollectionViewCell? = self.offscreenCells[reuseIdentifier] as? AddressCollectionViewCell
-//////        if cell == nil {
-////            cell = collectionView.dequeueReusableCellWithReuseIdentifier(kAddressCellReuseIdentifier, forIndexPath: indexPath) as? AddressCollectionViewCell
-//////            self.offscreenCells[reuseIdentifier] = cell
-//////        }
-////        
-////        cell!.setNeedsUpdateConstraints()
-////        cell!.updateConstraintsIfNeeded()
-////        
+        let reuseIdentifier = kAddressCellReuseIdentifier
+        var cell: AddressCollectionViewCell? = self.offscreenCells[reuseIdentifier] as? AddressCollectionViewCell
+        if cell == nil {
+            cell = AddressCollectionViewCell()
+            self.offscreenCells[reuseIdentifier] = cell
+        }
+//        cell!.setLabelPreferredMaxLayoutWidth(collectionView.contentSize.width - 20)
+        println("init cell!!!!!")
+        cell!.setNeedsUpdateConstraints()
+        cell!.updateConstraintsIfNeeded()
+//
 ////        cell!.bounds = CGRectMake(0, 0, collectionView.contentSize.width - 20, CGRectGetHeight(cell!.bounds))
-////        
-////        cell!.setNeedsLayout()
-////        cell!.layoutIfNeeded()
-////        
-////        //
-//////        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kAddressCellReuseIdentifier, forIndexPath: indexPath) as UICollectionViewCell//self.collectionView(collectionView, cellForItemAtIndexPath: indexPath)
-//////        cell.setNeedsLayout()
-//////        cell.layoutIfNeeded()
-////        var size = cell!.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
-////        size.width = collectionView.contentSize.width - 20
-////        println("size: \(size)")
-////        return size
-        println("size: \(CGSizeMake(collectionView.contentSize.width - 20, 100))")
-        return CGSizeMake(collectionView.contentSize.width - 20, 100)
+//        
+        cell!.setNeedsLayout()
+        cell!.layoutIfNeeded()
+//
+//        cell!.setNeedsUpdateConstraints()
+//        cell!.updateConstraintsIfNeeded()
+        
+        //
+//        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kAddressCellReuseIdentifier, forIndexPath: indexPath) as UICollectionViewCell//self.collectionView(collectionView, cellForItemAtIndexPath: indexPath)
+//        cell.setNeedsLayout()
+//        cell.layoutIfNeeded()
+        var size = cell!.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
+        println("address label: \(cell!.addressLabel.frame)")
+        size.width = collectionView.contentSize.width - 20
+//        size.height = 300
+        println("size: \(size)")
+        return size
+//        println("size: \(CGSizeMake(collectionView.contentSize.width - 20, 100))")
+//        return CGSizeMake(collectionView.contentSize.width - 20, 100)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
