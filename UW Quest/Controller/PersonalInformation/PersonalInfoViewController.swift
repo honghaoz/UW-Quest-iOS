@@ -90,8 +90,11 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         logMethod()
         var cell: AddressCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(kAddressCellReuseIdentifier, forIndexPath: indexPath) as AddressCollectionViewCell
-//        cell.setNeedsUpdateConstraints()
-//        cell.updateConstraintsIfNeeded()
+        cell.setNeedsUpdateConstraints()
+        cell.updateConstraintsIfNeeded()
+        
+        cell.setNeedsLayout()
+        cell.layoutIfNeeded()
         println("    typeLabel: \(cell.typeLabel.frame)")
         println("    addressLabel: \(cell.addressLabel.frame)")
         
