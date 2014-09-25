@@ -15,6 +15,7 @@
 
 #import "ECSlidingViewController.h"
 #import "UIViewController+ECSlidingViewController.h"
+#import <PureLayout/PureLayout.h>
 
 // Analytics
 #import <Appsee/Appsee.h>
