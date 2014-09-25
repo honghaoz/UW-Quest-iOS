@@ -36,8 +36,7 @@
 		FA8C1D6419C75B0800D6E158 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8C1D6319C75B0800D6E158 /* User.swift */; };
 		FACE198719C9EB05001FD4C9 /* QuestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACE198619C9EB05001FD4C9 /* QuestClient.swift */; };
 		FACE198A19C9EC2D001FD4C9 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FACE198919C9EC2D001FD4C9 /* Crashlytics.framework */; };
-		FADDD6CE19D476BB003EC88D /* UQCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADDD6CC19D476BB003EC88D /* UQCollectionViewCell.swift */; };
-		FADDD6CF19D476BB003EC88D /* UQCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FADDD6CD19D476BB003EC88D /* UQCollectionViewCell.xib */; };
+		FADDD6CF19D476BB003EC88D /* AddressCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FADDD6CD19D476BB003EC88D /* AddressCollectionViewCell.xib */; };
 		FAF2291F19C937180041C36F /* ZHHParseDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF2291E19C937180041C36F /* ZHHParseDevice.m */; };
 		FAF2292419C937620041C36F /* UIApplication+AppVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF2292119C937620041C36F /* UIApplication+AppVersion.m */; };
 		FAF2292519C937620041C36F /* UIDevice-Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF2292319C937620041C36F /* UIDevice-Hardware.m */; };
@@ -94,8 +93,7 @@
 		FA8C1D6319C75B0800D6E158 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FACE198619C9EB05001FD4C9 /* QuestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestClient.swift; sourceTree = "<group>"; };
 		FACE198919C9EC2D001FD4C9 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		FADDD6CC19D476BB003EC88D /* UQCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UQCollectionViewCell.swift; sourceTree = "<group>"; };
-		FADDD6CD19D476BB003EC88D /* UQCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UQCollectionViewCell.xib; sourceTree = "<group>"; };
+		FADDD6CD19D476BB003EC88D /* AddressCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressCollectionViewCell.xib; sourceTree = "<group>"; };
 		FAF2291D19C937180041C36F /* ZHHParseDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHHParseDevice.h; sourceTree = "<group>"; };
 		FAF2291E19C937180041C36F /* ZHHParseDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHHParseDevice.m; sourceTree = "<group>"; };
 		FAF2292019C937620041C36F /* UIApplication+AppVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+AppVersion.h"; sourceTree = "<group>"; };
@@ -246,8 +244,7 @@
 			children = (
 				1B520C5219CE8A2000A0ADE6 /* PersonalInfoViewController.swift */,
 				1B8615AD19CFD79A0064505C /* AddressCollectionViewCell.swift */,
-				FADDD6CC19D476BB003EC88D /* UQCollectionViewCell.swift */,
-				FADDD6CD19D476BB003EC88D /* UQCollectionViewCell.xib */,
+				FADDD6CD19D476BB003EC88D /* AddressCollectionViewCell.xib */,
 			);
 			path = PersonalInformation;
 			sourceTree = "<group>";
@@ -408,7 +405,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B7CF10F19BCEF28007A157D /* Login.storyboard in Resources */,
-				FADDD6CF19D476BB003EC88D /* UQCollectionViewCell.xib in Resources */,
+				FADDD6CF19D476BB003EC88D /* AddressCollectionViewCell.xib in Resources */,
 				FA79657819C90BB000852C84 /* LaunchView.xib in Resources */,
 				1B520C5419CE8EB900A0ADE6 /* MainSlide.storyboard in Resources */,
 				1B7CF11119BCEF28007A157D /* Images.xcassets in Resources */,
@@ -472,7 +469,6 @@
 				FAF2292419C937620041C36F /* UIApplication+AppVersion.m in Sources */,
 				1B563F9619C496BF001785D9 /* BaseButton.swift in Sources */,
 				1B520C4F19CE888300A0ADE6 /* MenuViewController.swift in Sources */,
-				FADDD6CE19D476BB003EC88D /* UQCollectionViewCell.swift in Sources */,
 				1B7CF10A19BCEF28007A157D /* AppDelegate.swift in Sources */,
 				FAF2292519C937620041C36F /* UIDevice-Hardware.m in Sources */,
 				FA79657619C9079F00852C84 /* Locator.swift in Sources */,

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UW Quest/Controller/PersonalInformation/PersonalInfoViewController.swift"
-            timestampString = "433300378.276999"
+            timestampString = "433365561.501948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "collectionView(_:cellForItemAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "UW Quest/Controller/PersonalInformation/PersonalInfoViewController.swift"
-            timestampString = "433353898.803497"
+            filePath = "UW Quest/Controller/PersonalInformation/AddressCollectionViewCell.swift"
+            timestampString = "433365598.26792"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "collectionView(_:layout:sizeForItemAtIndexPath:)"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "setup()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -16,28 +16,35 @@ class AddressCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     
-    override init() {
-        logMethod()
-        super.init()
-        self.setup()
-    }
+//    override init() {
+//        logMethod()
+//        super.init()
+//        self.setup()
+//    }
+//    
+//    override init(frame: CGRect) {
+//        logMethod()
+//        super.init(frame: frame)
+//        self.setup()
+//    }
+//
+//    required init(coder aDecoder: NSCoder) {
+//        logMethod()
+//        super.init(coder: aDecoder)
+//        self.setup()
+//    }
     
-    override init(frame: CGRect) {
+    override func awakeFromNib() {
+        super.awakeFromNib()
         logMethod()
-        super.init(frame: frame)
-        self.setup()
-    }
-
-    required init(coder aDecoder: NSCoder) {
-        logMethod()
-        super.init(coder: aDecoder)
-        self.setup()
+        setup()
+        // Initialization code
     }
 
     func setup() {
         logMethod()
-        self.setTranslatesAutoresizingMaskIntoConstraints(false)
-        self.contentView.setTranslatesAutoresizingMaskIntoConstraints(false)
+//        self.setTranslatesAutoresizingMaskIntoConstraints(false)
+//        self.contentView.setTranslatesAutoresizingMaskIntoConstraints(false)
 //        logMethod(logMessage: "Cell Frame: \(self.frame)")
         self.layer.borderColor = UQCellBackgroundColor.CGColor
         self.layer.masksToBounds = true
@@ -46,7 +53,7 @@ class AddressCollectionViewCell: UICollectionViewCell {
         println("bounds: \(self.bounds)")
         println("contentView.bounds: \(self.contentView.bounds)")
     }
-//
+
     override func layoutSubviews() {
         logMethod()
         super.layoutSubviews()
