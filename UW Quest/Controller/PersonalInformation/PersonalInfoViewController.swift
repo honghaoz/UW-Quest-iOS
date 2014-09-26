@@ -10,6 +10,8 @@ import UIKit
 
 class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
+    let address: String = "<NSAutoresizingMaskLayoutConstraint:0x7fd979fcc9f0 h=-&- v=-&->"
+    
     let kSectionHorizontalInsets: CGFloat = 10.0
     let kSectionVerticalInsets: CGFloat = 10.0
     
@@ -78,32 +80,27 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
     
     // MARK: - UICollectionViewDataSource
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        logMethod()
         return 1
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        logMethod()
         return numberOfCells
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        logMethod()
         var cell: AddressCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(kAddressCellReuseIdentifier, forIndexPath: indexPath) as AddressCollectionViewCell
+        
+        cell.configWithType("Home", address: address)
+        
         // There's no need to update constraints
-//        cell.setNeedsUpdateConstraints()
-//        cell.updateConstraintsIfNeeded()
+        //        cell.setNeedsUpdateConstraints()
+        //        cell.updateConstraintsIfNeeded()
         
-        cell.setNeedsLayout()
         cell.layoutIfNeeded()
-        println("    typeLabel: \(cell.typeLabel.frame)")
-        println("    addressLabel: \(cell.addressLabel.frame)")
-        
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        logMethod()
         var headerView: UQCollectionReusableView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: kHeaderViewReuseIdentifier, forIndexPath: indexPath) as UQCollectionReusableView
         
         // First section header, hide topSeparator line
@@ -125,9 +122,8 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
     
     // MARK: - UICollectionViewFlowLayout Delegate
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        logMethod()
         // Set up desired width
-        let targetWidth = collectionView.bounds.width - 2 * kSectionHorizontalInsets
+        let targetWidth: CGFloat = 140//collectionView.bounds.width - 2 * kSectionHorizontalInsets
         
         // Use fake cell to calculate height
         let reuseIdentifier = kAddressCellReuseIdentifier
@@ -136,6 +132,8 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
             cell = NSBundle.mainBundle().loadNibNamed("AddressCollectionViewCell", owner: self, options: nil)[0] as? AddressCollectionViewCell
             self.offscreenCells[reuseIdentifier] = cell
         }
+        
+        cell!.configWithType("Home", address: address)
         
         // Cell's size is determined in nib file, need to set it's width (in this case), and inside, use this cell's width to set label's preferredMaxLayoutWidth, thus, height can be determined, this size will be returned for real cell initialization
         cell!.bounds = CGRectMake(0, 0, targetWidth, cell!.bounds.height)
@@ -152,13 +150,19 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
         var size = cell!.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
         // Still need to force the width, since width can be smalled due to break mode of labels
         size.width = targetWidth
-        println("size: \(size)")
         return size
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        logMethod()
         return UIEdgeInsetsMake(kSectionVerticalInsets, kSectionHorizontalInsets, kSectionVerticalInsets, kSectionHorizontalInsets)
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return kSectionHorizontalInsets
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return kSectionVerticalInsets
     }
     
     // MARK: - Header tap gesture action
@@ -167,8 +171,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
         println("tapped header: \(headerView.indexPath)")
         let tappedSection = headerView.indexPath.section
         
-        self.numberOfCells = self.numberOfCells == 0 ? 1: 0
-        
+        self.numberOfCells = self.numberOfCells == 0 ? 7: 0
         self.collectionView.reloadSections(NSIndexSet(index: tappedSection))
 //        Locator.sharedLocator.user.getPersonalInformation(User.PersonalInformationType.Addresses, success:{ _ in
 //            println("\(Locator.sharedLocator.user.personalInformation.addresses!)")
@@ -178,6 +181,19 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
 //        Locator.sharedLocator.user.getPersonalInformation(User.PersonalInformation.EmergencyContacts, success: nil, failure: nil)
 //        Locator.sharedLocator.user.getPersonalInformation(User.PersonalInformation.DemographicInformation, success: nil, failure: nil)
 //        Locator.sharedLocator.user.getPersonalInformation(User.PersonalInformation.CitizenshipImmigrationDocuments, success: nil, failure: nil)
+    }
+    
+    // MARK: - Rotation
+    // iOS7
+    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        logMethod()
+        collectionView.collectionViewLayout.invalidateLayout()
+    }
+    
+    // iOS8
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        logMethod()
+        collectionView.collectionViewLayout.invalidateLayout()
     }
     
     // MARK: - Helper

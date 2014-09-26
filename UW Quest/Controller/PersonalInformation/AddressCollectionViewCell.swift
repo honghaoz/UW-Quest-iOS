@@ -25,9 +25,6 @@ class AddressCollectionViewCell: UICollectionViewCell {
         Setup up cell's appearance
     */
     func setup() {
-        
-        self.addressLabel.text = "<NSAutoresizingMaskLayoutConstraint:0x7fd979fcc9f0 h=-&- v=-&- UIView:0x7fd979f90580.midX == UW_Quest.AddressCollectionViewCell:0x7fd979f90010.midX>, <NSAutoresizingMaskLayoutConstraint:0x7fd979fcca50 h=-&- v=-&- UIView:0x7fd979f90580.width == UW_Quest.AddressCollectionViewCell:0x7fd979f90010.width>, <NSAutoresizingMaskLayoutConstraint:0x7fd979fccaa0 h=-&- v=-&- UIView:0x7fd979f90580.midY == UW_Quest.AddressCollectionViewCell:0x7fd979f90010.midY>, <NSAutoresizingMaskLayoutConstraint:0x7fd979fccb10 h=-&- v=-&- UIView:0x7fd979f90580.height == UW_Quest.AddressCollectionViewCe"
-        
         if isIOS7 {
             // Need set autoresizingMask to let contentView always occupy this view's bounds
             self.contentView.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth
@@ -36,11 +33,15 @@ class AddressCollectionViewCell: UICollectionViewCell {
         self.layer.masksToBounds = true
         self.layer.cornerRadius = kBorderCornerRadius
         self.layer.borderWidth = kBorderWidth
-        self.backgroundColor = UIColor.blueColor()
-        self.contentView.backgroundColor = UIColor.greenColor()
-        logMethod()
-        println("bounds: \(self.bounds)")
-        println("contentView.bounds: \(self.contentView.bounds)")
+        self.backgroundColor = UIColor.clearColor()
+        self.contentView.backgroundColor = UQCellBackgroundColor
+    }
+    
+    func configWithType(type: String, address: String) {
+        self.typeLabel.text = type
+        self.addressLabel.text = address
+        self.setNeedsLayout()
+        self.layoutIfNeeded()
     }
 
     override func layoutSubviews() {
