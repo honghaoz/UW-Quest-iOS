@@ -23,12 +23,14 @@ enum PersonalInformationType: String {
 class PersonalInformation {
     
     let categories: [String]!
-    var addresses: [Address]?
+    var addresses: [Address]!
+    var names: [Name]!
     
     init() {
         println("PersonalInformation inited")
         categories = PersonalInformationType.allValues
         addresses = []
+        names = []
     }
     
     class Address {
@@ -89,24 +91,75 @@ class PersonalInformation {
         return false
     }
     
-//    class Name {
-//        var firstName: String
-//        var lastName: String
-//        var middleName: String
-//        var namePrefix: String
-//        var nameSuffix: String
-//        var nameType: String
-//        
-//        init(firstName: String, lastName: String, middleName: String, namePrefix: String, nameSuffix: String, nameType: String) {
-//            self.firstName = firstName
-//            self.lastName = lastName
-//            self.middleName = middleName
-//            self.namePrefix = namePrefix
-//            self.nameSuffix = nameSuffix
-//            self.nameType = nameType
-//        }
-//    }
-//    
+    class Name {
+        var firstName: String
+        var lastName: String
+        var middleName: String
+        var namePrefix: String
+        var nameSuffix: String
+        var nameType: String
+        
+        class func kFirstName() -> String {return "first_name"}
+        class func kLastName() -> String {return "last_name"}
+        class func kMiddleName() -> String {return "middle_name"}
+        class func kNamePrefix() -> String {return "name_prefix"}
+        class func kNameSuffix() -> String {return "name_suffix"}
+        class func kNameType() -> String {return "name_type"}
+        
+        class func newName(rawDict: Dictionary<String, String>) -> Name? {
+            let firstName: String? = rawDict[Name.kFirstName()]
+            let lastName: String? = rawDict[Name.kLastName()]
+            let middleName: String? = rawDict[Name.kMiddleName()]
+            let namePrefix: String? = rawDict[Name.kNamePrefix()]
+            let nameSuffix: String? = rawDict[Name.kNameSuffix()]
+            let nameType: String? = rawDict[Name.kNameType()]
+            
+            if (firstName != nil) && (lastName != nil) && (middleName != nil) && (namePrefix != nil) && (nameSuffix != nil) && (nameType != nil) {
+                return Name(firstName: firstName!, lastName: lastName!, middleName: middleName!, namePrefix: namePrefix!, nameSuffix: nameSuffix!, nameType: nameType!)
+            }
+            return nil
+        }
+        
+        init(firstName: String, lastName: String, middleName: String, namePrefix: String, nameSuffix: String, nameType: String) {
+            self.firstName = firstName
+            self.lastName = lastName
+            self.middleName = middleName
+            self.namePrefix = namePrefix
+            self.nameSuffix = nameSuffix
+            self.nameType = nameType
+        }
+    }
+    
+    func initNames(rawData: AnyObject) -> Bool {
+        // Passed in a dictionary
+        if let dataDict = rawData as? Dictionary<String, String> {
+            if let newName: Name = Name.newName(dataDict) {
+                self.names = [newName]
+                return true
+            }
+            return false
+        }
+        
+        // Passed in an array of dictionary
+        if let dataArray = rawData as? [Dictionary<String, String>] {
+            var tempNames = [Name]()
+            for eachDataDict in dataArray {
+                if let newName: Name = Name.newName(eachDataDict) {
+                    tempNames.append(newName)
+                } else {
+                    // Some error happens
+                    self.names = nil
+                    return false
+                }
+            }
+            // If goes here, no error happens
+            self.names = tempNames
+            return true
+        }
+        // Invalid type
+        return false
+    }
+//
 //    class PhoneNumber {
 //        var country: String
 //        var ext: String

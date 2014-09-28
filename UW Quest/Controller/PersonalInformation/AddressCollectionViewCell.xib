@@ -14,17 +14,9 @@
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Home" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LqE-xK-kfP" userLabel="TypeLabel">
                         <rect key="frame" x="8" y="8" width="284" height="19"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="22" id="WiR-AU-nU5"/>
-                        </constraints>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                         <color key="textColor" white="0.29999999999999999" alpha="0.90000000000000002" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="WiR-AU-nU5"/>
-                            </mask>
-                        </variation>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalHuggingPriority="999" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="101-137 UNIVERSITY AVE. W, WATERLOO Ontario N2L 3E6 Canada," lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="304" translatesAutoresizingMaskIntoConstraints="NO" id="dlg-eA-UVE" userLabel="AddressLabel">
                         <rect key="frame" x="8" y="35" width="284" height="44"/>
@@ -49,7 +41,7 @@
                 <outlet property="addressLabel" destination="dlg-eA-UVE" id="9ep-Df-1Rj"/>
                 <outlet property="typeLabel" destination="LqE-xK-kfP" id="GDs-LZ-NjZ"/>
             </connections>
-            <point key="canvasLocation" x="281" y="163.5"/>
+            <point key="canvasLocation" x="31" y="-39.5"/>
         </collectionViewCell>
     </objects>
 </document>

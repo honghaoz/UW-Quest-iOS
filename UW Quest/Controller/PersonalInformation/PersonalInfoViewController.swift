@@ -17,7 +17,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
     
     let kHeaderViewReuseIdentifier = "HeaderView"
     let kAddressCellReuseIdentifier = "AddressCell"
-//    let kNameCellResueIdentifier = "NameCell"
+    let kNameCellResueIdentifier = "NameCell"
 //    let kPhoneNumberCellResueIdentifier = "PhoneNumberCell"
 //    let kEmailAddressCellResueIdentifier = "EmailAddressCell"
 //    let kEmergencyContactCellResueIdentifier = "EmergencyContactCell"
@@ -43,6 +43,8 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
         // Register cells
         var addressCellNib = UINib(nibName: "AddressCollectionViewCell", bundle: nil)
         collectionView.registerNib(addressCellNib, forCellWithReuseIdentifier: kAddressCellReuseIdentifier)
+        var nameCellNib = UINib(nibName: "NameCollectionViewCell", bundle: nil)
+        collectionView.registerNib(nameCellNib, forCellWithReuseIdentifier: kNameCellResueIdentifier)
         
         // Setup
         sharedPersonalInformation = Locator.sharedLocator.user.personalInformation
@@ -83,7 +85,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
             case PersonalInformationType.Addresses:
                 return sharedPersonalInformation.addresses!.count
             case PersonalInformationType.Names:
-                return 0
+                return sharedPersonalInformation.names!.count
             case PersonalInformationType.PhoneNumbers:
                 return 0
             case PersonalInformationType.EmailAddresses:
@@ -104,11 +106,37 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        var cell: AddressCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(kAddressCellReuseIdentifier, forIndexPath: indexPath) as AddressCollectionViewCell
-        
-        let address: PersonalInformation.Address = sharedPersonalInformation.addresses![indexPath.item]
-        cell.configWithType(address.type, address: address.address)
-        
+        let type: PersonalInformationType = PersonalInformationType.fromRaw(sharedPersonalInformation.categories[indexPath.section])!
+        var cell: UICollectionViewCell!
+        switch type {
+        case PersonalInformationType.Addresses:
+            var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kAddressCellReuseIdentifier, forIndexPath: indexPath) as AddressCollectionViewCell
+            
+            let address: PersonalInformation.Address = sharedPersonalInformation.addresses![indexPath.item]
+            aCell.configWithType(address.type, address: address.address)
+            cell = aCell
+            break
+        case PersonalInformationType.Names:
+            var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kNameCellResueIdentifier, forIndexPath: indexPath) as NameCollectionViewCell
+            
+            let name: PersonalInformation.Name = sharedPersonalInformation.names![indexPath.item]
+            aCell.configWithType(name.nameType, firstName: name.firstName, middleName: name.middleName, lastName: name.lastName, namePrefix: name.namePrefix, nameSuffix: name.nameSuffix)
+            cell = aCell
+            break
+        case PersonalInformationType.PhoneNumbers:
+            break
+        case PersonalInformationType.EmailAddresses:
+            break
+        case PersonalInformationType.EmergencyContacts:
+            break
+        case PersonalInformationType.DemographicInformation:
+            break
+        case PersonalInformationType.CitizenshipImmigrationDocuments:
+            break
+        default:
+            assert(false, "Wrong PersonalInformation Type")
+            break
+        }
         cell.layoutIfNeeded()
         return cell
     }
@@ -148,17 +176,50 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
         // Set up desired width
         let targetWidth: CGFloat = collectionView.bounds.width - 2 * kSectionHorizontalInsets
         
-        // Use fake cell to calculate height
-        let reuseIdentifier = kAddressCellReuseIdentifier
-        var cell: AddressCollectionViewCell? = self.offscreenCells[reuseIdentifier] as? AddressCollectionViewCell
-        if cell == nil {
-            cell = NSBundle.mainBundle().loadNibNamed("AddressCollectionViewCell", owner: self, options: nil)[0] as? AddressCollectionViewCell
-            self.offscreenCells[reuseIdentifier] = cell
+        let type: PersonalInformationType = PersonalInformationType.fromRaw(sharedPersonalInformation.categories[indexPath.section])!
+        var cell: UICollectionViewCell!
+        switch type {
+        case PersonalInformationType.Addresses:
+            // Use fake cell to calculate height
+            let reuseIdentifier = kAddressCellReuseIdentifier
+            var aCell: AddressCollectionViewCell? = self.offscreenCells[reuseIdentifier] as? AddressCollectionViewCell
+            if aCell == nil {
+                aCell = NSBundle.mainBundle().loadNibNamed("AddressCollectionViewCell", owner: self, options: nil)[0] as? AddressCollectionViewCell
+                self.offscreenCells[reuseIdentifier] = aCell
+            }
+            
+            let address: PersonalInformation.Address = sharedPersonalInformation.addresses![indexPath.item]
+            
+            aCell!.configWithType(address.type, address: address.address)
+            cell = aCell
+            break
+        case PersonalInformationType.Names:
+            // Use fake cell to calculate height
+            let reuseIdentifier = kNameCellResueIdentifier
+            var aCell: NameCollectionViewCell? = self.offscreenCells[reuseIdentifier] as? NameCollectionViewCell
+            if aCell == nil {
+                aCell = NSBundle.mainBundle().loadNibNamed("NameCollectionViewCell", owner: self, options: nil)[0] as? NameCollectionViewCell
+                self.offscreenCells[reuseIdentifier] = aCell
+            }
+            
+            let name: PersonalInformation.Name = sharedPersonalInformation.names![indexPath.item]
+            aCell!.configWithType(name.nameType, firstName: name.firstName, middleName: name.middleName, lastName: name.lastName, namePrefix: name.namePrefix, nameSuffix: name.nameSuffix)
+            cell = aCell
+            break
+        case PersonalInformationType.PhoneNumbers:
+            break
+        case PersonalInformationType.EmailAddresses:
+            break
+        case PersonalInformationType.EmergencyContacts:
+            break
+        case PersonalInformationType.DemographicInformation:
+            break
+        case PersonalInformationType.CitizenshipImmigrationDocuments:
+            break
+        default:
+            assert(false, "Wrong PersonalInformation Type")
+            break
         }
-        
-        let address: PersonalInformation.Address = sharedPersonalInformation.addresses![indexPath.item]
-        
-        cell!.configWithType(address.type, address: address.address)
         
         // Cell's size is determined in nib file, need to set it's width (in this case), and inside, use this cell's width to set label's preferredMaxLayoutWidth, thus, height can be determined, this size will be returned for real cell initialization
         cell!.bounds = CGRectMake(0, 0, targetWidth, cell!.bounds.height)
@@ -193,7 +254,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
     // MARK: - Header tap gesture action
     func headerViewTapped(tapGesture: UITapGestureRecognizer) {
         var headerView = tapGesture.view as UQCollectionReusableView
-        currentShowingSection = headerView.indexPath.section
+        currentShowingSection = currentShowingSection == headerView.indexPath.section ? -1 : headerView.indexPath.section
         
         let tappedCase: PersonalInformationType = PersonalInformationType.fromRaw(sharedPersonalInformation.categories[headerView.indexPath.section])!
         println("tapped header: \(tappedCase.toRaw())")
@@ -201,31 +262,34 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
         Locator.sharedLocator.user.getPersonalInformation(tappedCase, success:{ _ in
             switch tappedCase {
             case PersonalInformationType.Addresses:
-                println("\(Locator.sharedLocator.user.personalInformation.addresses!)")
+                println("addresses count: \(self.sharedPersonalInformation.addresses.count)")
                 break
             case PersonalInformationType.Names:
-                return
+                println("names count: \(self.sharedPersonalInformation.names.count)")
+                break
             case PersonalInformationType.PhoneNumbers:
-                return
+                break
             case PersonalInformationType.EmailAddresses:
-                return
+                break
             case PersonalInformationType.EmergencyContacts:
-                return
+                break
             case PersonalInformationType.DemographicInformation:
-                return
+                break
             case PersonalInformationType.CitizenshipImmigrationDocuments:
-                return
+                break
             default:
                 assert(false, "Wrong PersonalInformation Type")
             }
 
             // Refresh tapped section
             let tappedSection = headerView.indexPath.section
-            self.collectionView.reloadSections(NSIndexSet(indexesInRange: NSRange(location: tappedSection, length: 1)))
+            self.collectionView.reloadSections(NSIndexSet(index: tappedSection))
             
             // Refresh other sections
             self.collectionView.reloadSections(NSIndexSet(indexesInRange: NSRange(location: 0, length: self.numberOfSectionsInCollectionView(self.collectionView))))
             self.collectionView.collectionViewLayout.invalidateLayout()
+//            self.collectionView.reloadData()
+            self.collectionView.scrollToItemAtIndexPath(headerView.indexPath, atScrollPosition: UICollectionViewScrollPosition.Top, animated: true)
             }, failure: nil)
     }
     

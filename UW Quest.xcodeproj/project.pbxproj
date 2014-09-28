@@ -13,6 +13,8 @@
 		1B520C5419CE8EB900A0ADE6 /* MainSlide.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B520C5619CE8EB900A0ADE6 /* MainSlide.storyboard */; };
 		1B563F9619C496BF001785D9 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B563F9519C496BF001785D9 /* BaseButton.swift */; };
 		1B5BF35219C3F8470005626F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5BF35119C3F8470005626F /* LoginViewController.swift */; };
+		1B64007919D8977D00C35E44 /* NameCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B64007719D8977D00C35E44 /* NameCollectionViewCell.swift */; };
+		1B64007A19D8977D00C35E44 /* NameCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B64007819D8977D00C35E44 /* NameCollectionViewCell.xib */; };
 		1B7CF10A19BCEF28007A157D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7CF10919BCEF28007A157D /* AppDelegate.swift */; };
 		1B7CF10F19BCEF28007A157D /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B7CF10D19BCEF28007A157D /* Login.storyboard */; };
 		1B7CF11119BCEF28007A157D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B7CF11019BCEF28007A157D /* Images.xcassets */; };
@@ -64,6 +66,8 @@
 		1B520C5519CE8EB900A0ADE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainSlide.storyboard; sourceTree = "<group>"; };
 		1B563F9519C496BF001785D9 /* BaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		1B5BF35119C3F8470005626F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		1B64007719D8977D00C35E44 /* NameCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameCollectionViewCell.swift; sourceTree = "<group>"; };
+		1B64007819D8977D00C35E44 /* NameCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NameCollectionViewCell.xib; sourceTree = "<group>"; };
 		1B7CF10419BCEF28007A157D /* UW Quest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UW Quest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B7CF10819BCEF28007A157D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1B7CF10919BCEF28007A157D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -245,6 +249,8 @@
 				1B520C5219CE8A2000A0ADE6 /* PersonalInfoViewController.swift */,
 				1B8615AD19CFD79A0064505C /* AddressCollectionViewCell.swift */,
 				FADDD6CD19D476BB003EC88D /* AddressCollectionViewCell.xib */,
+				1B64007719D8977D00C35E44 /* NameCollectionViewCell.swift */,
+				1B64007819D8977D00C35E44 /* NameCollectionViewCell.xib */,
 			);
 			path = PersonalInformation;
 			sourceTree = "<group>";
@@ -407,6 +413,7 @@
 				1B7CF10F19BCEF28007A157D /* Login.storyboard in Resources */,
 				FADDD6CF19D476BB003EC88D /* AddressCollectionViewCell.xib in Resources */,
 				FA79657819C90BB000852C84 /* LaunchView.xib in Resources */,
+				1B64007A19D8977D00C35E44 /* NameCollectionViewCell.xib in Resources */,
 				1B520C5419CE8EB900A0ADE6 /* MainSlide.storyboard in Resources */,
 				1B7CF11119BCEF28007A157D /* Images.xcassets in Resources */,
 			);
@@ -467,6 +474,7 @@
 				1B520C5319CE8A2000A0ADE6 /* PersonalInfoViewController.swift in Sources */,
 				1B8615AE19CFD79A0064505C /* AddressCollectionViewCell.swift in Sources */,
 				FAF2292419C937620041C36F /* UIApplication+AppVersion.m in Sources */,
+				1B64007919D8977D00C35E44 /* NameCollectionViewCell.swift in Sources */,
 				1B563F9619C496BF001785D9 /* BaseButton.swift in Sources */,
 				1B520C4F19CE888300A0ADE6 /* MenuViewController.swift in Sources */,
 				1B7CF10A19BCEF28007A157D /* AppDelegate.swift in Sources */,
