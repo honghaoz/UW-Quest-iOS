@@ -18,16 +18,6 @@ class User {
     
     var personalInformation: PersonalInformation = PersonalInformation()
     
-    enum PersonalInformationType: String {
-        case Addresses = "Addresses"
-        case Names = "Names"
-        case PhoneNumbers = "Phone Numbers"
-        case EmailAddresses = "Email Addresses"
-        case EmergencyContacts = "Emergency Contacts"
-        case DemographicInformation = "Demographic Information"
-        case CitizenshipImmigrationDocuments = "Citizenship/Immigration Documents"
-    }
-    
     init() {
         println("User inited")
     }

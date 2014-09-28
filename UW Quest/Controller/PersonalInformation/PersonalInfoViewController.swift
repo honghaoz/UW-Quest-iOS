@@ -9,7 +9,9 @@
 import UIKit
 
 class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-
+    
+    var sharedPersonalInformation: PersonalInformation!
+    
     let address: String = "<NSAutoresizingMaskLayoutConstraint:0x7fd979fcc9f0 h=-&- v=-&->"
     
     let kSectionHorizontalInsets: CGFloat = 10.0
@@ -53,6 +55,9 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
         // Register cells
         var addressCellNib = UINib(nibName: "AddressCollectionViewCell", bundle: nil)
         collectionView.registerNib(addressCellNib, forCellWithReuseIdentifier: kAddressCellReuseIdentifier)
+        
+        // Setup
+        sharedPersonalInformation = Locator.sharedLocator.user.personalInformation
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -80,11 +85,30 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
     
     // MARK: - UICollectionViewDataSource
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
+        return sharedPersonalInformation.categories.count
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return numberOfCells
+        let choosedCase: PersonalInformationType = PersonalInformationType.fromRaw(sharedPersonalInformation.categories[section])!
+        switch choosedCase {
+        case PersonalInformationType.Addresses:
+            return sharedPersonalInformation.addresses!.count
+        case PersonalInformationType.Names:
+            return 0
+        case PersonalInformationType.PhoneNumbers:
+            return 0
+        case PersonalInformationType.EmailAddresses:
+            return 0
+        case PersonalInformationType.EmergencyContacts:
+            return 0
+        case PersonalInformationType.DemographicInformation:
+            return 0
+        case PersonalInformationType.CitizenshipImmigrationDocuments:
+            return 0
+        default:
+            assert(false, "Wrong PersonalInformation Type")
+            return 0
+        }
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {

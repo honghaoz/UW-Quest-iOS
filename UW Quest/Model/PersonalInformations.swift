@@ -8,12 +8,26 @@
 
 import Foundation
 
+enum PersonalInformationType: String {
+    case Addresses = "Addresses"
+    case Names = "Names"
+    case PhoneNumbers = "Phone Numbers"
+    case EmailAddresses = "Email Addresses"
+    case EmergencyContacts = "Emergency Contacts"
+    case DemographicInformation = "Demographic Information"
+    case CitizenshipImmigrationDocuments = "Citizenship/Immigration Documents"
+    
+    static let allValues = [Addresses.toRaw(), Names.toRaw(), PhoneNumbers.toRaw(), EmailAddresses.toRaw(), EmergencyContacts.toRaw(), DemographicInformation.toRaw(), CitizenshipImmigrationDocuments.toRaw()]
+}
+
 class PersonalInformation {
-    let categoryCount: Int = 1
+    
+    let categories: [String]!
     var addresses: [Address]?
     
     init() {
         println("PersonalInformation inited")
+        categories = PersonalInformationType.allValues
     }
     
     class Address {
