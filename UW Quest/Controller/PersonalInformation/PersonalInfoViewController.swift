@@ -282,14 +282,15 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
             }
 
             // Refresh tapped section
-            let tappedSection = headerView.indexPath.section
-            self.collectionView.reloadSections(NSIndexSet(index: tappedSection))
+//            let tappedSection = headerView.indexPath.section
+//            self.collectionView.reloadSections(NSIndexSet(index: tappedSection))
+//            
+            self.collectionView.reloadData()
+//            // Refresh other sections
+//            self.collectionView.reloadSections(NSIndexSet(indexesInRange: NSRange(location: 0, length: self.numberOfSectionsInCollectionView(self.collectionView))))
+//            self.collectionView.collectionViewLayout.invalidateLayout()
+//            self.collectionView.scrollToItemAtIndexPath(headerView.indexPath, atScrollPosition: UICollectionViewScrollPosition.Top, animated: true)
             
-            // Refresh other sections
-            self.collectionView.reloadSections(NSIndexSet(indexesInRange: NSRange(location: 0, length: self.numberOfSectionsInCollectionView(self.collectionView))))
-            self.collectionView.collectionViewLayout.invalidateLayout()
-//            self.collectionView.reloadData()
-            self.collectionView.scrollToItemAtIndexPath(headerView.indexPath, atScrollPosition: UICollectionViewScrollPosition.Top, animated: true)
             }, failure: nil)
     }
     
