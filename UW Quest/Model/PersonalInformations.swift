@@ -28,6 +28,7 @@ class PersonalInformation {
     init() {
         println("PersonalInformation inited")
         categories = PersonalInformationType.allValues
+        addresses = []
     }
     
     class Address {

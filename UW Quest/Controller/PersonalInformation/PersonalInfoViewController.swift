@@ -12,8 +12,6 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
     
     var sharedPersonalInformation: PersonalInformation!
     
-    let address: String = "<NSAutoresizingMaskLayoutConstraint:0x7fd979fcc9f0 h=-&- v=-&->"
-    
     let kSectionHorizontalInsets: CGFloat = 10.0
     let kSectionVerticalInsets: CGFloat = 10.0
     
@@ -41,8 +39,6 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
     //      { NSString *reuseIdentifier : UITableViewCell *offscreenCell, ... }
     var offscreenCells = Dictionary<String, UICollectionViewCell>();
     
-    var numberOfCells = 0
-
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -114,11 +110,8 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         var cell: AddressCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(kAddressCellReuseIdentifier, forIndexPath: indexPath) as AddressCollectionViewCell
         
-        cell.configWithType("Home", address: address)
-        
-        // There's no need to update constraints
-        //        cell.setNeedsUpdateConstraints()
-        //        cell.updateConstraintsIfNeeded()
+        let address: PersonalInformation.Address = sharedPersonalInformation.addresses![indexPath.item]
+        cell.configWithType(address.type, address: address.address)
         
         cell.layoutIfNeeded()
         return cell
@@ -147,7 +140,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
     // MARK: - UICollectionViewFlowLayout Delegate
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         // Set up desired width
-        let targetWidth: CGFloat = 140//collectionView.bounds.width - 2 * kSectionHorizontalInsets
+        let targetWidth: CGFloat = collectionView.bounds.width - 2 * kSectionHorizontalInsets
         
         // Use fake cell to calculate height
         let reuseIdentifier = kAddressCellReuseIdentifier
@@ -157,15 +150,13 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
             self.offscreenCells[reuseIdentifier] = cell
         }
         
-        cell!.configWithType("Home", address: address)
+        let address: PersonalInformation.Address = sharedPersonalInformation.addresses![indexPath.item]
+        
+        cell!.configWithType(address.type, address: address.address)
         
         // Cell's size is determined in nib file, need to set it's width (in this case), and inside, use this cell's width to set label's preferredMaxLayoutWidth, thus, height can be determined, this size will be returned for real cell initialization
         cell!.bounds = CGRectMake(0, 0, targetWidth, cell!.bounds.height)
         cell!.contentView.bounds = cell!.bounds
-        
-//        // Not sure whether need to update constraint, no need
-//        cell!.setNeedsUpdateConstraints()
-//        cell!.updateConstraintsIfNeeded()
 
         // Layout subviews, this will let labels on this cell to set preferredMaxLayoutWidth
         cell!.setNeedsLayout()
@@ -192,14 +183,14 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
     // MARK: - Header tap gesture action
     func headerViewTapped(tapGesture: UITapGestureRecognizer) {
         var headerView = tapGesture.view as UQCollectionReusableView
-        println("tapped header: \(headerView.indexPath)")
-        let tappedSection = headerView.indexPath.section
         
-        self.numberOfCells = self.numberOfCells == 0 ? 7: 0
-        self.collectionView.reloadSections(NSIndexSet(index: tappedSection))
-//        Locator.sharedLocator.user.getPersonalInformation(User.PersonalInformationType.Addresses, success:{ _ in
-//            println("\(Locator.sharedLocator.user.personalInformation.addresses!)")
-//            }, failure: nil)
+        println("tapped header: \(headerView.indexPath)")
+        
+        Locator.sharedLocator.user.getPersonalInformation(PersonalInformationType.Addresses, success:{ _ in
+            println("\(Locator.sharedLocator.user.personalInformation.addresses!)")
+            let tappedSection = headerView.indexPath.section
+            self.collectionView.reloadSections(NSIndexSet(index: tappedSection))
+            }, failure: nil)
 //        Locator.sharedLocator.user.getPersonalInformation(User.PersonalInformation.PhoneNumbers, success: nil, failure: nil)
 //        Locator.sharedLocator.user.getPersonalInformation(User.PersonalInformation.EmailAddresses, success: nil, failure: nil)
 //        Locator.sharedLocator.user.getPersonalInformation(User.PersonalInformation.EmergencyContacts, success: nil, failure: nil)
