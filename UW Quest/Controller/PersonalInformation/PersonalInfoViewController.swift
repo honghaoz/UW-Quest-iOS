@@ -15,14 +15,6 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
     let kSectionHorizontalInsets: CGFloat = 10.0
     let kSectionVerticalInsets: CGFloat = 10.0
     
-//    let kAddressesTitle = "Addresses"
-//    let kNamesTitle = "Names"
-//    let kPhoneNumbersTitle = "Phone Numbers"
-//    let kEmailAddressesTitle = "Email Addresses"
-//    let kEmergencyContactsTitle = "Emergency Contacts"
-//    let kDemographicInformationTitle = "Demographic Information"
-//    let kCitizenshipImmigrationDocumentsTitle = "Citizenship/Immigration Documents"
-//    
     let kHeaderViewReuseIdentifier = "HeaderView"
     let kAddressCellReuseIdentifier = "AddressCell"
 //    let kNameCellResueIdentifier = "NameCell"
@@ -31,8 +23,8 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
 //    let kEmergencyContactCellResueIdentifier = "EmergencyContactCell"
 //    let kDemograhicCellResueIdentifier = "DemographicCell"
 //    let kCitizenshipCellResueIdentifier = "CitizenshipCell"
-//    
-//    var titlesArray: [String] = [kAddressesTitle, kNamesTitle, kPhoneNumbersTitle, kEmailAddressesTitle, kEmergencyContactsTitle, kDemographicInformationTitle, kCitizenshipImmigrationDocumentsTitle]
+
+    var currentShowingSection: Int = -1
     
     // A dictionary of offscreen cells that are used within the tableView:heightForRowAtIndexPath: method to
     // handle the height calculations. These are never drawn onscreen. The dictionary is in the format:
@@ -85,24 +77,28 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let choosedCase: PersonalInformationType = PersonalInformationType.fromRaw(sharedPersonalInformation.categories[section])!
-        switch choosedCase {
-        case PersonalInformationType.Addresses:
-            return sharedPersonalInformation.addresses!.count
-        case PersonalInformationType.Names:
-            return 0
-        case PersonalInformationType.PhoneNumbers:
-            return 0
-        case PersonalInformationType.EmailAddresses:
-            return 0
-        case PersonalInformationType.EmergencyContacts:
-            return 0
-        case PersonalInformationType.DemographicInformation:
-            return 0
-        case PersonalInformationType.CitizenshipImmigrationDocuments:
-            return 0
-        default:
-            assert(false, "Wrong PersonalInformation Type")
+        if section == currentShowingSection {
+            let choosedCase: PersonalInformationType = PersonalInformationType.fromRaw(sharedPersonalInformation.categories[section])!
+            switch choosedCase {
+            case PersonalInformationType.Addresses:
+                return sharedPersonalInformation.addresses!.count
+            case PersonalInformationType.Names:
+                return 0
+            case PersonalInformationType.PhoneNumbers:
+                return 0
+            case PersonalInformationType.EmailAddresses:
+                return 0
+            case PersonalInformationType.EmergencyContacts:
+                return 0
+            case PersonalInformationType.DemographicInformation:
+                return 0
+            case PersonalInformationType.CitizenshipImmigrationDocuments:
+                return 0
+            default:
+                assert(false, "Wrong PersonalInformation Type")
+                return 0
+            }
+        } else {
             return 0
         }
     }
@@ -124,13 +120,23 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
         if (indexPath.section == 0) {
             headerView.topSeparator.hidden = true
             headerView.bottomSeparator.hidden = true
-        } else {
+        } else  {
             headerView.topSeparator.hidden = false
             headerView.bottomSeparator.hidden = true
         }
         
+        // For current showing section
+        if (indexPath.section == currentShowingSection) {
+            headerView.bottomSeparator.hidden = true
+        }
+        if (indexPath.section == currentShowingSection + 1) {
+            headerView.topSeparator.hidden = true
+        }
+        
         headerView.indexPath = indexPath
         self.attachTapGestureForHeaderView(headerView)
+        
+        headerView.titleLabel.text = sharedPersonalInformation.categories[indexPath.section]
         
         return headerView
     }
@@ -169,7 +175,11 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(kSectionVerticalInsets, kSectionHorizontalInsets, kSectionVerticalInsets, kSectionHorizontalInsets)
+        if section == currentShowingSection {
+            return UIEdgeInsetsMake(kSectionVerticalInsets, kSectionHorizontalInsets, kSectionVerticalInsets, kSectionHorizontalInsets)
+        } else {
+            return UIEdgeInsetsMake(0, kSectionHorizontalInsets, 0, kSectionHorizontalInsets)
+        }
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
@@ -183,19 +193,40 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
     // MARK: - Header tap gesture action
     func headerViewTapped(tapGesture: UITapGestureRecognizer) {
         var headerView = tapGesture.view as UQCollectionReusableView
+        currentShowingSection = headerView.indexPath.section
         
-        println("tapped header: \(headerView.indexPath)")
+        let tappedCase: PersonalInformationType = PersonalInformationType.fromRaw(sharedPersonalInformation.categories[headerView.indexPath.section])!
+        println("tapped header: \(tappedCase.toRaw())")
         
-        Locator.sharedLocator.user.getPersonalInformation(PersonalInformationType.Addresses, success:{ _ in
-            println("\(Locator.sharedLocator.user.personalInformation.addresses!)")
+        Locator.sharedLocator.user.getPersonalInformation(tappedCase, success:{ _ in
+            switch tappedCase {
+            case PersonalInformationType.Addresses:
+                println("\(Locator.sharedLocator.user.personalInformation.addresses!)")
+                break
+            case PersonalInformationType.Names:
+                return
+            case PersonalInformationType.PhoneNumbers:
+                return
+            case PersonalInformationType.EmailAddresses:
+                return
+            case PersonalInformationType.EmergencyContacts:
+                return
+            case PersonalInformationType.DemographicInformation:
+                return
+            case PersonalInformationType.CitizenshipImmigrationDocuments:
+                return
+            default:
+                assert(false, "Wrong PersonalInformation Type")
+            }
+
+            // Refresh tapped section
             let tappedSection = headerView.indexPath.section
-            self.collectionView.reloadSections(NSIndexSet(index: tappedSection))
+            self.collectionView.reloadSections(NSIndexSet(indexesInRange: NSRange(location: tappedSection, length: 1)))
+            
+            // Refresh other sections
+            self.collectionView.reloadSections(NSIndexSet(indexesInRange: NSRange(location: 0, length: self.numberOfSectionsInCollectionView(self.collectionView))))
+            self.collectionView.collectionViewLayout.invalidateLayout()
             }, failure: nil)
-//        Locator.sharedLocator.user.getPersonalInformation(User.PersonalInformation.PhoneNumbers, success: nil, failure: nil)
-//        Locator.sharedLocator.user.getPersonalInformation(User.PersonalInformation.EmailAddresses, success: nil, failure: nil)
-//        Locator.sharedLocator.user.getPersonalInformation(User.PersonalInformation.EmergencyContacts, success: nil, failure: nil)
-//        Locator.sharedLocator.user.getPersonalInformation(User.PersonalInformation.DemographicInformation, success: nil, failure: nil)
-//        Locator.sharedLocator.user.getPersonalInformation(User.PersonalInformation.CitizenshipImmigrationDocuments, success: nil, failure: nil)
     }
     
     // MARK: - Rotation

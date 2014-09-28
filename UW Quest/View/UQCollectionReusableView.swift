@@ -15,4 +15,5 @@ class UQCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var bottomSeparator: UIView!
     
     var indexPath: NSIndexPath!
+    
 }
