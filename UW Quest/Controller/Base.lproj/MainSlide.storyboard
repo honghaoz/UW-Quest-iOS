@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A361c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="EdG-oy-hAZ">
     <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -70,7 +71,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" name="controlHighlightColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="fOT-hj-f1o" firstAttribute="leading" secondItem="jH3-IR-YXb" secondAttribute="leading" id="7Zh-S5-9X2"/>
                                         <constraint firstItem="N2K-dL-dHO" firstAttribute="leading" secondItem="jH3-IR-YXb" secondAttribute="leading" constant="12" id="bMD-3B-hep"/>

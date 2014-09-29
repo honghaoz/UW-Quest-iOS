@@ -13,7 +13,7 @@ let UQMainColor = UQGreenColor
 let UQBackgroundColor = UQLightWhiteGrayColor
 let UQTextFieldFontColor = UQFontGrayColor
 let UQLabelFontColor = UQFontGrayColor
-let UQCellBackgroundColor = UIColor(white: 0.90, alpha: 0.9)
+let UQCellBackgroundColor = UIColor(white: 0.97, alpha: 0.9)
 
 let UQBlueColor: UIColor = UIColor(red: 0.22, green: 0.48, blue: 0.69, alpha: 1)
 
