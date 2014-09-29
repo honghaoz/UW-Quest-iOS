@@ -25,12 +25,14 @@ class PersonalInformation {
     let categories: [String]!
     var addresses: [Address]!
     var names: [Name]!
+    var phoneNumbers: [PhoneNumber]!
     
     init() {
         println("PersonalInformation inited")
         categories = PersonalInformationType.allValues
         addresses = []
         names = []
+        phoneNumbers = []
     }
     
     class Address {
@@ -159,23 +161,73 @@ class PersonalInformation {
         // Invalid type
         return false
     }
+
+    class PhoneNumber {
+        var type: String
+        var country: String
+        var ext: String
+        var isPreferred: Bool
+        var telephone: String
+        
+        class func kPhoneType() -> String {return "phone_type"}
+        class func kCountry() -> String {return "country"}
+        class func kExtension() -> String {return "ext"}
+        class func kPreferred() -> String {return "preferred"}
+        class func kTelephone() -> String {return "telephone"}
+        
+        class func newPhoneNumber(rawDict: Dictionary<String, String>) -> PhoneNumber? {
+            let phoneType: String? = rawDict[PhoneNumber.kPhoneType()]
+            let country: String? = rawDict[PhoneNumber.kCountry()]
+            let ext: String? = rawDict[PhoneNumber.kExtension()]
+            let preferredString: String? = rawDict[PhoneNumber.kPreferred()]
+            let preferred: Bool? = preferredString == "Y" ? true : false
+            let telephone: String? = rawDict[PhoneNumber.kTelephone()]
+            
+            if (phoneType != nil) && (country != nil) && (ext != nil) && (preferred != nil) && (telephone != nil) {
+                return PhoneNumber(type: phoneType!, country: country!, ext: ext!, isPreferred: preferred!, telephone: telephone!)
+            }
+            return nil
+        }
+        
+        init (type: String, country: String, ext: String, isPreferred: Bool, telephone: String) {
+            self.type = type
+            self.country = country
+            self.ext = ext
+            self.isPreferred = isPreferred
+            self.telephone = telephone
+        }
+    }
+    
+    func initPhoneNumbers(rawData: AnyObject) -> Bool {
+        // Passed in a dictionary
+        if let dataDict = rawData as? Dictionary<String, String> {
+            if let newPhoneNumber: PhoneNumber = PhoneNumber.newPhoneNumber(dataDict) {
+                self.phoneNumbers = [newPhoneNumber]
+                return true
+            }
+            return false
+        }
+        
+        // Passed in an array of dictionary
+        if let dataArray = rawData as? [Dictionary<String, String>] {
+            var tempPhoneNumber = [PhoneNumber]()
+            for eachDataDict in dataArray {
+                if let newPhoneNumber: PhoneNumber = PhoneNumber.newPhoneNumber(eachDataDict) {
+                    tempPhoneNumber.append(newPhoneNumber)
+                } else {
+                    // Some error happens
+                    self.phoneNumbers = nil
+                    return false
+                }
+            }
+            // If goes here, no error happens
+            self.phoneNumbers = tempPhoneNumber
+            return true
+        }
+        // Invalid type
+        return false
+    }
 //
-//    class PhoneNumber {
-//        var country: String
-//        var ext: String
-//        var type: String
-//        var isPreferred: Bool
-//        var telephone: String
-//        
-//        init (country: String, ext: String, type: String, isPreferred: Bool, telephone: String) {
-//            self.country = country
-//            self.ext = ext
-//            self.type = type
-//            self.isPreferred = isPreferred
-//            self.telephone = telephone
-//        }
-//    }
-//    
 //    class EmergencyContact {
 //        var contactName: String
 //        var country: String
