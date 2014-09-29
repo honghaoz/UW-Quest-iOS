@@ -26,7 +26,7 @@ class AddressCollectionViewCell: UICollectionViewCell {
     */
     func setup() {
         if isIOS7 {
-            // Need set autoresizingMask to let contentView always occupy this view's bounds
+            // Need set autoresizingMask to let contentView always occupy this view's bounds, key for iOS7
             self.contentView.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth
         }
         self.layer.borderColor = UQCellBackgroundColor.CGColor
@@ -44,6 +44,7 @@ class AddressCollectionViewCell: UICollectionViewCell {
         self.layoutIfNeeded()
     }
 
+    // In layoutSubViews, need set preferredMaxLayoutWidth for multiple lines label
     override func layoutSubviews() {
         super.layoutSubviews()
         addressLabel.preferredMaxLayoutWidth = self.bounds.width - 2 * kLabelHorizontalInsets

@@ -26,9 +26,8 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
 
     var currentShowingSection: Int = -1
     
-    // A dictionary of offscreen cells that are used within the tableView:heightForRowAtIndexPath: method to
-    // handle the height calculations. These are never drawn onscreen. The dictionary is in the format:
-    //      { NSString *reuseIdentifier : UITableViewCell *offscreenCell, ... }
+    // A dictionary of offscreen cells that are used within the sizeForItemAtIndexPath method to handle the size calculations. These are never drawn onscreen. The dictionary is in the format:
+    // { NSString *reuseIdentifier : UICollectionViewCell *offscreenCell, ... }
     var offscreenCells = Dictionary<String, UICollectionViewCell>();
     
     @IBOutlet weak var collectionView: UICollectionView!
