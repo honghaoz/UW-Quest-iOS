@@ -18,7 +18,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
     let kHeaderViewReuseIdentifier = "HeaderView"
     let kAddressCellReuseIdentifier = "AddressCell"
     let kNameCellResueIdentifier = "NameCell"
-//    let kPhoneNumberCellResueIdentifier = "PhoneNumberCell"
+    let kPhoneNumberCellResueIdentifier = "PhoneNumberCell"
 //    let kEmailAddressCellResueIdentifier = "EmailAddressCell"
 //    let kEmergencyContactCellResueIdentifier = "EmergencyContactCell"
 //    let kDemograhicCellResueIdentifier = "DemographicCell"
@@ -45,6 +45,8 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
         collectionView.registerNib(addressCellNib, forCellWithReuseIdentifier: kAddressCellReuseIdentifier)
         var nameCellNib = UINib(nibName: "NameCollectionViewCell", bundle: nil)
         collectionView.registerNib(nameCellNib, forCellWithReuseIdentifier: kNameCellResueIdentifier)
+        var phoneNumberCellNib = UINib(nibName: "PhoneNumberCollectionViewCell", bundle: nil)
+        collectionView.registerNib(phoneNumberCellNib, forCellWithReuseIdentifier: kPhoneNumberCellResueIdentifier)
         
         // Setup
         sharedPersonalInformation = Locator.sharedLocator.user.personalInformation
@@ -87,7 +89,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
             case PersonalInformationType.Names:
                 return sharedPersonalInformation.names!.count
             case PersonalInformationType.PhoneNumbers:
-                return 0
+                return sharedPersonalInformation.phoneNumbers!.count
             case PersonalInformationType.EmailAddresses:
                 return 0
             case PersonalInformationType.EmergencyContacts:
@@ -124,6 +126,11 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
             cell = aCell
             break
         case PersonalInformationType.PhoneNumbers:
+            var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kPhoneNumberCellResueIdentifier, forIndexPath: indexPath) as PhoneNumberCollectionViewCell
+            
+            let phoneNumber: PersonalInformation.PhoneNumber = sharedPersonalInformation.phoneNumbers![indexPath.item]
+            aCell.configWithType(phoneNumber.type, preferred: phoneNumber.isPreferred, country: phoneNumber.country, telephone: phoneNumber.telephone, ext: phoneNumber.ext)
+            cell = aCell
             break
         case PersonalInformationType.EmailAddresses:
             break
@@ -207,6 +214,16 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
             cell = aCell
             break
         case PersonalInformationType.PhoneNumbers:
+            let reuseIdentifier = kPhoneNumberCellResueIdentifier
+            var aCell: PhoneNumberCollectionViewCell? = self.offscreenCells[reuseIdentifier] as? PhoneNumberCollectionViewCell
+            if aCell == nil {
+                aCell = NSBundle.mainBundle().loadNibNamed("PhoneNumberCollectionViewCell", owner: self, options: nil)[0] as? PhoneNumberCollectionViewCell
+                self.offscreenCells[reuseIdentifier] = aCell
+            }
+            
+            let phoneNumber: PersonalInformation.PhoneNumber = sharedPersonalInformation.phoneNumbers![indexPath.item]
+            aCell!.configWithType(phoneNumber.type, preferred: phoneNumber.isPreferred, country: phoneNumber.country, telephone: phoneNumber.telephone, ext: phoneNumber.ext)
+            cell = aCell
             break
         case PersonalInformationType.EmailAddresses:
             break
@@ -259,7 +276,10 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
         let tappedCase: PersonalInformationType = PersonalInformationType.fromRaw(sharedPersonalInformation.categories[headerView.indexPath.section])!
         println("tapped header: \(tappedCase.toRaw())")
         
+        self.showHud(nil)
+        
         Locator.sharedLocator.user.getPersonalInformation(tappedCase, success:{ _ in
+            JGProgressHUD.dismiss(0, animated: true)
             switch tappedCase {
             case PersonalInformationType.Addresses:
                 println("addresses count: \(self.sharedPersonalInformation.addresses.count)")
@@ -268,6 +288,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
                 println("names count: \(self.sharedPersonalInformation.names.count)")
                 break
             case PersonalInformationType.PhoneNumbers:
+                println("phoneNumbers count: \(self.sharedPersonalInformation.phoneNumbers.count)")
                 break
             case PersonalInformationType.EmailAddresses:
                 break
@@ -291,7 +312,9 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
 //            self.collectionView.collectionViewLayout.invalidateLayout()
 //            self.collectionView.scrollToItemAtIndexPath(headerView.indexPath, atScrollPosition: UICollectionViewScrollPosition.Top, animated: true)
             
-            }, failure: nil)
+            }, failure: {_ in
+                JGProgressHUD.dismiss(0, animated: true)
+        })
     }
     
     // MARK: - Rotation

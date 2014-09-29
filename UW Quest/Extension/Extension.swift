@@ -52,7 +52,7 @@ extension UIViewController {
         return viewController
     }
     
-    func showHud(title: String) {
+    func showHud(title: String?) {
         JGProgressHUD.dismiss(0, animated: false)
         // Creat new shared hud
         Locator.sharedLocator.sharedHud = JGProgressHUD.prototype()
