@@ -26,7 +26,7 @@ class PersonalInformation {
     var addresses: [Address]!
     var names: [Name]!
     var phoneNumbers: [PhoneNumber]!
-    var emailAddresses: EmailAddress!
+    var emailAddresses: EmailAddress?
     
     init() {
         println("PersonalInformation inited")
@@ -34,7 +34,6 @@ class PersonalInformation {
         addresses = []
         names = []
         phoneNumbers = []
-//        emailAddresses = []
     }
     
     class Address {
@@ -302,7 +301,7 @@ class PersonalInformation {
                 let alternateEmailData: [Dictionary<String, String>]? = alternateEmailAddressDict!["data"] as AnyObject? as? [Dictionary<String, String>]
                 
                 let campusEmailDescription: String? = campusEmailAddressDict!["description"] as AnyObject? as? String
-                let campusEmailData: Dictionary<String, String>? = campusEmailAddressDict!["data"] as AnyObject? as? Dictionary<String, String>
+                let campusEmailData: [Dictionary<String, String>]? = campusEmailAddressDict!["data"] as AnyObject? as? [Dictionary<String, String>]
                 if (alternateEmailData != nil) && (campusEmailData != nil) {
                     var tempAlternateEmails: [EmailAddress.Email] = []
                     for eachAlternateEmail in alternateEmailData! {
@@ -313,7 +312,7 @@ class PersonalInformation {
                             return false
                         }
                     }
-                    let campusEmail: EmailAddress.CampusEmail? = EmailAddress.CampusEmail.newCampusEmail(campusEmailData!)
+                    let campusEmail: EmailAddress.CampusEmail? = EmailAddress.CampusEmail.newCampusEmail(campusEmailData![0])
                     if (campusEmail != nil) {
                         // Successfully
                         self.emailAddresses = EmailAddress(description: description, alternateEmails: tempAlternateEmails, alternateEmailDescription: alternateEmailDescription, campusEmail: campusEmail!, campusEmailDescription: campusEmailDescription)

@@ -19,7 +19,8 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
     let kAddressCellReuseIdentifier = "AddressCell"
     let kNameCellResueIdentifier = "NameCell"
     let kPhoneNumberCellResueIdentifier = "PhoneNumberCell"
-//    let kEmailAddressCellResueIdentifier = "EmailAddressCell"
+    let kEmailAddressCellResueIdentifier = "EmailAddressCell"
+    let kEmailAddressDescriptionCellResueIdentifier = "EmailAddressDescriptionCell"
 //    let kEmergencyContactCellResueIdentifier = "EmergencyContactCell"
 //    let kDemograhicCellResueIdentifier = "DemographicCell"
 //    let kCitizenshipCellResueIdentifier = "CitizenshipCell"
@@ -46,6 +47,10 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
         collectionView.registerNib(nameCellNib, forCellWithReuseIdentifier: kNameCellResueIdentifier)
         var phoneNumberCellNib = UINib(nibName: "PhoneNumberCollectionViewCell", bundle: nil)
         collectionView.registerNib(phoneNumberCellNib, forCellWithReuseIdentifier: kPhoneNumberCellResueIdentifier)
+        var emailCellNib = UINib(nibName: "EmailCollectionViewCell", bundle: nil)
+        collectionView.registerNib(emailCellNib, forCellWithReuseIdentifier: kEmailAddressCellResueIdentifier)
+        var emailDescriptionCellNib = UINib(nibName: "DescriptionCollectionViewCell", bundle: nil)
+        collectionView.registerNib(emailDescriptionCellNib, forCellWithReuseIdentifier: kEmailAddressDescriptionCellResueIdentifier)
         
         // Setup
         sharedPersonalInformation = Locator.sharedLocator.user.personalInformation
@@ -90,7 +95,8 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
             case PersonalInformationType.PhoneNumbers:
                 return sharedPersonalInformation.phoneNumbers!.count
             case PersonalInformationType.EmailAddresses:
-                return 0
+                println("return \(sharedPersonalInformation.emailAddresses == nil ? 0 : 2)")
+                return sharedPersonalInformation.emailAddresses == nil ? 0 : 2
             case PersonalInformationType.EmergencyContacts:
                 return 0
             case PersonalInformationType.DemographicInformation:
@@ -132,6 +138,26 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
             cell = aCell
             break
         case PersonalInformationType.EmailAddresses:
+            switch indexPath.item {
+            case 0:
+                var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kEmailAddressCellResueIdentifier, forIndexPath: indexPath) as EmailCollectionViewCell
+                let emails: [(String, String)] = [("Campus Email", sharedPersonalInformation.emailAddresses!.campusEmailAddress.campusEmail), ("Delivered to", sharedPersonalInformation.emailAddresses!.campusEmailAddress.deliveredTo)]
+                aCell.config("Campus Email Address", emails: emails)
+                cell = aCell
+                break
+            case 1:
+                var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kEmailAddressCellResueIdentifier, forIndexPath: indexPath) as EmailCollectionViewCell
+                var emails: [(String, String)] = []
+                for eachEmail in sharedPersonalInformation.emailAddresses!.alternateEmailAddress {
+                    let newTuple = (eachEmail.type, eachEmail.address)
+                    emails.append(newTuple)
+                }
+                aCell.config("Alternate Email Address", emails: emails)
+                cell = aCell
+                break
+            default:
+                break
+            }
             break
         case PersonalInformationType.EmergencyContacts:
             break
@@ -224,6 +250,31 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
             cell = aCell
             break
         case PersonalInformationType.EmailAddresses:
+            let reuseIdentifier = kEmailAddressCellResueIdentifier
+            var aCell: EmailCollectionViewCell? = self.offscreenCells[reuseIdentifier] as? EmailCollectionViewCell
+            if aCell == nil {
+                aCell = NSBundle.mainBundle().loadNibNamed("EmailCollectionViewCell", owner: self, options: nil)[0] as? EmailCollectionViewCell
+                self.offscreenCells[reuseIdentifier] = aCell
+            }
+            
+            switch indexPath.item {
+            case 0:
+                let emails: [(String, String)] = [("Campus Email", sharedPersonalInformation.emailAddresses!.campusEmailAddress.campusEmail), ("Delivered to", sharedPersonalInformation.emailAddresses!.campusEmailAddress.deliveredTo)]
+                aCell!.config("Campus Email Address", emails: emails)
+                cell = aCell
+                break
+            case 1:
+                var emails: [(String, String)] = []
+                for eachEmail in sharedPersonalInformation.emailAddresses!.alternateEmailAddress {
+                    let newTuple = (eachEmail.type, eachEmail.address)
+                    emails.append(newTuple)
+                }
+                aCell!.config("Alternate Email Address", emails: emails)
+                cell = aCell
+                break
+            default:
+                break
+            }
             break
         case PersonalInformationType.EmergencyContacts:
             break
@@ -247,6 +298,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
         var size = cell!.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
         // Still need to force the width, since width can be smalled due to break mode of labels
         size.width = targetWidth
+        println("size: \(size)")
         return size
     }
     
@@ -289,6 +341,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
                 println("phoneNumbers count: \(self.sharedPersonalInformation.phoneNumbers.count)")
                 break
             case PersonalInformationType.EmailAddresses:
+                println("emails: \(self.sharedPersonalInformation.emailAddresses != nil)")
                 break
             case PersonalInformationType.EmergencyContacts:
                 break

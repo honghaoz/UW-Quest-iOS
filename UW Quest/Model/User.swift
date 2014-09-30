@@ -49,6 +49,8 @@ class User {
         Locator.sharedLocator.client.getPersonalInformation(type, success: { (dataResponse) -> () in
             if self.processPersonalInformation(type, data: dataResponse) {
                 success?()
+            } else {
+                failure?(errorMessage: "Init data failed", error: nil)
             }
         }) { (errorMessage, error) -> () in
             failure?(errorMessage: errorMessage, error: error)

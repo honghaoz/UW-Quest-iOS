@@ -106,6 +106,16 @@ extension JGProgressHUD {
     }
 }
 
+extension UILabel {
+    func exactSize() -> CGSize {
+        let text: NSString = self.text!
+        var rawSize = text.sizeWithAttributes([NSFontAttributeName: self.font])
+        rawSize.width = ceil(rawSize.width)
+        rawSize.height = ceil(rawSize.height)
+        return rawSize
+    }
+}
+
 // Debug Helpers
 func logMethod(logMessage: String? = nil, functionName: String = __FUNCTION__) {
     if let realLogMessage = logMessage {
