@@ -35,6 +35,10 @@
 		FA23729419C72E87000F5D4F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA23729319C72E87000F5D4F /* Security.framework */; };
 		FA23729819C72E91000F5D4F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA23729719C72E91000F5D4F /* SystemConfiguration.framework */; };
 		FA23729E19C74167000F5D4F /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23729D19C74167000F5D4F /* Constant.swift */; };
+		FA4D1F5819DA620C006AA190 /* EmailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D1F5619DA620C006AA190 /* EmailCollectionViewCell.swift */; };
+		FA4D1F5919DA620C006AA190 /* EmailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA4D1F5719DA620C006AA190 /* EmailCollectionViewCell.xib */; };
+		FA4D1F5C19DA6B32006AA190 /* DescriptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D1F5A19DA6B32006AA190 /* DescriptionCollectionViewCell.swift */; };
+		FA4D1F5D19DA6B32006AA190 /* DescriptionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA4D1F5B19DA6B32006AA190 /* DescriptionCollectionViewCell.xib */; };
 		FA79657619C9079F00852C84 /* Locator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA79657519C9079F00852C84 /* Locator.swift */; };
 		FA79657819C90BB000852C84 /* LaunchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA79657719C90BB000852C84 /* LaunchView.xib */; };
 		FA8C1D6419C75B0800D6E158 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8C1D6319C75B0800D6E158 /* User.swift */; };
@@ -96,6 +100,10 @@
 		FA23729719C72E91000F5D4F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		FA23729A19C72F9A000F5D4F /* UW Quest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UW Quest-Bridging-Header.h"; sourceTree = "<group>"; };
 		FA23729D19C74167000F5D4F /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		FA4D1F5619DA620C006AA190 /* EmailCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailCollectionViewCell.swift; sourceTree = "<group>"; };
+		FA4D1F5719DA620C006AA190 /* EmailCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmailCollectionViewCell.xib; sourceTree = "<group>"; };
+		FA4D1F5A19DA6B32006AA190 /* DescriptionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionCollectionViewCell.swift; sourceTree = "<group>"; };
+		FA4D1F5B19DA6B32006AA190 /* DescriptionCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DescriptionCollectionViewCell.xib; sourceTree = "<group>"; };
 		FA79657519C9079F00852C84 /* Locator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locator.swift; sourceTree = "<group>"; };
 		FA79657719C90BB000852C84 /* LaunchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchView.xib; sourceTree = "<group>"; };
 		FA8C1D6319C75B0800D6E158 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -257,6 +265,10 @@
 				1B64007819D8977D00C35E44 /* NameCollectionViewCell.xib */,
 				1B64007B19D8E48E00C35E44 /* PhoneNumberCollectionViewCell.swift */,
 				1B64007C19D8E48E00C35E44 /* PhoneNumberCollectionViewCell.xib */,
+				FA4D1F5619DA620C006AA190 /* EmailCollectionViewCell.swift */,
+				FA4D1F5719DA620C006AA190 /* EmailCollectionViewCell.xib */,
+				FA4D1F5A19DA6B32006AA190 /* DescriptionCollectionViewCell.swift */,
+				FA4D1F5B19DA6B32006AA190 /* DescriptionCollectionViewCell.xib */,
 			);
 			path = PersonalInformation;
 			sourceTree = "<group>";
@@ -416,9 +428,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA4D1F5D19DA6B32006AA190 /* DescriptionCollectionViewCell.xib in Resources */,
 				1B64007E19D8E48E00C35E44 /* PhoneNumberCollectionViewCell.xib in Resources */,
 				1B7CF10F19BCEF28007A157D /* Login.storyboard in Resources */,
 				FADDD6CF19D476BB003EC88D /* AddressCollectionViewCell.xib in Resources */,
+				FA4D1F5919DA620C006AA190 /* EmailCollectionViewCell.xib in Resources */,
 				FA79657819C90BB000852C84 /* LaunchView.xib in Resources */,
 				1B64007A19D8977D00C35E44 /* NameCollectionViewCell.xib in Resources */,
 				1B520C5419CE8EB900A0ADE6 /* MainSlide.storyboard in Resources */,
@@ -473,10 +487,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAF2291F19C937180041C36F /* ZHHParseDevice.m in Sources */,
+				FA4D1F5C19DA6B32006AA190 /* DescriptionCollectionViewCell.swift in Sources */,
 				FACE198719C9EB05001FD4C9 /* QuestClient.swift in Sources */,
 				1B2FCD1C19C4A64400FDF4D8 /* Extension.swift in Sources */,
 				1BF1B17919CF814E00411109 /* UQCollectionReusableView.swift in Sources */,
 				1B8615AC19CFC6A20064505C /* PersonalInformations.swift in Sources */,
+				FA4D1F5819DA620C006AA190 /* EmailCollectionViewCell.swift in Sources */,
 				1B5BF35219C3F8470005626F /* LoginViewController.swift in Sources */,
 				1B520C5319CE8A2000A0ADE6 /* PersonalInfoViewController.swift in Sources */,
 				1B8615AE19CFD79A0064505C /* AddressCollectionViewCell.swift in Sources */,
