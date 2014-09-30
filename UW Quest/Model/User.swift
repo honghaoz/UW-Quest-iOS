@@ -68,7 +68,7 @@ class User {
         case .PhoneNumbers:
             return self.personalInformation.initPhoneNumbers(data)
         case .EmailAddresses:
-            break
+            return self.personalInformation.initEmailAddresses(data)
         case .EmergencyContacts:
             break
         case .DemographicInformation:

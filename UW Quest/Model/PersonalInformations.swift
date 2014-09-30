@@ -26,6 +26,7 @@ class PersonalInformation {
     var addresses: [Address]!
     var names: [Name]!
     var phoneNumbers: [PhoneNumber]!
+    var emailAddresses: EmailAddress!
     
     init() {
         println("PersonalInformation inited")
@@ -82,7 +83,7 @@ class PersonalInformation {
                     tempAddresses.append(newAddress)
                 } else {
                     // Some error happens
-                    self.addresses = nil
+                    self.addresses = []
                     return false
                 }
             }
@@ -151,7 +152,7 @@ class PersonalInformation {
                     tempNames.append(newName)
                 } else {
                     // Some error happens
-                    self.names = nil
+                    self.names = []
                     return false
                 }
             }
@@ -217,7 +218,7 @@ class PersonalInformation {
                     tempPhoneNumber.append(newPhoneNumber)
                 } else {
                     // Some error happens
-                    self.phoneNumbers = nil
+                    self.phoneNumbers = []
                     return false
                 }
             }
@@ -229,35 +230,100 @@ class PersonalInformation {
         return false
     }
     
-//    class EmailAddress {
-//        var type: String
-//        var emailAddress: String
-//        
-//        class func kType() -> String {return "phone_type"}
-//        class func kCountry() -> String {return "country"}
-//        
-//        class func newPhoneNumber(rawDict: Dictionary<String, String>) -> PhoneNumber? {
-//            let phoneType: String? = rawDict[PhoneNumber.kPhoneType()]
-//            let country: String? = rawDict[PhoneNumber.kCountry()]
-//            let ext: String? = rawDict[PhoneNumber.kExtension()]
-//            let preferredString: String? = rawDict[PhoneNumber.kPreferred()]
-//            let preferred: Bool? = preferredString == "Y" ? true : false
-//            let telephone: String? = rawDict[PhoneNumber.kTelephone()]
-//            
-//            if (phoneType != nil) && (country != nil) && (ext != nil) && (preferred != nil) && (telephone != nil) {
-//                return PhoneNumber(type: phoneType!, country: country!, ext: ext!, isPreferred: preferred!, telephone: telephone!)
-//            }
-//            return nil
-//        }
-//        
-//        init (type: String, country: String, ext: String, isPreferred: Bool, telephone: String) {
-//            self.type = type
-//            self.country = country
-//            self.ext = ext
-//            self.isPreferred = isPreferred
-//            self.telephone = telephone
-//        }
-//    }
+    class EmailAddress {
+        // Alternate email address
+        class Email {
+            var type: String
+            var address: String
+            class func kType() -> String {return "email_type"}
+            class func kAddress() -> String {return "email_address"}
+            
+            class func newEmail(rawDict: Dictionary<String, String>) -> Email? {
+                let type: String? = rawDict[kType()]
+                let address: String? = rawDict[kAddress()]
+                if (type != nil) && (address != nil) {
+                    return Email(type: type!, address: address!)
+                }
+                return nil
+            }
+            
+            init(type: String, address: String) {
+                self.type = type
+                self.address = address
+            }
+        }
+
+        class CampusEmail {
+            var campusEmail: String
+            var deliveredTo: String
+            class func kCampusEmail() -> String {return "campus_email"}
+            class func kDeliveredTo() -> String {return "delivered_to"}
+            
+            class func newCampusEmail(rawDict: Dictionary<String, String>) -> CampusEmail? {
+                let campusEmail: String? = rawDict[kCampusEmail()]
+                let deliveredTo: String? = rawDict[kDeliveredTo()]
+                if (campusEmail != nil) && (deliveredTo != nil) {
+                    return CampusEmail(campusEmail: campusEmail!, deliveredTo: deliveredTo!)
+                }
+                return nil
+            }
+            
+            init(campusEmail: String, deliveredTo: String) {
+                self.campusEmail = campusEmail
+                self.deliveredTo = deliveredTo
+            }
+        }
+        
+        var alternateEmailAddress: [Email]!
+        var alternateEmailDescription: String?
+        
+        var campusEmailAddress: CampusEmail!
+        var campusEmailDescription: String?
+        
+        var description: String?
+        
+        init(description: String?, alternateEmails: [Email], alternateEmailDescription: String?, campusEmail: CampusEmail, campusEmailDescription: String?) {
+            self.description = description
+            self.alternateEmailAddress = alternateEmails
+            self.alternateEmailDescription = alternateEmailDescription
+            self.campusEmailAddress = campusEmail
+            self.campusEmailDescription = campusEmailDescription
+        }
+    }
+    
+    func initEmailAddresses(rawData: AnyObject) -> Bool {
+        if let dataDict = rawData as? Dictionary<String, AnyObject> {
+            let description: String? = dataDict["description"] as AnyObject? as? String
+            let alternateEmailAddressDict: Dictionary<String, AnyObject>? = dataDict["alternate_email_address"] as AnyObject? as? Dictionary<String, AnyObject>
+            let campusEmailAddressDict: Dictionary<String, AnyObject>? = dataDict["campus_email_address"] as AnyObject? as? Dictionary<String, AnyObject>
+            
+            if (alternateEmailAddressDict != nil) && (campusEmailAddressDict != nil) {
+                let alternateEmailDescription: String? = alternateEmailAddressDict!["description"] as AnyObject? as? String
+                let alternateEmailData: [Dictionary<String, String>]? = alternateEmailAddressDict!["data"] as AnyObject? as? [Dictionary<String, String>]
+                
+                let campusEmailDescription: String? = campusEmailAddressDict!["description"] as AnyObject? as? String
+                let campusEmailData: Dictionary<String, String>? = campusEmailAddressDict!["data"] as AnyObject? as? Dictionary<String, String>
+                if (alternateEmailData != nil) && (campusEmailData != nil) {
+                    var tempAlternateEmails: [EmailAddress.Email] = []
+                    for eachAlternateEmail in alternateEmailData! {
+                        if let newEmail = EmailAddress.Email.newEmail(eachAlternateEmail) {
+                            tempAlternateEmails.append(newEmail)
+                        } else {
+                            // Some error happens
+                            return false
+                        }
+                    }
+                    let campusEmail: EmailAddress.CampusEmail? = EmailAddress.CampusEmail.newCampusEmail(campusEmailData!)
+                    if (campusEmail != nil) {
+                        // Successfully
+                        self.emailAddresses = EmailAddress(description: description, alternateEmails: tempAlternateEmails, alternateEmailDescription: alternateEmailDescription, campusEmail: campusEmail!, campusEmailDescription: campusEmailDescription)
+                        return true
+                    }
+                }
+            }
+        }
+        return false
+    }
     
 //
 //    class EmergencyContact {
