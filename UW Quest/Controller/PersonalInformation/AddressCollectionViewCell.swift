@@ -37,6 +37,10 @@ class AddressCollectionViewCell: UICollectionViewCell {
         self.contentView.backgroundColor = UQCellBackgroundColor
     }
     
+    func config(address: PersonalInformation.Address) {
+        self.configWithType(address.type, address: address.address)
+    }
+    
     func configWithType(type: String, address: String) {
         self.typeLabel.text = type
         self.addressLabel.text = address

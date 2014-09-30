@@ -47,6 +47,10 @@ class NameCollectionViewCell: UICollectionViewCell {
         self.kTitleLabelWidth = self.firstNameTitleLabel.bounds.width
     }
     
+    func config(name: PersonalInformation.Name) {
+        self.configWithType(name.nameType, firstName: name.firstName, middleName: name.middleName, lastName: name.lastName, namePrefix: name.namePrefix, nameSuffix: name.nameSuffix)
+    }
+    
     func configWithType(type: String, firstName: String, middleName: String, lastName: String, namePrefix: String, nameSuffix: String) {
         self.typeLabel.text = type
         self.firstNameLabel.text = firstName

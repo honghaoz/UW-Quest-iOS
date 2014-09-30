@@ -114,21 +114,21 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
             var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kAddressCellReuseIdentifier, forIndexPath: indexPath) as AddressCollectionViewCell
             
             let address: PersonalInformation.Address = sharedPersonalInformation.addresses![indexPath.item]
-            aCell.configWithType(address.type, address: address.address)
+            aCell.config(address)
             cell = aCell
             break
         case PersonalInformationType.Names:
             var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kNameCellResueIdentifier, forIndexPath: indexPath) as NameCollectionViewCell
             
             let name: PersonalInformation.Name = sharedPersonalInformation.names![indexPath.item]
-            aCell.configWithType(name.nameType, firstName: name.firstName, middleName: name.middleName, lastName: name.lastName, namePrefix: name.namePrefix, nameSuffix: name.nameSuffix)
+            aCell.config(name)
             cell = aCell
             break
         case PersonalInformationType.PhoneNumbers:
             var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kPhoneNumberCellResueIdentifier, forIndexPath: indexPath) as PhoneNumberCollectionViewCell
             
             let phoneNumber: PersonalInformation.PhoneNumber = sharedPersonalInformation.phoneNumbers![indexPath.item]
-            aCell.configWithType(phoneNumber.type, preferred: phoneNumber.isPreferred, country: phoneNumber.country, telephone: phoneNumber.telephone, ext: phoneNumber.ext)
+            aCell.config(phoneNumber)
             cell = aCell
             break
         case PersonalInformationType.EmailAddresses:
@@ -195,8 +195,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
             }
             
             let address: PersonalInformation.Address = sharedPersonalInformation.addresses![indexPath.item]
-            
-            aCell!.configWithType(address.type, address: address.address)
+            aCell!.config(address)
             cell = aCell
             break
         case PersonalInformationType.Names:
@@ -209,7 +208,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
             }
             
             let name: PersonalInformation.Name = sharedPersonalInformation.names![indexPath.item]
-            aCell!.configWithType(name.nameType, firstName: name.firstName, middleName: name.middleName, lastName: name.lastName, namePrefix: name.namePrefix, nameSuffix: name.nameSuffix)
+            aCell!.config(name)
             cell = aCell
             break
         case PersonalInformationType.PhoneNumbers:
@@ -221,7 +220,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
             }
             
             let phoneNumber: PersonalInformation.PhoneNumber = sharedPersonalInformation.phoneNumbers![indexPath.item]
-            aCell!.configWithType(phoneNumber.type, preferred: phoneNumber.isPreferred, country: phoneNumber.country, telephone: phoneNumber.telephone, ext: phoneNumber.ext)
+            aCell!.config(phoneNumber)
             cell = aCell
             break
         case PersonalInformationType.EmailAddresses:

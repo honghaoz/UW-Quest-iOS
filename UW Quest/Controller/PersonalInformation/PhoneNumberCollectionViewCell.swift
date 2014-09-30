@@ -44,6 +44,10 @@ class PhoneNumberCollectionViewCell: UICollectionViewCell {
         self.kTitleLabelWidth = self.countryTitleLabel.bounds.width
     }
     
+    func config(phoneNumber: PersonalInformation.PhoneNumber) {
+        self.configWithType(phoneNumber.type, preferred: phoneNumber.isPreferred, country: phoneNumber.country, telephone: phoneNumber.telephone, ext: phoneNumber.ext)
+    }
+    
     func configWithType(type: String, preferred: Bool, country: String, telephone: String, ext: String) {
         
         self.typeLabel.text = type + (preferred ? " (preferred)" : "")

@@ -229,35 +229,35 @@ class PersonalInformation {
         return false
     }
     
-    class EmailAddress {
-        var type: String
-        var emailAddress: String
-        
-        class func kType() -> String {return "phone_type"}
-        class func kCountry() -> String {return "country"}
-        
-        class func newPhoneNumber(rawDict: Dictionary<String, String>) -> PhoneNumber? {
-            let phoneType: String? = rawDict[PhoneNumber.kPhoneType()]
-            let country: String? = rawDict[PhoneNumber.kCountry()]
-            let ext: String? = rawDict[PhoneNumber.kExtension()]
-            let preferredString: String? = rawDict[PhoneNumber.kPreferred()]
-            let preferred: Bool? = preferredString == "Y" ? true : false
-            let telephone: String? = rawDict[PhoneNumber.kTelephone()]
-            
-            if (phoneType != nil) && (country != nil) && (ext != nil) && (preferred != nil) && (telephone != nil) {
-                return PhoneNumber(type: phoneType!, country: country!, ext: ext!, isPreferred: preferred!, telephone: telephone!)
-            }
-            return nil
-        }
-        
-        init (type: String, country: String, ext: String, isPreferred: Bool, telephone: String) {
-            self.type = type
-            self.country = country
-            self.ext = ext
-            self.isPreferred = isPreferred
-            self.telephone = telephone
-        }
-    }
+//    class EmailAddress {
+//        var type: String
+//        var emailAddress: String
+//        
+//        class func kType() -> String {return "phone_type"}
+//        class func kCountry() -> String {return "country"}
+//        
+//        class func newPhoneNumber(rawDict: Dictionary<String, String>) -> PhoneNumber? {
+//            let phoneType: String? = rawDict[PhoneNumber.kPhoneType()]
+//            let country: String? = rawDict[PhoneNumber.kCountry()]
+//            let ext: String? = rawDict[PhoneNumber.kExtension()]
+//            let preferredString: String? = rawDict[PhoneNumber.kPreferred()]
+//            let preferred: Bool? = preferredString == "Y" ? true : false
+//            let telephone: String? = rawDict[PhoneNumber.kTelephone()]
+//            
+//            if (phoneType != nil) && (country != nil) && (ext != nil) && (preferred != nil) && (telephone != nil) {
+//                return PhoneNumber(type: phoneType!, country: country!, ext: ext!, isPreferred: preferred!, telephone: telephone!)
+//            }
+//            return nil
+//        }
+//        
+//        init (type: String, country: String, ext: String, isPreferred: Bool, telephone: String) {
+//            self.type = type
+//            self.country = country
+//            self.ext = ext
+//            self.isPreferred = isPreferred
+//            self.telephone = telephone
+//        }
+//    }
     
 //
 //    class EmergencyContact {

@@ -16,4 +16,7 @@ class UQCollectionReusableView: UICollectionReusableView {
     
     var indexPath: NSIndexPath!
     
+    override func awakeFromNib() {
+        self.backgroundColor = UQCellBackgroundColor
+    }
 }
