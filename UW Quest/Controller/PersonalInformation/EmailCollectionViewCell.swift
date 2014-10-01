@@ -31,7 +31,6 @@ class EmailCollectionViewCell: UICollectionViewCell {
     }
     
     func setup() {
-        logMethod()
         if isIOS7 {
             // Need set autoresizingMask to let contentView always occupy this view's bounds
             self.contentView.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth
@@ -47,7 +46,6 @@ class EmailCollectionViewCell: UICollectionViewCell {
     }
     
     func createASubTitleLabel() -> UILabel {
-        logMethod()
         var label = UILabel.newAutoLayoutView()
         label.numberOfLines = 1
         label.textAlignment = NSTextAlignment.Left
@@ -58,13 +56,13 @@ class EmailCollectionViewCell: UICollectionViewCell {
             label.autoSetContentCompressionResistancePriorityForAxis(ALAxis.Vertical)
             label.autoSetContentCompressionResistancePriorityForAxis(ALAxis.Horizontal)
             label.autoSetContentHuggingPriorityForAxis(ALAxis.Vertical)
+            label.autoSetContentHuggingPriorityForAxis(ALAxis.Horizontal)
             label.autoPinEdgeToSuperviewEdge(ALEdge.Left, withInset: self.kLabelHorizontalInsets)
         })
         return label
     }
 
     func createASubContentLabel(verticalHuggingPriority: UILayoutPriority) -> UILabel {
-        logMethod()
         var label = UILabel.newAutoLayoutView()
         label.numberOfLines = 0
         label.preferredMaxLayoutWidth = 100 // Need to change
@@ -75,7 +73,7 @@ class EmailCollectionViewCell: UICollectionViewCell {
         UIView.autoSetPriority(1000, forConstraints: { () -> Void in
             label.autoSetContentCompressionResistancePriorityForAxis(ALAxis.Vertical)
             label.autoSetContentCompressionResistancePriorityForAxis(ALAxis.Horizontal)
-            label.autoPinEdgeToSuperviewEdge(ALEdge.Right, withInset: -self.kLabelHorizontalInsets)
+            label.autoPinEdgeToSuperviewEdge(ALEdge.Right, withInset: self.kLabelHorizontalInsets)
         })
         UIView.autoSetPriority(verticalHuggingPriority, forConstraints: { () -> Void in
             label.autoSetContentHuggingPriorityForAxis(ALAxis.Vertical)
@@ -84,7 +82,6 @@ class EmailCollectionViewCell: UICollectionViewCell {
     }
     
     func createEmptyLabel() -> UILabel {
-        logMethod()
         var label = UILabel.newAutoLayoutView()
         label.numberOfLines = 0
         label.preferredMaxLayoutWidth = 100 // Need to change
@@ -96,23 +93,22 @@ class EmailCollectionViewCell: UICollectionViewCell {
             label.autoSetContentCompressionResistancePriorityForAxis(ALAxis.Vertical)
             label.autoSetContentCompressionResistancePriorityForAxis(ALAxis.Horizontal)
             label.autoPinEdgeToSuperviewEdge(ALEdge.Left, withInset: self.kLabelHorizontalInsets)
-            label.autoPinEdgeToSuperviewEdge(ALEdge.Bottom, withInset: -self.kLabelHorizontalInsets)
-            label.autoPinEdgeToSuperviewEdge(ALEdge.Right, withInset: -self.kLabelHorizontalInsets)
+            label.autoPinEdgeToSuperviewEdge(ALEdge.Bottom, withInset: self.kLabelHorizontalInsets)
+            label.autoPinEdgeToSuperviewEdge(ALEdge.Right, withInset: self.kLabelHorizontalInsets)
         })
         return label
     }
     
     func config(title: String, emails: [(String, String)]) {
-        logMethod()
         // Remove all subviews
         for eachSubview in self.contentView.subviews {
             if eachSubview.isEqual(self.mainTitleLabel) {
-                println("Skip main title label")
                 continue
             }
-            logMethod(logMessage: "remove")
             eachSubview.removeFromSuperview()
         }
+        
+        self.mainTitleLabel.text = title
         
         // Add emails' labels
         let emailsCount = emails.count
@@ -133,7 +129,6 @@ class EmailCollectionViewCell: UICollectionViewCell {
         
         // There are emails
         for i in 0 ..< emailsCount {
-            logMethod(logMessage: "add")
             var subTitleLabel: UILabel = self.createASubTitleLabel()
             subTitleLabel.text = emails[i].0
             
@@ -142,7 +137,7 @@ class EmailCollectionViewCell: UICollectionViewCell {
             if i == emailsCount - 1 {
                 subContentLabel = self.createASubContentLabel(998)
                 UIView.autoSetPriority(1000, forConstraints: { () -> Void in
-                    subContentLabel.autoPinEdgeToSuperviewEdge(ALEdge.Bottom, withInset: -self.kLabelVerticalInsets)
+                    subContentLabel.autoPinEdgeToSuperviewEdge(ALEdge.Bottom, withInset: self.kLabelVerticalInsets)
                     return
                 })
             } else {

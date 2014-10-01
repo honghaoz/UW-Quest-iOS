@@ -298,7 +298,6 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
         var size = cell!.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
         // Still need to force the width, since width can be smalled due to break mode of labels
         size.width = targetWidth
-        println("size: \(size)")
         return size
     }
     
