@@ -24,32 +24,68 @@ let kErrorNetwork: Int = 11
 
 private let _sharedClient = QuestClient(baseURL: NSURL(string: kUWQuestAPIBaseURL))
 
+var onceToken: dispatch_once_t = 0
+
 class QuestClient: AFHTTPSessionManager {
     
     var sid: String? = ""
     
     override init(baseURL url: NSURL!) {
         super.init(baseURL: url)
-        setupSerializer()
+        setup()
     }
     
     override init(baseURL url: NSURL!, sessionConfiguration configuration: NSURLSessionConfiguration!) {
         super.init(baseURL: url, sessionConfiguration: configuration)
-        setupSerializer()
+        setup()
     }
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setupSerializer()
+        setup()
     }
     
-    func setupSerializer() {
+    func setup() {
+        println("Client inited")
         self.responseSerializer = AFJSONResponseSerializer()
         self.requestSerializer = AFHTTPRequestSerializer()
+        self.reachabilityManager.setReachabilityStatusChangeBlock { (status) -> Void in
+            switch status {
+            case AFNetworkReachabilityStatus.ReachableViaWWAN, AFNetworkReachabilityStatus.ReachableViaWiFi:
+                println("AFNetworkReachabilityStatus.Reachable")
+                self.operationQueue.suspended = false
+                break
+            case AFNetworkReachabilityStatus.NotReachable:
+                println("AFNetworkReachabilityStatus.NotReachable")
+                self.operationQueue.suspended = true
+                break
+            case AFNetworkReachabilityStatus.Unknown:
+                println("AFNetworkReachabilityStatus.Unknown")
+                break
+            default:
+                break
+            }
+        }
+        self.reachabilityManager.startMonitoring()
+        self.activate()
     }
     
     class var sharedClient: QuestClient {
         return _sharedClient
+    }
+    
+    func activate() {
+        dispatch_once(&onceToken, { () -> Void in
+            println("API start to activate...")
+            self.GET("", parameters: nil, success: { (task, responseObject) -> Void in
+                println("API activated successfully")
+                }, failure: { (task, error) -> Void in
+                    println("API activated failed")
+                    let response = task.response as NSHTTPURLResponse
+                    println("status code: \(response.statusCode)")
+                    // Status code is 503/500 for server down
+            })
+        })
     }
     
     // MARK: Operations

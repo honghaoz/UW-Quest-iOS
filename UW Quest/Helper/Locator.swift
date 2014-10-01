@@ -18,12 +18,6 @@ class Locator {
     }()
 
     // Controllers
-    lazy var tabBarController: UIViewController = {
-        println("tabBarController inited")
-        var controller: UIViewController = UIViewController.viewControllerInStoryboard("MainTab", viewControllerName: "MainTabBarController")
-        return controller
-    }()
-    
     lazy var loginViewController: UIViewController = {
         println("loginViewController inited")
         var controller: UIViewController = UIViewController.viewControllerInStoryboard("Login", viewControllerName: "LoginViewController")
@@ -41,7 +35,7 @@ class Locator {
         return User.sharedUser
     }()
     
-    lazy var client: QuestClient = {
+    var client: QuestClient = {
         return QuestClient.sharedClient
     }()
     
