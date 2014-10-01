@@ -308,7 +308,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
             let reuseIdentifier = kEmergencyContactCellResueIdentifier
             var aCell: EmergencyContactCollectionViewCell? = self.offscreenCells[reuseIdentifier] as? EmergencyContactCollectionViewCell
             if aCell == nil {
-                aCell = EmergencyContactCollectionViewCell()
+                aCell = EmergencyContactCollectionViewCell(frame: CGRectMake(0, 0, targetWidth, targetWidth))
                 self.offscreenCells[reuseIdentifier] = aCell
             }
             
@@ -409,13 +409,11 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
     // MARK: - Rotation
     // iOS7
     override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
-        logMethod()
         collectionView.collectionViewLayout.invalidateLayout()
     }
     
     // iOS8
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        logMethod()
         collectionView.collectionViewLayout.invalidateLayout()
     }
     

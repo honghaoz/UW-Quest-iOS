@@ -13,7 +13,7 @@ class EmergencyContactCollectionViewCell: TitleSubTitleCollectionViewCell {
         var mainTitle: String = emergencyContact.contactName + (emergencyContact.isPrimary ? " (primary)" : "")
         var tuples: [(String, String)] = [
             ("Relationship", emergencyContact.relationship),
-            ("Country", emergencyContact.country),
+            ("Country Code", emergencyContact.country),
             ("Phone", emergencyContact.phone),
             ("Extension", emergencyContact.ext)
         ]
