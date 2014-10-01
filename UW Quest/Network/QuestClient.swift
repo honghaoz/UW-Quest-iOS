@@ -75,9 +75,15 @@ class QuestClient: AFHTTPSessionManager {
     func activate() {
         dispatch_once(&onceToken, { () -> Void in
             println("API start to activate...")
-            self.GET("", parameters: nil, success: { (task, responseObject) -> Void in
+            let parameters: Dictionary = [
+                "key": kUWQuestAPIKey
+            ]
+            self.GET("activate", parameters: parameters, success: { (task, responseObject) -> Void in
                 // TODO: change API to response json
                 println("API activated successfully")
+                let response = task.response as NSHTTPURLResponse
+                println("status code: \(response.statusCode)")
+                
                 }, failure: { (task, error) -> Void in
                     println("API activated failed")
                     let response = task.response as NSHTTPURLResponse
