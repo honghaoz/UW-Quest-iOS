@@ -45,6 +45,8 @@
 		FACE198719C9EB05001FD4C9 /* QuestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACE198619C9EB05001FD4C9 /* QuestClient.swift */; };
 		FACE198A19C9EC2D001FD4C9 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FACE198919C9EC2D001FD4C9 /* Crashlytics.framework */; };
 		FADDD6CF19D476BB003EC88D /* AddressCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FADDD6CD19D476BB003EC88D /* AddressCollectionViewCell.xib */; };
+		FAE020D919DBACA40000253A /* EmergencyContactCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE020D819DBACA40000253A /* EmergencyContactCollectionViewCell.swift */; };
+		FAE020DB19DBAEF90000253A /* TitleSubTitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE020DA19DBAEF90000253A /* TitleSubTitleCollectionViewCell.swift */; };
 		FAF2291F19C937180041C36F /* ZHHParseDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF2291E19C937180041C36F /* ZHHParseDevice.m */; };
 		FAF2292419C937620041C36F /* UIApplication+AppVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF2292119C937620041C36F /* UIApplication+AppVersion.m */; };
 		FAF2292519C937620041C36F /* UIDevice-Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF2292319C937620041C36F /* UIDevice-Hardware.m */; };
@@ -110,6 +112,8 @@
 		FACE198619C9EB05001FD4C9 /* QuestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestClient.swift; sourceTree = "<group>"; };
 		FACE198919C9EC2D001FD4C9 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		FADDD6CD19D476BB003EC88D /* AddressCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressCollectionViewCell.xib; sourceTree = "<group>"; };
+		FAE020D819DBACA40000253A /* EmergencyContactCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmergencyContactCollectionViewCell.swift; sourceTree = "<group>"; };
+		FAE020DA19DBAEF90000253A /* TitleSubTitleCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleSubTitleCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAF2291D19C937180041C36F /* ZHHParseDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHHParseDevice.h; sourceTree = "<group>"; };
 		FAF2291E19C937180041C36F /* ZHHParseDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHHParseDevice.m; sourceTree = "<group>"; };
 		FAF2292019C937620041C36F /* UIApplication+AppVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+AppVersion.h"; sourceTree = "<group>"; };
@@ -259,6 +263,9 @@
 			isa = PBXGroup;
 			children = (
 				1B520C5219CE8A2000A0ADE6 /* PersonalInfoViewController.swift */,
+				FAE020DA19DBAEF90000253A /* TitleSubTitleCollectionViewCell.swift */,
+				FA4D1F5A19DA6B32006AA190 /* DescriptionCollectionViewCell.swift */,
+				FA4D1F5B19DA6B32006AA190 /* DescriptionCollectionViewCell.xib */,
 				1B8615AD19CFD79A0064505C /* AddressCollectionViewCell.swift */,
 				FADDD6CD19D476BB003EC88D /* AddressCollectionViewCell.xib */,
 				1B64007719D8977D00C35E44 /* NameCollectionViewCell.swift */,
@@ -267,8 +274,7 @@
 				1B64007C19D8E48E00C35E44 /* PhoneNumberCollectionViewCell.xib */,
 				FA4D1F5619DA620C006AA190 /* EmailCollectionViewCell.swift */,
 				FA4D1F5719DA620C006AA190 /* EmailCollectionViewCell.xib */,
-				FA4D1F5A19DA6B32006AA190 /* DescriptionCollectionViewCell.swift */,
-				FA4D1F5B19DA6B32006AA190 /* DescriptionCollectionViewCell.xib */,
+				FAE020D819DBACA40000253A /* EmergencyContactCollectionViewCell.swift */,
 			);
 			path = PersonalInformation;
 			sourceTree = "<group>";
@@ -487,6 +493,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAF2291F19C937180041C36F /* ZHHParseDevice.m in Sources */,
+				FAE020DB19DBAEF90000253A /* TitleSubTitleCollectionViewCell.swift in Sources */,
 				FA4D1F5C19DA6B32006AA190 /* DescriptionCollectionViewCell.swift in Sources */,
 				FACE198719C9EB05001FD4C9 /* QuestClient.swift in Sources */,
 				1B2FCD1C19C4A64400FDF4D8 /* Extension.swift in Sources */,
@@ -500,6 +507,7 @@
 				1B64007919D8977D00C35E44 /* NameCollectionViewCell.swift in Sources */,
 				1B563F9619C496BF001785D9 /* BaseButton.swift in Sources */,
 				1B520C4F19CE888300A0ADE6 /* MenuViewController.swift in Sources */,
+				FAE020D919DBACA40000253A /* EmergencyContactCollectionViewCell.swift in Sources */,
 				1B7CF10A19BCEF28007A157D /* AppDelegate.swift in Sources */,
 				FAF2292519C937620041C36F /* UIDevice-Hardware.m in Sources */,
 				FA79657619C9079F00852C84 /* Locator.swift in Sources */,

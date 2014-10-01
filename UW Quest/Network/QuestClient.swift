@@ -8,8 +8,6 @@
 
 import Foundation
 
-//TODO: Add reachability manager
-
 let kUWQuestAPIKey: String = "77881122"
 let kUWQuestAPIBaseURL: String = "http://uw-quest.appspot.com"
 
@@ -78,6 +76,7 @@ class QuestClient: AFHTTPSessionManager {
         dispatch_once(&onceToken, { () -> Void in
             println("API start to activate...")
             self.GET("", parameters: nil, success: { (task, responseObject) -> Void in
+                // TODO: change API to response json
                 println("API activated successfully")
                 }, failure: { (task, error) -> Void in
                     println("API activated failed")

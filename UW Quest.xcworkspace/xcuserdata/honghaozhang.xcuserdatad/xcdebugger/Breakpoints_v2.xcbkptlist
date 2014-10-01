@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UW Quest/Network/QuestClient.swift"
-            timestampString = "433822301.837288"
+            timestampString = "433822910.962997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "setup()"
             landmarkType = "5">
          </BreakpointContent>

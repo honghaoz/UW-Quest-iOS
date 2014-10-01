@@ -8,15 +8,16 @@
 
 import UIKit
 
-let subTitleColor: UIColor = UIColor(white: 0.3, alpha: 0.9)
-let subContentColor: UIColor = subTitleColor
-let subTitleFont: UIFont = UIFont(name: "HelveticaNeue-Light", size: 15)
-let subContentFont: UIFont = UIFont(name: "HelveticaNeue-Light", size: 14)
-let subContentEmptyFont: UIFont = UIFont(name: "HelveticaNeue-Light", size: 16)
-
 class EmailCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var mainTitleLabel: UILabel!
+    
+    let subTitleColor: UIColor = UIColor(white: 0.3, alpha: 0.9)
+    let subContentColor: UIColor = UIColor(white: 0.3, alpha: 0.9)
+    let subTitleFont: UIFont = UIFont(name: "HelveticaNeue-Light", size: 15)
+    let subContentFont: UIFont = UIFont(name: "HelveticaNeue-Light", size: 14)
+    let subContentEmptyFont: UIFont = UIFont(name: "HelveticaNeue-Light", size: 16)
+    
     var kTitleLabelMaxWidth: CGFloat!
     
     let kLabelVerticalInsets: CGFloat = 8.0
@@ -26,7 +27,6 @@ class EmailCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         self.setup()
     }
     

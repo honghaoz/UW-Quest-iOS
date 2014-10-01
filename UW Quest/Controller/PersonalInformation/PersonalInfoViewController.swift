@@ -21,7 +21,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
     let kPhoneNumberCellResueIdentifier = "PhoneNumberCell"
     let kEmailAddressCellResueIdentifier = "EmailAddressCell"
     let kEmailAddressDescriptionCellResueIdentifier = "EmailAddressDescriptionCell"
-//    let kEmergencyContactCellResueIdentifier = "EmergencyContactCell"
+    let kEmergencyContactCellResueIdentifier = "EmergencyContactCell"
 //    let kDemograhicCellResueIdentifier = "DemographicCell"
 //    let kCitizenshipCellResueIdentifier = "CitizenshipCell"
 
@@ -51,6 +51,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
         collectionView.registerNib(emailCellNib, forCellWithReuseIdentifier: kEmailAddressCellResueIdentifier)
         var emailDescriptionCellNib = UINib(nibName: "DescriptionCollectionViewCell", bundle: nil)
         collectionView.registerNib(emailDescriptionCellNib, forCellWithReuseIdentifier: kEmailAddressDescriptionCellResueIdentifier)
+        collectionView.registerClass(EmergencyContactCollectionViewCell.self, forCellWithReuseIdentifier: kEmergencyContactCellResueIdentifier)
         
         // Setup
         sharedPersonalInformation = Locator.sharedLocator.user.personalInformation
@@ -95,10 +96,9 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
             case PersonalInformationType.PhoneNumbers:
                 return sharedPersonalInformation.phoneNumbers!.count
             case PersonalInformationType.EmailAddresses:
-                println("return \(sharedPersonalInformation.emailAddresses == nil ? 0 : 2)")
                 return sharedPersonalInformation.emailAddresses == nil ? 0 : 4
             case PersonalInformationType.EmergencyContacts:
-                return 0
+                return sharedPersonalInformation.emergencyContacts!.count
             case PersonalInformationType.DemographicInformation:
                 return 0
             case PersonalInformationType.CitizenshipImmigrationDocuments:
@@ -167,6 +167,11 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
             }
             break
         case PersonalInformationType.EmergencyContacts:
+            var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kEmergencyContactCellResueIdentifier, forIndexPath: indexPath) as EmergencyContactCollectionViewCell
+            
+            let emergencyContact: PersonalInformation.EmergencyContact = sharedPersonalInformation.emergencyContacts![indexPath.item]
+            aCell.config(emergencyContact)
+            cell = aCell
             break
         case PersonalInformationType.DemographicInformation:
             break
@@ -300,6 +305,16 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
             }
             break
         case PersonalInformationType.EmergencyContacts:
+            let reuseIdentifier = kEmergencyContactCellResueIdentifier
+            var aCell: EmergencyContactCollectionViewCell? = self.offscreenCells[reuseIdentifier] as? EmergencyContactCollectionViewCell
+            if aCell == nil {
+                aCell = EmergencyContactCollectionViewCell()
+                self.offscreenCells[reuseIdentifier] = aCell
+            }
+            
+            let emergencyContact: PersonalInformation.EmergencyContact = sharedPersonalInformation.emergencyContacts![indexPath.item]
+            aCell!.config(emergencyContact)
+            cell = aCell
             break
         case PersonalInformationType.DemographicInformation:
             break
@@ -366,6 +381,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
                 println("emails: \(self.sharedPersonalInformation.emailAddresses != nil)")
                 break
             case PersonalInformationType.EmergencyContacts:
+                println("emergency count: \(self.sharedPersonalInformation.emergencyContacts.count)")
                 break
             case PersonalInformationType.DemographicInformation:
                 break

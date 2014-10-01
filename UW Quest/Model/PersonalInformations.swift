@@ -27,6 +27,7 @@ class PersonalInformation {
     var names: [Name]!
     var phoneNumbers: [PhoneNumber]!
     var emailAddresses: EmailAddress?
+    var emergencyContacts: [EmergencyContact]!
     
     init() {
         println("PersonalInformation inited")
@@ -34,6 +35,7 @@ class PersonalInformation {
         addresses = []
         names = []
         phoneNumbers = []
+        emergencyContacts = []
     }
     
     class Address {
@@ -181,11 +183,11 @@ class PersonalInformation {
             let country: String? = rawDict[PhoneNumber.kCountry()]
             let ext: String? = rawDict[PhoneNumber.kExtension()]
             let preferredString: String? = rawDict[PhoneNumber.kPreferred()]
-            let preferred: Bool? = preferredString == "Y" ? true : false
+            let preferred: Bool = preferredString == "Y" ? true : false
             let telephone: String? = rawDict[PhoneNumber.kTelephone()]
             
-            if (phoneType != nil) && (country != nil) && (ext != nil) && (preferred != nil) && (telephone != nil) {
-                return PhoneNumber(type: phoneType!, country: country!, ext: ext!, isPreferred: preferred!, telephone: telephone!)
+            if (phoneType != nil) && (country != nil) && (ext != nil) && (preferredString != nil) && (telephone != nil) {
+                return PhoneNumber(type: phoneType!, country: country!, ext: ext!, isPreferred: preferred, telephone: telephone!)
             }
             return nil
         }
@@ -324,25 +326,78 @@ class PersonalInformation {
         return false
     }
     
+    class EmergencyContact {
+        var contactName: String
+        var country: String
+        var ext: String
+        var phone: String
+        var isPrimary: Bool
+        var relationship: String
+        
+        class func kContactName() -> String {return "contact_name"}
+        class func kCountry() -> String {return "country"}
+        class func kExtension() -> String {return "extension"}
+        class func kPhone() -> String {return "phone"}
+        class func kPrimary() -> String {return "primary_contact"}
+        class func kRelationship() -> String {return "relationship"}
+        
+        class func newContact(rawDict: Dictionary<String, String>) -> EmergencyContact? {
+            let contactName: String? = rawDict[EmergencyContact.kContactName()]
+            let country: String? = rawDict[EmergencyContact.kCountry()]
+            let ext: String? = rawDict[EmergencyContact.kExtension()]
+            let phone: String? = rawDict[EmergencyContact.kPhone()]
+            let primaryString: String? = rawDict[EmergencyContact.kPrimary()]
+            let isPrimary: Bool = primaryString == "Y" ? true : false
+            let relationship: String? = rawDict[EmergencyContact.kRelationship()]
+            
+            if (contactName != nil) && (country != nil) && (ext != nil) && (phone != nil) && (primaryString != nil) && (relationship != nil) {
+                return EmergencyContact(contactName: contactName!, country: country!, ext: ext!, phone: phone!, isPrimary: isPrimary, relationship: relationship!)
+            }
+            return nil
+        }
+
+        
+        init (contactName: String, country: String, ext: String, phone: String, isPrimary: Bool, relationship: String) {
+            self.contactName = contactName
+            self.country = country
+            self.ext = ext
+            self.phone = phone
+            self.isPrimary = isPrimary
+            self.relationship = relationship
+        }
+    }
+    
+    func initEmergencyContacts(rawData: AnyObject) -> Bool {
+        // Passed in a dictionary
+        if let dataDict = rawData as? Dictionary<String, String> {
+            if let newContact: EmergencyContact = EmergencyContact.newContact(dataDict) {
+                self.emergencyContacts = [newContact]
+                return true
+            }
+            return false
+        }
+        
+        // Passed in an array of dictionary
+        if let dataArray = rawData as? [Dictionary<String, String>] {
+            var tempContancts = [EmergencyContact]()
+            for eachDataDict in dataArray {
+                if let newContact: EmergencyContact = EmergencyContact.newContact(eachDataDict) {
+                    tempContancts.append(newContact)
+                } else {
+                    // Some error happens
+                    self.emergencyContacts = []
+                    return false
+                }
+            }
+            // If goes here, no error happens
+            self.emergencyContacts = tempContancts
+            return true
+        }
+        // Invalid type
+        return false
+    }
+    
 //
-//    class EmergencyContact {
-//        var contactName: String
-//        var country: String
-//        var ext: String
-//        var phone: String
-//        var isPrimary: Bool
-//        var relationship: String
-//        
-//        init (contactName: String, country: String, ext: String, phone: String, isPrimary: Bool, relationship: String) {
-//            self.contactName = contactName
-//            self.country = country
-//            self.ext = ext
-//            self.phone = phone
-//            self.isPrimary = isPrimary
-//            self.relationship = relationship
-//        }
-//    }
-//    
 //    // TODO:
 //    
 //    class CitizenshipImmigrationDocument {
