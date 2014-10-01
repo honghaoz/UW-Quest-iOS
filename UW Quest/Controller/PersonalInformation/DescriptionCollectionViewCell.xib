@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
@@ -12,11 +13,11 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="272" height="89"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalHuggingPriority="998" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="x9e-wX-YEk" userLabel="email server">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalHuggingPriority="998" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="x9e-wX-YEk" userLabel="descriptionLabel">
                         <rect key="frame" x="8" y="8" width="256" height="73"/>
                         <string key="text">Email is the primary means of communication used by the University. It is important for you to keep your email address up to date.</string>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
-                        <color key="textColor" white="0.29999999999999999" alpha="0.90000000000000002" colorSpace="calibratedWhite"/>
+                        <color key="textColor" white="0.29999999999999999" alpha="0.70000000000000007" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -29,6 +30,9 @@
                 <constraint firstAttribute="bottom" secondItem="x9e-wX-YEk" secondAttribute="bottom" constant="8" id="j2a-ur-5Vw"/>
             </constraints>
             <size key="customSize" width="272" height="89"/>
+            <connections>
+                <outlet property="descriptionLabel" destination="x9e-wX-YEk" id="8P1-7Q-5Hz"/>
+            </connections>
             <point key="canvasLocation" x="208" y="167.5"/>
         </collectionViewCell>
     </objects>

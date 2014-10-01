@@ -96,7 +96,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
                 return sharedPersonalInformation.phoneNumbers!.count
             case PersonalInformationType.EmailAddresses:
                 println("return \(sharedPersonalInformation.emailAddresses == nil ? 0 : 2)")
-                return sharedPersonalInformation.emailAddresses == nil ? 0 : 2
+                return sharedPersonalInformation.emailAddresses == nil ? 0 : 4
             case PersonalInformationType.EmergencyContacts:
                 return 0
             case PersonalInformationType.DemographicInformation:
@@ -145,7 +145,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
                 aCell.config("Campus Email Address", emails: emails)
                 cell = aCell
                 break
-            case 1:
+            case 2:
                 var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kEmailAddressCellResueIdentifier, forIndexPath: indexPath) as EmailCollectionViewCell
                 var emails: [(String, String)] = []
                 for eachEmail in sharedPersonalInformation.emailAddresses!.alternateEmailAddress {
@@ -155,7 +155,14 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
                 aCell.config("Alternate Email Address", emails: emails)
                 cell = aCell
                 break
+            case 1, 3: // Description
+                var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kEmailAddressDescriptionCellResueIdentifier, forIndexPath: indexPath) as DescriptionCollectionViewCell
+                let description = indexPath.item == 1 ? sharedPersonalInformation.emailAddresses!.campusEmailDescription : sharedPersonalInformation.emailAddresses!.alternateEmailDescription
+                aCell.config(description!)
+                cell = aCell
+                break
             default:
+                assert(false, "Wrong indexPath.item")
                 break
             }
             break
@@ -250,29 +257,45 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
             cell = aCell
             break
         case PersonalInformationType.EmailAddresses:
-            let reuseIdentifier = kEmailAddressCellResueIdentifier
-            var aCell: EmailCollectionViewCell? = self.offscreenCells[reuseIdentifier] as? EmailCollectionViewCell
-            if aCell == nil {
-                aCell = NSBundle.mainBundle().loadNibNamed("EmailCollectionViewCell", owner: self, options: nil)[0] as? EmailCollectionViewCell
-                self.offscreenCells[reuseIdentifier] = aCell
-            }
-            
             switch indexPath.item {
-            case 0:
-                let emails: [(String, String)] = [("Campus Email", sharedPersonalInformation.emailAddresses!.campusEmailAddress.campusEmail), ("Delivered to", sharedPersonalInformation.emailAddresses!.campusEmailAddress.deliveredTo)]
-                aCell!.config("Campus Email Address", emails: emails)
-                cell = aCell
-                break
-            case 1:
-                var emails: [(String, String)] = []
-                for eachEmail in sharedPersonalInformation.emailAddresses!.alternateEmailAddress {
-                    let newTuple = (eachEmail.type, eachEmail.address)
-                    emails.append(newTuple)
+            case 0, 2:
+                // Prepare cell
+                let reuseIdentifier = kEmailAddressCellResueIdentifier
+                var aCell: EmailCollectionViewCell? = self.offscreenCells[reuseIdentifier] as? EmailCollectionViewCell
+                if aCell == nil {
+                    aCell = NSBundle.mainBundle().loadNibNamed("EmailCollectionViewCell", owner: self, options: nil)[0] as? EmailCollectionViewCell
+                    self.offscreenCells[reuseIdentifier] = aCell
                 }
-                aCell!.config("Alternate Email Address", emails: emails)
+                
+                if indexPath.item == 0 {
+                    let emails: [(String, String)] = [("Campus Email", sharedPersonalInformation.emailAddresses!.campusEmailAddress.campusEmail), ("Delivered to", sharedPersonalInformation.emailAddresses!.campusEmailAddress.deliveredTo)]
+                    aCell!.config("Campus Email Address", emails: emails)
+                    cell = aCell
+                } else {
+                    var emails: [(String, String)] = []
+                    for eachEmail in sharedPersonalInformation.emailAddresses!.alternateEmailAddress {
+                        let newTuple = (eachEmail.type, eachEmail.address)
+                        emails.append(newTuple)
+                    }
+                    aCell!.config("Alternate Email Address", emails: emails)
+                    cell = aCell
+                }
+                break
+            case 1, 3:
+                // Prepare cell
+                let reuseIdentifier = kEmailAddressDescriptionCellResueIdentifier
+                var aCell: DescriptionCollectionViewCell? = self.offscreenCells[reuseIdentifier] as? DescriptionCollectionViewCell
+                if aCell == nil {
+                    aCell = NSBundle.mainBundle().loadNibNamed("DescriptionCollectionViewCell", owner: self, options: nil)[0] as? DescriptionCollectionViewCell
+                    self.offscreenCells[reuseIdentifier] = aCell
+                }
+                
+                let description = indexPath.item == 1 ? sharedPersonalInformation.emailAddresses!.campusEmailDescription : sharedPersonalInformation.emailAddresses!.alternateEmailDescription
+                aCell!.config(description!)
                 cell = aCell
                 break
             default:
+                assert(false, "Wrong PersonalInformation Type")
                 break
             }
             break
