@@ -76,7 +76,7 @@ class User {
         case .DemographicInformation:
             return self.personalInformation.initDemographicInformation(data)
         case .CitizenshipImmigrationDocuments:
-            break
+            return self.personalInformation.initCitizenshipImmigrationDocument(data)
         default:
             assert(false, "Wrong PersonalInformation Type")
         }
