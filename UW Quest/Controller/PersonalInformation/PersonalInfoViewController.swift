@@ -475,8 +475,9 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
 //            self.collectionView.collectionViewLayout.invalidateLayout()
 //            self.collectionView.scrollToItemAtIndexPath(headerView.indexPath, atScrollPosition: UICollectionViewScrollPosition.Top, animated: true)
             
-            }, failure: {_ in
-                JGProgressHUD.dismiss(0, animated: true)
+            }, failure: {errorMessage, error in
+//                JGProgressHUD.dismiss(0, animated: true)
+                JGProgressHUD.showFailure(errorMessage, duration: 0.5)
         })
     }
     

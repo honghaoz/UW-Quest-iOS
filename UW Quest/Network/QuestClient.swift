@@ -165,7 +165,8 @@ class QuestClient: AFHTTPSessionManager {
             } else {
                 // Get data failed
                 // TODO:
-                failure(errorMessage: "TODOTODO", error: nil)
+                let errorCode = self.getErrorCode(responseDict)
+                failure(errorMessage: self.errorMessageWithErrorCode(errorCode), error: NSError(domain: "Not network error", code: 1, userInfo: nil))
             }
             
         }) { (task, error) -> Void in
