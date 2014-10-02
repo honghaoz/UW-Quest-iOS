@@ -301,22 +301,25 @@ class PersonalInformation {
             let alternateEmailAddressDict: Dictionary<String, AnyObject>? = dataDict["alternate_email_address"] as AnyObject? as? Dictionary<String, AnyObject>
             let campusEmailAddressDict: Dictionary<String, AnyObject>? = dataDict["campus_email_address"] as AnyObject? as? Dictionary<String, AnyObject>
             
-            if (alternateEmailAddressDict != nil) && (campusEmailAddressDict != nil) {
-                let alternateEmailDescription: String? = alternateEmailAddressDict!["description"] as AnyObject? as? String
-                let alternateEmailData: [Dictionary<String, String>]? = alternateEmailAddressDict!["data"] as AnyObject? as? [Dictionary<String, String>]
+            if (campusEmailAddressDict != nil) {
+                let alternateEmailDescription: String? = alternateEmailAddressDict?["description"] as AnyObject? as? String
+                let alternateEmailData: [Dictionary<String, String>]? = alternateEmailAddressDict?["data"] as AnyObject? as? [Dictionary<String, String>]
                 
                 let campusEmailDescription: String? = campusEmailAddressDict!["description"] as AnyObject? as? String
                 let campusEmailData: [Dictionary<String, String>]? = campusEmailAddressDict!["data"] as AnyObject? as? [Dictionary<String, String>]
-                if (alternateEmailData != nil) && (campusEmailData != nil) {
+                if (campusEmailData != nil) {
                     var tempAlternateEmails: [EmailAddress.Email] = []
-                    for eachAlternateEmail in alternateEmailData! {
-                        if let newEmail = EmailAddress.Email.newEmail(eachAlternateEmail) {
-                            tempAlternateEmails.append(newEmail)
-                        } else {
-                            // Some error happens
-                            return false
+                    if (alternateEmailData != nil) {
+                        for eachAlternateEmail in alternateEmailData! {
+                            if let newEmail = EmailAddress.Email.newEmail(eachAlternateEmail) {
+                                tempAlternateEmails.append(newEmail)
+                            } else {
+                                // Some error happens
+                                return false
+                            }
                         }
                     }
+                    
                     let campusEmail: EmailAddress.CampusEmail? = EmailAddress.CampusEmail.newCampusEmail(campusEmailData![0])
                     if (campusEmail != nil) {
                         // Successfully

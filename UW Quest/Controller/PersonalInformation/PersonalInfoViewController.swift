@@ -100,7 +100,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
             case PersonalInformationType.PhoneNumbers:
                 return sharedPersonalInformation.phoneNumbers!.count
             case PersonalInformationType.EmailAddresses:
-                return sharedPersonalInformation.emailAddresses == nil ? 0 : 4
+                return sharedPersonalInformation.emailAddresses == nil ? 0 : (sharedPersonalInformation.emailAddresses?.alternateEmailAddress.count == 0 ? 2 : 4)
             case PersonalInformationType.EmergencyContacts:
                 return sharedPersonalInformation.emergencyContacts!.count
             case PersonalInformationType.DemographicInformation:
