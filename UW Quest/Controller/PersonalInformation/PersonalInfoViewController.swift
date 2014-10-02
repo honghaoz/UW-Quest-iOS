@@ -20,10 +20,10 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
     let kNameCellResueIdentifier = "NameCell"
     let kPhoneNumberCellResueIdentifier = "PhoneNumberCell"
     let kEmailAddressCellResueIdentifier = "EmailAddressCell"
-    let kEmailAddressDescriptionCellResueIdentifier = "EmailAddressDescriptionCell"
+    let kDescriptionCellResueIdentifier = "DescriptionCell"
     let kEmergencyContactCellResueIdentifier = "EmergencyContactCell"
-//    let kDemograhicCellResueIdentifier = "DemographicCell"
-//    let kCitizenshipCellResueIdentifier = "CitizenshipCell"
+    let kDemograhicCellResueIdentifier = "DemographicCell"
+    let kCitizenshipCellResueIdentifier = "CitizenshipCell"
 
     var currentShowingSection: Int = -1
     
@@ -49,9 +49,13 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
         collectionView.registerNib(phoneNumberCellNib, forCellWithReuseIdentifier: kPhoneNumberCellResueIdentifier)
         var emailCellNib = UINib(nibName: "EmailCollectionViewCell", bundle: nil)
         collectionView.registerNib(emailCellNib, forCellWithReuseIdentifier: kEmailAddressCellResueIdentifier)
-        var emailDescriptionCellNib = UINib(nibName: "DescriptionCollectionViewCell", bundle: nil)
-        collectionView.registerNib(emailDescriptionCellNib, forCellWithReuseIdentifier: kEmailAddressDescriptionCellResueIdentifier)
+        
+        var descriptionCellNib = UINib(nibName: "DescriptionCollectionViewCell", bundle: nil)
+        collectionView.registerNib(descriptionCellNib, forCellWithReuseIdentifier: kDescriptionCellResueIdentifier)
+        
         collectionView.registerClass(EmergencyContactCollectionViewCell.self, forCellWithReuseIdentifier: kEmergencyContactCellResueIdentifier)
+        collectionView.registerClass(DemographicCollectionCell.self, forCellWithReuseIdentifier: kDemograhicCellResueIdentifier)
+        collectionView.registerClass(CitizenshipCollectionViewCell.self, forCellWithReuseIdentifier: kCitizenshipCellResueIdentifier)
         
         // Setup
         sharedPersonalInformation = Locator.sharedLocator.user.personalInformation
@@ -100,8 +104,9 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
             case PersonalInformationType.EmergencyContacts:
                 return sharedPersonalInformation.emergencyContacts!.count
             case PersonalInformationType.DemographicInformation:
-                return 0
+                return sharedPersonalInformation.demograhicInformation == nil ? 0 : (4 + sharedPersonalInformation.demograhicInformation!.nationalIdNumbers!.count)
             case PersonalInformationType.CitizenshipImmigrationDocuments:
+//                return sharedPersonalInformation.citizenshipImmigrationDocument!.count
                 return 0
             default:
                 assert(false, "Wrong PersonalInformation Type")
@@ -156,7 +161,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
                 cell = aCell
                 break
             case 1, 3: // Description
-                var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kEmailAddressDescriptionCellResueIdentifier, forIndexPath: indexPath) as DescriptionCollectionViewCell
+                var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kDescriptionCellResueIdentifier, forIndexPath: indexPath) as DescriptionCollectionViewCell
                 let description = indexPath.item == 1 ? sharedPersonalInformation.emailAddresses!.campusEmailDescription : sharedPersonalInformation.emailAddresses!.alternateEmailDescription
                 aCell.config(description!)
                 cell = aCell
@@ -174,6 +179,28 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
             cell = aCell
             break
         case PersonalInformationType.DemographicInformation:
+            let nationalIdsCount = sharedPersonalInformation.demograhicInformation!.nationalIdNumbers!.count
+            let totalItemsCount = self.collectionView.numberOfItemsInSection(indexPath.section)
+            // Last item should be description
+            if indexPath.item == totalItemsCount - 1 {
+                var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kDescriptionCellResueIdentifier, forIndexPath: indexPath) as DescriptionCollectionViewCell
+                let description = sharedPersonalInformation.demograhicInformation?.note!
+                aCell.config(description!)
+                cell = aCell
+            } else {
+                var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kDemograhicCellResueIdentifier, forIndexPath: indexPath) as DemographicCollectionCell
+                var demographicInfo = sharedPersonalInformation.demograhicInformation!
+                if indexPath.item == 0 {
+                    aCell.configDemographicInformation(demographicInfo)
+                } else if indexPath.item <= nationalIdsCount {
+                    aCell.configNationalIds(demographicInfo, index: indexPath.item - 1)
+                } else if indexPath.item == totalItemsCount - 2 {
+                    aCell.configVisa(demographicInfo)
+                } else {
+                    aCell.configCitizenship(demographicInfo)
+                }
+                cell = aCell
+            }
             break
         case PersonalInformationType.CitizenshipImmigrationDocuments:
             break
@@ -288,7 +315,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
                 break
             case 1, 3:
                 // Prepare cell
-                let reuseIdentifier = kEmailAddressDescriptionCellResueIdentifier
+                let reuseIdentifier = kDescriptionCellResueIdentifier
                 var aCell: DescriptionCollectionViewCell? = self.offscreenCells[reuseIdentifier] as? DescriptionCollectionViewCell
                 if aCell == nil {
                     aCell = NSBundle.mainBundle().loadNibNamed("DescriptionCollectionViewCell", owner: self, options: nil)[0] as? DescriptionCollectionViewCell
@@ -317,6 +344,38 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
             cell = aCell
             break
         case PersonalInformationType.DemographicInformation:
+            let nationalIdsCount = sharedPersonalInformation.demograhicInformation!.nationalIdNumbers!.count
+            let totalItemsCount = self.collectionView.numberOfItemsInSection(indexPath.section)
+            // Last item should be description
+            if indexPath.item == totalItemsCount - 1 {
+                let reuseIdentifier = kDescriptionCellResueIdentifier
+                var aCell: DescriptionCollectionViewCell? = self.offscreenCells[reuseIdentifier] as? DescriptionCollectionViewCell
+                if aCell == nil {
+                    aCell = NSBundle.mainBundle().loadNibNamed("DescriptionCollectionViewCell", owner: self, options: nil)[0] as? DescriptionCollectionViewCell
+                    self.offscreenCells[reuseIdentifier] = aCell
+                }
+                let description = sharedPersonalInformation.demograhicInformation?.note!
+                aCell!.config(description!)
+                cell = aCell
+            } else {
+                let reuseIdentifier = kDemograhicCellResueIdentifier
+                var aCell: DemographicCollectionCell? = self.offscreenCells[reuseIdentifier] as? DemographicCollectionCell
+                if aCell == nil {
+                    aCell = DemographicCollectionCell(frame: CGRectMake(0, 0, targetWidth, targetWidth))
+                    self.offscreenCells[reuseIdentifier] = aCell
+                }
+                var demographicInfo = sharedPersonalInformation.demograhicInformation!
+                if indexPath.item == 0 {
+                    aCell!.configDemographicInformation(demographicInfo)
+                } else if indexPath.item <= nationalIdsCount {
+                    aCell!.configNationalIds(demographicInfo, index: indexPath.item - 1)
+                } else if indexPath.item == totalItemsCount - 2 {
+                    aCell!.configVisa(demographicInfo)
+                } else {
+                    aCell!.configCitizenship(demographicInfo)
+                }
+                cell = aCell
+            }
             break
         case PersonalInformationType.CitizenshipImmigrationDocuments:
             break
@@ -384,6 +443,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
                 println("emergency count: \(self.sharedPersonalInformation.emergencyContacts.count)")
                 break
             case PersonalInformationType.DemographicInformation:
+                println("demographic: \(self.sharedPersonalInformation.demograhicInformation != nil)")
                 break
             case PersonalInformationType.CitizenshipImmigrationDocuments:
                 break
