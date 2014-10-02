@@ -28,6 +28,7 @@ class PersonalInformation {
     var phoneNumbers: [PhoneNumber]!
     var emailAddresses: EmailAddress?
     var emergencyContacts: [EmergencyContact]!
+    var demograhicInformation: DemographicInformation?
     
     init() {
         println("PersonalInformation inited")
@@ -397,6 +398,169 @@ class PersonalInformation {
         return false
     }
     
+    
+    class DemographicInformation {
+        
+        class CitizenshipInformation {
+            var country: String
+            var description: String
+            
+            class func kCountry() -> String {return "country"}
+            class func kDescription() -> String {return "description"}
+            
+            class func newCitizenshipInformations(rawData: [Dictionary<String, String>]) -> [CitizenshipInformation]? {
+                var tempList: [CitizenshipInformation] = []
+                for eachDict in rawData {
+                    let country: String? = eachDict[CitizenshipInformation.kCountry()]
+                    let description: String? = eachDict[CitizenshipInformation.kDescription()]
+                    if (country != nil) && (description != nil) {
+                        tempList.append(CitizenshipInformation(country: country!, description: description!))
+                    } else {
+                        return nil
+                    }
+                }
+                return tempList
+            }
+            
+            init(country: String, description: String) {
+                self.country = country
+                self.description = description
+            }
+        }
+        var citizenshipInformations: [CitizenshipInformation]?
+        
+        class Demographic {
+            var dateOfBirth: String
+            var gender: String
+            var id: String
+            var maritalStatus: String
+            
+            class func kDateOfBirth() -> String {return "date_of_birth"}
+            class func kGender() -> String {return "gender"}
+            class func kId() -> String {return "id"}
+            class func kMaritalStatus() -> String {return "marital_status"}
+            
+            class func newDemographic(rawDict: Dictionary<String, String>) -> Demographic? {
+                let dateOfBirth: String? = rawDict[Demographic.kDateOfBirth()]
+                let gender: String? = rawDict[Demographic.kGender()]
+                let id: String? = rawDict[Demographic.kId()]
+                let maritalStatus: String? = rawDict[Demographic.kMaritalStatus()]
+                
+                if (dateOfBirth != nil) && (gender != nil) && (id != nil) && (maritalStatus != nil) {
+                    return Demographic(dateOfBirth: dateOfBirth!, gender: gender!, id: id!, maritalStatus: maritalStatus!)
+                } else {
+                    return nil
+                }
+            }
+            
+            init(dateOfBirth: String, gender: String, id: String, maritalStatus: String) {
+                self.dateOfBirth = dateOfBirth
+                self.gender = gender
+                self.id = id
+                self.maritalStatus = maritalStatus
+            }
+        }
+        
+        var demographicInfo: Demographic?
+        
+        class NationalIdentificationNumber {
+            var country: String
+            var nationalId: String
+            var nationalIdType: String
+            
+            class func kCountry() -> String {return "country"}
+            class func kNationalId() -> String {return "national_id"}
+            class func kNationalIdType() -> String {return "national_id_type"}
+            
+            class func newNationalIds(rawData: [Dictionary<String, String>]) -> [NationalIdentificationNumber]? {
+                var tempList: [NationalIdentificationNumber] = []
+                for eachDict in rawData {
+                    let country: String? = eachDict[NationalIdentificationNumber.kCountry()]
+                    let nationalId: String? = eachDict[NationalIdentificationNumber.kNationalId()]
+                    let nationalIdType: String? = eachDict[NationalIdentificationNumber.kNationalIdType()]
+                    if (country != nil) && (nationalId != nil) && (nationalIdType != nil) {
+                        tempList.append(NationalIdentificationNumber(country: country!, nationalId: nationalId!, nationalIdType: nationalIdType!))
+                    } else {
+                        return nil
+                    }
+                }
+                return tempList
+            }
+            
+            init(country: String, nationalId: String, nationalIdType: String) {
+                self.country = country
+                self.nationalId = nationalId
+                self.nationalIdType = nationalIdType
+            }
+        }
+        
+        var nationalIdNumbers: [NationalIdentificationNumber]?
+        var note: String?
+        
+        class VisaOrPermitData {
+            var country: String
+            var type: String
+            
+            class func kCountry() -> String {return "country"}
+            class func kType() -> String {return "type"}
+            
+            class func newVisa(rawDict: Dictionary<String, String>) -> VisaOrPermitData? {
+                let country: String? = rawDict[VisaOrPermitData.kCountry()]
+                let type: String? = rawDict[VisaOrPermitData.kType()]
+                if (country != nil) && (type != nil) {
+                    return VisaOrPermitData(country: country!, type: type!)
+                } else {
+                    return nil
+                }
+            }
+            
+            init(country: String, type: String) {
+                self.country = country
+                self.type = type
+            }
+        }
+        var visaOrPermitData: VisaOrPermitData?
+    }
+    
+    func initDemographicInformation(rawData: AnyObject) -> Bool {
+        let citizenshipsData: [Dictionary<String, String>]? = rawData["citizenship_information"] as AnyObject? as? [Dictionary<String, String>]
+        let demographicData: Dictionary<String, String>? = rawData["demographic_information"] as AnyObject? as? Dictionary<String, String>
+        let nationalIdsData: [Dictionary<String, String>]? = rawData["national_identification_number"] as AnyObject? as? [Dictionary<String, String>]
+        let note: String? = rawData["note"] as AnyObject? as? String
+        let visaData: Dictionary<String, String>? = rawData["visa_or_permit_data"] as AnyObject? as? Dictionary<String, String>
+        if (citizenshipsData != nil) && (demographicData != nil) && (nationalIdsData != nil) && (visaData != nil) {
+            self.demograhicInformation = DemographicInformation()
+            
+            if let citizenshipInfos: [DemographicInformation.CitizenshipInformation] = DemographicInformation.CitizenshipInformation.newCitizenshipInformations(citizenshipsData!) {
+                self.demograhicInformation!.citizenshipInformations = citizenshipInfos
+            } else {
+                return false
+            }
+            
+            if let demographicInfo: DemographicInformation.Demographic = DemographicInformation.Demographic.newDemographic(demographicData!) {
+                self.demograhicInformation!.demographicInfo = demographicInfo
+            } else {
+                return false
+            }
+            
+            if let nationalIdNumbers: [DemographicInformation.NationalIdentificationNumber] = DemographicInformation.NationalIdentificationNumber.newNationalIds(nationalIdsData!) {
+                self.demograhicInformation!.nationalIdNumbers = nationalIdNumbers
+            } else {
+                return false
+            }
+            
+            self.demograhicInformation!.note = note
+            
+            if let visaOrPermitData: DemographicInformation.VisaOrPermitData = DemographicInformation.VisaOrPermitData.newVisa(visaData!) {
+                self.demograhicInformation!.visaOrPermitData = visaOrPermitData
+            } else {
+                return false
+            }
+            return true
+        }
+        return false
+    }
+    
 //
 //    // TODO:
 //    
@@ -415,42 +579,3 @@ class PersonalInformation {
 //    }
     
 }
-
-//class DemographicInformation {
-//    var note: String
-//    class CitizenshipInformation {
-//        var country: String
-//        var description: String
-//        init(country: String, description: String) {
-//            self.country = country
-//            self.description = description
-//        }
-//    }
-//    var citizenshipInformations: [CitizenshipInformation]
-//    var dateOfBirth: String
-//    var gender: String
-//    var id: String
-//    var maritalStatus: String
-//    class NationalIdentificationNumber {
-//        var country: String
-//        var nationalId: String
-//        var nationalIdType: String
-//        init(country: String, nationalId: String, nationalIdType: String) {
-//            self.country = country
-//            self.nationalId = nationalId
-//            self.nationalIdType = nationalIdType
-//        }
-//    }
-//    var nationalIdNumber: NationalIdentificationNumber
-//    class VisaOrPermitData {
-//        var country: String
-//        var type: String
-//        init(country: String, type: String) {
-//            self.country = country
-//            self.type = type
-//        }
-//    }
-//    var visaOrPermitData: VisaOrPermitData
-//    
-//    init(
-//}

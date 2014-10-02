@@ -74,7 +74,7 @@ class User {
         case .EmergencyContacts:
             return self.personalInformation.initEmergencyContacts(data)
         case .DemographicInformation:
-            break
+            return self.personalInformation.initDemographicInformation(data)
         case .CitizenshipImmigrationDocuments:
             break
         default:
