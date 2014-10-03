@@ -104,9 +104,9 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
             case PersonalInformationType.EmergencyContacts:
                 return sharedPersonalInformation.emergencyContacts!.count == 0 ? 1 : sharedPersonalInformation.emergencyContacts!.count
             case PersonalInformationType.DemographicInformation:
-                return sharedPersonalInformation.demograhicInformation == nil ? 0 : (4 + sharedPersonalInformation.demograhicInformation!.nationalIdNumbers!.count)
+                return sharedPersonalInformation.demograhicInformation == nil ? 0 : (3 + (sharedPersonalInformation.demograhicInformation!.visaOrPermitData != nil ? 1 : 0) + sharedPersonalInformation.demograhicInformation!.nationalIdNumbers!.count)
             case PersonalInformationType.CitizenshipImmigrationDocuments:
-                return (sharedPersonalInformation.citizenshipImmigrationDocument!.requiredDocumentation.count > 0 ? 1 : 0) + (sharedPersonalInformation.citizenshipImmigrationDocument!.pastDocumentation.count > 0 ? 1 : 0)
+                return sharedPersonalInformation.citizenshipImmigrationDocument == nil ? 1 : ((sharedPersonalInformation.citizenshipImmigrationDocument!.requiredDocumentation.count > 0 ? 1 : 0) + (sharedPersonalInformation.citizenshipImmigrationDocument!.pastDocumentation.count > 0 ? 1 : 0))
             default:
                 assert(false, "Wrong PersonalInformation Type")
                 return 0
@@ -205,7 +205,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
                     aCell.configDemographicInformation(demographicInfo)
                 } else if indexPath.item <= nationalIdsCount {
                     aCell.configNationalIds(demographicInfo, index: indexPath.item - 1)
-                } else if indexPath.item == totalItemsCount - 2 {
+                } else if indexPath.item == totalItemsCount - 2 && (sharedPersonalInformation.demograhicInformation!.visaOrPermitData != nil) {
                     aCell.configVisa(demographicInfo)
                 } else {
                     aCell.configCitizenship(demographicInfo)
@@ -214,15 +214,26 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
             }
             break
         case PersonalInformationType.CitizenshipImmigrationDocuments:
-            var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kCitizenshipCellResueIdentifier, forIndexPath: indexPath) as CitizenshipCollectionViewCell
-            if indexPath.item == 0 {
-                aCell.configRequiredDoc(self.sharedPersonalInformation.citizenshipImmigrationDocument!)
-            } else if indexPath.item == 1 {
-                aCell.configPastDoc(self.sharedPersonalInformation.citizenshipImmigrationDocument!)
+            // For non international students
+            if (sharedPersonalInformation.citizenshipImmigrationDocument == nil) {
+                var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kDescriptionCellResueIdentifier, forIndexPath: indexPath) as DescriptionCollectionViewCell
+                var message = "No Contents"
+                if let realMessage = sharedPersonalInformation.citizenshipImmigrationDocumentMessage {
+                    message = realMessage
+                }
+                aCell.configLarge(message, textAlignment: NSTextAlignment.Center)
+                cell = aCell
             } else {
-                assert(false, "Wrong CitizenshipImmigrationDocuments row")
+                var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kCitizenshipCellResueIdentifier, forIndexPath: indexPath) as CitizenshipCollectionViewCell
+                if indexPath.item == 0 {
+                    aCell.configRequiredDoc(self.sharedPersonalInformation.citizenshipImmigrationDocument!)
+                } else if indexPath.item == 1 {
+                    aCell.configPastDoc(self.sharedPersonalInformation.citizenshipImmigrationDocument!)
+                } else {
+                    assert(false, "Wrong CitizenshipImmigrationDocuments row")
+                }
+                cell = aCell
             }
-            cell = aCell
             break
         default:
             assert(false, "Wrong PersonalInformation Type")
@@ -407,7 +418,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
                     aCell!.configDemographicInformation(demographicInfo)
                 } else if indexPath.item <= nationalIdsCount {
                     aCell!.configNationalIds(demographicInfo, index: indexPath.item - 1)
-                } else if indexPath.item == totalItemsCount - 2 {
+                } else if (indexPath.item == totalItemsCount - 2) && (sharedPersonalInformation.demograhicInformation!.visaOrPermitData != nil) {
                     aCell!.configVisa(demographicInfo)
                 } else {
                     aCell!.configCitizenship(demographicInfo)
@@ -416,20 +427,36 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
             }
             break
         case PersonalInformationType.CitizenshipImmigrationDocuments:
-            let reuseIdentifier = kCitizenshipCellResueIdentifier
-            var aCell: CitizenshipCollectionViewCell? = self.offscreenCells[reuseIdentifier] as? CitizenshipCollectionViewCell
-            if aCell == nil {
-                aCell = CitizenshipCollectionViewCell(frame: CGRectMake(0, 0, targetWidth, targetWidth))
-                self.offscreenCells[reuseIdentifier] = aCell
-            }
-            if indexPath.item == 0 {
-                aCell!.configRequiredDoc(self.sharedPersonalInformation.citizenshipImmigrationDocument!)
-            } else if indexPath.item == 1 {
-                aCell!.configPastDoc(self.sharedPersonalInformation.citizenshipImmigrationDocument!)
+            // For non international students
+            if (sharedPersonalInformation.citizenshipImmigrationDocument == nil) {
+                let reuseIdentifier = kDescriptionCellResueIdentifier
+                var aCell: DescriptionCollectionViewCell? = self.offscreenCells[reuseIdentifier] as? DescriptionCollectionViewCell
+                if aCell == nil {
+                    aCell = NSBundle.mainBundle().loadNibNamed("DescriptionCollectionViewCell", owner: self, options: nil)[0] as? DescriptionCollectionViewCell
+                    self.offscreenCells[reuseIdentifier] = aCell
+                }
+                var message = "No Contents"
+                if let realMessage = sharedPersonalInformation.citizenshipImmigrationDocumentMessage {
+                    message = realMessage
+                }
+                aCell!.configLarge(message, textAlignment: NSTextAlignment.Center)
+                cell = aCell
             } else {
-                assert(false, "Wrong CitizenshipImmigrationDocuments row")
+                let reuseIdentifier = kCitizenshipCellResueIdentifier
+                var aCell: CitizenshipCollectionViewCell? = self.offscreenCells[reuseIdentifier] as? CitizenshipCollectionViewCell
+                if aCell == nil {
+                    aCell = CitizenshipCollectionViewCell(frame: CGRectMake(0, 0, targetWidth, targetWidth))
+                    self.offscreenCells[reuseIdentifier] = aCell
+                }
+                if indexPath.item == 0 {
+                    aCell!.configRequiredDoc(self.sharedPersonalInformation.citizenshipImmigrationDocument!)
+                } else if indexPath.item == 1 {
+                    aCell!.configPastDoc(self.sharedPersonalInformation.citizenshipImmigrationDocument!)
+                } else {
+                    assert(false, "Wrong CitizenshipImmigrationDocuments row")
+                }
+                cell = aCell
             }
-            cell = aCell
             break
         default:
             assert(false, "Wrong PersonalInformation Type")
@@ -498,8 +525,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
                 println("demographic: \(self.sharedPersonalInformation.demograhicInformation != nil)")
                 break
             case PersonalInformationType.CitizenshipImmigrationDocuments:
-                println("citizenshipDoc required count: \(self.sharedPersonalInformation.citizenshipImmigrationDocument!.requiredDocumentation.count)")
-                println("citizenshipDoc past count: \(self.sharedPersonalInformation.citizenshipImmigrationDocument!.pastDocumentation.count)")
+                println("citizenshipDoc: \(self.sharedPersonalInformation.citizenshipImmigrationDocument)")
                 break
             default:
                 assert(false, "Wrong PersonalInformation Type")

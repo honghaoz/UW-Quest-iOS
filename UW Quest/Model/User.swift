@@ -48,7 +48,7 @@ class User {
 
         Locator.sharedLocator.client.getPersonalInformation(type, success: { (dataResponse, message) -> () in
             println("message: " + (message != nil ? message! : ""))
-            if self.processPersonalInformation(type, data: dataResponse) {
+            if self.processPersonalInformation(type, data: dataResponse, message: message) {
                 success?()
             } else {
                 failure?(errorMessage: "Init data failed", error: nil)
@@ -60,24 +60,24 @@ class User {
     }
     
     // User dataResponse (either Dict or Array) to init personal information
-    func processPersonalInformation(type: PersonalInformationType, data: AnyObject) -> Bool {
+    func processPersonalInformation(type: PersonalInformationType, data: AnyObject, message: String?) -> Bool {
         println("Type: \(type.toRaw())")
         println("Data: \(data)")
         switch type {
         case .Addresses:
-            return self.personalInformation.initAddresses(data)
+            return self.personalInformation.initAddresses(data, message: message)
         case .Names:
-            return self.personalInformation.initNames(data)
+            return self.personalInformation.initNames(data, message: message)
         case .PhoneNumbers:
-            return self.personalInformation.initPhoneNumbers(data)
+            return self.personalInformation.initPhoneNumbers(data, message: message)
         case .EmailAddresses:
-            return self.personalInformation.initEmailAddresses(data)
+            return self.personalInformation.initEmailAddresses(data, message: message)
         case .EmergencyContacts:
-            return self.personalInformation.initEmergencyContacts(data)
+            return self.personalInformation.initEmergencyContacts(data, message: message)
         case .DemographicInformation:
-            return self.personalInformation.initDemographicInformation(data)
+            return self.personalInformation.initDemographicInformation(data, message: message)
         case .CitizenshipImmigrationDocuments:
-            return self.personalInformation.initCitizenshipImmigrationDocument(data)
+            return self.personalInformation.initCitizenshipImmigrationDocument(data, message: message)
         default:
             assert(false, "Wrong PersonalInformation Type")
         }

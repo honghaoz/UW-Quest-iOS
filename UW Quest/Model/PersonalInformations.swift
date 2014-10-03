@@ -572,7 +572,7 @@ class PersonalInformation {
             if let visaOrPermitData: DemographicInformation.VisaOrPermitData = DemographicInformation.VisaOrPermitData.newVisa(visaData!) {
                 self.demograhicInformation!.visaOrPermitData = visaOrPermitData
             } else {
-                return false
+//                return false
             }
             return true
         }
@@ -620,8 +620,15 @@ class PersonalInformation {
     
     func initCitizenshipImmigrationDocument(rawData: AnyObject, message: String? = nil) -> Bool {
         self.citizenshipImmigrationDocumentMessage = message
+        println(self.citizenshipImmigrationDocumentMessage)
         let pastDocList: [Dictionary<String, String>]? = rawData["past_documentation"] as AnyObject? as? [Dictionary<String, String>]
+        println(pastDocList)
         let requiredDocList: [Dictionary<String, String>]? = rawData["required_documentation"] as AnyObject? as? [Dictionary<String, String>]
+        println(requiredDocList)
+        if (requiredDocList == nil) && (pastDocList == nil) && (self.citizenshipImmigrationDocumentMessage != nil) {
+            println("should here")
+            return true
+        }
         self.citizenshipImmigrationDocument = CitizenshipImmigrationDocument()
         if requiredDocList != nil {
             var tempDocList: [CitizenshipImmigrationDocument.visaDocument] = []
