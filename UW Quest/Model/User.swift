@@ -46,7 +46,8 @@ class User {
             failure!(errorMessage: "User is not logged in", error: nil)
         }
 
-        Locator.sharedLocator.client.getPersonalInformation(type, success: { (dataResponse) -> () in
+        Locator.sharedLocator.client.getPersonalInformation(type, success: { (dataResponse, message) -> () in
+            println("message: " + (message != nil ? message! : ""))
             if self.processPersonalInformation(type, data: dataResponse) {
                 success?()
             } else {

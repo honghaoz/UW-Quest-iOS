@@ -23,13 +23,21 @@ enum PersonalInformationType: String {
 class PersonalInformation {
     
     let categories: [String]!
+    
     var addresses: [Address]!
+    var addressesMessage: String?
     var names: [Name]!
+    var namesMessage: String?
     var phoneNumbers: [PhoneNumber]!
+    var phoneNumbersMessage: String?
     var emailAddresses: EmailAddress?
+    var emailAddressesMessage: String?
     var emergencyContacts: [EmergencyContact]!
+    var emergencyContactsMessage: String?
     var demograhicInformation: DemographicInformation?
+    var demograhicInformationMessage: String?
     var citizenshipImmigrationDocument: CitizenshipImmigrationDocument?
+    var citizenshipImmigrationDocumentMessage: String?
     
     init() {
         println("PersonalInformation inited")
@@ -68,7 +76,8 @@ class PersonalInformation {
     
     :returns: true if successfully inited
     */
-    func initAddresses(rawData: AnyObject) -> Bool {
+    func initAddresses(rawData: AnyObject, message: String? = nil) -> Bool {
+        self.addressesMessage = message
         // Passed in a dictionary
         if let dataDict = rawData as? Dictionary<String, String> {
             if let newAddress: Address = Address.newAddress(dataDict) {
@@ -137,7 +146,8 @@ class PersonalInformation {
         }
     }
     
-    func initNames(rawData: AnyObject) -> Bool {
+    func initNames(rawData: AnyObject, message: String? = nil) -> Bool {
+        self.namesMessage = message
         // Passed in a dictionary
         if let dataDict = rawData as? Dictionary<String, String> {
             if let newName: Name = Name.newName(dataDict) {
@@ -203,7 +213,8 @@ class PersonalInformation {
         }
     }
     
-    func initPhoneNumbers(rawData: AnyObject) -> Bool {
+    func initPhoneNumbers(rawData: AnyObject, message: String? = nil) -> Bool {
+        self.phoneNumbersMessage = message
         // Passed in a dictionary
         if let dataDict = rawData as? Dictionary<String, String> {
             if let newPhoneNumber: PhoneNumber = PhoneNumber.newPhoneNumber(dataDict) {
@@ -294,7 +305,8 @@ class PersonalInformation {
         }
     }
     
-    func initEmailAddresses(rawData: AnyObject) -> Bool {
+    func initEmailAddresses(rawData: AnyObject, message: String? = nil) -> Bool {
+        self.emailAddressesMessage = message
         if let dataDict = rawData as? Dictionary<String, AnyObject> {
             let description: String? = dataDict["description"] as AnyObject? as? String
             let alternateEmailAddressDict: Dictionary<String, AnyObject>? = dataDict["alternate_email_address"] as AnyObject? as? Dictionary<String, AnyObject>
@@ -372,7 +384,8 @@ class PersonalInformation {
         }
     }
     
-    func initEmergencyContacts(rawData: AnyObject) -> Bool {
+    func initEmergencyContacts(rawData: AnyObject, message: String? = nil) -> Bool {
+        self.emergencyContactsMessage = message
         // Passed in a dictionary
         if let dataDict = rawData as? Dictionary<String, String> {
             if let newContact: EmergencyContact = EmergencyContact.newContact(dataDict) {
@@ -526,7 +539,8 @@ class PersonalInformation {
         var visaOrPermitData: VisaOrPermitData?
     }
     
-    func initDemographicInformation(rawData: AnyObject) -> Bool {
+    func initDemographicInformation(rawData: AnyObject, message: String? = nil) -> Bool {
+        self.demograhicInformationMessage = message
         let citizenshipsData: [Dictionary<String, String>]? = rawData["citizenship_information"] as AnyObject? as? [Dictionary<String, String>]
         let demographicData: Dictionary<String, String>? = rawData["demographic_information"] as AnyObject? as? Dictionary<String, String>
         let nationalIdsData: [Dictionary<String, String>]? = rawData["national_identification_number"] as AnyObject? as? [Dictionary<String, String>]
@@ -604,7 +618,8 @@ class PersonalInformation {
         }
     }
     
-    func initCitizenshipImmigrationDocument(rawData: AnyObject) -> Bool {
+    func initCitizenshipImmigrationDocument(rawData: AnyObject, message: String? = nil) -> Bool {
+        self.citizenshipImmigrationDocumentMessage = message
         let pastDocList: [Dictionary<String, String>]? = rawData["past_documentation"] as AnyObject? as? [Dictionary<String, String>]
         let requiredDocList: [Dictionary<String, String>]? = rawData["required_documentation"] as AnyObject? as? [Dictionary<String, String>]
         self.citizenshipImmigrationDocument = CitizenshipImmigrationDocument()

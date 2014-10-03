@@ -12,6 +12,9 @@ class DescriptionCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    let smallFont: UIFont = UIFont(name: "HelveticaNeue-Light", size: 13)
+    let largeFont: UIFont = UIFont(name: "HelveticaNeue-Light", size: 16)
+    
     let kLabelVerticalInsets: CGFloat = 8.0
     let kLabelHorizontalInsets: CGFloat = 8.0
     
@@ -31,8 +34,19 @@ class DescriptionCollectionViewCell: UICollectionViewCell {
         self.contentView.backgroundColor = UIColor.clearColor()
     }
     
-    func config(description: String) {
+    func configSmall(description: String, textAlignment: NSTextAlignment) {
+        self.descriptionLabel.font = self.smallFont
+        self.config(description, textAlignment: textAlignment)
+    }
+    
+    func configLarge(description: String, textAlignment: NSTextAlignment) {
+        self.descriptionLabel.font = self.largeFont
+        self.config(description, textAlignment: textAlignment)
+    }
+    
+    private func config(description: String, textAlignment: NSTextAlignment) {
         self.descriptionLabel.text = description
+        self.descriptionLabel.textAlignment = textAlignment
         self.setNeedsLayout()
         self.layoutIfNeeded()
     }

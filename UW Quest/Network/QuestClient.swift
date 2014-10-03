@@ -129,7 +129,7 @@ class QuestClient: AFHTTPSessionManager {
         }
     }
     
-    func getPersonalInformation(type: PersonalInformationType, success:(data: AnyObject!) -> (), failure:(errorMessage: String, error: NSError?) -> ()) {
+    func getPersonalInformation(type: PersonalInformationType, success:(data: AnyObject!, message: String?) -> (), failure:(errorMessage: String, error: NSError?) -> ()) {
         assert(((self.sid != nil) && (!self.sid!.isEmpty)) as Bool, "SID must be non-empty")
         var path = "personalinformation/"
         switch type {
@@ -160,7 +160,7 @@ class QuestClient: AFHTTPSessionManager {
             if self.statusIsSuccess(responseDict) {
                 // Get data successfully
                 if let data: AnyObject = responseDict["data"] {
-                    success(data: data)
+                    success(data: data, message: self.getMessage(responseDict))
                 }
             } else {
                 // Get data failed
@@ -201,6 +201,17 @@ class QuestClient: AFHTTPSessionManager {
             }
         }
         return false
+    }
+    
+    private func getMessage(responseDict: Dictionary<String, AnyObject>) -> String? {
+        if let meta: AnyObject = responseDict["meta"] {
+            if let message = meta["message"] as? String {
+                if !(message.isEmpty) {
+                    return message
+                }
+            }
+        }
+        return nil
     }
     
     func errorMessageWithErrorCode(code: Int) -> String {

@@ -102,7 +102,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
             case PersonalInformationType.EmailAddresses:
                 return sharedPersonalInformation.emailAddresses == nil ? 0 : (sharedPersonalInformation.emailAddresses?.alternateEmailAddress.count == 0 ? 2 : 4)
             case PersonalInformationType.EmergencyContacts:
-                return sharedPersonalInformation.emergencyContacts!.count
+                return sharedPersonalInformation.emergencyContacts!.count == 0 ? 1 : sharedPersonalInformation.emergencyContacts!.count
             case PersonalInformationType.DemographicInformation:
                 return sharedPersonalInformation.demograhicInformation == nil ? 0 : (4 + sharedPersonalInformation.demograhicInformation!.nationalIdNumbers!.count)
             case PersonalInformationType.CitizenshipImmigrationDocuments:
@@ -162,7 +162,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
             case 1, 3: // Description
                 var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kDescriptionCellResueIdentifier, forIndexPath: indexPath) as DescriptionCollectionViewCell
                 let description = indexPath.item == 1 ? sharedPersonalInformation.emailAddresses!.campusEmailDescription : sharedPersonalInformation.emailAddresses!.alternateEmailDescription
-                aCell.config(description!)
+                aCell.configSmall(description!, textAlignment: NSTextAlignment.Left)
                 cell = aCell
                 break
             default:
@@ -171,6 +171,18 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
             }
             break
         case PersonalInformationType.EmergencyContacts:
+            // Show message
+            if sharedPersonalInformation.emergencyContacts.count == 0 {
+                var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kDescriptionCellResueIdentifier, forIndexPath: indexPath) as DescriptionCollectionViewCell
+                var message = "No current emergency contact information found."
+                if let realMessage = sharedPersonalInformation.emergencyContactsMessage {
+                    message = realMessage
+                }
+                aCell.configLarge(message, textAlignment: NSTextAlignment.Center)
+                cell = aCell
+                break
+            }
+            // Show content
             var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kEmergencyContactCellResueIdentifier, forIndexPath: indexPath) as EmergencyContactCollectionViewCell
             
             let emergencyContact: PersonalInformation.EmergencyContact = sharedPersonalInformation.emergencyContacts![indexPath.item]
@@ -184,7 +196,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
             if indexPath.item == totalItemsCount - 1 {
                 var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kDescriptionCellResueIdentifier, forIndexPath: indexPath) as DescriptionCollectionViewCell
                 let description = sharedPersonalInformation.demograhicInformation?.note!
-                aCell.config(description!)
+                aCell.configSmall(description!, textAlignment: NSTextAlignment.Left)
                 cell = aCell
             } else {
                 var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kDemograhicCellResueIdentifier, forIndexPath: indexPath) as DemographicCollectionCell
@@ -331,7 +343,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
                 }
                 
                 let description = indexPath.item == 1 ? sharedPersonalInformation.emailAddresses!.campusEmailDescription : sharedPersonalInformation.emailAddresses!.alternateEmailDescription
-                aCell!.config(description!)
+                aCell!.configSmall(description!, textAlignment: NSTextAlignment.Left)
                 cell = aCell
                 break
             default:
@@ -340,6 +352,24 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
             }
             break
         case PersonalInformationType.EmergencyContacts:
+            // Show message
+            if sharedPersonalInformation.emergencyContacts.count == 0 {
+                let reuseIdentifier = kDescriptionCellResueIdentifier
+                var aCell: DescriptionCollectionViewCell? = self.offscreenCells[reuseIdentifier] as? DescriptionCollectionViewCell
+                if aCell == nil {
+                    aCell = NSBundle.mainBundle().loadNibNamed("DescriptionCollectionViewCell", owner: self, options: nil)[0] as? DescriptionCollectionViewCell
+                    self.offscreenCells[reuseIdentifier] = aCell
+                }
+
+                var message = "No current emergency contact information found."
+                if let realMessage = sharedPersonalInformation.emergencyContactsMessage {
+                    message = realMessage
+                }
+                aCell!.configLarge(message, textAlignment: NSTextAlignment.Center)
+                cell = aCell
+                break
+            }
+            
             let reuseIdentifier = kEmergencyContactCellResueIdentifier
             var aCell: EmergencyContactCollectionViewCell? = self.offscreenCells[reuseIdentifier] as? EmergencyContactCollectionViewCell
             if aCell == nil {
@@ -363,7 +393,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
                     self.offscreenCells[reuseIdentifier] = aCell
                 }
                 let description = sharedPersonalInformation.demograhicInformation?.note!
-                aCell!.config(description!)
+                aCell!.configSmall(description!, textAlignment: NSTextAlignment.Left)
                 cell = aCell
             } else {
                 let reuseIdentifier = kDemograhicCellResueIdentifier
