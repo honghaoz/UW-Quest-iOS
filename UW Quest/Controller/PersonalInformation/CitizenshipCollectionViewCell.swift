@@ -9,14 +9,34 @@
 import UIKit
 
 class CitizenshipCollectionViewCell: TitleSubTitleCollectionViewCell {
-    func config(citizenship: PersonalInformation.CitizenshipImmigrationDocument) {
-        var mainTitle: String = "Citizenship/Immigration Documents"
-        var tuples: [(String, String)] = [
-            ("Country", citizenship.country),
-            ("Date Received", citizenship.dateReceived),
-            ("Expiration Date", citizenship.expirationDate),
-            ("Visa Type", citizenship.visaType)
-        ]
+    func configPastDoc(citizenship: PersonalInformation.CitizenshipImmigrationDocument) {
+        var docs = citizenship.pastDocumentation
+        self.config("Past Documentation", docs: docs)
+    }
+    
+    func configRequiredDoc(citizenship: PersonalInformation.CitizenshipImmigrationDocument) {
+        var docs = citizenship.requiredDocumentation
+        self.config("Required Documentation", docs: docs)
+    }
+    
+    private func config(mainTitle: String, docs: [PersonalInformation.CitizenshipImmigrationDocument.visaDocument]) {
+        var tuples: [(String, String)] = []
+        let count = docs.count
+        for i in 0 ..< count {
+            let eachDoc = docs[i]
+            // For more than two lines, add an empty row
+            if i > 0 {
+                tuples += [(" ", " ")]
+            }
+            tuples += [("Country", eachDoc.country)]
+            tuples += [("Visa Type", eachDoc.visaType)]
+            if eachDoc.dateReceived != nil {
+                tuples += [("Date Received", eachDoc.dateReceived!)]
+            }
+            if eachDoc.expirationDate != nil {
+                tuples += [("Expiration Date", eachDoc.expirationDate!)]
+            }
+        }
         self.config(title: mainTitle, subLabelTuples: tuples)
     }
 }

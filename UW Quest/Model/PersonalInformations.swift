@@ -29,7 +29,7 @@ class PersonalInformation {
     var emailAddresses: EmailAddress?
     var emergencyContacts: [EmergencyContact]!
     var demograhicInformation: DemographicInformation?
-    var citizenshipImmigrationDocument: [CitizenshipImmigrationDocument]!
+    var citizenshipImmigrationDocument: CitizenshipImmigrationDocument?
     
     init() {
         println("PersonalInformation inited")
@@ -38,7 +38,6 @@ class PersonalInformation {
         names = []
         phoneNumbers = []
         emergencyContacts = []
-        citizenshipImmigrationDocument = []
     }
     
     class Address {
@@ -567,63 +566,75 @@ class PersonalInformation {
     }
 
     class CitizenshipImmigrationDocument {
-        var country: String
-        var dateReceived: String
-        var expirationDate: String
-        var visaType: String
-        
-        class func kCountry() -> String {return "country"}
-        class func kDateReceived() -> String {return "date_received"}
-        class func kExpirationDate() -> String {return "expiration_date"}
-        class func kVisaType() -> String {return "visa_type"}
-        
-        class func newCitizenshipImmigrationDocument(rawDict: Dictionary<String, String>) -> CitizenshipImmigrationDocument? {
-            let country: String? = rawDict[CitizenshipImmigrationDocument.kCountry()]
-            let dateReceived: String? = rawDict[CitizenshipImmigrationDocument.kDateReceived()]
-            let expirationDate: String? = rawDict[CitizenshipImmigrationDocument.kExpirationDate()]
-            let visaType: String? = rawDict[CitizenshipImmigrationDocument.kVisaType()]
-            if (country != nil) && (dateReceived != nil) && (expirationDate != nil) && (visaType != nil) {
-                return CitizenshipImmigrationDocument(country: country!, dateReceived: dateReceived!, expirationDate: expirationDate!, visaType: visaType!)
-            } else {
-                return nil
+        class visaDocument {
+            var country: String
+            var dateReceived: String?
+            var expirationDate: String?
+            var visaType: String
+            
+            class func kCountry() -> String {return "country"}
+            class func kDateReceived() -> String {return "date_received"}
+            class func kExpirationDate() -> String {return "expiration_date"}
+            class func kVisaType() -> String {return "visa_type"}
+            
+            class func newDocument(rawDict: Dictionary<String, String>) -> visaDocument? {
+                let country: String? = rawDict[visaDocument.kCountry()]
+                let dateReceived: String? = rawDict[visaDocument.kDateReceived()]
+                let expirationDate: String? = rawDict[visaDocument.kExpirationDate()]
+                let visaType: String? = rawDict[visaDocument.kVisaType()]
+                if (country != nil) && (visaType != nil) {
+                    return visaDocument(country: country!, dateReceived: dateReceived, expirationDate: expirationDate, visaType: visaType!)
+                } else {
+                    return nil
+                }
+            }
+            
+            init (country: String, dateReceived: String?, expirationDate: String?, visaType: String) {
+                self.country = country
+                self.dateReceived = dateReceived
+                self.expirationDate = expirationDate
+                self.visaType = visaType
             }
         }
-        
-        init (country: String, dateReceived: String, expirationDate: String, visaType: String) {
-            self.country = country
-            self.dateReceived = dateReceived
-            self.expirationDate = expirationDate
-            self.visaType = visaType
+        var requiredDocumentation: [visaDocument]!
+        var pastDocumentation: [visaDocument]!
+        init() {
+            self.requiredDocumentation = []
+            self.pastDocumentation = []
         }
     }
     
     func initCitizenshipImmigrationDocument(rawData: AnyObject) -> Bool {
-        // Passed in a dictionary
-        if let dataDict = rawData as? Dictionary<String, String> {
-            if let newCitizenship: CitizenshipImmigrationDocument = CitizenshipImmigrationDocument.newCitizenshipImmigrationDocument(dataDict) {
-                self.citizenshipImmigrationDocument = [newCitizenship]
-                return true
-            }
-            return false
-        }
-        
-        // Passed in an array of dictionary
-        if let dataArray = rawData as? [Dictionary<String, String>] {
-            var tempCitizenships = [CitizenshipImmigrationDocument]()
-            for eachDataDict in dataArray {
-                if let newCitizenship: CitizenshipImmigrationDocument = CitizenshipImmigrationDocument.newCitizenshipImmigrationDocument(eachDataDict) {
-                    tempCitizenships.append(newCitizenship)
+        let pastDocList: [Dictionary<String, String>]? = rawData["past_documentation"] as AnyObject? as? [Dictionary<String, String>]
+        let requiredDocList: [Dictionary<String, String>]? = rawData["required_documentation"] as AnyObject? as? [Dictionary<String, String>]
+        self.citizenshipImmigrationDocument = CitizenshipImmigrationDocument()
+        if requiredDocList != nil {
+            var tempDocList: [CitizenshipImmigrationDocument.visaDocument] = []
+            for eachDoc in requiredDocList! {
+                var newDoc: CitizenshipImmigrationDocument.visaDocument? = CitizenshipImmigrationDocument.visaDocument.newDocument(eachDoc)
+                if newDoc != nil {
+                    tempDocList.append(newDoc!)
                 } else {
-                    // Some error happens
-                    self.citizenshipImmigrationDocument = []
                     return false
                 }
             }
-            // If goes here, no error happens
-            self.citizenshipImmigrationDocument = tempCitizenships
-            return true
+            self.citizenshipImmigrationDocument!.requiredDocumentation = tempDocList
+        } else {
+            return false
         }
-        // Invalid type
-        return false
+        
+        if pastDocList != nil {
+            var tempDocList: [CitizenshipImmigrationDocument.visaDocument] = []
+            for eachDoc in pastDocList! {
+                var newDoc: CitizenshipImmigrationDocument.visaDocument? = CitizenshipImmigrationDocument.visaDocument.newDocument(eachDoc)
+                if newDoc != nil {
+                    tempDocList.append(newDoc!)
+                } else {
+                    return false
+                }
+            }
+            self.citizenshipImmigrationDocument!.pastDocumentation = tempDocList
+        }
+        return true
     }
 }
