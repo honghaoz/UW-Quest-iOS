@@ -145,7 +145,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
             switch indexPath.item {
             case 0:
                 var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kEmailAddressCellResueIdentifier, forIndexPath: indexPath) as EmailCollectionViewCell
-                let emails: [(String, String)] = [("Campus Email", sharedPersonalInformation.emailAddresses!.campusEmailAddress.campusEmail), ("Delivered to", sharedPersonalInformation.emailAddresses!.campusEmailAddress.deliveredTo)]
+                let emails: [(String, String)] = [("Campus Email", sharedPersonalInformation.emailAddresses!.campusEmailAddress.campusEmail), ("Delivered To", sharedPersonalInformation.emailAddresses!.campusEmailAddress.deliveredTo)]
                 aCell.config("Campus Email Address", emails: emails)
                 cell = aCell
                 break
