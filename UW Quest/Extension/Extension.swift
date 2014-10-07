@@ -10,7 +10,13 @@ import Foundation
 import UIKit
 
 extension UIColor {
+    /**
+    Get a UIColor with same RGB values but specified Alpha value
     
+    :param: alpha New alpha value
+    
+    :returns: New UIColor instance
+    */
     func colorWithNewAlphaComponent(alpha: CGFloat) -> UIColor {
         var red: CGFloat = 0.0
         var green: CGFloat = 0.0
@@ -20,24 +26,44 @@ extension UIColor {
         return UIColor(red: red, green: green, blue: blue, alpha: alpha)
     }
     
+    /**
+    Get R component from this UIColor
+    
+    :returns: Red value
+    */
     func getRedComponent() -> CGFloat {
         var red: CGFloat = 0.0
         self.getRed(&red, green: nil, blue: nil, alpha: nil)
         return red
     }
     
+    /**
+    Get G component from this UIColor
+    
+    :returns: Green value
+    */
     func getGreenComponent() -> CGFloat {
         var green: CGFloat = 0.0
         self.getRed(nil, green: &green, blue: nil, alpha: nil)
         return green
     }
     
+    /**
+    Get B component from this UIColor
+    
+    :returns: Blue value
+    */
     func getBlueComponent() -> CGFloat {
         var blue: CGFloat = 0.0
         self.getRed(nil, green: nil, blue: &blue, alpha: nil)
         return blue
     }
     
+    /**
+    Get Alpha component from this UIColor
+    
+    :returns: Alpha value
+    */
     func getAlphaComponent() -> CGFloat {
         var alpha: CGFloat = 0.0
         self.getRed(nil, green: nil, blue: nil, alpha: &alpha)
@@ -46,6 +72,14 @@ extension UIColor {
 }
 
 extension UIViewController {
+    /**
+    Initialize a view controller in storyboard
+    
+    :param: storyboardName     Storyboard name
+    :param: viewControllerName Storyboard ID of the view controller
+    
+    :returns: An instance of view controller
+    */
     class func viewControllerInStoryboard(storyboardName: String , viewControllerName: String) -> UIViewController {
         var storyboard: UIStoryboard = UIStoryboard(name: storyboardName, bundle: nil)
         var viewController = storyboard.instantiateViewControllerWithIdentifier(viewControllerName) as UIViewController
@@ -107,12 +141,17 @@ extension JGProgressHUD {
 }
 
 extension UILabel {
+    /**
+    Get exact size for UILabel, computed with text and font on this label
+    
+    :returns: CGSize for this label
+    */
     func exactSize() -> CGSize {
         let text: NSString = self.text!
-        var rawSize = text.sizeWithAttributes([NSFontAttributeName: self.font])
-        rawSize.width = ceil(rawSize.width)
-        rawSize.height = ceil(rawSize.height)
-        return rawSize
+        var newSize = text.sizeWithAttributes([NSFontAttributeName: self.font])
+        newSize.width = ceil(newSize.width)
+        newSize.height = ceil(newSize.height)
+        return newSize
     }
 }
 
