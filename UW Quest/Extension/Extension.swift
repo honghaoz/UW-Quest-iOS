@@ -1,5 +1,5 @@
 //
-//  extensions.swift
+//  Extension.swift
 //  UW Quest
 //
 //  Created by Honghao on 9/13/14.
