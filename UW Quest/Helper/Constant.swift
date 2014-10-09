@@ -1,5 +1,5 @@
 //
-//  constants.swift
+//  Constants.swift
 //  UW Quest
 //
 //  Created by Honghao Zhang on 2014-09-15.
