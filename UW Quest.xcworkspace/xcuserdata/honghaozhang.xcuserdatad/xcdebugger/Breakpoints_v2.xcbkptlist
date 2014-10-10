@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UW Quest/Controller/Transitions/MEDynamicTransition.m"
-            timestampString = "434605934.937327"
+            timestampString = "434607807.703563"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
             landmarkName = "-handlePanGesture:"
             landmarkType = "5">
          </BreakpointContent>

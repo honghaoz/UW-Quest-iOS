@@ -124,7 +124,8 @@
     // the density ranges from 1 to 5 for iPad to iPhone
     _topViewBehavior.density = 908800 / (topView.bounds.size.width * topView.bounds.size.height);
     _topViewBehavior.elasticity = 0;
-    _topViewBehavior.resistance = 1;
+    _topViewBehavior.resistance = 1.0;
+    _topViewBehavior.friction = 1.0;
     
     return _topViewBehavior;
 }
