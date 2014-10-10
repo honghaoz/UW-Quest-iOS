@@ -81,13 +81,13 @@ class QuestClient: AFHTTPSessionManager {
             self.GET("activate", parameters: parameters, success: { (task, responseObject) -> Void in
                 // TODO: change API to response json
                 println("API activated successfully")
-                let response = task.response as NSHTTPURLResponse
-                println("status code: \(response.statusCode)")
+                let response: NSHTTPURLResponse? = task.response as? NSHTTPURLResponse
+                println("status code: \(response?.statusCode)")
                 
                 }, failure: { (task, error) -> Void in
                     println("API activated failed")
-                    let response = task.response as NSHTTPURLResponse
-                    println("status code: \(response.statusCode)")
+                    let response: NSHTTPURLResponse? = task.response as? NSHTTPURLResponse
+                    println("status code: \(response?.statusCode)")
                     // Status code is 503/500 for server down
             })
         })

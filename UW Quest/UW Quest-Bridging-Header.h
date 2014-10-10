@@ -14,6 +14,8 @@
 #import "JGProgressHUDIndeterminateIndicatorView.h"
 
 #import "ECSlidingViewController.h"
+#import "MEDynamicTransition.h"
+#import "MEZoomAnimationController.h"
 #import "UIViewController+ECSlidingViewController.h"
 #import <PureLayout/PureLayout.h>
 

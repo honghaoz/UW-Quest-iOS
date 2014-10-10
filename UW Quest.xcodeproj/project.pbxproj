@@ -25,6 +25,8 @@
 		1B8615AE19CFD79A0064505C /* AddressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8615AD19CFD79A0064505C /* AddressCollectionViewCell.swift */; };
 		1BF1B17919CF814E00411109 /* UQCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF1B17819CF814E00411109 /* UQCollectionReusableView.swift */; };
 		9DF10D05EB6E460CBD79B4E4 /* libPods-UW Quest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 413651466CD74FE09FCED094 /* libPods-UW Quest.a */; };
+		FA21D6E319E7780C002FBF71 /* MEDynamicTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = FA21D6E019E7780C002FBF71 /* MEDynamicTransition.m */; };
+		FA21D6E419E7780C002FBF71 /* MEZoomAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA21D6E219E7780C002FBF71 /* MEZoomAnimationController.m */; };
 		FA23728619C72E62000F5D4F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA23728519C72E62000F5D4F /* AudioToolbox.framework */; };
 		FA23728819C72E67000F5D4F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA23728719C72E67000F5D4F /* CFNetwork.framework */; };
 		FA23728A19C72E6E000F5D4F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA23728919C72E6E000F5D4F /* CoreGraphics.framework */; };
@@ -93,6 +95,10 @@
 		1BF1B17819CF814E00411109 /* UQCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UQCollectionReusableView.swift; sourceTree = "<group>"; };
 		413651466CD74FE09FCED094 /* libPods-UW Quest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UW Quest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		80BCD76903A94C5EB7727E34 /* Pods-UW Quest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UW Quest.xcconfig"; path = "Pods/Pods-UW Quest.xcconfig"; sourceTree = "<group>"; };
+		FA21D6DF19E7780C002FBF71 /* MEDynamicTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEDynamicTransition.h; sourceTree = "<group>"; };
+		FA21D6E019E7780C002FBF71 /* MEDynamicTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEDynamicTransition.m; sourceTree = "<group>"; };
+		FA21D6E119E7780C002FBF71 /* MEZoomAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEZoomAnimationController.h; sourceTree = "<group>"; };
+		FA21D6E219E7780C002FBF71 /* MEZoomAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEZoomAnimationController.m; sourceTree = "<group>"; };
 		FA23728519C72E62000F5D4F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		FA23728719C72E67000F5D4F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		FA23728919C72E6E000F5D4F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -168,6 +174,7 @@
 		1B2AFE8C19BD27E4008A75EF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				FA21D6DE19E7780C002FBF71 /* Transitions */,
 				1B7CF10D19BCEF28007A157D /* Login.storyboard */,
 				1B5BF35119C3F8470005626F /* LoginViewController.swift */,
 				1B520C5619CE8EB900A0ADE6 /* MainSlide.storyboard */,
@@ -305,6 +312,17 @@
 				413651466CD74FE09FCED094 /* libPods-UW Quest.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA21D6DE19E7780C002FBF71 /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				FA21D6DF19E7780C002FBF71 /* MEDynamicTransition.h */,
+				FA21D6E019E7780C002FBF71 /* MEDynamicTransition.m */,
+				FA21D6E119E7780C002FBF71 /* MEZoomAnimationController.h */,
+				FA21D6E219E7780C002FBF71 /* MEZoomAnimationController.m */,
+			);
+			path = Transitions;
 			sourceTree = "<group>";
 		};
 		FA23728119C63E68000F5D4F /* Helper */ = {
@@ -505,6 +523,7 @@
 				1B2FCD1C19C4A64400FDF4D8 /* Extension.swift in Sources */,
 				1BF1B17919CF814E00411109 /* UQCollectionReusableView.swift in Sources */,
 				1B8615AC19CFC6A20064505C /* PersonalInformations.swift in Sources */,
+				FA21D6E319E7780C002FBF71 /* MEDynamicTransition.m in Sources */,
 				FA7E99FD19DCFD9800D65565 /* CitizenshipCollectionViewCell.swift in Sources */,
 				FA4D1F5819DA620C006AA190 /* EmailCollectionViewCell.swift in Sources */,
 				1B5BF35219C3F8470005626F /* LoginViewController.swift in Sources */,
@@ -516,6 +535,7 @@
 				1B520C4F19CE888300A0ADE6 /* MenuViewController.swift in Sources */,
 				FAE020D919DBACA40000253A /* EmergencyContactCollectionViewCell.swift in Sources */,
 				1B7CF10A19BCEF28007A157D /* AppDelegate.swift in Sources */,
+				FA21D6E419E7780C002FBF71 /* MEZoomAnimationController.m in Sources */,
 				FAF2292519C937620041C36F /* UIDevice-Hardware.m in Sources */,
 				FA79657619C9079F00852C84 /* Locator.swift in Sources */,
 				FA23729E19C74167000F5D4F /* Constant.swift in Sources */,

@@ -37,6 +37,20 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
         super.viewDidLoad()
         self.navigationController?.title = "Personal Information"
         self.navigationController?.view.addGestureRecognizer(self.slidingViewController().panGesture)
+//        self.view.addGestureRecognizer(self.slidingViewController().panGesture)
+//        self.slidingViewController().topViewAnchoredGesture = ECSlidingViewControllerAnchoredGesture.Tapping | ECSlidingViewControllerAnchoredGesture.Panning
+//        
+////        let dynamicTransition: MEDynamicTransition = MEDynamicTransition()
+//        let zoomTransition = MEZoomAnimationController()
+////        self.slidingViewController().delegate = dynamicTransition
+//        self.slidingViewController().delegate = zoomTransition
+////        dynamicTransition.slidingViewController = self.slidingViewController()
+//        
+////        let dynamicTransitionPanGesture = UIPanGestureRecognizer(target: dynamicTransition, action: "handlePanGesture:")
+////        self.slidingViewController().customAnchoredGestures = [dynamicTransitionPanGesture]
+////        self.navigationController?.view.addGestureRecognizer(dynamicTransitionPanGesture)
+//        self.view.addGestureRecognizer(self.slidingViewController().panGesture)
+        
         collectionView.dataSource = self
         collectionView.delegate = self
         
