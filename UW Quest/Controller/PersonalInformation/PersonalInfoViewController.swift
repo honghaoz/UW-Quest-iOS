@@ -36,20 +36,26 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.title = "Personal Information"
-        self.navigationController?.view.addGestureRecognizer(self.slidingViewController().panGesture)
-//        self.view.addGestureRecognizer(self.slidingViewController().panGesture)
+//        // Default animation
+//        self.navigationController?.view.addGestureRecognizer(self.slidingViewController().panGesture)
+
+        // Dynamic transition
+        var dynamicTransition = Locator.sharedLocator.dynamicTransition
+        dynamicTransition.slidingViewController = self.slidingViewController()
+        self.slidingViewController().delegate = dynamicTransition
+        
+        self.slidingViewController().topViewAnchoredGesture = ECSlidingViewControllerAnchoredGesture.Tapping | ECSlidingViewControllerAnchoredGesture.Custom
+        
+        var dynamicTransitionPanGesture = UIPanGestureRecognizer(target: dynamicTransition, action: "handlePanGesture:")
+        self.slidingViewController().customAnchoredGestures = [dynamicTransitionPanGesture]
+        self.navigationController?.view.addGestureRecognizer(dynamicTransitionPanGesture)
+        
+//        // Zoom transition
+//        let zoomTransition = Locator.sharedLocator.zoomTransition
+//        self.slidingViewController().delegate = zoomTransition
 //        self.slidingViewController().topViewAnchoredGesture = ECSlidingViewControllerAnchoredGesture.Tapping | ECSlidingViewControllerAnchoredGesture.Panning
 //        
-////        let dynamicTransition: MEDynamicTransition = MEDynamicTransition()
-//        let zoomTransition = MEZoomAnimationController()
-////        self.slidingViewController().delegate = dynamicTransition
-//        self.slidingViewController().delegate = zoomTransition
-////        dynamicTransition.slidingViewController = self.slidingViewController()
-//        
-////        let dynamicTransitionPanGesture = UIPanGestureRecognizer(target: dynamicTransition, action: "handlePanGesture:")
-////        self.slidingViewController().customAnchoredGestures = [dynamicTransitionPanGesture]
-////        self.navigationController?.view.addGestureRecognizer(dynamicTransitionPanGesture)
-//        self.view.addGestureRecognizer(self.slidingViewController().panGesture)
+//        self.navigationController?.view.addGestureRecognizer(self.slidingViewController().panGesture)
         
         collectionView.dataSource = self
         collectionView.delegate = self

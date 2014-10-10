@@ -31,6 +31,16 @@ class Locator {
         return controller
         }()
     
+    lazy var dynamicTransition: MEDynamicTransition = {
+        var dynamicTransition: MEDynamicTransition = MEDynamicTransition()
+        return dynamicTransition
+        }()
+    
+    lazy var zoomTransition: MEZoomAnimationController = {
+        var zoomTransition: MEZoomAnimationController = MEZoomAnimationController()
+        return zoomTransition
+        }()
+    
     // Shared Instance
     lazy var user: User = {
         return User.sharedUser
