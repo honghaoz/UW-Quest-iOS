@@ -156,11 +156,20 @@ extension UILabel {
 }
 
 // Debug Helpers
-func logMethod(logMessage: String? = nil, functionName: String = __FUNCTION__) {
+func logMethod(_ logMessage: String? = nil, functionName: String = __FUNCTION__) {
     if let realLogMessage = logMessage {
         println("\(functionName): \(logMessage)")
     }
     else {
         println("\(functionName)")
     }
+}
+
+func addShadow(view: UIView) {
+    let shadowPath = UIBezierPath(rect: view.bounds)
+    view.layer.masksToBounds = false;
+    view.layer.shadowColor = UIColor.blackColor().CGColor;
+    view.layer.shadowOffset = CGSizeMake(-5.0, 0.0);
+    view.layer.shadowOpacity = 1.0;
+    view.layer.shadowPath = shadowPath.CGPath;
 }

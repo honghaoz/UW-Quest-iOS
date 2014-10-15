@@ -36,6 +36,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.title = "Personal Information"
+        
 //        // Default animation
 //        self.navigationController?.view.addGestureRecognizer(self.slidingViewController().panGesture)
 
