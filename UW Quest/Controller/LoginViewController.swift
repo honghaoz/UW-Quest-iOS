@@ -38,7 +38,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        self.view.backgroundColor = UQBackgroundColor
+//        self.view.backgroundColor = UQBackgroundColor
         
         titleLabel.textColor = UQMainColor
         subTitleLabel.textColor = UQMainColor
