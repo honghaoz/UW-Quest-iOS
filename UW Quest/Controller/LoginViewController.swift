@@ -15,6 +15,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     let kSwitchScaleFactor: CGFloat = 0.65
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var contentView: UIView!
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
     
@@ -34,6 +37,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var forgotPasswordButton: UIButton!
     @IBOutlet weak var copyRightLabel: UILabel!
+    
+    var activeView: UIView! // Active view is active textField
+    var keyboardRect: CGRect! = CGRectZero // Current keyboard rect
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -111,11 +117,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let tapAction: Selector = "viewTapped:"
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action:tapAction)
         tapGesture.numberOfTouchesRequired = 1
-        self.view.addGestureRecognizer(tapGesture)
+        self.contentView.addGestureRecognizer(tapGesture)
         
         let panAction: Selector = "viewPanned:"
         let panGesture: UIPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: panAction)
-        self.view.addGestureRecognizer(panGesture)
+        self.contentView.addGestureRecognizer(panGesture)
+        
         forgotPasswordButton.addTarget(self, action: "forgotPasswordButtonTapped:", forControlEvents: UIControlEvents.TouchUpInside)
         
         let rememberSwitchAction: Selector = "rememberSwitchChanged:"
@@ -133,15 +140,81 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         copyRightLabel.userInteractionEnabled = true
         
         self.updateViews()
+        self.registerNotifications()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    // MARK: - Notifications
+    func registerNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: "keyboardWillBeHidden:",
+            name: UIKeyboardWillHideNotification,
+            object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: "keyboardWillChange:",
+            name: UIKeyboardWillChangeFrameNotification,
+            object: nil)
+    }
+    
+    func keyboardWillBeHidden(notification: NSNotification) {
+        logMethod()
+        // Disable scrollable
+        self.keyboardRect = CGRectZero
+        self.scrollView.contentInset = UIEdgeInsetsZero
+    }
+    
+    func keyboardWillChange(notification: NSNotification) {
+        logMethod()
+        // Get keyboard end frame
+        self.keyboardRect = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as AnyObject? as? NSValue)?.CGRectValue()
+        self.makeActiveViewVisible(self.keyboardRect)
+    }
+    
+    // MARK: - Views update
+    
+    /**
+    Make sure active textField is visible
+    Note: scrollView's contentInset will be changed
+    
+    :param: keyboardRect Current keyboard frame
+    */
+    func makeActiveViewVisible(keyboardRect: CGRect) {
+        logMethod()
+        var keyboardHeight: CGFloat = keyboardRect.size.height
+        if (isIOS7 && (self.interfaceOrientation == UIInterfaceOrientation.LandscapeLeft || self.interfaceOrientation == UIInterfaceOrientation.LandscapeRight)) {
+            keyboardHeight = keyboardRect.size.width
+        }
+        
+        self.scrollView.contentInset = UIEdgeInsetsMake(0.0, 0.0, keyboardHeight, 0.0)
+        
+        // Reduce mainFrame's height by keyboard height
+        var mainFrame: CGRect = self.view.frame
+        if isIOS7 {
+            mainFrame = CGRectMake(self.view.frame.origin.y, self.view.frame.origin.x, self.view.frame.size.height, self.view.frame.size.width)
+        }
+        mainFrame.size.height -= keyboardHeight
+        
+        // Convert active view's origin into main view
+        var convertedOrigin = self.activeView.convertPoint(self.activeView.bounds.origin, toView: self.view)
+        // Add view's height and give 40 points (One extra textField) bottom spacing
+        convertedOrigin.y += self.activeView.bounds.size.height + 40.0
+        
+        // If keyboard is covering this view, scroll to visible area
+        if (!CGRectContainsPoint(mainFrame, convertedOrigin)) {
+            // Convert activeView's frame to scrollView
+            var targetFrame = self.activeView.convertRect(self.activeView.bounds, toView: self.scrollView)
+            // Add bottom spacing
+            var moveDownOffset: CGFloat = self.activeView.bounds.size.height + 30.0//50.0
+            targetFrame.origin.y += moveDownOffset
+            
+            self.scrollView.scrollRectToVisible(targetFrame, animated: true)
+        }
     }
     
     func updateViews() {
@@ -163,6 +236,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.loginButtonPressed(textField)
         }
         return true
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        logMethod()
+        self.activeView = textField;
+        if !CGRectEqualToRect(self.keyboardRect, CGRectZero) {
+            self.makeActiveViewVisible(self.keyboardRect)
+        }
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        logMethod()
+        self.activeView = nil;
     }
     
     func textFieldDidChanged(sender: AnyObject) {
