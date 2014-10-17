@@ -6,6 +6,10 @@
 //  Copyright (c) 2014 Honghao. All rights reserved.
 //
 
+// TODO: Slide out status bar when showing menu VC
+// TODO: Don't show loading HUD, load all information once
+// TODO: Different iPad cell size
+
 import UIKit
 
 class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {

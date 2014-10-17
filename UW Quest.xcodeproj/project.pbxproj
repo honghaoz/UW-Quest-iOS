@@ -274,20 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				1B520C5219CE8A2000A0ADE6 /* PersonalInfoViewController.swift */,
-				FAE020DA19DBAEF90000253A /* TitleSubTitleCollectionViewCell.swift */,
-				FA4D1F5A19DA6B32006AA190 /* DescriptionCollectionViewCell.swift */,
-				FA4D1F5B19DA6B32006AA190 /* DescriptionCollectionViewCell.xib */,
-				1B8615AD19CFD79A0064505C /* AddressCollectionViewCell.swift */,
-				FADDD6CD19D476BB003EC88D /* AddressCollectionViewCell.xib */,
-				1B64007719D8977D00C35E44 /* NameCollectionViewCell.swift */,
-				1B64007819D8977D00C35E44 /* NameCollectionViewCell.xib */,
-				1B64007B19D8E48E00C35E44 /* PhoneNumberCollectionViewCell.swift */,
-				1B64007C19D8E48E00C35E44 /* PhoneNumberCollectionViewCell.xib */,
-				FA4D1F5619DA620C006AA190 /* EmailCollectionViewCell.swift */,
-				FA4D1F5719DA620C006AA190 /* EmailCollectionViewCell.xib */,
-				FAE020D819DBACA40000253A /* EmergencyContactCollectionViewCell.swift */,
-				FA7E99FA19DCFD4000D65565 /* DemographicCollectionCell.swift */,
-				FA7E99FC19DCFD9800D65565 /* CitizenshipCollectionViewCell.swift */,
+				FA367B6619F1731000AC58D0 /* Cells */,
 			);
 			path = PersonalInformation;
 			sourceTree = "<group>";
@@ -332,6 +319,27 @@
 				FA79657519C9079F00852C84 /* Locator.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		FA367B6619F1731000AC58D0 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				FAE020DA19DBAEF90000253A /* TitleSubTitleCollectionViewCell.swift */,
+				FA4D1F5A19DA6B32006AA190 /* DescriptionCollectionViewCell.swift */,
+				FA4D1F5B19DA6B32006AA190 /* DescriptionCollectionViewCell.xib */,
+				1B8615AD19CFD79A0064505C /* AddressCollectionViewCell.swift */,
+				FADDD6CD19D476BB003EC88D /* AddressCollectionViewCell.xib */,
+				1B64007719D8977D00C35E44 /* NameCollectionViewCell.swift */,
+				1B64007819D8977D00C35E44 /* NameCollectionViewCell.xib */,
+				1B64007B19D8E48E00C35E44 /* PhoneNumberCollectionViewCell.swift */,
+				1B64007C19D8E48E00C35E44 /* PhoneNumberCollectionViewCell.xib */,
+				FA4D1F5619DA620C006AA190 /* EmailCollectionViewCell.swift */,
+				FA4D1F5719DA620C006AA190 /* EmailCollectionViewCell.xib */,
+				FAE020D819DBACA40000253A /* EmergencyContactCollectionViewCell.swift */,
+				FA7E99FA19DCFD4000D65565 /* DemographicCollectionCell.swift */,
+				FA7E99FC19DCFD9800D65565 /* CitizenshipCollectionViewCell.swift */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		FA8C1D6219C75B0800D6E158 /* Model */ = {
