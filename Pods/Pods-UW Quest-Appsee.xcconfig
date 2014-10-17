@@ -1,2 +1,0 @@
-PODS_UW_QUEST_APPSEE_FRAMEWORK_SEARCH_PATHS = "$(PODS_ROOT)/Appsee/Appsee"
-PODS_UW_QUEST_APPSEE_OTHER_LDFLAGS = -framework AVFoundation -framework Appsee -framework CoreGraphics -framework CoreMedia -framework CoreVideo -framework QuartzCore -framework SystemConfiguration

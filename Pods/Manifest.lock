@@ -36,15 +36,15 @@ PODS:
   - ARAnalytics/Localytics (2.8.0):
     - ARAnalytics/CoreIOS
     - Localytics-iOS-Client
-  - Bolts (1.1.2)
+  - Bolts (1.1.3)
   - Countly (2.0.0)
   - ECSlidingViewController (2.0.3)
-  - FlurrySDK (5.3.0):
+  - FlurrySDK (5.4.0):
     - FlurrySDK/FlurrySDK
-  - FlurrySDK/FlurrySDK (5.3.0)
+  - FlurrySDK/FlurrySDK (5.4.0)
   - GoogleAnalytics-iOS-SDK (3.0.9)
   - JGProgressHUD (1.2.2)
-  - Localytics-iOS-Client (2.60.0)
+  - Localytics-iOS-Client (2.71.0)
   - Parse (1.4.0):
     - Bolts (~> 1.1.2)
   - PureLayout (1.1.0)
@@ -66,14 +66,14 @@ SPEC CHECKSUMS:
   AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
   Appsee: 9e764339bc256b11f6751051a191f39bcff3b6f3
   ARAnalytics: 93c5b65989145f88f4d45e262612eac277b0c219
-  Bolts: 2635e8698a630774689441047f3465d78c48d485
+  Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
   Countly: 8d39cae855e6925578ff65b82c42db379fb9863d
   ECSlidingViewController: e79fe856bfb1a99a39c995377a1943e50f7647eb
-  FlurrySDK: e1142ae33e294f8307bd6d2209cc082e79b66e90
+  FlurrySDK: bed9e5598353f867508d164795a451e3ada92cb6
   GoogleAnalytics-iOS-SDK: d9e198b1f955259a72886769be7377cdfcdb2250
   JGProgressHUD: a7c58f711eec0b67f257a0821c0bac9194c72398
-  Localytics-iOS-Client: 8ac0465be1a255288653a493a92af448944d27cc
+  Localytics-iOS-Client: 3553cabdfcd6255364ec9eb3ecfe9ec4f74d7be4
   Parse: 217a57ed13e870a744fe746fcc01a3fef6a9b750
   PureLayout: c8960fa0f3b40d849d5e177d699d0148faa63b63
 
-COCOAPODS: 0.33.1
+COCOAPODS: 0.34.2

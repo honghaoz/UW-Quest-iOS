@@ -1,0 +1,1 @@
+../../../Localytics-iOS-Client/Localytics-iOS-Client-2.71.0.source/LocalyticsDatabase.h

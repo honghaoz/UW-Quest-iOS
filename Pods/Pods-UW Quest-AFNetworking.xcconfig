@@ -1,1 +1,0 @@
-PODS_UW_QUEST_AFNETWORKING_OTHER_LDFLAGS = -framework CoreGraphics -framework MobileCoreServices -framework Security -framework SystemConfiguration
