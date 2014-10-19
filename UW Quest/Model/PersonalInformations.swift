@@ -50,11 +50,11 @@ class PersonalInformation {
     
     class Address {
         // Keys
-        class func kAddress() -> String {return "address"}
-        class func kAddressType() -> String {return "address_type"}
+        class var kAddress: String {return "address"}
+        class var kAddressType: String {return "address_type"}
         class func newAddress(rawDict: Dictionary<String, String>) -> Address? {
-            if let address: String = rawDict[Address.kAddress()] {
-                if let addressType: String = rawDict[Address.kAddressType()] {
+            if let address: String = rawDict[Address.kAddress] {
+                if let addressType: String = rawDict[Address.kAddressType] {
                     return Address(address: address, type: addressType)
                 }
             }
@@ -115,20 +115,20 @@ class PersonalInformation {
         var nameSuffix: String
         var nameType: String
         
-        class func kFirstName() -> String {return "first_name"}
-        class func kLastName() -> String {return "last_name"}
-        class func kMiddleName() -> String {return "middle_name"}
-        class func kNamePrefix() -> String {return "name_prefix"}
-        class func kNameSuffix() -> String {return "name_suffix"}
-        class func kNameType() -> String {return "name_type"}
+        class var kFirstName: String {return "first_name"}
+        class var kLastName: String {return "last_name"}
+        class var kMiddleName: String {return "middle_name"}
+        class var kNamePrefix: String {return "name_prefix"}
+        class var kNameSuffix: String {return "name_suffix"}
+        class var kNameType: String {return "name_type"}
         
         class func newName(rawDict: Dictionary<String, String>) -> Name? {
-            let firstName: String? = rawDict[Name.kFirstName()]
-            let lastName: String? = rawDict[Name.kLastName()]
-            let middleName: String? = rawDict[Name.kMiddleName()]
-            let namePrefix: String? = rawDict[Name.kNamePrefix()]
-            let nameSuffix: String? = rawDict[Name.kNameSuffix()]
-            let nameType: String? = rawDict[Name.kNameType()]
+            let firstName: String? = rawDict[Name.kFirstName]
+            let lastName: String? = rawDict[Name.kLastName]
+            let middleName: String? = rawDict[Name.kMiddleName]
+            let namePrefix: String? = rawDict[Name.kNamePrefix]
+            let nameSuffix: String? = rawDict[Name.kNameSuffix]
+            let nameType: String? = rawDict[Name.kNameType]
             
             if (firstName != nil) && (lastName != nil) && (middleName != nil) && (namePrefix != nil) && (nameSuffix != nil) && (nameType != nil) {
                 return Name(firstName: firstName!, lastName: lastName!, middleName: middleName!, namePrefix: namePrefix!, nameSuffix: nameSuffix!, nameType: nameType!)
@@ -184,19 +184,19 @@ class PersonalInformation {
         var isPreferred: Bool
         var telephone: String
         
-        class func kPhoneType() -> String {return "phone_type"}
-        class func kCountry() -> String {return "country"}
-        class func kExtension() -> String {return "ext"}
-        class func kPreferred() -> String {return "preferred"}
-        class func kTelephone() -> String {return "telephone"}
+        class var kPhoneType: String {return "phone_type"}
+        class var kCountry: String {return "country"}
+        class var kExtension: String {return "ext"}
+        class var kPreferred: String {return "preferred"}
+        class var kTelephone: String {return "telephone"}
         
         class func newPhoneNumber(rawDict: Dictionary<String, String>) -> PhoneNumber? {
-            let phoneType: String? = rawDict[PhoneNumber.kPhoneType()]
-            let country: String? = rawDict[PhoneNumber.kCountry()]
-            let ext: String? = rawDict[PhoneNumber.kExtension()]
-            let preferredString: String? = rawDict[PhoneNumber.kPreferred()]
+            let phoneType: String? = rawDict[PhoneNumber.kPhoneType]
+            let country: String? = rawDict[PhoneNumber.kCountry]
+            let ext: String? = rawDict[PhoneNumber.kExtension]
+            let preferredString: String? = rawDict[PhoneNumber.kPreferred]
             let preferred: Bool = preferredString == "Y" ? true : false
-            let telephone: String? = rawDict[PhoneNumber.kTelephone()]
+            let telephone: String? = rawDict[PhoneNumber.kTelephone]
             
             if (phoneType != nil) && (country != nil) && (ext != nil) && (preferredString != nil) && (telephone != nil) {
                 return PhoneNumber(type: phoneType!, country: country!, ext: ext!, isPreferred: preferred, telephone: telephone!)
@@ -249,12 +249,12 @@ class PersonalInformation {
         class Email {
             var type: String
             var address: String
-            class func kType() -> String {return "email_type"}
-            class func kAddress() -> String {return "email_address"}
+            class var kType: String {return "email_type"}
+            class var kAddress: String {return "email_address"}
             
             class func newEmail(rawDict: Dictionary<String, String>) -> Email? {
-                let type: String? = rawDict[kType()]
-                let address: String? = rawDict[kAddress()]
+                let type: String? = rawDict[kType]
+                let address: String? = rawDict[kAddress]
                 if (type != nil) && (address != nil) {
                     return Email(type: type!, address: address!)
                 }
@@ -270,12 +270,12 @@ class PersonalInformation {
         class CampusEmail {
             var campusEmail: String
             var deliveredTo: String
-            class func kCampusEmail() -> String {return "campus_email"}
-            class func kDeliveredTo() -> String {return "delivered_to"}
+            class var kCampusEmail: String {return "campus_email"}
+            class var kDeliveredTo: String {return "delivered_to"}
             
             class func newCampusEmail(rawDict: Dictionary<String, String>) -> CampusEmail? {
-                let campusEmail: String? = rawDict[kCampusEmail()]
-                let deliveredTo: String? = rawDict[kDeliveredTo()]
+                let campusEmail: String? = rawDict[kCampusEmail]
+                let deliveredTo: String? = rawDict[kDeliveredTo]
                 if (campusEmail != nil) && (deliveredTo != nil) {
                     return CampusEmail(campusEmail: campusEmail!, deliveredTo: deliveredTo!)
                 }
@@ -351,21 +351,21 @@ class PersonalInformation {
         var isPrimary: Bool
         var relationship: String
         
-        class func kContactName() -> String {return "contact_name"}
-        class func kCountry() -> String {return "country"}
-        class func kExtension() -> String {return "extension"}
-        class func kPhone() -> String {return "phone"}
-        class func kPrimary() -> String {return "primary_contact"}
-        class func kRelationship() -> String {return "relationship"}
+        class var kContactName: String {return "contact_name"}
+        class var kCountry: String {return "country"}
+        class var kExtension: String {return "extension"}
+        class var kPhone: String {return "phone"}
+        class var kPrimary: String {return "primary_contact"}
+        class var kRelationship: String {return "relationship"}
         
         class func newContact(rawDict: Dictionary<String, String>) -> EmergencyContact? {
-            let contactName: String? = rawDict[EmergencyContact.kContactName()]
-            let country: String? = rawDict[EmergencyContact.kCountry()]
-            let ext: String? = rawDict[EmergencyContact.kExtension()]
-            let phone: String? = rawDict[EmergencyContact.kPhone()]
-            let primaryString: String? = rawDict[EmergencyContact.kPrimary()]
+            let contactName: String? = rawDict[EmergencyContact.kContactName]
+            let country: String? = rawDict[EmergencyContact.kCountry]
+            let ext: String? = rawDict[EmergencyContact.kExtension]
+            let phone: String? = rawDict[EmergencyContact.kPhone]
+            let primaryString: String? = rawDict[EmergencyContact.kPrimary]
             let isPrimary: Bool = primaryString == "Y" ? true : false
-            let relationship: String? = rawDict[EmergencyContact.kRelationship()]
+            let relationship: String? = rawDict[EmergencyContact.kRelationship]
             
             if (contactName != nil) && (country != nil) && (ext != nil) && (phone != nil) && (primaryString != nil) && (relationship != nil) {
                 return EmergencyContact(contactName: contactName!, country: country!, ext: ext!, phone: phone!, isPrimary: isPrimary, relationship: relationship!)
@@ -422,14 +422,14 @@ class PersonalInformation {
             var country: String
             var description: String
             
-            class func kCountry() -> String {return "country"}
-            class func kDescription() -> String {return "description"}
+            class var kCountry: String {return "country"}
+            class var kDescription: String {return "description"}
             
             class func newCitizenshipInformations(rawData: [Dictionary<String, String>]) -> [CitizenshipInformation]? {
                 var tempList: [CitizenshipInformation] = []
                 for eachDict in rawData {
-                    let country: String? = eachDict[CitizenshipInformation.kCountry()]
-                    let description: String? = eachDict[CitizenshipInformation.kDescription()]
+                    let country: String? = eachDict[CitizenshipInformation.kCountry]
+                    let description: String? = eachDict[CitizenshipInformation.kDescription]
                     if (country != nil) && (description != nil) {
                         tempList.append(CitizenshipInformation(country: country!, description: description!))
                     } else {
@@ -452,16 +452,16 @@ class PersonalInformation {
             var id: String
             var maritalStatus: String
             
-            class func kDateOfBirth() -> String {return "date_of_birth"}
-            class func kGender() -> String {return "gender"}
-            class func kId() -> String {return "id"}
-            class func kMaritalStatus() -> String {return "marital_status"}
+            class var kDateOfBirth: String {return "date_of_birth"}
+            class var kGender: String {return "gender"}
+            class var kId: String {return "id"}
+            class var kMaritalStatus: String {return "marital_status"}
             
             class func newDemographic(rawDict: Dictionary<String, String>) -> Demographic? {
-                let dateOfBirth: String? = rawDict[Demographic.kDateOfBirth()]
-                let gender: String? = rawDict[Demographic.kGender()]
-                let id: String? = rawDict[Demographic.kId()]
-                let maritalStatus: String? = rawDict[Demographic.kMaritalStatus()]
+                let dateOfBirth: String? = rawDict[Demographic.kDateOfBirth]
+                let gender: String? = rawDict[Demographic.kGender]
+                let id: String? = rawDict[Demographic.kId]
+                let maritalStatus: String? = rawDict[Demographic.kMaritalStatus]
                 
                 if (dateOfBirth != nil) && (gender != nil) && (id != nil) && (maritalStatus != nil) {
                     return Demographic(dateOfBirth: dateOfBirth!, gender: gender!, id: id!, maritalStatus: maritalStatus!)
@@ -485,16 +485,16 @@ class PersonalInformation {
             var nationalId: String
             var nationalIdType: String
             
-            class func kCountry() -> String {return "country"}
-            class func kNationalId() -> String {return "national_id"}
-            class func kNationalIdType() -> String {return "national_id_type"}
+            class var kCountry: String {return "country"}
+            class var kNationalId: String {return "national_id"}
+            class var kNationalIdType: String {return "national_id_type"}
             
             class func newNationalIds(rawData: [Dictionary<String, String>]) -> [NationalIdentificationNumber]? {
                 var tempList: [NationalIdentificationNumber] = []
                 for eachDict in rawData {
-                    let country: String? = eachDict[NationalIdentificationNumber.kCountry()]
-                    let nationalId: String? = eachDict[NationalIdentificationNumber.kNationalId()]
-                    let nationalIdType: String? = eachDict[NationalIdentificationNumber.kNationalIdType()]
+                    let country: String? = eachDict[NationalIdentificationNumber.kCountry]
+                    let nationalId: String? = eachDict[NationalIdentificationNumber.kNationalId]
+                    let nationalIdType: String? = eachDict[NationalIdentificationNumber.kNationalIdType]
                     if (country != nil) && (nationalId != nil) && (nationalIdType != nil) {
                         tempList.append(NationalIdentificationNumber(country: country!, nationalId: nationalId!, nationalIdType: nationalIdType!))
                     } else {
@@ -518,12 +518,12 @@ class PersonalInformation {
             var country: String
             var type: String
             
-            class func kCountry() -> String {return "country"}
-            class func kType() -> String {return "type"}
+            class var kCountry: String {return "country"}
+            class var kType: String {return "type"}
             
             class func newVisa(rawDict: Dictionary<String, String>) -> VisaOrPermitData? {
-                let country: String? = rawDict[VisaOrPermitData.kCountry()]
-                let type: String? = rawDict[VisaOrPermitData.kType()]
+                let country: String? = rawDict[VisaOrPermitData.kCountry]
+                let type: String? = rawDict[VisaOrPermitData.kType]
                 if (country != nil) && (type != nil) {
                     return VisaOrPermitData(country: country!, type: type!)
                 } else {
@@ -586,16 +586,16 @@ class PersonalInformation {
             var expirationDate: String?
             var visaType: String
             
-            class func kCountry() -> String {return "country"}
-            class func kDateReceived() -> String {return "date_received"}
-            class func kExpirationDate() -> String {return "expiration_date"}
-            class func kVisaType() -> String {return "visa_type"}
+            class var kCountry: String {return "country"}
+            class var kDateReceived: String {return "date_received"}
+            class var kExpirationDate: String {return "expiration_date"}
+            class var kVisaType: String {return "visa_type"}
             
             class func newDocument(rawDict: Dictionary<String, String>) -> visaDocument? {
-                let country: String? = rawDict[visaDocument.kCountry()]
-                let dateReceived: String? = rawDict[visaDocument.kDateReceived()]
-                let expirationDate: String? = rawDict[visaDocument.kExpirationDate()]
-                let visaType: String? = rawDict[visaDocument.kVisaType()]
+                let country: String? = rawDict[visaDocument.kCountry]
+                let dateReceived: String? = rawDict[visaDocument.kDateReceived]
+                let expirationDate: String? = rawDict[visaDocument.kExpirationDate]
+                let visaType: String? = rawDict[visaDocument.kVisaType]
                 if (country != nil) && (visaType != nil) {
                     return visaDocument(country: country!, dateReceived: dateReceived, expirationDate: expirationDate, visaType: visaType!)
                 } else {
