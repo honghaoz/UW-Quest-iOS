@@ -11,16 +11,16 @@ import UIKit
 class TitleSubTitleCollectionViewCell: UICollectionViewCell {
     // Constants
     let mainTitleColor: UIColor = UIColor(white: 0.3, alpha: 0.9)
-    let mainTitleFont: UIFont = UIFont(name: "HelveticaNeue", size: 16)
+    let mainTitleFont: UIFont = UIFont(name: "HelveticaNeue", size: 16)!
     
     let subTitleColor: UIColor = UIColor(white: 0.3, alpha: 0.9)
     let subContentColor: UIColor = UIColor(white: 0.3, alpha: 0.9)
     
-    let subTitleFont: UIFont = UIFont(name: "HelveticaNeue-Light", size: 15)
-    let subContentFont: UIFont = UIFont(name: "HelveticaNeue-Light", size: 14)
+    let subTitleFont: UIFont = UIFont(name: "HelveticaNeue-Light", size: 15)!
+    let subContentFont: UIFont = UIFont(name: "HelveticaNeue-Light", size: 14)!
     
     let subContentEmptyColor: UIColor = UIColor(white: 0.3, alpha: 0.9)
-    let subContentEmptyFont: UIFont = UIFont(name: "HelveticaNeue-Light", size: 16)
+    let subContentEmptyFont: UIFont = UIFont(name: "HelveticaNeue-Light", size: 16)!
     
     var subTitleLabelMaxWidth: CGFloat = 0.0
     

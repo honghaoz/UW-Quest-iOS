@@ -306,7 +306,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Cancel, handler: { alertAction in
             println("Go to WATIAM website")
             ARAnalytics.event("Go to WATIAM website")
-            UIApplication.sharedApplication().openURL(NSURL(string: watiamURLString))
+            UIApplication.sharedApplication().openURL(NSURL(string: watiamURLString)!)
             alert.dismissViewControllerAnimated(true, completion: nil)
         }))
         self.presentViewController(alert, animated: true, completion: nil)
@@ -322,7 +322,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Cancel, handler: { alertAction in
                 println("Go to HonghaoZ website")
                 ARAnalytics.event("Go to HonghaoZ website")
-                UIApplication.sharedApplication().openURL(NSURL(string: honghaoLinkedInURLString))
+                UIApplication.sharedApplication().openURL(NSURL(string: honghaoLinkedInURLString)!)
                 alert.dismissViewControllerAnimated(true, completion: nil)
             }))
             self.presentViewController(alert, animated: true, completion: nil)
@@ -346,8 +346,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1.25 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
             Locator.sharedLocator.appDelegate.window?.rootViewController = Locator.sharedLocator.slidingViewController
             UIView.transitionWithView(Locator.sharedLocator.appDelegate.window!, duration: 0.3, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
-                Locator.sharedLocator.appDelegate.window?.rootViewController = Locator.sharedLocator.slidingViewController
-                return
+                Locator.sharedLocator.appDelegate.window!.rootViewController = Locator.sharedLocator.slidingViewController
                 }, completion: nil)
         })
     }

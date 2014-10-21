@@ -45,7 +45,7 @@ class QuestClient: AFHTTPSessionManager {
     
     func setup() {
         println("Client inited")
-        self.responseSerializer = AFJSONResponseSerializer()
+        self.responseSerializer = AFJSONResponseSerializer() as AFJSONResponseSerializer
         self.requestSerializer = AFHTTPRequestSerializer()
         self.reachabilityManager.setReachabilityStatusChangeBlock { (status) -> Void in
             switch status {

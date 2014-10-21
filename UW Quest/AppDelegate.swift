@@ -35,7 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Parse set up
         Parse.setApplicationId("JcvEfa2LZ6tdQQjDZ5nYAaJUslEOuU5qTrU9d4Yb", clientKey: "F66Ch6rXmkE75BcDXqS4cISJVcU4yh6CHmx5UZMP")
-        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+        PFAnalytics.trackAppOpenedWithLaunchOptionsInBackground(launchOptions, block: nil)
+//        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         ZHHParseDevice.trackDevice()
         
         // Analytics set up

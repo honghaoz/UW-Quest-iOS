@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "05524C04D7150230ADC95F8E"
+               BlueprintIdentifier = "349DCABB8EBD4AB21023BA6E"
                BuildableName = "libPods-UW Quest-JGProgressHUD.a"
                BlueprintName = "Pods-UW Quest-JGProgressHUD"
                ReferencedContainer = "container:Pods.xcodeproj">

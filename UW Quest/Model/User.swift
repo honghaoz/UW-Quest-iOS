@@ -61,7 +61,7 @@ class User {
     
     // User dataResponse (either Dict or Array) to init personal information
     func processPersonalInformation(type: PersonalInformationType, data: AnyObject, message: String?) -> Bool {
-        println("Type: \(type.toRaw())")
+        println("Type: \(type.rawValue)")
         println("Data: \(data)")
         switch type {
         case .Addresses:

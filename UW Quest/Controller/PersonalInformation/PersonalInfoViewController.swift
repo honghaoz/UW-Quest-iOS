@@ -116,7 +116,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == currentShowingSection {
-            let choosedCase: PersonalInformationType = PersonalInformationType.fromRaw(sharedPersonalInformation.categories[section])!
+            let choosedCase: PersonalInformationType = PersonalInformationType(rawValue: sharedPersonalInformation.categories[section])!
             switch choosedCase {
             case PersonalInformationType.Addresses:
                 return sharedPersonalInformation.addresses!.count
@@ -142,7 +142,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let type: PersonalInformationType = PersonalInformationType.fromRaw(sharedPersonalInformation.categories[indexPath.section])!
+        let type: PersonalInformationType = PersonalInformationType(rawValue: sharedPersonalInformation.categories[indexPath.section])!
         var cell: UICollectionViewCell!
         switch type {
         case PersonalInformationType.Addresses:
@@ -303,7 +303,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
         // Set up desired width
         let targetWidth: CGFloat = collectionView.bounds.width - 2 * kSectionHorizontalInsets
         
-        let type: PersonalInformationType = PersonalInformationType.fromRaw(sharedPersonalInformation.categories[indexPath.section])!
+        let type: PersonalInformationType = PersonalInformationType(rawValue: sharedPersonalInformation.categories[indexPath.section])!
         var cell: UICollectionViewCell!
         switch type {
         case PersonalInformationType.Addresses:
@@ -523,8 +523,8 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
         var headerView = tapGesture.view as UQCollectionReusableView
         currentShowingSection = currentShowingSection == headerView.indexPath.section ? -1 : headerView.indexPath.section
         
-        let tappedCase: PersonalInformationType = PersonalInformationType.fromRaw(sharedPersonalInformation.categories[headerView.indexPath.section])!
-        println("tapped header: \(tappedCase.toRaw())")
+        let tappedCase: PersonalInformationType = PersonalInformationType(rawValue: sharedPersonalInformation.categories[headerView.indexPath.section])!
+        println("tapped header: \(tappedCase.rawValue)")
         
         self.showHud(nil)
         

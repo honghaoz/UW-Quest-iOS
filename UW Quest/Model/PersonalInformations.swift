@@ -17,7 +17,7 @@ enum PersonalInformationType: String {
     case DemographicInformation = "Demographic Information"
     case CitizenshipImmigrationDocuments = "Citizenship/Immigration Documents"
     
-    static let allValues = [Addresses.toRaw(), Names.toRaw(), PhoneNumbers.toRaw(), EmailAddresses.toRaw(), EmergencyContacts.toRaw(), DemographicInformation.toRaw(), CitizenshipImmigrationDocuments.toRaw()]
+    static let allValues = [Addresses.rawValue, Names.rawValue, PhoneNumbers.rawValue, EmailAddresses.rawValue, EmergencyContacts.rawValue, DemographicInformation.rawValue, CitizenshipImmigrationDocuments.rawValue]
 }
 
 class PersonalInformation {

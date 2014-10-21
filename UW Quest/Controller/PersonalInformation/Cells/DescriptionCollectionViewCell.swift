@@ -12,8 +12,8 @@ class DescriptionCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var descriptionLabel: UILabel!
     
-    let smallFont: UIFont = UIFont(name: "HelveticaNeue-Light", size: 13)
-    let largeFont: UIFont = UIFont(name: "HelveticaNeue-Light", size: 16)
+    let smallFont: UIFont = UIFont(name: "HelveticaNeue-Light", size: 13)!
+    let largeFont: UIFont = UIFont(name: "HelveticaNeue-Light", size: 16)!
     
     let kLabelVerticalInsets: CGFloat = 8.0
     let kLabelHorizontalInsets: CGFloat = 8.0
