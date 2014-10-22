@@ -16,6 +16,7 @@ pod "ARAnalytics/Countly"
 pod "ARAnalytics/Flurry"
 pod "ARAnalytics/Localytics", :inhibit_warnings => true
 pod 'Appsee'
+pod 'Masonry'
 pod 'PureLayout'
 pod 'JGProgressHUD'
 pod 'ECSlidingViewController'
