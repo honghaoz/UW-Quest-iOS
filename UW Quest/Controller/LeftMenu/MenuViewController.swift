@@ -23,6 +23,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = backgroundColor
+        
+//        self.usernameLabel.layer.sha
         self.headerView.backgroundColor = UIColor.clearColor()
         self.tableView.backgroundColor = UIColor.clearColor()
         self.footerView.backgroundColor = UIColor.clearColor()

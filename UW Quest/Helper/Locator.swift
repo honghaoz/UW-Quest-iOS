@@ -27,6 +27,7 @@ class Locator {
     lazy var slidingViewController: ECSlidingViewController = {
         println("slidingViewController inited")
         var controller = UIViewController.viewControllerInStoryboard("MainSlide", viewControllerName: "SlidingViewController") as ECSlidingViewController
+        controller.topViewController = UIViewController.viewControllerInStoryboard("PersonalInfoViewController", viewControllerName: "PersonalInfoNavigationViewController")
         controller.anchorRightRevealAmount = 200.0
         return controller
         }()

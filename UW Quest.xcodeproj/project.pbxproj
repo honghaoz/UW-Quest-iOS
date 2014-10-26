@@ -49,6 +49,7 @@
 		FA8C1D6419C75B0800D6E158 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8C1D6319C75B0800D6E158 /* User.swift */; };
 		FACE198719C9EB05001FD4C9 /* QuestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACE198619C9EB05001FD4C9 /* QuestClient.swift */; };
 		FACE198A19C9EC2D001FD4C9 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FACE198919C9EC2D001FD4C9 /* Crashlytics.framework */; };
+		FADCAA8819FDA44000538C98 /* PersonalInfoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FADCAA8719FDA44000538C98 /* PersonalInfoViewController.storyboard */; };
 		FADDD6CF19D476BB003EC88D /* AddressCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FADDD6CD19D476BB003EC88D /* AddressCollectionViewCell.xib */; };
 		FAE020D919DBACA40000253A /* EmergencyContactCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE020D819DBACA40000253A /* EmergencyContactCollectionViewCell.swift */; };
 		FAE020DB19DBAEF90000253A /* TitleSubTitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE020DA19DBAEF90000253A /* TitleSubTitleCollectionViewCell.swift */; };
@@ -124,6 +125,7 @@
 		FA8C1D6319C75B0800D6E158 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FACE198619C9EB05001FD4C9 /* QuestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestClient.swift; sourceTree = "<group>"; };
 		FACE198919C9EC2D001FD4C9 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		FADCAA8719FDA44000538C98 /* PersonalInfoViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PersonalInfoViewController.storyboard; sourceTree = "<group>"; };
 		FADDD6CD19D476BB003EC88D /* AddressCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressCollectionViewCell.xib; sourceTree = "<group>"; };
 		FAE020D819DBACA40000253A /* EmergencyContactCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmergencyContactCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAE020DA19DBAEF90000253A /* TitleSubTitleCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleSubTitleCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 		1BF1B17719CF811400411109 /* PersonalInformation */ = {
 			isa = PBXGroup;
 			children = (
+				FADCAA8719FDA44000538C98 /* PersonalInfoViewController.storyboard */,
 				1B520C5219CE8A2000A0ADE6 /* PersonalInfoViewController.swift */,
 				FA367B6619F1731000AC58D0 /* Cells */,
 			);
@@ -339,7 +342,7 @@
 				1B520C4E19CE888300A0ADE6 /* MenuViewController.swift */,
 				FA32935E19FD60A800164369 /* MenuTitleCell.swift */,
 			);
-			name = LeftMenu;
+			path = LeftMenu;
 			sourceTree = "<group>";
 		};
 		FA367B6619F1731000AC58D0 /* Cells */ = {
@@ -487,6 +490,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA4D1F5D19DA6B32006AA190 /* DescriptionCollectionViewCell.xib in Resources */,
+				FADCAA8819FDA44000538C98 /* PersonalInfoViewController.storyboard in Resources */,
 				1B64007E19D8E48E00C35E44 /* PhoneNumberCollectionViewCell.xib in Resources */,
 				1B7CF10F19BCEF28007A157D /* Login.storyboard in Resources */,
 				FADDD6CF19D476BB003EC88D /* AddressCollectionViewCell.xib in Resources */,
