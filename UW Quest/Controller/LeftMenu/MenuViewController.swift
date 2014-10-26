@@ -24,22 +24,26 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         self.view.backgroundColor = backgroundColor
         
-//        self.usernameLabel.layer.sha
+        self.usernameLabel.layer.shadowColor = UIColor.whiteColor().CGColor
+        self.usernameLabel.layer.shadowRadius = 6.0
+        self.usernameLabel.layer.shadowOffset = CGSizeZero
+        self.usernameLabel.layer.shadowOpacity = 0.8
+        
         self.headerView.backgroundColor = UIColor.clearColor()
         self.tableView.backgroundColor = UIColor.clearColor()
         self.footerView.backgroundColor = UIColor.clearColor()
         usernameLabel.text = Locator.sharedLocator.user.username
         usernameLabel.textColor = titleColor
+        
+        self.tableView.selectRowAtIndexPath(NSIndexPath(forRow: 4, inSection: 0), animated: true, scrollPosition: UITableViewScrollPosition.Top)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.Slide)
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: UIStatusBarAnimation.Slide)
     }
     
     // MARK: - TableView data source
@@ -68,5 +72,10 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             assert(false, "Wrong row number")
         }
         return titleCell
+    }
+    
+    // MARK: - TableView delegate
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+        return 40.0
     }
 }

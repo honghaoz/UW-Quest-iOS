@@ -15,19 +15,19 @@ class Locator {
     lazy var appDelegate: AppDelegate = {
         var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         return appDelegate
-    }()
-
+        }()
+    
     // Controllers
     lazy var loginViewController: UIViewController = {
         println("loginViewController inited")
         var controller: UIViewController = UIViewController.viewControllerInStoryboard("Login", viewControllerName: "LoginViewController")
         return controller
-    }()
+        }()
     
     lazy var slidingViewController: ECSlidingViewController = {
         println("slidingViewController inited")
         var controller = UIViewController.viewControllerInStoryboard("MainSlide", viewControllerName: "SlidingViewController") as ECSlidingViewController
-        controller.topViewController = UIViewController.viewControllerInStoryboard("PersonalInfoViewController", viewControllerName: "PersonalInfoNavigationViewController")
+        controller.topViewController = UIViewController.viewControllerInStoryboard("MainCollectionViewController", viewControllerName: "MainNavigationViewController")
         controller.anchorRightRevealAmount = 200.0
         return controller
         }()
@@ -45,16 +45,16 @@ class Locator {
     // Shared Instance
     lazy var user: User = {
         return User.sharedUser
-    }()
+        }()
     
     lazy var client: QuestClient = {
         return QuestClient.sharedClient
-    }()
+        }()
     
     lazy var sharedHud: JGProgressHUD = {
         var hud: JGProgressHUD = JGProgressHUD.prototype()
         return hud
-    }()
+        }()
     
     init() {
         println("Locator inited")

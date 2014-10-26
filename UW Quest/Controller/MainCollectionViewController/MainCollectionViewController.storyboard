@@ -8,7 +8,7 @@
         <!--Personal Information-->
         <scene sceneID="VgA-8a-XhK">
             <objects>
-                <viewController storyboardIdentifier="PersonalInfoViewController" id="O1B-dy-mrh" customClass="PersonalInfoViewController" customModule="UW_Quest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainCollectionViewController" id="O1B-dy-mrh" customClass="MainCollectionViewController" customModule="UW_Quest" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fI6-fq-jWe"/>
                         <viewControllerLayoutGuide type="bottom" id="gN2-5N-maB"/>
@@ -107,7 +107,7 @@
         <!--Navigation Controller-->
         <scene sceneID="7MR-84-1QW">
             <objects>
-                <navigationController storyboardIdentifier="PersonalInfoNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="rtV-Hm-13Q" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MainNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="rtV-Hm-13Q" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
