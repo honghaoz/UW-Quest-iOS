@@ -16,6 +16,10 @@ class User {
     var isRemembered: Bool = true
     var isLoggedIn: Bool = false
     
+    var kUsername = "Username"
+    var kPassword = "Password"
+    var kIsRemembered = "Remembered"
+    
     var personalInformation: PersonalInformation = PersonalInformation()
     
     init() {
@@ -24,6 +28,29 @@ class User {
     
     class var sharedUser: User {
         return _sharedUser
+    }
+    
+    func save() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setBool(isRemembered, forKey: kIsRemembered)
+        defaults.setObject(username, forKey: kUsername)
+        defaults.setObject(password, forKey: kPassword)
+        defaults.synchronize()
+    }
+    
+    func load() -> Bool {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        self.isRemembered = defaults.boolForKey(kIsRemembered)
+        if self.isRemembered {
+            if let username: AnyObject = defaults.objectForKey(kUsername) {
+                self.username = username as String
+            }
+            if let password: AnyObject = defaults.objectForKey(kPassword) {
+                self.password = password as String
+            }
+            return true
+        }
+        return false
     }
     
     func login(success:(() -> ())?, failure:((errorMessage: String, error: NSError?) -> ())?) {

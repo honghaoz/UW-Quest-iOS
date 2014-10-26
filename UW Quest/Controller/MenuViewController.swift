@@ -10,10 +10,10 @@ import UIKit
 
 class MenuViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.tableView.backgroundColor = UIColor(red:0.16, green:0.2, blue:0.24, alpha:1)
     }
 
     override func didReceiveMemoryWarning() {

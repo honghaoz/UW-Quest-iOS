@@ -83,7 +83,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
         collectionView.registerClass(CitizenshipCollectionViewCell.self, forCellWithReuseIdentifier: kCitizenshipCellResueIdentifier)
         
         // Setup
-        sharedPersonalInformation = Locator.sharedLocator.user.personalInformation
+        sharedPersonalInformation = Locator.user.personalInformation
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -528,7 +528,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
         
         self.showHud(nil)
         
-        Locator.sharedLocator.user.getPersonalInformation(tappedCase, success:{ _ in
+        Locator.user.getPersonalInformation(tappedCase, success:{ _ in
             JGProgressHUD.dismiss(0, animated: true)
             switch tappedCase {
             case PersonalInformationType.Addresses:

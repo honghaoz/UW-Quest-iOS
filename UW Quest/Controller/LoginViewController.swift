@@ -44,8 +44,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-//        self.view.backgroundColor = UQBackgroundColor
-        
         titleLabel.textColor = UQMainColor
         subTitleLabel.textColor = UQMainColor
         
@@ -106,7 +104,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.delegate = self
         
         // Model
-        Locator.sharedLocator.user.isRemembered = rememberSwitch.on
+        if Locator.user.load() {
+            userIdTextField.text = Locator.user.username
+            passwordTextField.text = Locator.user.password
+        } else {
+            Locator.user.isRemembered = rememberSwitch.on
+        }
         
         // TextField target
         let textChangedAction: Selector = "textFieldDidChanged:"
@@ -260,10 +263,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func loginButtonPressed(sender: AnyObject) {
         dismissKeyboard()
         self.showHud("Login...   ")
-        Locator.sharedLocator.user.username = userIdTextField.text
-        Locator.sharedLocator.user.password = passwordTextField.text
-        Locator.sharedLocator.user.login({ () -> () in
+        Locator.user.username = userIdTextField.text
+        Locator.user.password = passwordTextField.text
+        Locator.user.login({ () -> () in
             println("Login Successfully")
+            if self.rememberSwitch.on {
+                Locator.user.save()
+            }
             JGProgressHUD.showSuccess("Success!", duration: 1.0)
             self.enterToMainScreen()
         }, failure: { (errorMessage, error) -> () in

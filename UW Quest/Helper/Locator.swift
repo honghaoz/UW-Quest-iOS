@@ -42,7 +42,7 @@ class Locator {
         }()
     
     // Shared Instance
-    lazy var user: User = {
+    lazy var sharedUser: User = {
         return User.sharedUser
     }()
     
@@ -61,5 +61,9 @@ class Locator {
     
     class var sharedLocator: Locator {
         return _sharedLocator
+    }
+    
+    class var user: User {
+        return sharedL`ocator.sharedUser
     }
 }
