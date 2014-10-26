@@ -104,11 +104,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.delegate = self
         
         // Model
-        if Locator.user.load() {
-            userIdTextField.text = Locator.user.username
-            passwordTextField.text = Locator.user.password
+        if Locator.sharedLocator.user.load() {
+            userIdTextField.text = Locator.sharedLocator.user.username
+            passwordTextField.text = Locator.sharedLocator.user.password
         } else {
-            Locator.user.isRemembered = rememberSwitch.on
+            Locator.sharedLocator.user.isRemembered = rememberSwitch.on
         }
         
         // TextField target
@@ -263,12 +263,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func loginButtonPressed(sender: AnyObject) {
         dismissKeyboard()
         self.showHud("Login...   ")
-        Locator.user.username = userIdTextField.text
-        Locator.user.password = passwordTextField.text
-        Locator.user.login({ () -> () in
+        Locator.sharedLocator.user.username = userIdTextField.text
+        Locator.sharedLocator.user.password = passwordTextField.text
+        Locator.sharedLocator.user.login({ () -> () in
             println("Login Successfully")
             if self.rememberSwitch.on {
-                Locator.user.save()
+                Locator.sharedLocator.user.save()
             }
             JGProgressHUD.showSuccess("Success!", duration: 1.0)
             self.enterToMainScreen()

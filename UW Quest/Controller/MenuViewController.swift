@@ -10,26 +10,29 @@ import UIKit
 
 class MenuViewController: UIViewController {
 
+    @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    
+    let backgroundColor = UIColor(red:0.16, green:0.2, blue:0.24, alpha:1)
+    let titleColor = UIColor(red:0.31, green:0.34, blue:0.36, alpha:1)
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.backgroundColor = UIColor(red:0.16, green:0.2, blue:0.24, alpha:1)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        self.headerView.backgroundColor = backgroundColor
+        self.tableView.backgroundColor = backgroundColor
+        self.tableView.separatorStyle = .None
+        usernameLabel.text = Locator.sharedLocator.user.username
+        usernameLabel.textColor = titleColor
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.Slide)
     }
-    */
-
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: UIStatusBarAnimation.Slide)
+    }
 }

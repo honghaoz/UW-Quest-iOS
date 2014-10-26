@@ -41,21 +41,21 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
         super.viewDidLoad()
         self.navigationController?.title = "Personal Information"
         
-//        // Default animation
-//        self.navigationController?.view.addGestureRecognizer(self.slidingViewController().panGesture)
+        // Default animation
+        self.navigationController?.view.addGestureRecognizer(self.slidingViewController().panGesture)
 
         // Dynamic transition
-        var dynamicTransition = Locator.sharedLocator.dynamicTransition
-        dynamicTransition.slidingViewController = self.slidingViewController()
-        self.slidingViewController().delegate = dynamicTransition
+//        var dynamicTransition = Locator.sharedLocator.dynamicTransition
+//        dynamicTransition.slidingViewController = self.slidingViewController()
+//        self.slidingViewController().delegate = dynamicTransition
+//        
+//        self.slidingViewController().topViewAnchoredGesture = ECSlidingViewControllerAnchoredGesture.Tapping | ECSlidingViewControllerAnchoredGesture.Custom
+//        
+//        var dynamicTransitionPanGesture = UIPanGestureRecognizer(target: dynamicTransition, action: "handlePanGesture:")
+//        self.slidingViewController().customAnchoredGestures = [dynamicTransitionPanGesture]
+//        self.navigationController?.view.addGestureRecognizer(dynamicTransitionPanGesture)
         
-        self.slidingViewController().topViewAnchoredGesture = ECSlidingViewControllerAnchoredGesture.Tapping | ECSlidingViewControllerAnchoredGesture.Custom
-        
-        var dynamicTransitionPanGesture = UIPanGestureRecognizer(target: dynamicTransition, action: "handlePanGesture:")
-        self.slidingViewController().customAnchoredGestures = [dynamicTransitionPanGesture]
-        self.navigationController?.view.addGestureRecognizer(dynamicTransitionPanGesture)
-        
-//        // Zoom transition
+        // Zoom transition
 //        let zoomTransition = Locator.sharedLocator.zoomTransition
 //        self.slidingViewController().delegate = zoomTransition
 //        self.slidingViewController().topViewAnchoredGesture = ECSlidingViewControllerAnchoredGesture.Tapping | ECSlidingViewControllerAnchoredGesture.Panning
@@ -83,7 +83,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
         collectionView.registerClass(CitizenshipCollectionViewCell.self, forCellWithReuseIdentifier: kCitizenshipCellResueIdentifier)
         
         // Setup
-        sharedPersonalInformation = Locator.user.personalInformation
+        sharedPersonalInformation = Locator.sharedLocator.user.personalInformation
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -528,7 +528,7 @@ class PersonalInfoViewController: UIViewController, UICollectionViewDataSource, 
         
         self.showHud(nil)
         
-        Locator.user.getPersonalInformation(tappedCase, success:{ _ in
+        Locator.sharedLocator.user.getPersonalInformation(tappedCase, success:{ _ in
             JGProgressHUD.dismiss(0, animated: true)
             switch tappedCase {
             case PersonalInformationType.Addresses:

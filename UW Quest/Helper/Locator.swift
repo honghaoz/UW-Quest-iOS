@@ -27,7 +27,7 @@ class Locator {
     lazy var slidingViewController: ECSlidingViewController = {
         println("slidingViewController inited")
         var controller = UIViewController.viewControllerInStoryboard("MainSlide", viewControllerName: "SlidingViewController") as ECSlidingViewController
-        controller.anchorRightRevealAmount = 150.0
+        controller.anchorRightRevealAmount = 200.0
         return controller
         }()
     
@@ -42,11 +42,11 @@ class Locator {
         }()
     
     // Shared Instance
-    lazy var sharedUser: User = {
+    lazy var user: User = {
         return User.sharedUser
     }()
     
-    var client: QuestClient = {
+    lazy var client: QuestClient = {
         return QuestClient.sharedClient
     }()
     
@@ -61,9 +61,5 @@ class Locator {
     
     class var sharedLocator: Locator {
         return _sharedLocator
-    }
-    
-    class var user: User {
-        return sharedL`ocator.sharedUser
     }
 }
