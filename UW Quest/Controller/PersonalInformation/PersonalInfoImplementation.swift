@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PersonalInfoImplementation {
+class PersonalInfoImplementation: MainCollectionVCImplementation {
     var sharedPersonalInformation: PersonalInformation!
 
     let kAddressCellReuseIdentifier = "AddressCell"

@@ -12,6 +12,11 @@
 
 import UIKit
 
+protocol MainCollectionVCImplementation {
+    var title: String { get }
+    
+}
+
 class MainCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     let kSectionHorizontalInsets: CGFloat = 10.0
