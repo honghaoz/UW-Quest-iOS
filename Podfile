@@ -3,7 +3,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, "7.0"
 
 # ignore all warnings from all pods
-inhibit_all_warnings!
+# inhibit_all_warnings!
 
 target "UW Quest" do
 
@@ -12,9 +12,9 @@ pod 'Parse'
 
 pod "ARAnalytics/GoogleAnalytics"
 pod "ARAnalytics/Crashlytics"
-pod "ARAnalytics/Countly"
-pod "ARAnalytics/Flurry"
-pod "ARAnalytics/Localytics", :inhibit_warnings => true
+# pod "ARAnalytics/Countly"
+# pod "ARAnalytics/Flurry"
+# pod "ARAnalytics/Localytics", :inhibit_warnings => true
 pod 'Appsee'
 pod 'Masonry'
 pod 'PureLayout'

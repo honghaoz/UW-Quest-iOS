@@ -1,6 +1,0 @@
-#include "Pods-UW Quest-FlurrySDK.xcconfig"
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Build" "${PODS_ROOT}/Headers/Build/FlurrySDK" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/ARAnalytics" "${PODS_ROOT}/Headers/Public/Appsee" "${PODS_ROOT}/Headers/Public/Bolts" "${PODS_ROOT}/Headers/Public/Countly" "${PODS_ROOT}/Headers/Public/ECSlidingViewController" "${PODS_ROOT}/Headers/Public/FlurrySDK" "${PODS_ROOT}/Headers/Public/GoogleAnalytics-iOS-SDK" "${PODS_ROOT}/Headers/Public/JGProgressHUD" "${PODS_ROOT}/Headers/Public/Localytics-iOS-Client" "${PODS_ROOT}/Headers/Public/Masonry" "${PODS_ROOT}/Headers/Public/Parse" "${PODS_ROOT}/Headers/Public/PureLayout"
-LIBRARY_SEARCH_PATHS = ${PODS_UW_QUEST_FLURRYSDK_LIBRARY_SEARCH_PATHS}
-OTHER_LDFLAGS = ${PODS_UW_QUEST_FLURRYSDK_OTHER_LDFLAGS} -ObjC
-PODS_ROOT = ${SRCROOT}

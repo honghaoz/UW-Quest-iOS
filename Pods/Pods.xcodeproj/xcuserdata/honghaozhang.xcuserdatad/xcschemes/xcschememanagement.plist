@@ -24,17 +24,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-UW Quest-Countly.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-UW Quest-ECSlidingViewController.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-UW Quest-FlurrySDK.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -45,11 +35,6 @@
 			<false/>
 		</dict>
 		<key>Pods-UW Quest-JGProgressHUD.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-UW Quest-Localytics-iOS-Client.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -77,72 +62,57 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>069C7B200E406C76BD29C801</key>
+		<key>0D33E38EA5F3D3817F365EC8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>081FD89C92382FD2EFABE0C7</key>
+		<key>17B24836C47C121CA5EF7A6F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>31606BC3DF556D9FDDE0802E</key>
+		<key>2206DD9505C67AA729C423C3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>337B580928C469291A0ED2DE</key>
+		<key>77FB8F680522B600F88EA133</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>558F716440E17035A145861D</key>
+		<key>90C5A542A375DCDCF5A6F5CA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5FED9730C25CAB029A0BC296</key>
+		<key>91B906FCA451A3707B830829</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6E546BA1D1FD6CF81C6D6E50</key>
+		<key>B271802D0F862E7C27FBD538</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7A1655FC00FA5C2851335DB7</key>
+		<key>C1E5326F076F047FE78037E4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AD59C9961968F25AC288DAB0</key>
+		<key>D397D087C9AD5C3A1C8AC901</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AE2003ADC5D88D9432B853F4</key>
+		<key>D54CA6B577776D189042F589</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BABD9261ED2B35714C4FAB84</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D284F7661F504265F290FF1F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D3ED3A3C167F5147F877F697</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DC1C1A7725D15FF0CD983A13</key>
+		<key>FB85E5651ED56606B6A27B59</key>
 		<dict>
 			<key>primary</key>
 			<true/>

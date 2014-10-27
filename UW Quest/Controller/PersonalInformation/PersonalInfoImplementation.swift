@@ -22,7 +22,7 @@ class PersonalInfoImplementation {
     let title: String = "Personal Information"
     var mainCollectionVC: MainCollectionViewController!
     var collectionView: UICollectionView!
-   
+    
     init() {
     
     }
