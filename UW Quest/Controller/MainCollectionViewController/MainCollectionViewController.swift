@@ -14,7 +14,15 @@ import UIKit
 
 protocol MainCollectionVCImplementation {
     var title: String { get }
-    
+    var mainCollectionVC: MainCollectionViewController! { get set }
+    var collectionView: UICollectionView! { get set }
+    func setUp(collectionVC: MainCollectionViewController)
+    func numberOfSectionsInCollectionView() -> Int
+    func numberOfItemsInSection(section: Int) -> Int
+    func cellForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewCell
+    func titleForHeaderAtIndexPath(indexPath: NSIndexPath) -> String
+    func sizeForItemAtIndexPath(indexPath: NSIndexPath, layout collectionViewLayout: UICollectionViewLayout) -> CGSize
+    func headerViewTapped(headerView: UQCollectionReusableView)
 }
 
 class MainCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
