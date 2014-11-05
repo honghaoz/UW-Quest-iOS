@@ -17,7 +17,7 @@ protocol MainCollectionVCImplementation {
     var mainCollectionVC: MainCollectionViewController! { get set }
     var collectionView: UICollectionView! { get set }
     
-    func setUp(collectionVC: MainCollectionViewController)
+    func setup(collectionVC: MainCollectionViewController)
     
     // UICollectionViewDataSource
     func numberOfSectionsInCollectionView() -> Int
@@ -53,10 +53,23 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    init(implementation: MainCollectionVCImplementation) {
+        super.init()
+        self.setup(implementation)
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    func setup(implementation: MainCollectionVCImplementation) {
+        currentImplemention = implementation
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        currentImplemention = PersonalInfoImplementation()
-        currentImplemention.setUp(self)
+        
+        currentImplemention.setup(self)
         self.navigationController?.title = currentImplemention.title
         
         // Default animation

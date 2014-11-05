@@ -27,7 +27,7 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
     
     }
     
-    func setUp(collectionVC: MainCollectionViewController) {
+    func setup(collectionVC: MainCollectionViewController) {
         // Setup
         sharedPersonalInformation = Locator.sharedLocator.user.personalInformation
         self.mainCollectionVC = collectionVC
