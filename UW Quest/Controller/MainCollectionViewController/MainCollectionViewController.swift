@@ -14,7 +14,25 @@ import UIKit
 
 protocol MainCollectionVCImplementation {
     var title: String { get }
+    var mainCollectionVC: MainCollectionViewController! { get }
+    var collectionView: UICollectionView! { get }
     
+    func setUp(collectionVC: MainCollectionViewController)
+    
+    // UICollectionViewDataSource
+    func numberOfSectionsInCollectionView() -> Int
+    func numberOfItemsInSection(section: Int) -> Int
+    func cellForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewCell
+    
+    // UICollectionViewDelegate
+    
+    
+    // UICollectionViewFlowLayout
+    func sizeForItemAtIndexPath(indexPath: NSIndexPath, layout collectionViewLayout: UICollectionViewLayout) -> CGSize
+    
+    // Others
+    func titleForHeaderAtIndexPath(indexPath: NSIndexPath) -> String
+    func headerViewTapped(headerView: UQCollectionReusableView)
 }
 
 class MainCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -27,7 +45,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     
     var currentShowingSection: Int = -1
     
-    var currentImplemention: PersonalInfoImplementation!
+    var currentImplemention: MainCollectionVCImplementation!
     
     // A dictionary of offscreen cells that are used within the sizeForItemAtIndexPath method to handle the size calculations. These are never drawn onscreen. The dictionary is in the format:
     // { NSString *reuseIdentifier : UICollectionViewCell *offscreenCell, ... }
@@ -151,7 +169,6 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         var headerView = tapGesture.view as UQCollectionReusableView
         currentShowingSection = currentShowingSection == headerView.indexPath.section ? -1 : headerView.indexPath.section
         currentImplemention.headerViewTapped(headerView)
-        
     }
     
     // MARK: - Rotation

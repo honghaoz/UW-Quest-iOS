@@ -259,7 +259,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: Actions
-    
     @IBAction func loginButtonPressed(sender: AnyObject) {
         dismissKeyboard()
         self.showHud("Login...   ")

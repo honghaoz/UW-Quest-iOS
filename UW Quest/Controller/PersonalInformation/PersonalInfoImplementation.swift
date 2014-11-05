@@ -50,9 +50,9 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
         collectionView.registerClass(CitizenshipCollectionViewCell.self, forCellWithReuseIdentifier: kCitizenshipCellResueIdentifier)
     }
     
+    // MARK: - UICollectionViewDataSource
     func numberOfSectionsInCollectionView() -> Int {
         return sharedPersonalInformation.categories.count
-        
     }
     
     func numberOfItemsInSection(section: Int) -> Int {
@@ -208,11 +208,9 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
         cell.layoutIfNeeded()
         return cell
     }
-
-    func titleForHeaderAtIndexPath(indexPath: NSIndexPath) -> String {
-        return sharedPersonalInformation.categories[indexPath.section]
-    }
+    // MARK: - UICollectionViewDelegate
     
+    // MARK: - UICollectionViewFlowLayout Delegate
     func sizeForItemAtIndexPath(indexPath: NSIndexPath, layout collectionViewLayout: UICollectionViewLayout) -> CGSize {
         // Set up desired width
         let targetWidth: CGFloat = collectionView.bounds.width - 2 * mainCollectionVC.kSectionHorizontalInsets
@@ -416,6 +414,11 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
         return size
     }
     
+    // MARK: - Others
+    func titleForHeaderAtIndexPath(indexPath: NSIndexPath) -> String {
+        return sharedPersonalInformation.categories[indexPath.section]
+    }
+
     func headerViewTapped(headerView: UQCollectionReusableView) {
         let tappedCase: PersonalInformationType = PersonalInformationType(rawValue: sharedPersonalInformation.categories[headerView.indexPath.section])!
         println("tapped header: \(tappedCase.rawValue)")
