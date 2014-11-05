@@ -14,8 +14,8 @@ import UIKit
 
 protocol MainCollectionVCImplementation {
     var title: String { get }
-    var mainCollectionVC: MainCollectionViewController! { get }
-    var collectionView: UICollectionView! { get }
+    var mainCollectionVC: MainCollectionViewController! { get set }
+    var collectionView: UICollectionView! { get set }
     
     func setUp(collectionVC: MainCollectionViewController)
     
