@@ -40,19 +40,21 @@
 		FA32935F19FD60A800164369 /* MenuTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA32935E19FD60A800164369 /* MenuTitleCell.swift */; };
 		FA4D1F5819DA620C006AA190 /* EmailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D1F5619DA620C006AA190 /* EmailCollectionViewCell.swift */; };
 		FA4D1F5919DA620C006AA190 /* EmailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA4D1F5719DA620C006AA190 /* EmailCollectionViewCell.xib */; };
-		FA4D1F5C19DA6B32006AA190 /* DescriptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D1F5A19DA6B32006AA190 /* DescriptionCollectionViewCell.swift */; };
-		FA4D1F5D19DA6B32006AA190 /* DescriptionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA4D1F5B19DA6B32006AA190 /* DescriptionCollectionViewCell.xib */; };
 		FA79657619C9079F00852C84 /* Locator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA79657519C9079F00852C84 /* Locator.swift */; };
 		FA79657819C90BB000852C84 /* LaunchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA79657719C90BB000852C84 /* LaunchView.xib */; };
 		FA7E99FB19DCFD4000D65565 /* DemographicCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7E99FA19DCFD4000D65565 /* DemographicCollectionCell.swift */; };
 		FA7E99FD19DCFD9800D65565 /* CitizenshipCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7E99FC19DCFD9800D65565 /* CitizenshipCollectionViewCell.swift */; };
 		FA8C1D6419C75B0800D6E158 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8C1D6319C75B0800D6E158 /* User.swift */; };
+		FAAACD691A0AC47E002E021B /* MyAcademicsImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAACD681A0AC47E002E021B /* MyAcademicsImplementation.swift */; };
+		FAAACD6E1A0AC4CD002E021B /* DescriptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAACD6B1A0AC4CD002E021B /* DescriptionCollectionViewCell.swift */; };
+		FAAACD6F1A0AC4CD002E021B /* DescriptionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAAACD6C1A0AC4CD002E021B /* DescriptionCollectionViewCell.xib */; };
+		FAAACD701A0AC4CD002E021B /* TitleSubTitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAACD6D1A0AC4CD002E021B /* TitleSubTitleCollectionViewCell.swift */; };
+		FAAACD721A0AC5C7002E021B /* MyAcademics.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAACD711A0AC5C7002E021B /* MyAcademics.swift */; };
 		FACE198719C9EB05001FD4C9 /* QuestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACE198619C9EB05001FD4C9 /* QuestClient.swift */; };
 		FACE198A19C9EC2D001FD4C9 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FACE198919C9EC2D001FD4C9 /* Crashlytics.framework */; };
 		FADCAA8819FDA44000538C98 /* MainCollectionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FADCAA8719FDA44000538C98 /* MainCollectionViewController.storyboard */; };
 		FADDD6CF19D476BB003EC88D /* AddressCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FADDD6CD19D476BB003EC88D /* AddressCollectionViewCell.xib */; };
 		FAE020D919DBACA40000253A /* EmergencyContactCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE020D819DBACA40000253A /* EmergencyContactCollectionViewCell.swift */; };
-		FAE020DB19DBAEF90000253A /* TitleSubTitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE020DA19DBAEF90000253A /* TitleSubTitleCollectionViewCell.swift */; };
 		FAE341B419FDB24300D828E7 /* PersonalInfoImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE341B319FDB24300D828E7 /* PersonalInfoImplementation.swift */; };
 		FAF2291F19C937180041C36F /* ZHHParseDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF2291E19C937180041C36F /* ZHHParseDevice.m */; };
 		FAF2292419C937620041C36F /* UIApplication+AppVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF2292119C937620041C36F /* UIApplication+AppVersion.m */; };
@@ -117,19 +119,21 @@
 		FA32935E19FD60A800164369 /* MenuTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTitleCell.swift; sourceTree = "<group>"; };
 		FA4D1F5619DA620C006AA190 /* EmailCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA4D1F5719DA620C006AA190 /* EmailCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmailCollectionViewCell.xib; sourceTree = "<group>"; };
-		FA4D1F5A19DA6B32006AA190 /* DescriptionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionCollectionViewCell.swift; sourceTree = "<group>"; };
-		FA4D1F5B19DA6B32006AA190 /* DescriptionCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DescriptionCollectionViewCell.xib; sourceTree = "<group>"; };
 		FA79657519C9079F00852C84 /* Locator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locator.swift; sourceTree = "<group>"; };
 		FA79657719C90BB000852C84 /* LaunchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchView.xib; sourceTree = "<group>"; };
 		FA7E99FA19DCFD4000D65565 /* DemographicCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemographicCollectionCell.swift; sourceTree = "<group>"; };
 		FA7E99FC19DCFD9800D65565 /* CitizenshipCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitizenshipCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA8C1D6319C75B0800D6E158 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FAAACD681A0AC47E002E021B /* MyAcademicsImplementation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAcademicsImplementation.swift; sourceTree = "<group>"; };
+		FAAACD6B1A0AC4CD002E021B /* DescriptionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionCollectionViewCell.swift; sourceTree = "<group>"; };
+		FAAACD6C1A0AC4CD002E021B /* DescriptionCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DescriptionCollectionViewCell.xib; sourceTree = "<group>"; };
+		FAAACD6D1A0AC4CD002E021B /* TitleSubTitleCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleSubTitleCollectionViewCell.swift; sourceTree = "<group>"; };
+		FAAACD711A0AC5C7002E021B /* MyAcademics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAcademics.swift; sourceTree = "<group>"; };
 		FACE198619C9EB05001FD4C9 /* QuestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestClient.swift; sourceTree = "<group>"; };
 		FACE198919C9EC2D001FD4C9 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		FADCAA8719FDA44000538C98 /* MainCollectionViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainCollectionViewController.storyboard; sourceTree = "<group>"; };
 		FADDD6CD19D476BB003EC88D /* AddressCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressCollectionViewCell.xib; sourceTree = "<group>"; };
 		FAE020D819DBACA40000253A /* EmergencyContactCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmergencyContactCollectionViewCell.swift; sourceTree = "<group>"; };
-		FAE020DA19DBAEF90000253A /* TitleSubTitleCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleSubTitleCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAE341B319FDB24300D828E7 /* PersonalInfoImplementation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalInfoImplementation.swift; sourceTree = "<group>"; };
 		FAF2291D19C937180041C36F /* ZHHParseDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHHParseDevice.h; sourceTree = "<group>"; };
 		FAF2291E19C937180041C36F /* ZHHParseDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHHParseDevice.m; sourceTree = "<group>"; };
@@ -351,9 +355,6 @@
 		FA367B6619F1731000AC58D0 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				FAE020DA19DBAEF90000253A /* TitleSubTitleCollectionViewCell.swift */,
-				FA4D1F5A19DA6B32006AA190 /* DescriptionCollectionViewCell.swift */,
-				FA4D1F5B19DA6B32006AA190 /* DescriptionCollectionViewCell.xib */,
 				1B8615AD19CFD79A0064505C /* AddressCollectionViewCell.swift */,
 				FADDD6CD19D476BB003EC88D /* AddressCollectionViewCell.xib */,
 				1B64007719D8977D00C35E44 /* NameCollectionViewCell.swift */,
@@ -374,8 +375,19 @@
 			children = (
 				FA8C1D6319C75B0800D6E158 /* User.swift */,
 				1B8615AB19CFC6A20064505C /* PersonalInformations.swift */,
+				FAAACD711A0AC5C7002E021B /* MyAcademics.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		FAAACD6A1A0AC4CD002E021B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				FAAACD6B1A0AC4CD002E021B /* DescriptionCollectionViewCell.swift */,
+				FAAACD6C1A0AC4CD002E021B /* DescriptionCollectionViewCell.xib */,
+				FAAACD6D1A0AC4CD002E021B /* TitleSubTitleCollectionViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		FACE198519C9EB05001FD4C9 /* Network */ = {
@@ -397,6 +409,7 @@
 		FAE341B119FDB0E300D828E7 /* MainCollectionViewController */ = {
 			isa = PBXGroup;
 			children = (
+				FAAACD6A1A0AC4CD002E021B /* Cells */,
 				FADCAA8719FDA44000538C98 /* MainCollectionViewController.storyboard */,
 				1B520C5219CE8A2000A0ADE6 /* MainCollectionViewController.swift */,
 			);
@@ -406,6 +419,7 @@
 		FAE341B219FDB1BB00D828E7 /* MyAcademics */ = {
 			isa = PBXGroup;
 			children = (
+				FAAACD681A0AC47E002E021B /* MyAcademicsImplementation.swift */,
 			);
 			path = MyAcademics;
 			sourceTree = "<group>";
@@ -508,7 +522,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA4D1F5D19DA6B32006AA190 /* DescriptionCollectionViewCell.xib in Resources */,
+				FAAACD6F1A0AC4CD002E021B /* DescriptionCollectionViewCell.xib in Resources */,
 				FADCAA8819FDA44000538C98 /* MainCollectionViewController.storyboard in Resources */,
 				1B64007E19D8E48E00C35E44 /* PhoneNumberCollectionViewCell.xib in Resources */,
 				1B7CF10F19BCEF28007A157D /* Login.storyboard in Resources */,
@@ -568,8 +582,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAF2291F19C937180041C36F /* ZHHParseDevice.m in Sources */,
-				FAE020DB19DBAEF90000253A /* TitleSubTitleCollectionViewCell.swift in Sources */,
-				FA4D1F5C19DA6B32006AA190 /* DescriptionCollectionViewCell.swift in Sources */,
+				FAAACD6E1A0AC4CD002E021B /* DescriptionCollectionViewCell.swift in Sources */,
 				FACE198719C9EB05001FD4C9 /* QuestClient.swift in Sources */,
 				1B2FCD1C19C4A64400FDF4D8 /* Extension.swift in Sources */,
 				1BF1B17919CF814E00411109 /* UQCollectionReusableView.swift in Sources */,
@@ -580,6 +593,7 @@
 				FA4D1F5819DA620C006AA190 /* EmailCollectionViewCell.swift in Sources */,
 				1B5BF35219C3F8470005626F /* LoginViewController.swift in Sources */,
 				1B520C5319CE8A2000A0ADE6 /* MainCollectionViewController.swift in Sources */,
+				FAAACD691A0AC47E002E021B /* MyAcademicsImplementation.swift in Sources */,
 				1B8615AE19CFD79A0064505C /* AddressCollectionViewCell.swift in Sources */,
 				FAF2292419C937620041C36F /* UIApplication+AppVersion.m in Sources */,
 				1B64007919D8977D00C35E44 /* NameCollectionViewCell.swift in Sources */,
@@ -590,8 +604,10 @@
 				FA32935F19FD60A800164369 /* MenuTitleCell.swift in Sources */,
 				FA21D6E419E7780C002FBF71 /* MEZoomAnimationController.m in Sources */,
 				FAF2292519C937620041C36F /* UIDevice-Hardware.m in Sources */,
+				FAAACD701A0AC4CD002E021B /* TitleSubTitleCollectionViewCell.swift in Sources */,
 				FA79657619C9079F00852C84 /* Locator.swift in Sources */,
 				FA23729E19C74167000F5D4F /* Constant.swift in Sources */,
+				FAAACD721A0AC5C7002E021B /* MyAcademics.swift in Sources */,
 				FA7E99FB19DCFD4000D65565 /* DemographicCollectionCell.swift in Sources */,
 				1B64007D19D8E48E00C35E44 /* PhoneNumberCollectionViewCell.swift in Sources */,
 				FA8C1D6419C75B0800D6E158 /* User.swift in Sources */,
