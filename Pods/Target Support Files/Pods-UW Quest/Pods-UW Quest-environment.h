@@ -51,26 +51,26 @@
 // ARAnalytics/CoreIOS
 #define COCOAPODS_POD_AVAILABLE_ARAnalytics_CoreIOS
 #define COCOAPODS_VERSION_MAJOR_ARAnalytics_CoreIOS 2
-#define COCOAPODS_VERSION_MINOR_ARAnalytics_CoreIOS 8
-#define COCOAPODS_VERSION_PATCH_ARAnalytics_CoreIOS 0
+#define COCOAPODS_VERSION_MINOR_ARAnalytics_CoreIOS 9
+#define COCOAPODS_VERSION_PATCH_ARAnalytics_CoreIOS 1
 
 // ARAnalytics/Crashlytics
 #define COCOAPODS_POD_AVAILABLE_ARAnalytics_Crashlytics
 #define COCOAPODS_VERSION_MAJOR_ARAnalytics_Crashlytics 2
-#define COCOAPODS_VERSION_MINOR_ARAnalytics_Crashlytics 8
-#define COCOAPODS_VERSION_PATCH_ARAnalytics_Crashlytics 0
+#define COCOAPODS_VERSION_MINOR_ARAnalytics_Crashlytics 9
+#define COCOAPODS_VERSION_PATCH_ARAnalytics_Crashlytics 1
 
 // ARAnalytics/GoogleAnalytics
 #define COCOAPODS_POD_AVAILABLE_ARAnalytics_GoogleAnalytics
 #define COCOAPODS_VERSION_MAJOR_ARAnalytics_GoogleAnalytics 2
-#define COCOAPODS_VERSION_MINOR_ARAnalytics_GoogleAnalytics 8
-#define COCOAPODS_VERSION_PATCH_ARAnalytics_GoogleAnalytics 0
+#define COCOAPODS_VERSION_MINOR_ARAnalytics_GoogleAnalytics 9
+#define COCOAPODS_VERSION_PATCH_ARAnalytics_GoogleAnalytics 1
 
 // Appsee
 #define COCOAPODS_POD_AVAILABLE_Appsee
 #define COCOAPODS_VERSION_MAJOR_Appsee 2
 #define COCOAPODS_VERSION_MINOR_Appsee 1
-#define COCOAPODS_VERSION_PATCH_Appsee 1
+#define COCOAPODS_VERSION_PATCH_Appsee 2
 
 // Bolts
 #define COCOAPODS_POD_AVAILABLE_Bolts
@@ -87,8 +87,8 @@
 // GoogleAnalytics-iOS-SDK
 #define COCOAPODS_POD_AVAILABLE_GoogleAnalytics_iOS_SDK
 #define COCOAPODS_VERSION_MAJOR_GoogleAnalytics_iOS_SDK 3
-#define COCOAPODS_VERSION_MINOR_GoogleAnalytics_iOS_SDK 0
-#define COCOAPODS_VERSION_PATCH_GoogleAnalytics_iOS_SDK 9
+#define COCOAPODS_VERSION_MINOR_GoogleAnalytics_iOS_SDK 10
+#define COCOAPODS_VERSION_PATCH_GoogleAnalytics_iOS_SDK 0
 
 // JGProgressHUD
 #define COCOAPODS_POD_AVAILABLE_JGProgressHUD
@@ -96,21 +96,15 @@
 #define COCOAPODS_VERSION_MINOR_JGProgressHUD 2
 #define COCOAPODS_VERSION_PATCH_JGProgressHUD 2
 
-// Masonry
-#define COCOAPODS_POD_AVAILABLE_Masonry
-#define COCOAPODS_VERSION_MAJOR_Masonry 0
-#define COCOAPODS_VERSION_MINOR_Masonry 5
-#define COCOAPODS_VERSION_PATCH_Masonry 3
-
 // Parse
 #define COCOAPODS_POD_AVAILABLE_Parse
 #define COCOAPODS_VERSION_MAJOR_Parse 1
-#define COCOAPODS_VERSION_MINOR_Parse 4
-#define COCOAPODS_VERSION_PATCH_Parse 2
+#define COCOAPODS_VERSION_MINOR_Parse 5
+#define COCOAPODS_VERSION_PATCH_Parse 0
 
 // PureLayout
 #define COCOAPODS_POD_AVAILABLE_PureLayout
 #define COCOAPODS_VERSION_MAJOR_PureLayout 2
 #define COCOAPODS_VERSION_MINOR_PureLayout 0
-#define COCOAPODS_VERSION_PATCH_PureLayout 1
+#define COCOAPODS_VERSION_PATCH_PureLayout 2
 

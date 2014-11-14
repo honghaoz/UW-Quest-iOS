@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "17B24836C47C121CA5EF7A6F"
+               BlueprintIdentifier = "E232CEB2D1FAB0DD162ADC1E"
                BuildableName = "libPods-UW Quest-Appsee.a"
                BlueprintName = "Pods-UW Quest-Appsee"
                ReferencedContainer = "container:Pods.xcodeproj">

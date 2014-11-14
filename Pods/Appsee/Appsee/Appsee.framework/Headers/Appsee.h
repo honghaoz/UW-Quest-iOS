@@ -1,6 +1,6 @@
 //
 //  Appsee.h
-//  Appsee v2.1.1
+//  Appsee v2.1.2
 //
 //  Copyright (c) 2014 Shift 6 Ltd. All rights reserved.
 //
@@ -111,7 +111,5 @@
  @param view A UIView that no longer contains sensitive information.
  */
 +(void)unmarkViewAsSensitive:(UIView*)view;
-
-
 
 @end

@@ -20,21 +20,20 @@ PODS:
   - AFNetworking/UIKit (2.4.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - Appsee (2.1.1)
-  - ARAnalytics/CoreIOS (2.8.0)
-  - ARAnalytics/Crashlytics (2.8.0):
+  - Appsee (2.1.2)
+  - ARAnalytics/CoreIOS (2.9.1)
+  - ARAnalytics/Crashlytics (2.9.1):
     - ARAnalytics/CoreIOS
-  - ARAnalytics/GoogleAnalytics (2.8.0):
+  - ARAnalytics/GoogleAnalytics (2.9.1):
     - ARAnalytics/CoreIOS
     - GoogleAnalytics-iOS-SDK
   - Bolts (1.1.3)
   - ECSlidingViewController (2.0.3)
-  - GoogleAnalytics-iOS-SDK (3.0.9)
+  - GoogleAnalytics-iOS-SDK (3.10)
   - JGProgressHUD (1.2.2)
-  - Masonry (0.5.3)
-  - Parse (1.4.2):
+  - Parse (1.5.0):
     - Bolts (~> 1.1.3)
-  - PureLayout (2.0.1)
+  - PureLayout (2.0.2)
 
 DEPENDENCIES:
   - AFNetworking
@@ -43,20 +42,18 @@ DEPENDENCIES:
   - ARAnalytics/GoogleAnalytics
   - ECSlidingViewController
   - JGProgressHUD
-  - Masonry
   - Parse
   - PureLayout
 
 SPEC CHECKSUMS:
   AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
-  Appsee: 52f4cdd99743491b677e52d8f664b74dbc05f6a5
-  ARAnalytics: 93c5b65989145f88f4d45e262612eac277b0c219
+  Appsee: bdc4205eee4722e8d2659705690ee4b694e8452c
+  ARAnalytics: a06e6d012b5999d8598ec9bacec45c8a8099f668
   Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
   ECSlidingViewController: e79fe856bfb1a99a39c995377a1943e50f7647eb
-  GoogleAnalytics-iOS-SDK: d9e198b1f955259a72886769be7377cdfcdb2250
+  GoogleAnalytics-iOS-SDK: e5872d2acc120613d954320e206c7e3bc8357d7c
   JGProgressHUD: a7c58f711eec0b67f257a0821c0bac9194c72398
-  Masonry: 35368c2ca9577ca87722c12fc52c4bad9b1c1516
-  Parse: fc9ceb6edbc6bb6a1a1f3c33f0db3293a6894f94
-  PureLayout: 12eca5b6dc94f1a03fdf255d640604584ff1b55b
+  Parse: 7de25b6f70f0b233e5d25835f62eabfa91e4f9d7
+  PureLayout: 03fe8d5ab68f5871038b3b7065d28ac880d5f2a0
 
 COCOAPODS: 0.34.4

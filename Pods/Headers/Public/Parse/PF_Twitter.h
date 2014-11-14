@@ -1,1 +1,1 @@
-../../../Parse/Parse.framework/Versions/A/Headers/PF_Twitter.h
+../../../Parse/Parse.framework/Headers/PF_Twitter.h
