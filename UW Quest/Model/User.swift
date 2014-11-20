@@ -110,4 +110,24 @@ class User {
         }
         return false
     }
+    
+//    func getMyAcademic(type: MyAcademicsType,
+//        success: (() -> ())?,
+//        failure:((errorMessage: String, error: NSError?) -> ())?) {
+//            if !self.isLoggedIn {
+//                failure!(errorMessage: "User is not logged in", error: nil)
+//            }
+//            
+//            Locator.sharedLocator.client.getPersonalInformation(type, success: { (dataResponse, message) -> () in
+//                println("message: " + (message != nil ? message! : ""))
+//                if self.processPersonalInformation(type, data: dataResponse, message: message) {
+//                    success?()
+//                } else {
+//                    failure?(errorMessage: "Init data failed", error: nil)
+//                }
+//                }) { (errorMessage, error) -> () in
+//                    failure?(errorMessage: errorMessage, error: error)
+//                    return
+//            }
+//    }
 }

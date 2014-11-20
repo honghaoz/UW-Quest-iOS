@@ -8,11 +8,11 @@
 
 import Foundation
 
-//enum PersonalInformationType: String {
-//    case MyProgram = "My Program"
-//    case Grades = "Names"
-//    case UnofficialTranscript = "Phone Numbers"
-//    case MyAdvisors = "Email Addresses"
-//    
-//    static let allValues = [Addresses.rawValue, Names.rawValue, PhoneNumbers.rawValue, EmailAddresses.rawValue, EmergencyContacts.rawValue, DemographicInformation.rawValue, CitizenshipImmigrationDocuments.rawValue]
-//}
+enum MyAcademicsType: String {
+    case MyProgram = "My Program"
+    case Grades = "Names"
+    case UnofficialTranscript = "Phone Numbers"
+    case MyAdvisors = "Email Addresses"
+    
+    static let allValues = [MyProgram.rawValue, Grades.rawValue, UnofficialTranscript.rawValue, MyAdvisors.rawValue]
+}

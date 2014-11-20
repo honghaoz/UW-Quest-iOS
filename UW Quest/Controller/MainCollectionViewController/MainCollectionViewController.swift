@@ -69,6 +69,13 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Locator.sharedLocator.client.getMyAcademic(.Grades, success: { (data, message) -> () in
+            println("\(data)")
+            println("\(message)")
+        }) { (errorMessage, error) -> () in
+            println("\(errorMessage)")
+        }
+        
         currentImplemention.setup(self)
         self.navigationController?.title = currentImplemention.title
         

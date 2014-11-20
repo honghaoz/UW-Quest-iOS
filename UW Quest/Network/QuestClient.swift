@@ -11,6 +11,21 @@ import Foundation
 let kUWQuestAPIKey: String = "77881122"
 let kUWQuestAPIBaseURL: String = "http://uw-quest.appspot.com"
 
+let kUWQuestAPIPersonalInformationPath = "personalinformation/"
+let kUWQuestAPIPersonalInformationAddresses = "addresses"
+let kUWQuestAPIPersonalInformationNames = "names"
+let kUWQuestAPIPersonalInformationPhoneNumbers = "phone_numbers"
+let kUWQuestAPIPersonalInformationEmailAddresses = "email_addresses"
+let kUWQuestAPIPersonalInformationEmergencyContacts = "emergency_contacts"
+let kUWQuestAPIPersonalInformationDemographicInformation = "demographic_information"
+let kUWQuestAPIPersonalInformationCitizenshipImmigrationDocuments = "citizenship_immigration_documents"
+
+let kUWQuestAPIMyAcademicPath = "my_academics/"
+let kUWQuestAPIMyAcademicMyProgram = "my_program"
+let kUWQuestAPIMyAcademicGrades = "grades"
+let kUWQuestAPIMyAcademicUnofficialTranscript = "unofficial_transcript"
+let kUWQuestAPIMyAcademicMyAdvisors = "my_advisors"
+
 let kStatusSuccess: String = "success"
 let kErrorCodeInvalidKey: Int = 1
 let kErrorCodeInvalidSID: Int = 2
@@ -130,23 +145,23 @@ class QuestClient: AFHTTPSessionManager {
     }
     
     func getPersonalInformation(type: PersonalInformationType, success:(data: AnyObject!, message: String?) -> (), failure:(errorMessage: String, error: NSError?) -> ()) {
-        assert(((self.sid != nil) && (!self.sid!.isEmpty)) as Bool, "SID must be non-empty")
-        var path = "personalinformation/"
+        precondition(((self.sid != nil) && (!self.sid!.isEmpty)) as Bool, "SID must be non-empty")
+        var path = kUWQuestAPIPersonalInformationPath
         switch type {
         case .Addresses:
-            path += "addresses"
+            path += kUWQuestAPIPersonalInformationAddresses
         case .Names:
-            path += "names"
+            path += kUWQuestAPIPersonalInformationNames
         case .PhoneNumbers:
-            path += "phone_numbers"
+            path += kUWQuestAPIPersonalInformationPhoneNumbers
         case .EmailAddresses:
-            path += "email_addresses"
+            path += kUWQuestAPIPersonalInformationEmailAddresses
         case .EmergencyContacts:
-            path += "emergency_contacts"
+            path += kUWQuestAPIPersonalInformationEmergencyContacts
         case .DemographicInformation:
-            path += "demographic_information"
+            path += kUWQuestAPIPersonalInformationDemographicInformation
         case .CitizenshipImmigrationDocuments:
-            path += "citizenship_immigration_documents"
+            path += kUWQuestAPIPersonalInformationCitizenshipImmigrationDocuments
         default: assert(false, "Wrong PersonalInformation Type")
         }
         
@@ -173,6 +188,49 @@ class QuestClient: AFHTTPSessionManager {
             println(error.localizedDescription)
             failure(errorMessage: self.errorMessageWithErrorCode(kErrorNetwork), error: error)
         }
+    }
+    
+    func getMyAcademic(type: MyAcademicsType,
+        success:(data: AnyObject!, message: String?) -> (),
+        failure:(errorMessage: String, error: NSError?) -> ()) {
+            precondition(((self.sid != nil) && (!self.sid!.isEmpty)) as Bool, "SID must be non-empty")
+            var path = kUWQuestAPIMyAcademicPath
+            switch type {
+            case .MyProgram:
+                path += kUWQuestAPIMyAcademicMyProgram
+            case .Grades:
+                path += kUWQuestAPIMyAcademicGrades
+            case .UnofficialTranscript:
+                path += kUWQuestAPIMyAcademicUnofficialTranscript
+            case .MyAdvisors:
+                path += kUWQuestAPIMyAcademicMyAdvisors
+            default: assert(false, "Wrong MyAcademics Type")
+            }
+            
+            let parameters: Dictionary = [
+                "sid": self.sid!,
+                "key": kUWQuestAPIKey,
+                "term_index": "1"
+            ]
+            
+            self.POST(path, parameters: parameters, success: { (task, responseObject) -> Void in
+                let responseDict = responseObject as Dictionary<String, AnyObject>
+                if self.statusIsSuccess(responseDict) {
+                    // Get data successfully
+                    if let data: AnyObject = responseDict["data"] {
+                        success(data: data, message: self.getMessage(responseDict))
+                    }
+                } else {
+                    // Get data failed
+                    // TODO:
+                    let errorCode = self.getErrorCode(responseDict)
+                    failure(errorMessage: self.errorMessageWithErrorCode(errorCode), error: NSError(domain: "Not network error", code: 1, userInfo: nil))
+                }
+                
+                }) { (task, error) -> Void in
+                    println(error.localizedDescription)
+                    failure(errorMessage: self.errorMessageWithErrorCode(kErrorNetwork), error: error)
+            }
     }
     
     //MARK: Helpers

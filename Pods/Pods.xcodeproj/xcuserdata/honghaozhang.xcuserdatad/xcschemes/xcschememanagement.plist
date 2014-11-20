@@ -49,6 +49,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-UW Quest-hpple.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-UW Quest.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -56,57 +61,6 @@
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>069D86BE055A920A222F447A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>20D67A81812C203C150A317B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>22F90C32F10998ECF1FD8AA5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>74C811FE6DC35416CC93CDAB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A4E6BDB0F581ADFA37B3E990</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C9F852279E0897939280492F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D490475824B2CE7791CC32FB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DEF5BD43B555A08314371440</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E232CEB2D1FAB0DD162ADC1E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F0010E9CE64BFFE74F65C07F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>
