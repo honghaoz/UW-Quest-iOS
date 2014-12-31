@@ -166,14 +166,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func keyboardWillBeHidden(notification: NSNotification) {
-        logMethod()
         // Disable scrollable
         self.keyboardRect = CGRectZero
         self.scrollView.contentInset = UIEdgeInsetsZero
     }
     
     func keyboardWillChange(notification: NSNotification) {
-        logMethod()
         // Get keyboard end frame
         self.keyboardRect = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as AnyObject? as? NSValue)?.CGRectValue()
         self.makeActiveViewVisible(self.keyboardRect)
@@ -188,7 +186,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     :param: keyboardRect Current keyboard frame
     */
     func makeActiveViewVisible(keyboardRect: CGRect) {
-        logMethod()
         var keyboardHeight: CGFloat = keyboardRect.size.height
         if (isIOS7 && (self.interfaceOrientation == UIInterfaceOrientation.LandscapeLeft || self.interfaceOrientation == UIInterfaceOrientation.LandscapeRight)) {
             keyboardHeight = keyboardRect.size.width
@@ -242,7 +239,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
-        logMethod()
         self.activeView = textField;
         if !CGRectEqualToRect(self.keyboardRect, CGRectZero) {
             self.makeActiveViewVisible(self.keyboardRect)
@@ -250,7 +246,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
-        logMethod()
         self.activeView = nil;
     }
     

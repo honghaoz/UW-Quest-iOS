@@ -16,6 +16,7 @@ pod 'Appsee'
 pod 'PureLayout'
 pod 'JGProgressHUD'
 pod 'ECSlidingViewController'
+pod 'hpple'
 
 end
 

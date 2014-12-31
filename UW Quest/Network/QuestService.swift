@@ -9,6 +9,7 @@
 import Foundation
 
 let kQuestLoginURL = "https://quest.pecs.uwaterloo.ca/psp/SS/?cmd=login&languageCd=ENG"
+let kQuestLogoutURL = "https://quest.pecs.uwaterloo.ca/psp/SS/ACADEMIC/SA/?cmd=logout"
 let kStudentCenterURL_SA = "https://quest.pecs.uwaterloo.ca/psc/SS/ACADEMIC/SA/c/SA_LEARNER_SERVICES.SSS_STUDENT_CENTER.GBL"
 let kStudentCenterURL_HRMS = "https://quest.pecs.uwaterloo.ca/psc/SS/ACADEMIC/HRMS/c/SA_LEARNER_SERVICES.SSS_STUDENT_CENTER.GBL"
 
@@ -61,8 +62,20 @@ class QuestService: AFHTTPSessionManager {
 
 // MARK: Helper methods
 extension QuestService {
-    func getICSID(html: String) {
-        //*[@id="ICSID"]
+    func getICSID(html: String) -> String? {
+        let element = html.peekAtSearchWithXPathQuery("//*[@id=\"ICSID\"]")
+        if element != nil {
+            return element!.objectForKey("value")
+        }
+        return nil
+    }
+    
+    func getStateNum(html: String) -> Int? {
+        let element = html.peekAtSearchWithXPathQuery("//*[@id=\"ICStateNum\"]")
+        if element != nil {
+            return element!.objectForKey("value").toInt()
+        }
+        return nil
     }
 }
 
@@ -109,8 +122,9 @@ extension QuestService {
         
         self.GET(kStudentCenterURL_SA, parameters: parameters, success: { (task, response) -> Void in
             logVerbose("success")
-            let html = NSString(data: response as NSData, encoding: NSUTF8StringEncoding)
-            logDebug(html!)
+            let html: String = NSString(data: response as NSData, encoding: NSUTF8StringEncoding)!
+            logDebug("ICSID: \(self.getICSID(html)?)")
+            logDebug("\(self.getStateNum(html)?)")
             }) { (task, error) -> Void in
                 logVerbose("failed: \(error.localizedDescription)")
         }

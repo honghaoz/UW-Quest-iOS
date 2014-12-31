@@ -38,7 +38,3 @@ let kBorderWidth: CGFloat = 1.0
 let watiamURLString = "https://watiam.uwaterloo.ca/idm/user/login.jsp"
 let honghaozURLString = "http://honghaoz.com"
 let honghaoLinkedInURLString = "http://ca.linkedin.com/in/honghaozhang"
-
-// Check System Version
-let isIOS7: Bool = !isIOS8
-let isIOS8: Bool = floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_7_1
