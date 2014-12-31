@@ -1,1 +1,1 @@
-../../../Parse/Parse.framework/Versions/A/Headers/PFRole.h
+../../../Parse/Parse.framework/Headers/PFRole.h

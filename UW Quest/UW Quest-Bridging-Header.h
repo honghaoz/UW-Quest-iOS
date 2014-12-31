@@ -18,7 +18,6 @@
 #import "MEZoomAnimationController.h"
 #import "UIViewController+ECSlidingViewController.h"
 #import <PureLayout/PureLayout.h>
-#import "Masonry.h"
 
 // Analytics
 #import <Appsee/Appsee.h>

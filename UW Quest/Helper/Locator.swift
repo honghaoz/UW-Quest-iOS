@@ -63,4 +63,8 @@ class Locator {
     class var sharedLocator: Locator {
         return _sharedLocator
     }
+    
+    class var sharedQuestService: QuestService {
+        return QuestService.sharedService
+    }
 }

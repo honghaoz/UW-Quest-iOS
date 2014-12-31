@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B2152311A536C3200B7165A /* QuestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2152301A536C3200B7165A /* QuestService.swift */; };
+		1B2152331A536F5900B7165A /* ZHLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2152321A536F5900B7165A /* ZHLogger.swift */; };
 		1B2FCD1C19C4A64400FDF4D8 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2FCD1B19C4A64400FDF4D8 /* Extension.swift */; };
 		1B520C4F19CE888300A0ADE6 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B520C4E19CE888300A0ADE6 /* MenuViewController.swift */; };
 		1B520C5319CE8A2000A0ADE6 /* MainCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B520C5219CE8A2000A0ADE6 /* MainCollectionViewController.swift */; };
@@ -76,6 +78,8 @@
 
 /* Begin PBXFileReference section */
 		040AF5C3C6C827E481C73485 /* Pods-UW Quest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UW Quest.release.xcconfig"; path = "Pods/Target Support Files/Pods-UW Quest/Pods-UW Quest.release.xcconfig"; sourceTree = "<group>"; };
+		1B2152301A536C3200B7165A /* QuestService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestService.swift; sourceTree = "<group>"; };
+		1B2152321A536F5900B7165A /* ZHLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHLogger.swift; sourceTree = "<group>"; };
 		1B2FCD1B19C4A64400FDF4D8 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		1B520C4E19CE888300A0ADE6 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		1B520C5219CE8A2000A0ADE6 /* MainCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCollectionViewController.swift; sourceTree = "<group>"; };
@@ -382,6 +386,7 @@
 			isa = PBXGroup;
 			children = (
 				FACE198619C9EB05001FD4C9 /* QuestClient.swift */,
+				1B2152301A536C3200B7165A /* QuestService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -389,6 +394,7 @@
 		FACE198819C9EB38001FD4C9 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				1B2152321A536F5900B7165A /* ZHLogger.swift */,
 				FACE198919C9EC2D001FD4C9 /* Crashlytics.framework */,
 			);
 			path = ThirdParty;
@@ -578,6 +584,7 @@
 				FA21D6E319E7780C002FBF71 /* MEDynamicTransition.m in Sources */,
 				FA7E99FD19DCFD9800D65565 /* CitizenshipCollectionViewCell.swift in Sources */,
 				FA4D1F5819DA620C006AA190 /* EmailCollectionViewCell.swift in Sources */,
+				1B2152311A536C3200B7165A /* QuestService.swift in Sources */,
 				1B5BF35219C3F8470005626F /* LoginViewController.swift in Sources */,
 				1B520C5319CE8A2000A0ADE6 /* MainCollectionViewController.swift in Sources */,
 				1B8615AE19CFD79A0064505C /* AddressCollectionViewCell.swift in Sources */,
@@ -585,6 +592,7 @@
 				1B64007919D8977D00C35E44 /* NameCollectionViewCell.swift in Sources */,
 				1B563F9619C496BF001785D9 /* BaseButton.swift in Sources */,
 				1B520C4F19CE888300A0ADE6 /* MenuViewController.swift in Sources */,
+				1B2152331A536F5900B7165A /* ZHLogger.swift in Sources */,
 				FAE020D919DBACA40000253A /* EmergencyContactCollectionViewCell.swift in Sources */,
 				1B7CF10A19BCEF28007A157D /* AppDelegate.swift in Sources */,
 				FA32935F19FD60A800164369 /* MenuTitleCell.swift in Sources */,
@@ -732,6 +740,7 @@
 				INFOPLIST_FILE = "UW Quest/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "UW Quest/UW Quest-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";

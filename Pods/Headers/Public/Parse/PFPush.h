@@ -1,1 +1,1 @@
-../../../Parse/Parse.framework/Versions/A/Headers/PFPush.h
+../../../Parse/Parse.framework/Headers/PFPush.h

@@ -21,8 +21,8 @@ There are 5 specific attribute types, which are used throughout most of the API:
 * `ALEdge`
 * `ALDimension`
 * `ALAxis`
-* `ALMargin` *available in iOS 8.0 and above only*
-* `ALMarginAxis` *available in iOS 8.0 and above only*
+* `ALMargin` *available in iOS 8.0 and higher only*
+* `ALMarginAxis` *available in iOS 8.0 and higher only*
 
 Additionally, there is one generic attribute type, `ALAttribute`, which is effectively a union of all the specific types. You can think of this as the "supertype" of all of the specific attribute types, which means that it is always safe to cast a specific type to the generic `ALAttribute` type. (Note that the reverse is not true -- casting a generic ALAttribute to a specific attribute type is unsafe!)
 
@@ -30,7 +30,7 @@ Additionally, there is one generic attribute type, `ALAttribute`, which is effec
 
 	+ autoCreateConstraintsWithoutInstalling:
     + autoSetPriority:forConstraints:
-	+ autoSetIdentifier:forConstraints:
+	+ autoSetIdentifier:forConstraints: // iOS 7.0+, OS X 10.9+ only
     - autoSetContent(CompressionResistance|Hugging)PriorityForAxis:
     - autoCenterInSuperview:
     - autoAlignAxisToSuperviewAxis:
@@ -59,14 +59,15 @@ Additionally, there is one generic attribute type, `ALAttribute`, which is effec
     - autoAlignViewsToAxis:
     - autoMatchViewsDimension:
     - autoSetViewsDimension:toSize:
-    - autoDistributeViewsAlongAxis:withFixedSpacing:(insetSpacing:)(matchedSizes:)alignment:
-    - autoDistributeViewsAlongAxis:withFixedSize:(insetSpacing:)alignment:
+	- autoSetViewsDimensionsToSize:
+    - autoDistributeViewsAlongAxis:alignedTo:withFixedSpacing:(insetSpacing:)(matchedSizes:)
+    - autoDistributeViewsAlongAxis:alignedTo:withFixedSize:(insetSpacing:)
 
 ### [`NSLayoutConstraint`](Source/NSLayoutConstraint%2BPureLayout.h)
 
 	- autoInstall
     - autoRemove
-    - autoIdentify: // iOS 7.0+ only
+    - autoIdentify: // iOS 7.0+, OS X 10.9+ only
 
 ## Setup
 *Note: PureLayout requires a minimum deployment target of iOS 6.0 or OS X 10.7*
@@ -88,6 +89,9 @@ That's it - now go write some beautifully simple Auto Layout code!
 
 That's it - now go write some beautifully simple Auto Layout code!
 
+### App Extensions
+When using PureLayout in an App Extension, define the preprocessor macro `PURELAYOUT_APP_EXTENSIONS` in the Build Settings of your App Extension's target to prevent usage of unavailable APIs. [Click here](https://github.com/smileyborg/PureLayout/wiki/App-Extensions) for more info.
+
 ### Releases
 Releases are tagged in the git commit history using [semantic versioning](http://semver.org). Check out the [releases and release notes](https://github.com/smileyborg/PureLayout/releases) for each version.
 
@@ -108,7 +112,7 @@ Check out some [Tips and Tricks](https://github.com/smileyborg/PureLayout/wiki/T
 ## PureLayout vs. the rest
 An overview of the Auto Layout options available, ordered from the lowest- to highest-level of abstraction.
 
-*	Apple [NSLayoutConstraint SDK API](https://developer.apple.com/library/ios/documentation/AppKit/Reference/NSLayoutConstraint_Class/NSLayoutConstraint/NSLayoutConstraint.html#//apple_ref/doc/uid/TP40010628-CH1-SW18)
+*	Apple [NSLayoutConstraint SDK API](https://developer.apple.com/library/ios/documentation/AppKit/Reference/NSLayoutConstraint_Class/index.html#//apple_ref/occ/clm/NSLayoutConstraint/constraintWithItem:attribute:relatedBy:toItem:attribute:multiplier:constant:)
  	*	Pros: Raw power
 	*	Cons: Extremely verbose, tedious to write, difficult to read
 *	Apple [Visual Format Language](https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/AutolayoutPG/VisualFormatLanguage/VisualFormatLanguage.html)
@@ -118,11 +122,13 @@ An overview of the Auto Layout options available, ordered from the lowest- to hi
 	*	Pros: Visual, simple
 	* 	Cons: Difficult for complex layouts, cannot dynamically set constraints at runtime, encourages hardcoded magic numbers, not always WYSIWYG
 *	**PureLayout**
-	*	Pros: Simple, efficient, minimal third party code, consistent with Apple API style, compatible with Objective-C and Swift codebases
+	*	Pros: Simple, efficient, minimal third party code, consistent with Cocoa API style, compatible with Objective-C and Swift codebases
 	*	Cons: Not the most concise expression of layout code
-*	High-level Auto Layout Libraries/DSLs ([Masonry](https://github.com/Masonry/Masonry), [KeepLayout](https://github.com/iMartinKiss/KeepLayout))
+*	High-level Auto Layout Libraries/DSLs ([Cartography](https://github.com/robb/Cartography), [Masonry](https://github.com/Masonry/Masonry), [KeepLayout](https://github.com/iMartinKiss/KeepLayout))
 	*	Pros: Very clean, concise, and convenient 
-	*	Cons: Overloaded Objective-C syntax (Swift incompatible), heavier dependency on third party code, difficult to mix with SDK APIs
+	*	Cons: Unique API style is foreign to Cocoa APIs, mixed compatibility with Objective-C & Swift, greater dependency on third party code
+	
+PureLayout takes a balanced approach to Auto Layout that makes it well suited for any project.
 
 ## Problems, Suggestions, Pull Requests?
 Bring 'em on! :)
