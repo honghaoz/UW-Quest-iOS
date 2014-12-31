@@ -325,6 +325,11 @@ extension String {
     func peekAtSearchWithXPathQuery(query: String) -> TFHppleElement? {
         return (self as NSString).peekAtSearchWithXPathQuery(query)
     }
+    
+    func containsSubString(substring: String) -> Bool {
+        return (self as NSString).containsSubString(substring)
+    }
+
 }
 
 extension NSString {
@@ -340,6 +345,29 @@ extension NSString {
         let doc = TFHpple(HTMLData: htmlData)
         let element = doc.peekAtSearchWithXPathQuery(query)
         return element
+    }
+    
+    func containsSubString(substring: String) -> Bool {
+        if self.rangeOfString(substring).location == NSNotFound {
+            return false
+        } else {
+            return true
+        }
+    }
+}
+
+extension NSHTTPCookieStorage {
+    class func cookieForKey(key: String, urlString: String) -> NSHTTPCookie? {
+        let cookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
+        let cookies = cookieStorage.cookiesForURL(NSURL(string: urlString)!) as [NSHTTPCookie]?
+        if cookies != nil {
+            for cookie: NSHTTPCookie in cookies! {
+                if cookie.name == key {
+                    return cookie
+                }
+            }
+        }
+        return nil
     }
 }
 

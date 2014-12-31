@@ -16,7 +16,39 @@ let kStudentCenterURL_HRMS = "https://quest.pecs.uwaterloo.ca/psc/SS/ACADEMIC/HR
 private let _sharedService = QuestService(baseURL: NSURL(string: ""))
 
 class QuestService: AFHTTPSessionManager {
-
+    
+    var icsid: String = ""
+    var currentStateNum: Int = 0
+    var currentURLString: String!
+    
+    var isUndergraduate: Bool = true
+    var isLogin: Bool = false
+    
+    var basicPostData: Dictionary<String, String> {
+        return [
+        "ICAJAX": "1",
+        "ICNAVTYPEDROPDOWN":"0",
+        "ICType":"Panel",
+        "ICElementNum":"0",
+        "ICStateNum": String(currentStateNum),
+        "ICAction":"", // Need to change
+        "ICXPos":"0",
+        "ICYPos":"0",
+        "ResponsetoDiffFrame":"-1",
+        "TargetFrameName":"None",
+        "FacetPath":"None",
+        "ICFocus":"",
+        "ICSaveWarningFilter":"0",
+        "ICChanged":"-1",
+        "ICResubmit":"0",
+        "ICSID": icsid, // Need to change
+        "ICActionPrompt":"false",
+        "ICFind":"",
+        "ICAddCount":"",
+        "ICAPPCLSDATA":"",
+        ]
+    }
+    
     override init(baseURL url: NSURL!) {
         super.init(baseURL: url)
     }
@@ -38,15 +70,15 @@ class QuestService: AFHTTPSessionManager {
         self.reachabilityManager.setReachabilityStatusChangeBlock { (status) -> Void in
             switch status {
             case AFNetworkReachabilityStatus.ReachableViaWWAN, AFNetworkReachabilityStatus.ReachableViaWiFi:
-                logInfo("AFNetworkReachabilityStatus.Reachable")
+                logInfo(".Reachable")
                 self.operationQueue.suspended = false
                 break
             case AFNetworkReachabilityStatus.NotReachable:
-                logInfo("AFNetworkReachabilityStatus.NotReachable")
+                logInfo(".NotReachable")
                 self.operationQueue.suspended = true
                 break
             case AFNetworkReachabilityStatus.Unknown:
-                logInfo("AFNetworkReachabilityStatus.Unknown")
+                logInfo(".Unknown")
                 break
             default:
                 break
@@ -62,18 +94,101 @@ class QuestService: AFHTTPSessionManager {
 
 // MARK: Helper methods
 extension QuestService {
-    func getICSID(html: String) -> String? {
-        let element = html.peekAtSearchWithXPathQuery("//*[@id=\"ICSID\"]")
+    func getHtmlContentFromResponse(response: AnyObject) -> String? {
+        let html: String = NSString(data: response as NSData, encoding: NSUTF8StringEncoding)!
+        return html
+    }
+    
+    func getICSID(response: AnyObject) -> String? {
+        let html = getHtmlContentFromResponse(response)
+        if html == nil {
+            return nil
+        }
+        let element = html!.peekAtSearchWithXPathQuery("//*[@id=\"ICSID\"]")
         if element != nil {
             return element!.objectForKey("value")
         }
         return nil
     }
     
-    func getStateNum(html: String) -> Int? {
-        let element = html.peekAtSearchWithXPathQuery("//*[@id=\"ICStateNum\"]")
+    func pageIsValid(response: AnyObject) -> Bool {
+        let icsid = getICSID(response)
+        if icsid == nil {
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    func getStateNum(response: AnyObject) -> Int? {
+        let html = getHtmlContentFromResponse(response)
+        if html == nil {
+            return nil
+        }
+        let element = html!.peekAtSearchWithXPathQuery("//*[@id=\"ICStateNum\"]")
         if element != nil {
             return element!.objectForKey("value").toInt()
+        }
+        return nil
+    }
+    
+    func isCookieExpired() -> Bool {
+        let cookie = NSHTTPCookieStorage.cookieForKey("PS_TOKENEXPIRE", urlString: currentURLString)
+        let lastUpdateDateString: String = cookie!.value!
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "dd_MMM_y_HH:mm:ss_z"
+        let lastUpdateDate = formatter.dateFromString(lastUpdateDateString)!
+        let currentDate = NSDate()
+        let interval = currentDate.timeIntervalSinceDate(lastUpdateDate)
+        
+        if interval >= 20 * 60 {
+            logInfo("Cookies is expired")
+            return true
+        } else {
+            logInfo("Cookies is not expired")
+            return false
+        }
+    }
+    
+    func isOnLoginPage(response: AnyObject) -> Bool {
+        let html = getHtmlContentFromResponse(response)
+        if html != nil {
+            let element = html!.peekAtSearchWithXPathQuery("//*[@id='login']//*[@type='submit']")
+            if element != nil {
+                if element!.objectForKey("value") == "Sign in" {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+    
+    func usernamePasswordInvalid(response: AnyObject) -> Bool {
+        let html = getHtmlContentFromResponse(response)
+        if html != nil {
+            let element = html!.peekAtSearchWithXPathQuery("//*[@id='login']//*[@class='PSERRORTEXT']")
+            if element != nil {
+                if element!.text() == "Your User ID and/or Password are invalid." {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+    
+    func isUndergraduate(response: AnyObject) -> Bool? {
+        //*/table[@id="ACE_DERIVED_SSS_SCL_SS_ACAD_INFO_LINK"]//*/table[@id="ACE_$ICField280"]//tr//a
+        let html = getHtmlContentFromResponse(response)
+        if html != nil {
+            var elements = html!.searchWithXPathQuery("//*/table[@id='ACE_DERIVED_SSS_SCL_SS_ACAD_INFO_LINK']//*/table[@id='ACE_$ICField280']//tr//a")
+            var containUndergrad = elements.filter({
+                $0.text().containsSubString("Undergrad")
+            })
+            if containUndergrad.count > 0 {
+                return true
+            } else {
+                return false
+            }
         }
         return nil
     }
@@ -89,12 +204,22 @@ extension QuestService {
             "timezoneOffset": "0",
             "httpPort": ""
         ]
+        currentURLString = kQuestLogoutURL
         self.POST(kQuestLoginURL, parameters: parameters, success: { (task, response) -> Void in
             logVerbose("success")
-            let html = NSString(data: response as NSData, encoding: NSUTF8StringEncoding)
             self.gotoStudentCenter()
             }) { (task, error) -> Void in
                 logVerbose("failed: \(error.localizedDescription)")
+        }
+    }
+    
+    func logout() {
+        currentURLString = kQuestLogoutURL
+        self.GET(kQuestLogoutURL, parameters: nil, success: { (task, response) -> Void in
+            logInfo("Success")
+            self.isLogin = false
+        }) { (task, error) -> Void in
+            logError("Failed: \(error.localizedDescription)")
         }
     }
     
@@ -120,13 +245,15 @@ extension QuestService {
             "PortalKeyStruct": "yes"
         ]
         
+        currentURLString = kStudentCenterURL_SA
         self.GET(kStudentCenterURL_SA, parameters: parameters, success: { (task, response) -> Void in
-            logVerbose("success")
-            let html: String = NSString(data: response as NSData, encoding: NSUTF8StringEncoding)!
-            logDebug("ICSID: \(self.getICSID(html)?)")
-            logDebug("\(self.getStateNum(html)?)")
+            logVerbose("Success")
+            logDebug("isUndergrad: \(self.isUndergraduate(response))")
+            logDebug("ICSID: \(self.getICSID(response)?)")
+            logDebug("StateNum: \(self.getStateNum(response)?)")
+            self.isCookieExpired()
             }) { (task, error) -> Void in
-                logVerbose("failed: \(error.localizedDescription)")
+                logVerbose("Failed: \(error.localizedDescription)")
         }
     }
 }
