@@ -57,8 +57,8 @@ class TitleSubTitleCollectionViewCell: UICollectionViewCell {
         // On iOS8, if bounds is zero, autoresizingmask will conflit with other constraints
 //        self.bounds = CGRectMake(0, 0, CGFloat(MAXFLOAT), CGFloat(MAXFLOAT))
 //        self.contentView.bounds = self.bounds
-        self.layer.borderColor = UQCellBackgroundColor.CGColor
         self.layer.masksToBounds = true
+        self.layer.borderColor = UQCellBackgroundColor.CGColor
         self.layer.cornerRadius = kBorderCornerRadius
         self.layer.borderWidth = kBorderWidth
         self.backgroundColor = UIColor.clearColor()
@@ -66,7 +66,10 @@ class TitleSubTitleCollectionViewCell: UICollectionViewCell {
         
         subLabelTuples = []
     }
-    
+}
+
+// MARK: Config
+extension TitleSubTitleCollectionViewCell {
     /**
     Config labels
     
