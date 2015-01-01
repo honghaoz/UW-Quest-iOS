@@ -106,40 +106,24 @@ class PersonalInformation {
     }
     
     class Name {
-        var firstName: String
-        var lastName: String
-        var middleName: String
-        var namePrefix: String
-        var nameSuffix: String
+        var name: String
         var nameType: String
         
-        class var kFirstName: String {return "first_name"}
-        class var kLastName: String {return "last_name"}
-        class var kMiddleName: String {return "middle_name"}
-        class var kNamePrefix: String {return "name_prefix"}
-        class var kNameSuffix: String {return "name_suffix"}
-        class var kNameType: String {return "name_type"}
+        class var kName: String {return "Name"}
+        class var kNameType: String {return "Name Type"}
         
         class func newName(rawDict: Dictionary<String, String>) -> Name? {
-            let firstName: String? = rawDict[Name.kFirstName]
-            let lastName: String? = rawDict[Name.kLastName]
-            let middleName: String? = rawDict[Name.kMiddleName]
-            let namePrefix: String? = rawDict[Name.kNamePrefix]
-            let nameSuffix: String? = rawDict[Name.kNameSuffix]
+            let name: String? = rawDict[Name.kName]
             let nameType: String? = rawDict[Name.kNameType]
             
-            if (firstName != nil) && (lastName != nil) && (middleName != nil) && (namePrefix != nil) && (nameSuffix != nil) && (nameType != nil) {
-                return Name(firstName: firstName!, lastName: lastName!, middleName: middleName!, namePrefix: namePrefix!, nameSuffix: nameSuffix!, nameType: nameType!)
+            if (name != nil) && (nameType != nil) {
+                return Name(name: name!, nameType: nameType!)
             }
             return nil
         }
         
-        init(firstName: String, lastName: String, middleName: String, namePrefix: String, nameSuffix: String, nameType: String) {
-            self.firstName = firstName
-            self.lastName = lastName
-            self.middleName = middleName
-            self.namePrefix = namePrefix
-            self.nameSuffix = nameSuffix
+        init(name: String, nameType: String) {
+            self.name = name
             self.nameType = nameType
         }
     }

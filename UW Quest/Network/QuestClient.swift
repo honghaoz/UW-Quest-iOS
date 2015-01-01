@@ -351,7 +351,16 @@ extension QuestClient {
                 failure(errorMessage: errorMessage, error: error)
             })
         case .Names:
-            break
+            logVerbose(".Names")
+            getPersonalInformationName(success: { (response, json) -> () in
+                if json == nil {
+                    failure(errorMessage: "", error: NSError(domain: "Parse Error", code: 0, userInfo: nil))
+                } else {
+                    success(data: json!.rawValue)
+                }
+                }, failure: { (errorMessage, error) -> () in
+                    failure(errorMessage: errorMessage, error: error)
+            })
         case .PhoneNumbers:
             break
         case .EmailAddresses:
@@ -408,6 +417,14 @@ extension QuestClient {
         })
     }
     
+    /**
+    Parse address response to JSON data
+    [{"Address Type": "...", "Address": "..."}]
+    
+    :param: response network response
+    
+    :returns: JSON data
+    */
     func parseAddress(response: AnyObject) -> JSON? {
         let html = getHtmlContentFromResponse(response)
         if html == nil {
@@ -440,5 +457,89 @@ extension QuestClient {
             i++
         }
         return JSON(dataArray)
+    }
+    
+    func getPersonalInformationName(success: ((response: AnyObject?, json: JSON?) -> ())? = nil, failure: ((errorMessage: String, error: NSError) -> ())? = nil) {
+        logVerbose()
+        if currentPostPage != .PersonalInformation {
+            self.postPersonalInformation(success: { (response, json) -> () in
+                self.getPersonalInformationName(success: success, failure: failure)
+                }, failure: failure)
+        }
+        let parameters = [
+            "Page": "SS_CC_NAME",
+            "Action": "C"
+        ]
+        
+        self.GET(kPersonalInfoNameURL, parameters: parameters, success: { (task, response) -> Void in
+            if self.updateState(response) {
+                logInfo("Success")
+                success?(response: response, json: self.parseName(response))
+            } else {
+                failure?(errorMessage: "Update State Failed", error: NSError(domain: "PersonalInformation", code: 1000, userInfo: nil))
+            }
+            }, failure: {(task, error) -> Void in
+                logError("Failed: \(error.localizedDescription)")
+                failure?(errorMessage: "POST Personal Information Failed", error: error)
+        })
+    }
+    /**
+    Parse address response to JSON data
+    {"Message": "...", "Data": [{"Name Type": "...", "Name": "..."}]}
+    
+    :param: response network response
+    
+    :returns: JSON data
+    */
+    
+    func parseName(response: AnyObject) -> JSON? {
+        let html = getHtmlContentFromResponse(response)
+        if html == nil {
+            return nil
+        }
+        var resultDict: Dictionary<String, AnyObject> = [
+            "Message": "",
+            "Data": [Dictionary<String, String>]()
+        ]
+        // Message
+        //*[@class="PAPAGEINSTRUCTIONS"]
+        let messageElements = html!.searchWithXPathQuery("//*[@class='PAPAGEINSTRUCTIONS']")
+        if messageElements.count > 0 {
+            let message: String? = (messageElements[0] as TFHppleElement).text()
+            if message != nil {
+                resultDict["Message"] = message
+            }
+        }
+        
+        // Names
+        //*[@id="SCC_NAMES_H$scroll$0"]//*/table//tr[position()>1]
+        let nameRows = html!.searchWithXPathQuery("//*[@id='SCC_NAMES_H$scroll$0']//*/table//tr[position()>1]")
+        var dataArray = [Dictionary<String, String>]()
+        var i = 0
+        while i < nameRows.count {
+            let eachNameRow = nameRows[i]
+            let columns = eachNameRow.childrenWithTagName("td")
+            if columns.count < 2 { return JSON(resultDict) }
+            
+            let typeRaw: String = (columns[0] as TFHppleElement).raw
+            var type: String? = typeRaw.clearHtmlTags()
+            if type == nil { return JSON(resultDict) }
+            type = type!.clearNewLines()
+            
+            let nameRaw: String = (columns[1] as TFHppleElement).raw
+            var name: String? = nameRaw.clearHtmlTags()
+            if name == nil { return JSON(resultDict) }
+            name = name!.clearNewLines()
+            
+            var nameDict = [
+                "Name Type": type!,
+                "Name": name!
+            ]
+            
+            dataArray.append(nameDict)
+            resultDict["Data"] = dataArray
+            i++
+        }
+        return JSON(resultDict)
     }
 }

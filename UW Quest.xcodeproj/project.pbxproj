@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1B1A3A5C1A54AD250077E8A9 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1A3A5B1A54AD250077E8A9 /* SwiftyJSON.swift */; };
+		1B1A3A5E1A5517970077E8A9 /* NameCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1A3A5D1A5517970077E8A9 /* NameCollectionViewCell.swift */; };
 		1B2152311A536C3200B7165A /* QuestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2152301A536C3200B7165A /* QuestClient.swift */; };
 		1B2152331A536F5900B7165A /* ZHLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2152321A536F5900B7165A /* ZHLogger.swift */; };
 		1B2152351A53935300B7165A /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B2152341A53935300B7165A /* libxml2.2.dylib */; };
@@ -17,8 +18,8 @@
 		1B520C5419CE8EB900A0ADE6 /* MainSlide.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B520C5619CE8EB900A0ADE6 /* MainSlide.storyboard */; };
 		1B563F9619C496BF001785D9 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B563F9519C496BF001785D9 /* BaseButton.swift */; };
 		1B5BF35219C3F8470005626F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5BF35119C3F8470005626F /* LoginViewController.swift */; };
-		1B64007919D8977D00C35E44 /* NameCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B64007719D8977D00C35E44 /* NameCollectionViewCell.swift */; };
-		1B64007A19D8977D00C35E44 /* NameCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B64007819D8977D00C35E44 /* NameCollectionViewCell.xib */; };
+		1B64007919D8977D00C35E44 /* NameCollectionViewCell_deprecated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B64007719D8977D00C35E44 /* NameCollectionViewCell_deprecated.swift */; };
+		1B64007A19D8977D00C35E44 /* NameCollectionViewCell_deprecated.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B64007819D8977D00C35E44 /* NameCollectionViewCell_deprecated.xib */; };
 		1B64007D19D8E48E00C35E44 /* PhoneNumberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B64007B19D8E48E00C35E44 /* PhoneNumberCollectionViewCell.swift */; };
 		1B64007E19D8E48E00C35E44 /* PhoneNumberCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B64007C19D8E48E00C35E44 /* PhoneNumberCollectionViewCell.xib */; };
 		1B7CF10A19BCEF28007A157D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7CF10919BCEF28007A157D /* AppDelegate.swift */; };
@@ -93,6 +94,7 @@
 /* Begin PBXFileReference section */
 		040AF5C3C6C827E481C73485 /* Pods-UW Quest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UW Quest.release.xcconfig"; path = "Pods/Target Support Files/Pods-UW Quest/Pods-UW Quest.release.xcconfig"; sourceTree = "<group>"; };
 		1B1A3A5B1A54AD250077E8A9 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		1B1A3A5D1A5517970077E8A9 /* NameCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameCollectionViewCell.swift; sourceTree = "<group>"; };
 		1B2152301A536C3200B7165A /* QuestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestClient.swift; sourceTree = "<group>"; };
 		1B2152321A536F5900B7165A /* ZHLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHLogger.swift; sourceTree = "<group>"; };
 		1B2152341A53935300B7165A /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
@@ -102,8 +104,8 @@
 		1B520C5519CE8EB900A0ADE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainSlide.storyboard; sourceTree = "<group>"; };
 		1B563F9519C496BF001785D9 /* BaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		1B5BF35119C3F8470005626F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		1B64007719D8977D00C35E44 /* NameCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameCollectionViewCell.swift; sourceTree = "<group>"; };
-		1B64007819D8977D00C35E44 /* NameCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NameCollectionViewCell.xib; sourceTree = "<group>"; };
+		1B64007719D8977D00C35E44 /* NameCollectionViewCell_deprecated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameCollectionViewCell_deprecated.swift; sourceTree = "<group>"; };
+		1B64007819D8977D00C35E44 /* NameCollectionViewCell_deprecated.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NameCollectionViewCell_deprecated.xib; sourceTree = "<group>"; };
 		1B64007B19D8E48E00C35E44 /* PhoneNumberCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberCollectionViewCell.swift; sourceTree = "<group>"; };
 		1B64007C19D8E48E00C35E44 /* PhoneNumberCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhoneNumberCollectionViewCell.xib; sourceTree = "<group>"; };
 		1B7CF10419BCEF28007A157D /* UW Quest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UW Quest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -421,8 +423,9 @@
 				FA4D1F5B19DA6B32006AA190 /* DescriptionCollectionViewCell.xib */,
 				1B8615AD19CFD79A0064505C /* AddressCollectionViewCell.swift */,
 				FADDD6CD19D476BB003EC88D /* AddressCollectionViewCell.xib */,
-				1B64007719D8977D00C35E44 /* NameCollectionViewCell.swift */,
-				1B64007819D8977D00C35E44 /* NameCollectionViewCell.xib */,
+				1B1A3A5D1A5517970077E8A9 /* NameCollectionViewCell.swift */,
+				1B64007719D8977D00C35E44 /* NameCollectionViewCell_deprecated.swift */,
+				1B64007819D8977D00C35E44 /* NameCollectionViewCell_deprecated.xib */,
 				1B64007B19D8E48E00C35E44 /* PhoneNumberCollectionViewCell.swift */,
 				1B64007C19D8E48E00C35E44 /* PhoneNumberCollectionViewCell.xib */,
 				FA4D1F5619DA620C006AA190 /* EmailCollectionViewCell.swift */,
@@ -584,7 +587,7 @@
 				FADDD6CF19D476BB003EC88D /* AddressCollectionViewCell.xib in Resources */,
 				FA4D1F5919DA620C006AA190 /* EmailCollectionViewCell.xib in Resources */,
 				FA79657819C90BB000852C84 /* LaunchView.xib in Resources */,
-				1B64007A19D8977D00C35E44 /* NameCollectionViewCell.xib in Resources */,
+				1B64007A19D8977D00C35E44 /* NameCollectionViewCell_deprecated.xib in Resources */,
 				1BEB05B81A53979600986692 /* Info.plist in Resources */,
 				1B520C5419CE8EB900A0ADE6 /* MainSlide.storyboard in Resources */,
 				1B7CF11119BCEF28007A157D /* Images.xcassets in Resources */,
@@ -657,7 +660,7 @@
 				1B8615AE19CFD79A0064505C /* AddressCollectionViewCell.swift in Sources */,
 				1BEB05B61A53979600986692 /* ExSwift.swift in Sources */,
 				FAF2292419C937620041C36F /* UIApplication+AppVersion.m in Sources */,
-				1B64007919D8977D00C35E44 /* NameCollectionViewCell.swift in Sources */,
+				1B64007919D8977D00C35E44 /* NameCollectionViewCell_deprecated.swift in Sources */,
 				1B563F9619C496BF001785D9 /* BaseButton.swift in Sources */,
 				1BEB05BD1A53979600986692 /* String.swift in Sources */,
 				1B520C4F19CE888300A0ADE6 /* MenuViewController.swift in Sources */,
@@ -678,6 +681,7 @@
 				FA8C1D6419C75B0800D6E158 /* User.swift in Sources */,
 				1BEB05B51A53979600986692 /* Double.swift in Sources */,
 				1BEB05C11A5397BC00986692 /* UIImage+ImageEffects.m in Sources */,
+				1B1A3A5E1A5517970077E8A9 /* NameCollectionViewCell.swift in Sources */,
 				1BEB05B31A53979600986692 /* Array.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

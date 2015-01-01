@@ -93,7 +93,8 @@ class User {
         case .Addresses:
             return self.personalInformation.initAddresses(data)
         case .Names:
-            return self.personalInformation.initNames(data, message: nil)
+            let json = JSON(data)
+            return self.personalInformation.initNames(json["Data"].rawValue, message: json["Message"].string)
         case .PhoneNumbers:
             return self.personalInformation.initPhoneNumbers(data, message: nil)
         case .EmailAddresses:

@@ -39,8 +39,10 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
         // Register cells
         var addressCellNib = UINib(nibName: "AddressCollectionViewCell", bundle: nil)
         collectionView.registerNib(addressCellNib, forCellWithReuseIdentifier: kAddressCellReuseIdentifier)
-        var nameCellNib = UINib(nibName: "NameCollectionViewCell", bundle: nil)
-        collectionView.registerNib(nameCellNib, forCellWithReuseIdentifier: kNameCellResueIdentifier)
+//        var nameCellNib = UINib(nibName: "NameCollectionViewCell", bundle: nil)
+//        collectionView.registerNib(nameCellNib, forCellWithReuseIdentifier: kNameCellResueIdentifier)
+        collectionView.registerClass(NameCollectionViewCell.self, forCellWithReuseIdentifier: kNameCellResueIdentifier)
+        
         var phoneNumberCellNib = UINib(nibName: "PhoneNumberCollectionViewCell", bundle: nil)
         collectionView.registerNib(phoneNumberCellNib, forCellWithReuseIdentifier: kPhoneNumberCellResueIdentifier)
         var emailCellNib = UINib(nibName: "EmailCollectionViewCell", bundle: nil)
@@ -62,7 +64,7 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
             case PersonalInformationType.Addresses:
                 return sharedPersonalInformation.addresses!.count
             case PersonalInformationType.Names:
-                return sharedPersonalInformation.names!.count
+                return 1
             case PersonalInformationType.PhoneNumbers:
                 return sharedPersonalInformation.phoneNumbers!.count
             case PersonalInformationType.EmailAddresses:
@@ -96,8 +98,7 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
         case PersonalInformationType.Names:
             var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kNameCellResueIdentifier, forIndexPath: indexPath) as NameCollectionViewCell
             
-            let name: PersonalInformation.Name = sharedPersonalInformation.names![indexPath.item]
-            aCell.config(name)
+            aCell.config(sharedPersonalInformation.names)
             cell = aCell
             break
         case PersonalInformationType.PhoneNumbers:
@@ -238,12 +239,10 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
             let reuseIdentifier = kNameCellResueIdentifier
             var aCell: NameCollectionViewCell? = mainCollectionVC.offscreenCells[reuseIdentifier] as? NameCollectionViewCell
             if aCell == nil {
-                aCell = NSBundle.mainBundle().loadNibNamed("NameCollectionViewCell", owner: nil, options: nil)[0] as? NameCollectionViewCell
+                aCell = NameCollectionViewCell(frame: CGRectMake(0, 0, targetWidth, targetWidth))
                 mainCollectionVC.offscreenCells[reuseIdentifier] = aCell
             }
-            
-            let name: PersonalInformation.Name = sharedPersonalInformation.names![indexPath.item]
-            aCell!.config(name)
+            aCell!.config(sharedPersonalInformation.names)
             cell = aCell
             break
         case PersonalInformationType.PhoneNumbers:
