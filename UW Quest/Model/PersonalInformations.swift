@@ -25,7 +25,6 @@ class PersonalInformation {
     let categories: [String]!
     
     var addresses: [Address]!
-    var addressesMessage: String?
     var names: [Name]!
     var namesMessage: String?
     var phoneNumbers: [PhoneNumber]!
@@ -40,7 +39,7 @@ class PersonalInformation {
     var citizenshipImmigrationDocumentMessage: String?
     
     init() {
-        println("PersonalInformation inited")
+        logInfo("PersonalInformation inited")
         categories = PersonalInformationType.allValues
         addresses = []
         names = []
@@ -50,8 +49,8 @@ class PersonalInformation {
     
     class Address {
         // Keys
-        class var kAddress: String {return "address"}
-        class var kAddressType: String {return "address_type"}
+        class var kAddress: String {return "Address"}
+        class var kAddressType: String {return "Address Type"}
         class func newAddress(rawDict: Dictionary<String, String>) -> Address? {
             if let address: String = rawDict[Address.kAddress] {
                 if let addressType: String = rawDict[Address.kAddressType] {
@@ -76,8 +75,7 @@ class PersonalInformation {
     
     :returns: true if successfully inited
     */
-    func initAddresses(rawData: AnyObject, message: String? = nil) -> Bool {
-        self.addressesMessage = message
+    func initAddresses(rawData: AnyObject) -> Bool {
         // Passed in a dictionary
         if let dataDict = rawData as? Dictionary<String, String> {
             if let newAddress: Address = Address.newAddress(dataDict) {

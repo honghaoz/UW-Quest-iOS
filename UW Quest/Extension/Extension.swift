@@ -329,7 +329,21 @@ extension String {
     func containsSubString(substring: String) -> Bool {
         return (self as NSString).containsSubString(substring)
     }
-
+    
+    func replacePattern(pattern: String, withString: String) -> String? {
+        var error: NSError? = nil
+        let regex = NSRegularExpression(pattern: pattern, options: NSRegularExpressionOptions(0), error: &error)
+        let newString = regex?.stringByReplacingMatchesInString(self, options: NSMatchingOptions(0), range: NSMakeRange(0, self.length), withTemplate: withString)
+        return newString
+    }
+    
+    func clearHtmlTags() -> String? {
+        return self.replacePattern("<.*?>", withString: "")
+    }
+    
+    func clearNewLines() -> String {
+        return (self as NSString).stringByReplacingOccurrencesOfString("\n", withString: "").stringByReplacingOccurrencesOfString("\r", withString: "").stringByReplacingOccurrencesOfString("&#13;", withString: "")
+    }
 }
 
 extension NSString {

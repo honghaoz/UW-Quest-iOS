@@ -23,7 +23,7 @@ class User {
     var personalInformation: PersonalInformation = PersonalInformation()
     
     init() {
-        println("User inited")
+        logInfo("User inited")
     }
     
     class var sharedUser: User {
@@ -54,28 +54,27 @@ class User {
     }
     
     func login(success:(() -> ())?, failure:((errorMessage: String, error: NSError?) -> ())?) {
-        println("Login: userid: \(username), password: \(password)")
+        logInfo("Login: userid: \(username), password: \(password)")
         assert(!username.isEmpty && !password.isEmpty, "userid or password must be non-empty")
-        Locator.sharedLocator.client.login(username, password: password, success: { () -> () in
+        Locator.sharedQuestClient.loginWithUsename(username, password: password, success: { (response, json) -> () in
             self.isLoggedIn = true
-            ARAnalytics.event("Login successfully")
             success?()
+            ARAnalytics.event("Login successfully")
         }) { (errorMessage, error) -> () in
             self.isLoggedIn = false
-            ARAnalytics.error(error, withMessage: errorMessage)
             failure?(errorMessage: errorMessage, error: error)
-            return
+            ARAnalytics.error(error, withMessage: errorMessage)
         }
     }
     
     func getPersonalInformation(type: PersonalInformationType, success: (() -> ())?, failure:((errorMessage: String, error: NSError?) -> ())?) {
+        logVerbose()
         if !self.isLoggedIn {
             failure!(errorMessage: "User is not logged in", error: nil)
         }
-
-        Locator.sharedLocator.client.getPersonalInformation(type, success: { (dataResponse, message) -> () in
-            println("message: " + (message != nil ? message! : ""))
-            if self.processPersonalInformation(type, data: dataResponse, message: message) {
+        
+        Locator.sharedQuestClient.getPersonalInformation(type, success: { (data) -> () in
+            if self.processPersonalInformation(type, data: data) {
                 success?()
             } else {
                 failure?(errorMessage: "Init data failed", error: nil)
@@ -87,24 +86,24 @@ class User {
     }
     
     // User dataResponse (either Dict or Array) to init personal information
-    func processPersonalInformation(type: PersonalInformationType, data: AnyObject, message: String?) -> Bool {
-        println("Type: \(type.rawValue)")
-        println("Data: \(data)")
+    func processPersonalInformation(type: PersonalInformationType, data: AnyObject) -> Bool {
+        logDebug("Type: \(type.rawValue)")
+        logDebug("Data: \(data)")
         switch type {
         case .Addresses:
-            return self.personalInformation.initAddresses(data, message: message)
+            return self.personalInformation.initAddresses(data)
         case .Names:
-            return self.personalInformation.initNames(data, message: message)
+            return self.personalInformation.initNames(data, message: nil)
         case .PhoneNumbers:
-            return self.personalInformation.initPhoneNumbers(data, message: message)
+            return self.personalInformation.initPhoneNumbers(data, message: nil)
         case .EmailAddresses:
-            return self.personalInformation.initEmailAddresses(data, message: message)
+            return self.personalInformation.initEmailAddresses(data, message: nil)
         case .EmergencyContacts:
-            return self.personalInformation.initEmergencyContacts(data, message: message)
+            return self.personalInformation.initEmergencyContacts(data, message: nil)
         case .DemographicInformation:
-            return self.personalInformation.initDemographicInformation(data, message: message)
+            return self.personalInformation.initDemographicInformation(data, message: nil)
         case .CitizenshipImmigrationDocuments:
-            return self.personalInformation.initCitizenshipImmigrationDocument(data, message: message)
+            return self.personalInformation.initCitizenshipImmigrationDocument(data, message: nil)
         default:
             assert(false, "Wrong PersonalInformation Type")
         }

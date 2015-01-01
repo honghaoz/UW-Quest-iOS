@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1B2152311A536C3200B7165A /* QuestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2152301A536C3200B7165A /* QuestService.swift */; };
+		1B1A3A5C1A54AD250077E8A9 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1A3A5B1A54AD250077E8A9 /* SwiftyJSON.swift */; };
+		1B2152311A536C3200B7165A /* QuestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2152301A536C3200B7165A /* QuestClient.swift */; };
 		1B2152331A536F5900B7165A /* ZHLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2152321A536F5900B7165A /* ZHLogger.swift */; };
 		1B2152351A53935300B7165A /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B2152341A53935300B7165A /* libxml2.2.dylib */; };
 		1B2FCD1C19C4A64400FDF4D8 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2FCD1B19C4A64400FDF4D8 /* Extension.swift */; };
@@ -62,7 +63,7 @@
 		FA7E99FB19DCFD4000D65565 /* DemographicCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7E99FA19DCFD4000D65565 /* DemographicCollectionCell.swift */; };
 		FA7E99FD19DCFD9800D65565 /* CitizenshipCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7E99FC19DCFD9800D65565 /* CitizenshipCollectionViewCell.swift */; };
 		FA8C1D6419C75B0800D6E158 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8C1D6319C75B0800D6E158 /* User.swift */; };
-		FACE198719C9EB05001FD4C9 /* QuestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACE198619C9EB05001FD4C9 /* QuestClient.swift */; };
+		FACE198719C9EB05001FD4C9 /* QuestClient_deprecated.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACE198619C9EB05001FD4C9 /* QuestClient_deprecated.swift */; };
 		FACE198A19C9EC2D001FD4C9 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FACE198919C9EC2D001FD4C9 /* Crashlytics.framework */; };
 		FADCAA8819FDA44000538C98 /* MainCollectionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FADCAA8719FDA44000538C98 /* MainCollectionViewController.storyboard */; };
 		FADDD6CF19D476BB003EC88D /* AddressCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FADDD6CD19D476BB003EC88D /* AddressCollectionViewCell.xib */; };
@@ -91,7 +92,8 @@
 
 /* Begin PBXFileReference section */
 		040AF5C3C6C827E481C73485 /* Pods-UW Quest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UW Quest.release.xcconfig"; path = "Pods/Target Support Files/Pods-UW Quest/Pods-UW Quest.release.xcconfig"; sourceTree = "<group>"; };
-		1B2152301A536C3200B7165A /* QuestService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestService.swift; sourceTree = "<group>"; };
+		1B1A3A5B1A54AD250077E8A9 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		1B2152301A536C3200B7165A /* QuestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestClient.swift; sourceTree = "<group>"; };
 		1B2152321A536F5900B7165A /* ZHLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHLogger.swift; sourceTree = "<group>"; };
 		1B2152341A53935300B7165A /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		1B2FCD1B19C4A64400FDF4D8 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
@@ -156,7 +158,7 @@
 		FA7E99FA19DCFD4000D65565 /* DemographicCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemographicCollectionCell.swift; sourceTree = "<group>"; };
 		FA7E99FC19DCFD9800D65565 /* CitizenshipCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitizenshipCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA8C1D6319C75B0800D6E158 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		FACE198619C9EB05001FD4C9 /* QuestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestClient.swift; sourceTree = "<group>"; };
+		FACE198619C9EB05001FD4C9 /* QuestClient_deprecated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestClient_deprecated.swift; sourceTree = "<group>"; };
 		FACE198919C9EC2D001FD4C9 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		FADCAA8719FDA44000538C98 /* MainCollectionViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainCollectionViewController.storyboard; sourceTree = "<group>"; };
 		FADDD6CD19D476BB003EC88D /* AddressCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -444,8 +446,8 @@
 		FACE198519C9EB05001FD4C9 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				FACE198619C9EB05001FD4C9 /* QuestClient.swift */,
-				1B2152301A536C3200B7165A /* QuestService.swift */,
+				1B2152301A536C3200B7165A /* QuestClient.swift */,
+				FACE198619C9EB05001FD4C9 /* QuestClient_deprecated.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -453,6 +455,7 @@
 		FACE198819C9EB38001FD4C9 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				1B1A3A5B1A54AD250077E8A9 /* SwiftyJSON.swift */,
 				1BEB05A61A53979600986692 /* ExSwift */,
 				1B2152321A536F5900B7165A /* ZHLogger.swift */,
 				FACE198919C9EC2D001FD4C9 /* Crashlytics.framework */,
@@ -638,7 +641,7 @@
 				1BEB05B41A53979600986692 /* Dictionary.swift in Sources */,
 				FAE020DB19DBAEF90000253A /* TitleSubTitleCollectionViewCell.swift in Sources */,
 				FA4D1F5C19DA6B32006AA190 /* DescriptionCollectionViewCell.swift in Sources */,
-				FACE198719C9EB05001FD4C9 /* QuestClient.swift in Sources */,
+				FACE198719C9EB05001FD4C9 /* QuestClient_deprecated.swift in Sources */,
 				1B2FCD1C19C4A64400FDF4D8 /* Extension.swift in Sources */,
 				1BF1B17919CF814E00411109 /* UQCollectionReusableView.swift in Sources */,
 				FAE341B419FDB24300D828E7 /* PersonalInfoImplementation.swift in Sources */,
@@ -647,7 +650,7 @@
 				FA21D6E319E7780C002FBF71 /* MEDynamicTransition.m in Sources */,
 				FA7E99FD19DCFD9800D65565 /* CitizenshipCollectionViewCell.swift in Sources */,
 				FA4D1F5819DA620C006AA190 /* EmailCollectionViewCell.swift in Sources */,
-				1B2152311A536C3200B7165A /* QuestService.swift in Sources */,
+				1B2152311A536C3200B7165A /* QuestClient.swift in Sources */,
 				1B5BF35219C3F8470005626F /* LoginViewController.swift in Sources */,
 				1B520C5319CE8A2000A0ADE6 /* MainCollectionViewController.swift in Sources */,
 				1BEB05B91A53979600986692 /* Int.swift in Sources */,
@@ -667,6 +670,7 @@
 				FAF2292519C937620041C36F /* UIDevice-Hardware.m in Sources */,
 				FA79657619C9079F00852C84 /* Locator.swift in Sources */,
 				FA23729E19C74167000F5D4F /* Constant.swift in Sources */,
+				1B1A3A5C1A54AD250077E8A9 /* SwiftyJSON.swift in Sources */,
 				1BEB05BC1A53979600986692 /* Sequence.swift in Sources */,
 				FA7E99FB19DCFD4000D65565 /* DemographicCollectionCell.swift in Sources */,
 				1B64007D19D8E48E00C35E44 /* PhoneNumberCollectionViewCell.swift in Sources */,
