@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B17CEE31A55B77D0066F0C1 /* ZHAutoLinesLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B17CEE11A55B77D0066F0C1 /* ZHAutoLinesLabel.swift */; };
+		1B17CEE41A55B77D0066F0C1 /* ZHExtendViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B17CEE21A55B77D0066F0C1 /* ZHExtendViews.swift */; };
 		1B1A3A5C1A54AD250077E8A9 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1A3A5B1A54AD250077E8A9 /* SwiftyJSON.swift */; };
 		1B1A3A5E1A5517970077E8A9 /* NameCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1A3A5D1A5517970077E8A9 /* NameCollectionViewCell.swift */; };
 		1B2152311A536C3200B7165A /* QuestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2152301A536C3200B7165A /* QuestClient.swift */; };
@@ -93,6 +95,8 @@
 
 /* Begin PBXFileReference section */
 		040AF5C3C6C827E481C73485 /* Pods-UW Quest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UW Quest.release.xcconfig"; path = "Pods/Target Support Files/Pods-UW Quest/Pods-UW Quest.release.xcconfig"; sourceTree = "<group>"; };
+		1B17CEE11A55B77D0066F0C1 /* ZHAutoLinesLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHAutoLinesLabel.swift; sourceTree = "<group>"; };
+		1B17CEE21A55B77D0066F0C1 /* ZHExtendViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHExtendViews.swift; sourceTree = "<group>"; };
 		1B1A3A5B1A54AD250077E8A9 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		1B1A3A5D1A5517970077E8A9 /* NameCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameCollectionViewCell.swift; sourceTree = "<group>"; };
 		1B2152301A536C3200B7165A /* QuestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestClient.swift; sourceTree = "<group>"; };
@@ -461,6 +465,8 @@
 				1B1A3A5B1A54AD250077E8A9 /* SwiftyJSON.swift */,
 				1BEB05A61A53979600986692 /* ExSwift */,
 				1B2152321A536F5900B7165A /* ZHLogger.swift */,
+				1B17CEE11A55B77D0066F0C1 /* ZHAutoLinesLabel.swift */,
+				1B17CEE21A55B77D0066F0C1 /* ZHExtendViews.swift */,
 				FACE198919C9EC2D001FD4C9 /* Crashlytics.framework */,
 			);
 			path = ThirdParty;
@@ -659,6 +665,7 @@
 				1BEB05B91A53979600986692 /* Int.swift in Sources */,
 				1B8615AE19CFD79A0064505C /* AddressCollectionViewCell.swift in Sources */,
 				1BEB05B61A53979600986692 /* ExSwift.swift in Sources */,
+				1B17CEE41A55B77D0066F0C1 /* ZHExtendViews.swift in Sources */,
 				FAF2292419C937620041C36F /* UIApplication+AppVersion.m in Sources */,
 				1B64007919D8977D00C35E44 /* NameCollectionViewCell_deprecated.swift in Sources */,
 				1B563F9619C496BF001785D9 /* BaseButton.swift in Sources */,
@@ -683,6 +690,7 @@
 				1BEB05C11A5397BC00986692 /* UIImage+ImageEffects.m in Sources */,
 				1B1A3A5E1A5517970077E8A9 /* NameCollectionViewCell.swift in Sources */,
 				1BEB05B31A53979600986692 /* Array.swift in Sources */,
+				1B17CEE31A55B77D0066F0C1 /* ZHAutoLinesLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

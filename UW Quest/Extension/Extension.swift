@@ -171,6 +171,47 @@ extension UIView {
             }
         }
     }
+    
+    func autoSetContentCompressionResistanceRequiredForAixs(axis: ALAxis) {
+        UIView.autoSetPriority(1000, forConstraints: { () -> Void in
+            self.autoSetContentCompressionResistancePriorityForAxis(axis)
+        })
+    }
+    
+    func autoSetContentHuggingResistanceRequiredForAixs(axis: ALAxis) {
+        UIView.autoSetPriority(1000, forConstraints: { () -> Void in
+            self.autoSetContentHuggingPriorityForAxis(axis)
+        })
+    }
+    
+    func autoSetContentCompressionResistanceRequired() {
+        UIView.autoSetPriority(1000, forConstraints: { () -> Void in
+            self.autoSetContentCompressionResistancePriorityForAxis(ALAxis.Vertical)
+            self.autoSetContentCompressionResistancePriorityForAxis(ALAxis.Horizontal)
+        })
+    }
+    
+    func autoSetContentHuggingResistanceRequired() {
+        UIView.autoSetPriority(1000, forConstraints: { () -> Void in
+            self.autoSetContentHuggingPriorityForAxis(ALAxis.Vertical)
+            self.autoSetContentHuggingPriorityForAxis(ALAxis.Horizontal)
+        })
+    }
+    
+    func autoSetContentCompressionHuggingResistanceRequired() {
+        UIView.autoSetPriority(1000, forConstraints: { () -> Void in
+            self.autoSetContentCompressionResistancePriorityForAxis(ALAxis.Vertical)
+            self.autoSetContentCompressionResistancePriorityForAxis(ALAxis.Horizontal)
+            self.autoSetContentHuggingPriorityForAxis(ALAxis.Vertical)
+            self.autoSetContentHuggingPriorityForAxis(ALAxis.Horizontal)
+        })
+    }
+    
+    var copy: UIView {
+        var data: NSData = NSKeyedArchiver.archivedDataWithRootObject(self)
+        var copy: UIView = NSKeyedUnarchiver.unarchiveObjectWithData(data) as UIView
+        return copy
+    }
 }
 
 extension UILabel {
