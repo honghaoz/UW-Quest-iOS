@@ -64,7 +64,7 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
             case PersonalInformationType.Addresses:
                 return sharedPersonalInformation.addresses!.count
             case PersonalInformationType.Names:
-                return 1
+                return (sharedPersonalInformation.namesMessage == nil) ? 1 : 2
             case PersonalInformationType.PhoneNumbers:
                 return sharedPersonalInformation.phoneNumbers!.count
             case PersonalInformationType.EmailAddresses:
@@ -96,11 +96,20 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
             cell = aCell
             break
         case PersonalInformationType.Names:
-            var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kNameCellResueIdentifier, forIndexPath: indexPath) as NameCollectionViewCell
-            
-            aCell.config(sharedPersonalInformation.names)
-            cell = aCell
-            break
+            switch indexPath.item {
+            case 0:
+                var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kNameCellResueIdentifier, forIndexPath: indexPath) as NameCollectionViewCell
+                
+                aCell.config(sharedPersonalInformation.names)
+                cell = aCell
+            case 1:
+                var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(mainCollectionVC.kDescriptionCellResueIdentifier, forIndexPath: indexPath) as DescriptionCollectionViewCell
+                let description = sharedPersonalInformation.namesMessage!
+                aCell.configSmall(description, textAlignment: NSTextAlignment.Left)
+                cell = aCell
+            default:
+                assert(false, "Wrong indexPath.item")
+            }
         case PersonalInformationType.PhoneNumbers:
             var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kPhoneNumberCellResueIdentifier, forIndexPath: indexPath) as PhoneNumberCollectionViewCell
             
@@ -131,7 +140,6 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
                 let description = indexPath.item == 1 ? sharedPersonalInformation.emailAddresses!.campusEmailDescription : sharedPersonalInformation.emailAddresses!.alternateEmailDescription
                 aCell.configSmall(description!, textAlignment: NSTextAlignment.Left)
                 cell = aCell
-                break
             default:
                 assert(false, "Wrong indexPath.item")
                 break
@@ -235,16 +243,30 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
             cell = aCell
             break
         case PersonalInformationType.Names:
-            // Use fake cell to calculate height
-            let reuseIdentifier = kNameCellResueIdentifier
-            var aCell: NameCollectionViewCell? = mainCollectionVC.offscreenCells[reuseIdentifier] as? NameCollectionViewCell
-            if aCell == nil {
-                aCell = NameCollectionViewCell(frame: CGRectMake(0, 0, targetWidth, targetWidth))
-                mainCollectionVC.offscreenCells[reuseIdentifier] = aCell
+            switch indexPath.item {
+            case 0:
+                let reuseIdentifier = kNameCellResueIdentifier
+                var aCell: NameCollectionViewCell? = mainCollectionVC.offscreenCells[reuseIdentifier] as? NameCollectionViewCell
+                if aCell == nil {
+                    aCell = NameCollectionViewCell()
+                    mainCollectionVC.offscreenCells[reuseIdentifier] = aCell
+                }
+                aCell!.config(sharedPersonalInformation.names)
+                cell = aCell
+            case 1:
+                let reuseIdentifier = mainCollectionVC.kDescriptionCellResueIdentifier
+                var aCell: DescriptionCollectionViewCell? = mainCollectionVC.offscreenCells[reuseIdentifier] as? DescriptionCollectionViewCell
+                if aCell == nil {
+                    aCell = NSBundle.mainBundle().loadNibNamed("DescriptionCollectionViewCell", owner: nil, options: nil)[0] as? DescriptionCollectionViewCell
+                    mainCollectionVC.offscreenCells[reuseIdentifier] = aCell
+                }
+                let description = sharedPersonalInformation.namesMessage!
+                aCell!.configSmall(description, textAlignment: NSTextAlignment.Left)
+                cell = aCell
+            default:
+                assert(false, "Wrong PersonalInformation Type")
             }
-            aCell!.config(sharedPersonalInformation.names)
-            cell = aCell
-            break
+            
         case PersonalInformationType.PhoneNumbers:
             let reuseIdentifier = kPhoneNumberCellResueIdentifier
             var aCell: PhoneNumberCollectionViewCell? = mainCollectionVC.offscreenCells[reuseIdentifier] as? PhoneNumberCollectionViewCell
@@ -406,8 +428,8 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
         cell!.contentView.bounds = cell!.bounds
         
         // Layout subviews, this will let labels on this cell to set preferredMaxLayoutWidth
-        cell!.setNeedsLayout()
-        cell!.layoutIfNeeded()
+//        cell!.setNeedsLayout()
+//        cell!.layoutIfNeeded()
         
         var size = cell!.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
         // Still need to force the width, since width can be smalled due to break mode of labels

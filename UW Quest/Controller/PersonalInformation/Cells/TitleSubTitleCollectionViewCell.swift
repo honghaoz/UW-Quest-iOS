@@ -55,8 +55,8 @@ class TitleSubTitleCollectionViewCell: UICollectionViewCell {
             self.contentView.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth
         }
         // On iOS8, if bounds is zero, autoresizingmask will conflit with other constraints
-//        self.bounds = CGRectMake(0, 0, CGFloat(MAXFLOAT), CGFloat(MAXFLOAT))
-//        self.contentView.bounds = self.bounds
+        self.bounds = CGRectMake(0, 0, CGFloat(MAXFLOAT), CGFloat(MAXFLOAT))
+        self.contentView.bounds = self.bounds
         self.layer.masksToBounds = true
         self.layer.borderColor = UQCellBackgroundColor.CGColor
         self.layer.cornerRadius = kBorderCornerRadius
@@ -205,7 +205,9 @@ extension TitleSubTitleCollectionViewCell {
         label.font = subContentFont
         label.textColor = subContentColor
         self.contentView.addSubview(label)
-        label.autoSetContentCompressionHuggingResistanceRequired()
+        label.autoSetContentCompressionResistanceRequired()
+        label.autoSetContentHuggingResistanceRequiredForAixs(.Vertical)
+        self.setContentCompressionResistancePriority(250, forAxis: .Horizontal)
         label.autoPinEdgeToSuperviewEdge(.Right, withInset: kLabelHorizontalInsets)
         return label
     }
