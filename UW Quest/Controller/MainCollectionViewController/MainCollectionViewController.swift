@@ -15,7 +15,7 @@ import UIKit
 protocol MainCollectionVCImplementation {
     var title: String { get }
     var mainCollectionVC: MainCollectionViewController! { get set }
-    var collectionView: UICollectionView! { get set }
+    var collectionView: ZHDynamicCollectionView! { get set }
     func setUp(collectionVC: MainCollectionViewController)
     func numberOfSectionsInCollectionView() -> Int
     func numberOfItemsInSection(section: Int) -> Int
@@ -41,7 +41,7 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     // { NSString *reuseIdentifier : UICollectionViewCell *offscreenCell, ... }
     var offscreenCells = Dictionary<String, UICollectionViewCell>();
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionView: ZHDynamicCollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

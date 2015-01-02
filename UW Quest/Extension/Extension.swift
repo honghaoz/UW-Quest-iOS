@@ -214,6 +214,14 @@ extension UIView {
     }
 }
 
+extension UINib {
+    var copy: UINib {
+        var data: NSData = NSKeyedArchiver.archivedDataWithRootObject(self)
+        var copy: UINib = NSKeyedUnarchiver.unarchiveObjectWithData(data) as UINib
+        return copy
+    }
+}
+
 extension UILabel {
     /**
     Get exact size for UILabel, computed with text and font on this label

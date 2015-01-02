@@ -21,10 +21,10 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
     
     let title: String = "Personal Information"
     var mainCollectionVC: MainCollectionViewController!
-    var collectionView: UICollectionView!
+    var collectionView: ZHDynamicCollectionView!
     
     init() {
-    
+        
     }
     
     func setUp(collectionVC: MainCollectionViewController) {
@@ -38,9 +38,9 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
     func registerCells() {
         // Register cells
         var addressCellNib = UINib(nibName: "AddressCollectionViewCell", bundle: nil)
+        logDebug("\(addressCellNib)")
         collectionView.registerNib(addressCellNib, forCellWithReuseIdentifier: kAddressCellReuseIdentifier)
-//        var nameCellNib = UINib(nibName: "NameCollectionViewCell", bundle: nil)
-//        collectionView.registerNib(nameCellNib, forCellWithReuseIdentifier: kNameCellResueIdentifier)
+        
         collectionView.registerClass(NameCollectionViewCell.self, forCellWithReuseIdentifier: kNameCellResueIdentifier)
         
         var phoneNumberCellNib = UINib(nibName: "PhoneNumberCollectionViewCell", bundle: nil)
@@ -54,7 +54,6 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
     
     func numberOfSectionsInCollectionView() -> Int {
         return sharedPersonalInformation.categories.count
-        
     }
     
     func numberOfItemsInSection(section: Int) -> Int {
@@ -90,7 +89,6 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
         switch type {
         case PersonalInformationType.Addresses:
             var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kAddressCellReuseIdentifier, forIndexPath: indexPath) as AddressCollectionViewCell
-            
             let address: PersonalInformation.Address = sharedPersonalInformation.addresses![indexPath.item]
             aCell.config(address)
             cell = aCell
@@ -230,38 +228,21 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
         var cell: UICollectionViewCell!
         switch type {
         case PersonalInformationType.Addresses:
-            // Use fake cell to calculate height
-            let reuseIdentifier = kAddressCellReuseIdentifier
-            var aCell: AddressCollectionViewCell? = mainCollectionVC.offscreenCells[reuseIdentifier] as? AddressCollectionViewCell
-            if aCell == nil {
-                aCell = NSBundle.mainBundle().loadNibNamed("AddressCollectionViewCell", owner: nil, options: nil)[0] as? AddressCollectionViewCell
-                mainCollectionVC.offscreenCells[reuseIdentifier] = aCell
-            }
-            
+            var aCell = collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(kAddressCellReuseIdentifier) as AddressCollectionViewCell
             let address: PersonalInformation.Address = sharedPersonalInformation.addresses![indexPath.item]
-            aCell!.config(address)
+            aCell.config(address)
             cell = aCell
             break
         case PersonalInformationType.Names:
             switch indexPath.item {
             case 0:
-                let reuseIdentifier = kNameCellResueIdentifier
-                var aCell: NameCollectionViewCell? = mainCollectionVC.offscreenCells[reuseIdentifier] as? NameCollectionViewCell
-                if aCell == nil {
-                    aCell = NameCollectionViewCell()
-                    mainCollectionVC.offscreenCells[reuseIdentifier] = aCell
-                }
-                aCell!.config(sharedPersonalInformation.names)
+                var aCell = collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(kNameCellResueIdentifier) as NameCollectionViewCell
+                aCell.config(sharedPersonalInformation.names)
                 cell = aCell
             case 1:
-                let reuseIdentifier = mainCollectionVC.kDescriptionCellResueIdentifier
-                var aCell: DescriptionCollectionViewCell? = mainCollectionVC.offscreenCells[reuseIdentifier] as? DescriptionCollectionViewCell
-                if aCell == nil {
-                    aCell = NSBundle.mainBundle().loadNibNamed("DescriptionCollectionViewCell", owner: nil, options: nil)[0] as? DescriptionCollectionViewCell
-                    mainCollectionVC.offscreenCells[reuseIdentifier] = aCell
-                }
+                var aCell = collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(mainCollectionVC.kDescriptionCellResueIdentifier) as DescriptionCollectionViewCell
                 let description = sharedPersonalInformation.namesMessage!
-                aCell!.configSmall(description, textAlignment: NSTextAlignment.Left)
+                aCell.configSmall(description, textAlignment: NSTextAlignment.Left)
                 cell = aCell
             default:
                 assert(false, "Wrong PersonalInformation Type")
@@ -426,11 +407,7 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
         // Cell's size is determined in nib file, need to set it's width (in this case), and inside, use this cell's width to set label's preferredMaxLayoutWidth, thus, height can be determined, this size will be returned for real cell initialization
         cell!.bounds = CGRectMake(0, 0, targetWidth, cell!.bounds.height)
         cell!.contentView.bounds = cell!.bounds
-        
-        // Layout subviews, this will let labels on this cell to set preferredMaxLayoutWidth
-//        cell!.setNeedsLayout()
-//        cell!.layoutIfNeeded()
-        
+                
         var size = cell!.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
         // Still need to force the width, since width can be smalled due to break mode of labels
         size.width = targetWidth

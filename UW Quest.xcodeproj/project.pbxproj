@@ -43,6 +43,7 @@
 		1BEB05BD1A53979600986692 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEB05B21A53979600986692 /* String.swift */; };
 		1BEB05C11A5397BC00986692 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BEB05C01A5397BC00986692 /* UIImage+ImageEffects.m */; };
 		1BF1B17919CF814E00411109 /* UQCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF1B17819CF814E00411109 /* UQCollectionReusableView.swift */; };
+		1BFABA591A55E3DF004BB928 /* ZHDynamicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFABA581A55E3DF004BB928 /* ZHDynamicCollectionView.swift */; };
 		9DF10D05EB6E460CBD79B4E4 /* libPods-UW Quest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 413651466CD74FE09FCED094 /* libPods-UW Quest.a */; };
 		FA21D6E319E7780C002FBF71 /* MEDynamicTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = FA21D6E019E7780C002FBF71 /* MEDynamicTransition.m */; };
 		FA21D6E419E7780C002FBF71 /* MEZoomAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA21D6E219E7780C002FBF71 /* MEZoomAnimationController.m */; };
@@ -137,6 +138,7 @@
 		1BEB05BF1A5397BC00986692 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		1BEB05C01A5397BC00986692 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		1BF1B17819CF814E00411109 /* UQCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UQCollectionReusableView.swift; sourceTree = "<group>"; };
+		1BFABA581A55E3DF004BB928 /* ZHDynamicCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHDynamicCollectionView.swift; sourceTree = "<group>"; };
 		413651466CD74FE09FCED094 /* libPods-UW Quest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UW Quest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3983FDC47A49806438A39AB /* Pods-UW Quest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UW Quest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UW Quest/Pods-UW Quest.debug.xcconfig"; sourceTree = "<group>"; };
 		FA21D6DF19E7780C002FBF71 /* MEDynamicTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEDynamicTransition.h; sourceTree = "<group>"; };
@@ -477,6 +479,7 @@
 			children = (
 				FADCAA8719FDA44000538C98 /* MainCollectionViewController.storyboard */,
 				1B520C5219CE8A2000A0ADE6 /* MainCollectionViewController.swift */,
+				1BFABA581A55E3DF004BB928 /* ZHDynamicCollectionView.swift */,
 			);
 			path = MainCollectionViewController;
 			sourceTree = "<group>";
@@ -680,6 +683,7 @@
 				FAF2292519C937620041C36F /* UIDevice-Hardware.m in Sources */,
 				FA79657619C9079F00852C84 /* Locator.swift in Sources */,
 				FA23729E19C74167000F5D4F /* Constant.swift in Sources */,
+				1BFABA591A55E3DF004BB928 /* ZHDynamicCollectionView.swift in Sources */,
 				1B1A3A5C1A54AD250077E8A9 /* SwiftyJSON.swift in Sources */,
 				1BEB05BC1A53979600986692 /* Sequence.swift in Sources */,
 				FA7E99FB19DCFD4000D65565 /* DemographicCollectionCell.swift in Sources */,
