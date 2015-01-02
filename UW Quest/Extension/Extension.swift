@@ -91,7 +91,7 @@ extension UIView {
     }
     
     func removeAllSubviews() {
-        self.subviews.map({$0.removeFromSuperview})
+        self.subviews.map({$0.removeFromSuperview()})
     }
     
     func addSubviews(views: [UIView]) {

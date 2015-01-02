@@ -22,8 +22,6 @@ class TitleSubTitleCollectionViewCell: UICollectionViewCell {
     let subContentEmptyColor: UIColor = UIColor(white: 0.3, alpha: 0.9)
     let subContentEmptyFont: UIFont = UIFont.helveticaNeueLightFont(16)
     
-    var subTitleLabelMaxWidth: CGFloat = 0.0
-    
     let kLabelVerticalInsets: CGFloat = 8.0
     let kLabelHorizontalInsets: CGFloat = 8.0
     
@@ -55,7 +53,7 @@ class TitleSubTitleCollectionViewCell: UICollectionViewCell {
             self.contentView.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth
         }
         // On iOS8, if bounds is zero, autoresizingmask will conflit with other constraints
-        self.bounds = CGRectMake(0, 0, CGFloat(MAXFLOAT), CGFloat(MAXFLOAT))
+        self.bounds = CGRectMake(0, 0, CGFloat(MAXFLOAT) / 2.0, CGFloat(MAXFLOAT) / 2.0)
         self.contentView.bounds = self.bounds
         self.layer.masksToBounds = true
         self.layer.borderColor = UQCellBackgroundColor.CGColor
@@ -116,7 +114,11 @@ extension TitleSubTitleCollectionViewCell {
             subContentLabel.text = subLabelTuples[i].1
             // Last label, add extra contraint for bottom and change vertical hugging priority
             if i == subLabelsCount - 1 {
-                subContentLabel.autoPinEdgeToSuperviewEdge(.Bottom, withInset: kLabelVerticalInsets)
+                // Reason why 900, since cell size maybe not exact the same size, the bottom constraint will be broken automatically
+                UIView.autoSetPriority(900, forConstraints: { () -> Void in
+                    subContentLabel.autoPinEdgeToSuperviewEdge(.Bottom, withInset: self.kLabelVerticalInsets)
+                    return
+                })
             }
             
             if previousView == self.contentView {

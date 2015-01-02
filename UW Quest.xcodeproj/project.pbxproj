@@ -469,6 +469,7 @@
 				1B2152321A536F5900B7165A /* ZHLogger.swift */,
 				1B17CEE11A55B77D0066F0C1 /* ZHAutoLinesLabel.swift */,
 				1B17CEE21A55B77D0066F0C1 /* ZHExtendViews.swift */,
+				1BFABA581A55E3DF004BB928 /* ZHDynamicCollectionView.swift */,
 				FACE198919C9EC2D001FD4C9 /* Crashlytics.framework */,
 			);
 			path = ThirdParty;
@@ -479,7 +480,6 @@
 			children = (
 				FADCAA8719FDA44000538C98 /* MainCollectionViewController.storyboard */,
 				1B520C5219CE8A2000A0ADE6 /* MainCollectionViewController.swift */,
-				1BFABA581A55E3DF004BB928 /* ZHDynamicCollectionView.swift */,
 			);
 			path = MainCollectionViewController;
 			sourceTree = "<group>";

@@ -38,7 +38,6 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
     func registerCells() {
         // Register cells
         var addressCellNib = UINib(nibName: "AddressCollectionViewCell", bundle: nil)
-        logDebug("\(addressCellNib)")
         collectionView.registerNib(addressCellNib, forCellWithReuseIdentifier: kAddressCellReuseIdentifier)
         
         collectionView.registerClass(NameCollectionViewCell.self, forCellWithReuseIdentifier: kNameCellResueIdentifier)

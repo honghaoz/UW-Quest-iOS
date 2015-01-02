@@ -1,6 +1,5 @@
 //
 //  ZHDynamicCollectionView.swift
-//  UW Quest
 //
 //  Created by Honghao on 1/1/15.
 //  Copyright (c) 2015 Honghao. All rights reserved.
@@ -25,13 +24,20 @@ class ZHDynamicCollectionView: UICollectionView {
         registeredCellNibs[identifier] = nib
     }
     
+    /**
+    Returns a reusable collection cell object located by its identifier.
+    This collection cell is not showing on screen, it's useful for calculating dynamic cell size
+    :param: identifier A string identifying the cell object to be reused. This parameter must not be nil.
+    
+    :returns: UICollectionViewCell?
+    */
     func dequeueReusableOffScreenCellWithReuseIdentifier(identifier: String) -> UICollectionViewCell? {
         var cell: UICollectionViewCell? = offscreenCells[identifier]
         if cell == nil {
-            if registeredCellNibs.has(identifier) {
+            if registeredCellNibs.indexForKey(identifier) != nil {
                 let cellNib: UINib = registeredCellNibs[identifier]! as UINib
                 cell = cellNib.instantiateWithOwner(nil, options: nil)[0] as? UICollectionViewCell
-            } else if registeredCellClasses.has(identifier) {
+            } else if registeredCellClasses.indexForKey(identifier) != nil {
                 let cellClass = registeredCellClasses[identifier] as UICollectionViewCell.Type!
                 cell = cellClass()
             } else {
