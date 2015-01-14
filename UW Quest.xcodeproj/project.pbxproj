@@ -331,6 +331,15 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		1BD1D1441A67133B00996B9B /* Deprecated */ = {
+			isa = PBXGroup;
+			children = (
+				1B64007719D8977D00C35E44 /* NameCollectionViewCell_deprecated.swift */,
+				1B64007819D8977D00C35E44 /* NameCollectionViewCell_deprecated.xib */,
+			);
+			name = Deprecated;
+			sourceTree = "<group>";
+		};
 		1BEB05A61A53979600986692 /* ExSwift */ = {
 			isa = PBXGroup;
 			children = (
@@ -437,8 +446,6 @@
 				1B8615AD19CFD79A0064505C /* AddressCollectionViewCell.swift */,
 				FADDD6CD19D476BB003EC88D /* AddressCollectionViewCell.xib */,
 				1B1A3A5D1A5517970077E8A9 /* NameCollectionViewCell.swift */,
-				1B64007719D8977D00C35E44 /* NameCollectionViewCell_deprecated.swift */,
-				1B64007819D8977D00C35E44 /* NameCollectionViewCell_deprecated.xib */,
 				1B64007B19D8E48E00C35E44 /* PhoneNumberCollectionViewCell.swift */,
 				1B64007C19D8E48E00C35E44 /* PhoneNumberCollectionViewCell.xib */,
 				FA4D1F5619DA620C006AA190 /* EmailCollectionViewCell.swift */,
@@ -446,6 +453,7 @@
 				FAE020D819DBACA40000253A /* EmergencyContactCollectionViewCell.swift */,
 				FA7E99FA19DCFD4000D65565 /* DemographicCollectionCell.swift */,
 				FA7E99FC19DCFD9800D65565 /* CitizenshipCollectionViewCell.swift */,
+				1BD1D1441A67133B00996B9B /* Deprecated */,
 			);
 			path = Cells;
 			sourceTree = "<group>";

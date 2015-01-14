@@ -369,11 +369,21 @@ extension QuestClient {
                 "Page": "SS_CC_PERS_PHONE",
                 "Action": "U"
             ]
-            getPersonalInformationWithParameters(parameters, kPersonalInfoPhoneNumbersURL,parsePhoneNumbers, successClosure, failure)
+            getPersonalInformationWithParameters(parameters, kPersonalInfoPhoneNumbersURL, parsePhoneNumbers, successClosure, failure)
         case .EmailAddresses:
-            break
+            logVerbose(".Emails")
+            parameters = [
+                "Page": "SS_CC_EMAIL_ADDR",
+                "Action": "U"
+            ]
+            getPersonalInformationWithParameters(parameters, kPersonalInfoEmailsURL, parseEmails, successClosure, failure)
         case .EmergencyContacts:
-            break
+            logVerbose(".EmergencyContacts")
+            parameters = [
+                "Page": "SS_CC_EMRG_CNTCT_L",
+                "Action": "U"
+            ]
+            getPersonalInformationWithParameters(parameters, kPersonalInfoEnergencyURL, parseEmergencyContacts, successClosure, failure)
         case .DemographicInformation:
             break
         case .CitizenshipImmigrationDocuments:
@@ -561,6 +571,137 @@ extension QuestClient {
                 } else {
                     return JSON(dataArray)
                 }
+            } else {
+                return nil
+            }
+        }
+    }
+    
+    /**
+    Parse email address response to JSON data
+    {
+        'alternate_email_address': {
+            'data': [{'email_address': 'zhh358@gmail.com',
+                        'email_type': 'Home'}
+                        ],
+            'description': 'The Admissions Office will use the Home email address to communicate with you as an applicant.'
+            },
+        'description': 'Email is the primary means of communication used by the University. It is important for you to keep your email address up to date.',
+        'campus_email_address': {
+            'data': [{'delivered_to': 'h344zhan@connect.uwaterloo.ca',
+                        'campus_email': 'h344zhan@uwaterloo.ca'}
+                        ],
+            'description': 'This is the official email address the University community will use to communicate with you as a student.'}
+    }
+    
+    :param: response network response
+    
+    :returns: JSON data
+    */
+    func parseEmails(response: AnyObject) -> JSON? {
+        let html = getHtmlContentFromResponse(response)
+        if html == nil {
+            return nil
+        }
+        
+        var responseDictionary = [String: AnyObject]()
+        
+        // Description
+        let descriptionElements = html!.searchWithXPathQuery("//*[@id='win0div$ICField55']")
+        if descriptionElements.count == 0 {
+            responseDictionary["description"] = ""
+        } else {
+            responseDictionary["description"] = descriptionElements[0].raw.stringByConvertingHTMLToPlainText()
+        }
+        
+        // Campus email
+        var campusEmailDict = [String: AnyObject]()
+        let campusDescriptionElements = html!.searchWithXPathQuery("//*[@id='win0div$ICField59']")
+        if campusDescriptionElements.count == 0 {
+            campusEmailDict["description"] = ""
+        } else {
+            campusEmailDict["description"] = campusDescriptionElements[0].raw.stringByConvertingHTMLToPlainText()
+        }
+        
+        var dataArray = [Dictionary<String, String>]()
+        let campusEmailTableElements = html!.searchWithXPathQuery("//*[@id='win0divUW_RTG_EMAIL_VW$0']")
+        if campusEmailTableElements.count > 0 {
+            let tableArray = campusEmailTableElements[0].table2DArray()
+            if tableArray != nil {
+                for i in 1 ..< tableArray!.count {
+                    var dict = Dictionary<String, String>()
+                    for j in 0 ..< 2 {
+                        dict[tableArray![0][j]] = tableArray![i][j]
+                    }
+                    dataArray.append(dict)
+                }
+            }
+        }
+        campusEmailDict["data"] = dataArray
+        responseDictionary["campus_email_address"] = campusEmailDict
+        
+        
+        // Alternative email
+        var alterEmailDict = [String: AnyObject]()
+        let alterDescriptionElements = html!.searchWithXPathQuery("//*[@id='win0div$ICField72']")
+        if alterDescriptionElements.count == 0 {
+            alterEmailDict["description"] = ""
+        } else {
+            alterEmailDict["description"] = alterDescriptionElements[0].raw.stringByConvertingHTMLToPlainText()
+        }
+        
+        dataArray = [Dictionary<String, String>]()
+        let alterEmailTableElements = html!.searchWithXPathQuery("//*[@id='win0divSCC_EMAIL_H$0']")
+        if alterEmailTableElements.count > 0 {
+            let tableArray = alterEmailTableElements[0].table2DArray()
+            if tableArray != nil {
+                for i in 1 ..< tableArray!.count {
+                    var dict = Dictionary<String, String>()
+                    for j in 0 ..< 2 {
+                        dict[tableArray![0][j]] = tableArray![i][j]
+                    }
+                    dataArray.append(dict)
+                }
+            }
+        }
+        alterEmailDict["data"] = dataArray
+        responseDictionary["alternate_email_address"] = alterEmailDict
+        return JSON(responseDictionary)
+    }
+    
+    /**
+    [{'relationship': 'Friend', 'extension': '-', 'country': '001', 'phone': '519/781-2862', 'primary_contact': u'Y', 'contact_name': 'Wenchao Wang'}, 
+    
+     {'relationship': 'Other', 'extension': '-', 'country': '001', 'phone': '519/781-2862', 'primary_contact': u'N', 'contact_name': 'Yansong Li'}
+    ]
+    
+    :param: response response network response
+    
+    :returns: JSON data
+    */
+    func parseEmergencyContacts(response: AnyObject) -> JSON? {
+        let html = getHtmlContentFromResponse(response)
+        if html == nil {
+            return nil
+        }
+        
+        //*[@id="win0divSCC_EMERG_CNT_H$0"]
+        let tables = html!.searchWithXPathQuery("//*[@id='win0divSCC_EMERG_CNT_H$0']")
+        if tables.count == 0 {
+            return nil
+        } else {
+            let contactTable = tables[0] as TFHppleElement
+            let tableArray = contactTable.table2DArray()
+            if tableArray != nil {
+                var dataArray = [Dictionary<String, String>]()
+                for i in 1 ..< tableArray!.count {
+                    var dict = Dictionary<String, String>()
+                    for j in 0 ..< 6 {
+                        dict[tableArray![0][j]] = tableArray![i][j]
+                    }
+                    dataArray.append(dict)
+                }
+                return JSON(dataArray)
             } else {
                 return nil
             }

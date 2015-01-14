@@ -231,8 +231,8 @@ class PersonalInformation {
         class Email {
             var type: String
             var address: String
-            class var kType: String {return "email_type"}
-            class var kAddress: String {return "email_address"}
+            class var kType: String {return "Email Type"}
+            class var kAddress: String {return "Email Address"}
             
             class func newEmail(rawDict: Dictionary<String, String>) -> Email? {
                 let type: String? = rawDict[kType]
@@ -252,8 +252,8 @@ class PersonalInformation {
         class CampusEmail {
             var campusEmail: String
             var deliveredTo: String
-            class var kCampusEmail: String {return "campus_email"}
-            class var kDeliveredTo: String {return "delivered_to"}
+            class var kCampusEmail: String {return "Campus email"}
+            class var kDeliveredTo: String {return "Delivered to"}
             
             class func newCampusEmail(rawDict: Dictionary<String, String>) -> CampusEmail? {
                 let campusEmail: String? = rawDict[kCampusEmail]
@@ -333,12 +333,12 @@ class PersonalInformation {
         var isPrimary: Bool
         var relationship: String
         
-        class var kContactName: String {return "contact_name"}
-        class var kCountry: String {return "country"}
-        class var kExtension: String {return "extension"}
-        class var kPhone: String {return "phone"}
-        class var kPrimary: String {return "primary_contact"}
-        class var kRelationship: String {return "relationship"}
+        class var kContactName: String {return "Contact Name"}
+        class var kCountry: String {return "Country"}
+        class var kExtension: String {return "Extension"}
+        class var kPhone: String {return "Phone"}
+        class var kPrimary: String {return "Primary Contact"}
+        class var kRelationship: String {return "Relationship"}
         
         class func newContact(rawDict: Dictionary<String, String>) -> EmergencyContact? {
             let contactName: String? = rawDict[EmergencyContact.kContactName]
