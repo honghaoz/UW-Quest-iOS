@@ -53,7 +53,7 @@ class TitleSubTitleCollectionViewCell: UICollectionViewCell {
             self.contentView.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth
         }
         // On iOS8, if bounds is zero, autoresizingmask will conflit with other constraints
-        self.bounds = CGRectMake(0, 0, CGFloat(MAXFLOAT) / 2.0, CGFloat(MAXFLOAT) / 2.0)
+        self.bounds = CGRectMake(0, 0, screenWidth, screenHeight)
         self.contentView.bounds = self.bounds
         self.layer.masksToBounds = true
         self.layer.borderColor = UQCellBackgroundColor.CGColor

@@ -46,6 +46,7 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
         collectionView.registerNib(phoneNumberCellNib, forCellWithReuseIdentifier: kPhoneNumberCellResueIdentifier)
         var emailCellNib = UINib(nibName: "EmailCollectionViewCell", bundle: nil)
         collectionView.registerNib(emailCellNib, forCellWithReuseIdentifier: kEmailAddressCellResueIdentifier)
+        
         collectionView.registerClass(EmergencyContactCollectionViewCell.self, forCellWithReuseIdentifier: kEmergencyContactCellResueIdentifier)
         collectionView.registerClass(DemographicCollectionCell.self, forCellWithReuseIdentifier: kDemograhicCellResueIdentifier)
         collectionView.registerClass(CitizenshipCollectionViewCell.self, forCellWithReuseIdentifier: kCitizenshipCellResueIdentifier)
@@ -87,25 +88,21 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
         var cell: UICollectionViewCell!
         switch type {
         case PersonalInformationType.Addresses:
-            var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kAddressCellReuseIdentifier, forIndexPath: indexPath) as AddressCollectionViewCell
+            cell = collectionView.dequeueReusableCellWithReuseIdentifier(kAddressCellReuseIdentifier, forIndexPath: indexPath) as UICollectionViewCell
             let address: PersonalInformation.Address = sharedPersonalInformation.addresses![indexPath.item]
-            aCell.config(address)
-            cell = aCell
+            (cell as AddressCollectionViewCell).config(address)
             break
         case PersonalInformationType.Names:
             switch indexPath.item {
             case 0:
-                var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kNameCellResueIdentifier, forIndexPath: indexPath) as NameCollectionViewCell
-                
-                aCell.config(sharedPersonalInformation.names)
-                cell = aCell
+                cell = collectionView.dequeueReusableCellWithReuseIdentifier(kNameCellResueIdentifier, forIndexPath: indexPath) as UICollectionViewCell
+                (cell as NameCollectionViewCell) .config(sharedPersonalInformation.names)
             case 1:
-                var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(mainCollectionVC.kDescriptionCellResueIdentifier, forIndexPath: indexPath) as DescriptionCollectionViewCell
+                cell = collectionView.dequeueReusableCellWithReuseIdentifier(mainCollectionVC.kDescriptionCellResueIdentifier, forIndexPath: indexPath) as UICollectionViewCell
                 let description = sharedPersonalInformation.namesMessage!
-                aCell.configSmall(description, textAlignment: NSTextAlignment.Left)
-                cell = aCell
+                (cell as DescriptionCollectionViewCell).configSmall(description, textAlignment: NSTextAlignment.Left)
             default:
-                assert(false, "Wrong indexPath.item")
+                assertionFailure("Wrong indexPath.item")
             }
         case PersonalInformationType.PhoneNumbers:
             var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kPhoneNumberCellResueIdentifier, forIndexPath: indexPath) as PhoneNumberCollectionViewCell
@@ -227,24 +224,20 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
         var cell: UICollectionViewCell!
         switch type {
         case PersonalInformationType.Addresses:
-            var aCell = collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(kAddressCellReuseIdentifier) as AddressCollectionViewCell
+            cell = collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(kAddressCellReuseIdentifier)
             let address: PersonalInformation.Address = sharedPersonalInformation.addresses![indexPath.item]
-            aCell.config(address)
-            cell = aCell
-            break
+            (cell as AddressCollectionViewCell).config(address)
         case PersonalInformationType.Names:
             switch indexPath.item {
             case 0:
-                var aCell = collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(kNameCellResueIdentifier) as NameCollectionViewCell
-                aCell.config(sharedPersonalInformation.names)
-                cell = aCell
+                cell = collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(kNameCellResueIdentifier)
+                (cell as NameCollectionViewCell).config(sharedPersonalInformation.names)
             case 1:
-                var aCell = collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(mainCollectionVC.kDescriptionCellResueIdentifier) as DescriptionCollectionViewCell
+                cell = collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(mainCollectionVC.kDescriptionCellResueIdentifier)
                 let description = sharedPersonalInformation.namesMessage!
-                aCell.configSmall(description, textAlignment: NSTextAlignment.Left)
-                cell = aCell
+                (cell as DescriptionCollectionViewCell).configSmall(description, textAlignment: NSTextAlignment.Left)
             default:
-                assert(false, "Wrong PersonalInformation Type")
+                assertionFailure("Wrong PersonalInformation Type")
             }
             
         case PersonalInformationType.PhoneNumbers:
