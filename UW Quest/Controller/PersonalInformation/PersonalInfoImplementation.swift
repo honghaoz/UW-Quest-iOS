@@ -41,9 +41,8 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
         collectionView.registerNib(addressCellNib, forCellWithReuseIdentifier: kAddressCellReuseIdentifier)
         
         collectionView.registerClass(NameCollectionViewCell.self, forCellWithReuseIdentifier: kNameCellResueIdentifier)
+        collectionView.registerClass(PhoneNumberCollectionViewCell.self, forCellWithReuseIdentifier: kPhoneNumberCellResueIdentifier)
         
-        var phoneNumberCellNib = UINib(nibName: "PhoneNumberCollectionViewCell", bundle: nil)
-        collectionView.registerNib(phoneNumberCellNib, forCellWithReuseIdentifier: kPhoneNumberCellResueIdentifier)
         var emailCellNib = UINib(nibName: "EmailCollectionViewCell", bundle: nil)
         collectionView.registerNib(emailCellNib, forCellWithReuseIdentifier: kEmailAddressCellResueIdentifier)
         
@@ -241,17 +240,9 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
             }
             
         case PersonalInformationType.PhoneNumbers:
-            let reuseIdentifier = kPhoneNumberCellResueIdentifier
-            var aCell: PhoneNumberCollectionViewCell? = mainCollectionVC.offscreenCells[reuseIdentifier] as? PhoneNumberCollectionViewCell
-            if aCell == nil {
-                aCell = NSBundle.mainBundle().loadNibNamed("PhoneNumberCollectionViewCell", owner: nil, options: nil)[0] as? PhoneNumberCollectionViewCell
-                mainCollectionVC.offscreenCells[reuseIdentifier] = aCell
-            }
-            
+            cell = collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(kPhoneNumberCellResueIdentifier)
             let phoneNumber: PersonalInformation.PhoneNumber = sharedPersonalInformation.phoneNumbers![indexPath.item]
-            aCell!.config(phoneNumber)
-            cell = aCell
-            break
+            (cell as PhoneNumberCollectionViewCell).config(phoneNumber)
         case PersonalInformationType.EmailAddresses:
             switch indexPath.item {
             case 0, 2:
