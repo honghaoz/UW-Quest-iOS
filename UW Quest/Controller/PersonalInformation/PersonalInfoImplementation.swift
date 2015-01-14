@@ -42,10 +42,7 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
         
         collectionView.registerClass(NameCollectionViewCell.self, forCellWithReuseIdentifier: kNameCellResueIdentifier)
         collectionView.registerClass(PhoneNumberCollectionViewCell.self, forCellWithReuseIdentifier: kPhoneNumberCellResueIdentifier)
-        
-        var emailCellNib = UINib(nibName: "EmailCollectionViewCell", bundle: nil)
-        collectionView.registerNib(emailCellNib, forCellWithReuseIdentifier: kEmailAddressCellResueIdentifier)
-        
+        collectionView.registerClass(EmailCollectionViewCell.self, forCellWithReuseIdentifier: kEmailAddressCellResueIdentifier)
         collectionView.registerClass(EmergencyContactCollectionViewCell.self, forCellWithReuseIdentifier: kEmergencyContactCellResueIdentifier)
         collectionView.registerClass(DemographicCollectionCell.self, forCellWithReuseIdentifier: kDemograhicCellResueIdentifier)
         collectionView.registerClass(CitizenshipCollectionViewCell.self, forCellWithReuseIdentifier: kCitizenshipCellResueIdentifier)
@@ -104,20 +101,17 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
                 assertionFailure("Wrong indexPath.item")
             }
         case PersonalInformationType.PhoneNumbers:
-            var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kPhoneNumberCellResueIdentifier, forIndexPath: indexPath) as PhoneNumberCollectionViewCell
+            cell = collectionView.dequeueReusableCellWithReuseIdentifier(kPhoneNumberCellResueIdentifier, forIndexPath: indexPath) as PhoneNumberCollectionViewCell
             
             let phoneNumber: PersonalInformation.PhoneNumber = sharedPersonalInformation.phoneNumbers![indexPath.item]
-            aCell.config(phoneNumber)
-            cell = aCell
-            break
+            (cell as PhoneNumberCollectionViewCell).config(phoneNumber)
         case PersonalInformationType.EmailAddresses:
             switch indexPath.item {
             case 0:
                 var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kEmailAddressCellResueIdentifier, forIndexPath: indexPath) as EmailCollectionViewCell
-                let emails: [(String, String)] = [("Campus Email", sharedPersonalInformation.emailAddresses!.campusEmailAddress.campusEmail), ("Delivered To", sharedPersonalInformation.emailAddresses!.campusEmailAddress.deliveredTo)]
+                let emails: [(String, String)] = [("Campus Email", sharedPersonalInformation.emailAddresses!.campusEmailAddress.campusEmail), ("Delivered to", sharedPersonalInformation.emailAddresses!.campusEmailAddress.deliveredTo)]
                 aCell.config("Campus Email Address", emails: emails)
                 cell = aCell
-                break
             case 2:
                 var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kEmailAddressCellResueIdentifier, forIndexPath: indexPath) as EmailCollectionViewCell
                 var emails: [(String, String)] = []
@@ -127,7 +121,6 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
                 }
                 aCell.config("Alternate Email Address", emails: emails)
                 cell = aCell
-                break
             case 1, 3: // Description
                 var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(mainCollectionVC.kDescriptionCellResueIdentifier, forIndexPath: indexPath) as DescriptionCollectionViewCell
                 let description = indexPath.item == 1 ? sharedPersonalInformation.emailAddresses!.campusEmailDescription : sharedPersonalInformation.emailAddresses!.alternateEmailDescription
@@ -135,9 +128,7 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
                 cell = aCell
             default:
                 assert(false, "Wrong indexPath.item")
-                break
             }
-            break
         case PersonalInformationType.EmergencyContacts:
             // Show message
             if sharedPersonalInformation.emergencyContacts.count == 0 {
@@ -247,40 +238,23 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
             switch indexPath.item {
             case 0, 2:
                 // Prepare cell
-                let reuseIdentifier = kEmailAddressCellResueIdentifier
-                var aCell: EmailCollectionViewCell? = mainCollectionVC.offscreenCells[reuseIdentifier] as? EmailCollectionViewCell
-                if aCell == nil {
-                    aCell = NSBundle.mainBundle().loadNibNamed("EmailCollectionViewCell", owner: nil, options: nil)[0] as? EmailCollectionViewCell
-                    mainCollectionVC.offscreenCells[reuseIdentifier] = aCell
-                }
-                
+                cell = collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(kEmailAddressCellResueIdentifier)
                 if indexPath.item == 0 {
                     let emails: [(String, String)] = [("Campus Email", sharedPersonalInformation.emailAddresses!.campusEmailAddress.campusEmail), ("Delivered to", sharedPersonalInformation.emailAddresses!.campusEmailAddress.deliveredTo)]
-                    aCell!.config("Campus Email Address", emails: emails)
-                    cell = aCell
+                    (cell as EmailCollectionViewCell).config("Campus Email Address", emails: emails)
                 } else {
                     var emails: [(String, String)] = []
                     for eachEmail in sharedPersonalInformation.emailAddresses!.alternateEmailAddress {
                         let newTuple = (eachEmail.type, eachEmail.address)
                         emails.append(newTuple)
                     }
-                    aCell!.config("Alternate Email Address", emails: emails)
-                    cell = aCell
+                    (cell as EmailCollectionViewCell).config("Alternate Email Address", emails: emails)
                 }
-                break
             case 1, 3:
                 // Prepare cell
-                let reuseIdentifier = mainCollectionVC.kDescriptionCellResueIdentifier
-                var aCell: DescriptionCollectionViewCell? = mainCollectionVC.offscreenCells[reuseIdentifier] as? DescriptionCollectionViewCell
-                if aCell == nil {
-                    aCell = NSBundle.mainBundle().loadNibNamed("DescriptionCollectionViewCell", owner: nil, options: nil)[0] as? DescriptionCollectionViewCell
-                    mainCollectionVC.offscreenCells[reuseIdentifier] = aCell
-                }
-                
+                cell = collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(mainCollectionVC.kDescriptionCellResueIdentifier)
                 let description = indexPath.item == 1 ? sharedPersonalInformation.emailAddresses!.campusEmailDescription : sharedPersonalInformation.emailAddresses!.alternateEmailDescription
-                aCell!.configSmall(description!, textAlignment: NSTextAlignment.Left)
-                cell = aCell
-                break
+                (cell as DescriptionCollectionViewCell).configSmall(description!, textAlignment: NSTextAlignment.Left)
             default:
                 assert(false, "Wrong PersonalInformation Type")
                 break

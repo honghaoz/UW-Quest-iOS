@@ -32,6 +32,7 @@
 		1B7CF11D19BCEF28007A157D /* UW_QuestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7CF11C19BCEF28007A157D /* UW_QuestTests.swift */; };
 		1B8615AC19CFC6A20064505C /* PersonalInformations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8615AB19CFC6A20064505C /* PersonalInformations.swift */; };
 		1B8615AE19CFD79A0064505C /* AddressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8615AD19CFD79A0064505C /* AddressCollectionViewCell.swift */; };
+		1BCCB62E1A6716E6009811D0 /* EmailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCCB62D1A6716E6009811D0 /* EmailCollectionViewCell.swift */; };
 		1BD1D1461A6713F900996B9B /* PhoneNumberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD1D1451A6713F900996B9B /* PhoneNumberCollectionViewCell.swift */; };
 		1BEB05B31A53979600986692 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEB05A71A53979600986692 /* Array.swift */; };
 		1BEB05B41A53979600986692 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEB05A81A53979600986692 /* Dictionary.swift */; };
@@ -61,8 +62,8 @@
 		FA23729819C72E91000F5D4F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA23729719C72E91000F5D4F /* SystemConfiguration.framework */; };
 		FA23729E19C74167000F5D4F /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23729D19C74167000F5D4F /* Constant.swift */; };
 		FA32935F19FD60A800164369 /* MenuTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA32935E19FD60A800164369 /* MenuTitleCell.swift */; };
-		FA4D1F5819DA620C006AA190 /* EmailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D1F5619DA620C006AA190 /* EmailCollectionViewCell.swift */; };
-		FA4D1F5919DA620C006AA190 /* EmailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA4D1F5719DA620C006AA190 /* EmailCollectionViewCell.xib */; };
+		FA4D1F5819DA620C006AA190 /* EmailCollectionViewCell_deprecated.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D1F5619DA620C006AA190 /* EmailCollectionViewCell_deprecated.swift */; };
+		FA4D1F5919DA620C006AA190 /* EmailCollectionViewCell_deprecated.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA4D1F5719DA620C006AA190 /* EmailCollectionViewCell_deprecated.xib */; };
 		FA4D1F5C19DA6B32006AA190 /* DescriptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D1F5A19DA6B32006AA190 /* DescriptionCollectionViewCell.swift */; };
 		FA79657619C9079F00852C84 /* Locator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA79657519C9079F00852C84 /* Locator.swift */; };
 		FA79657819C90BB000852C84 /* LaunchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA79657719C90BB000852C84 /* LaunchView.xib */; };
@@ -129,6 +130,7 @@
 		1B7CF11C19BCEF28007A157D /* UW_QuestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UW_QuestTests.swift; sourceTree = "<group>"; };
 		1B8615AB19CFC6A20064505C /* PersonalInformations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalInformations.swift; sourceTree = "<group>"; };
 		1B8615AD19CFD79A0064505C /* AddressCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCollectionViewCell.swift; sourceTree = "<group>"; };
+		1BCCB62D1A6716E6009811D0 /* EmailCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailCollectionViewCell.swift; sourceTree = "<group>"; };
 		1BD1D1451A6713F900996B9B /* PhoneNumberCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberCollectionViewCell.swift; sourceTree = "<group>"; };
 		1BEB05A71A53979600986692 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		1BEB05A81A53979600986692 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
@@ -164,8 +166,8 @@
 		FA23729A19C72F9A000F5D4F /* UW Quest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UW Quest-Bridging-Header.h"; sourceTree = "<group>"; };
 		FA23729D19C74167000F5D4F /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		FA32935E19FD60A800164369 /* MenuTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTitleCell.swift; sourceTree = "<group>"; };
-		FA4D1F5619DA620C006AA190 /* EmailCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailCollectionViewCell.swift; sourceTree = "<group>"; };
-		FA4D1F5719DA620C006AA190 /* EmailCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmailCollectionViewCell.xib; sourceTree = "<group>"; };
+		FA4D1F5619DA620C006AA190 /* EmailCollectionViewCell_deprecated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailCollectionViewCell_deprecated.swift; sourceTree = "<group>"; };
+		FA4D1F5719DA620C006AA190 /* EmailCollectionViewCell_deprecated.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmailCollectionViewCell_deprecated.xib; sourceTree = "<group>"; };
 		FA4D1F5A19DA6B32006AA190 /* DescriptionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA79657519C9079F00852C84 /* Locator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locator.swift; sourceTree = "<group>"; };
 		FA79657719C90BB000852C84 /* LaunchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchView.xib; sourceTree = "<group>"; };
@@ -340,6 +342,8 @@
 				1B64007819D8977D00C35E44 /* NameCollectionViewCell_deprecated.xib */,
 				1B64007B19D8E48E00C35E44 /* PhoneNumberCollectionViewCell_deprecated.swift */,
 				1B64007C19D8E48E00C35E44 /* PhoneNumberCollectionViewCell_deprecated.xib */,
+				FA4D1F5619DA620C006AA190 /* EmailCollectionViewCell_deprecated.swift */,
+				FA4D1F5719DA620C006AA190 /* EmailCollectionViewCell_deprecated.xib */,
 			);
 			name = Deprecated;
 			sourceTree = "<group>";
@@ -451,8 +455,7 @@
 				FADDD6CD19D476BB003EC88D /* AddressCollectionViewCell.xib */,
 				1B1A3A5D1A5517970077E8A9 /* NameCollectionViewCell.swift */,
 				1BD1D1451A6713F900996B9B /* PhoneNumberCollectionViewCell.swift */,
-				FA4D1F5619DA620C006AA190 /* EmailCollectionViewCell.swift */,
-				FA4D1F5719DA620C006AA190 /* EmailCollectionViewCell.xib */,
+				1BCCB62D1A6716E6009811D0 /* EmailCollectionViewCell.swift */,
 				FAE020D819DBACA40000253A /* EmergencyContactCollectionViewCell.swift */,
 				FA7E99FA19DCFD4000D65565 /* DemographicCollectionCell.swift */,
 				FA7E99FC19DCFD9800D65565 /* CitizenshipCollectionViewCell.swift */,
@@ -611,7 +614,7 @@
 				1B64007E19D8E48E00C35E44 /* PhoneNumberCollectionViewCell_deprecated.xib in Resources */,
 				1B7CF10F19BCEF28007A157D /* Login.storyboard in Resources */,
 				FADDD6CF19D476BB003EC88D /* AddressCollectionViewCell.xib in Resources */,
-				FA4D1F5919DA620C006AA190 /* EmailCollectionViewCell.xib in Resources */,
+				FA4D1F5919DA620C006AA190 /* EmailCollectionViewCell_deprecated.xib in Resources */,
 				FA79657819C90BB000852C84 /* LaunchView.xib in Resources */,
 				1B64007A19D8977D00C35E44 /* NameCollectionViewCell_deprecated.xib in Resources */,
 				1BEB05B81A53979600986692 /* Info.plist in Resources */,
@@ -678,9 +681,10 @@
 				1BEB05BA1A53979600986692 /* NSArray.swift in Sources */,
 				FA21D6E319E7780C002FBF71 /* MEDynamicTransition.m in Sources */,
 				FA7E99FD19DCFD9800D65565 /* CitizenshipCollectionViewCell.swift in Sources */,
-				FA4D1F5819DA620C006AA190 /* EmailCollectionViewCell.swift in Sources */,
+				FA4D1F5819DA620C006AA190 /* EmailCollectionViewCell_deprecated.swift in Sources */,
 				1B2152311A536C3200B7165A /* QuestClient.swift in Sources */,
 				1B5BF35219C3F8470005626F /* LoginViewController.swift in Sources */,
+				1BCCB62E1A6716E6009811D0 /* EmailCollectionViewCell.swift in Sources */,
 				1B520C5319CE8A2000A0ADE6 /* MainCollectionViewController.swift in Sources */,
 				1BEB05B91A53979600986692 /* Int.swift in Sources */,
 				1B8615AE19CFD79A0064505C /* AddressCollectionViewCell.swift in Sources */,

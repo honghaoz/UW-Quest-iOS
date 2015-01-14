@@ -17,7 +17,7 @@ class TitleSubTitleCollectionViewCell: UICollectionViewCell {
     let subContentColor: UIColor = UIColor(white: 0.3, alpha: 0.9)
     
     let subTitleFont: UIFont = UIFont.helveticaNeueLightFont(15)
-    let subContentFont: UIFont = UIFont.helveticaNeueLightFont(14)
+    var subContentFont: UIFont = UIFont.helveticaNeueLightFont(14)
     
     let subContentEmptyColor: UIColor = UIColor(white: 0.3, alpha: 0.9)
     let subContentEmptyFont: UIFont = UIFont.helveticaNeueLightFont(16)
