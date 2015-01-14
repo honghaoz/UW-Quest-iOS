@@ -338,31 +338,38 @@ extension QuestClient {
 // MARK: Personal Information
 extension QuestClient {
     func getPersonalInformation(type: PersonalInformationType, success:(data: AnyObject!) -> (), failure:(errorMessage: String, error: NSError?) -> ()) {
+        var parameters: Dictionary<String, String>!
+        var parseFunction: ((AnyObject) -> JSON?)!
+        var successClosure: (response: AnyObject?, json: JSON?) -> () = { (response, json) -> () in
+            if json == nil {
+                failure(errorMessage: "", error: NSError(domain: "Parse Error", code: 0, userInfo: nil))
+            } else {
+                success(data: json!.rawValue)
+            }
+        }
+        
         switch type {
         case .Addresses:
             logVerbose(".Addresses")
-            getPersonalInformationAddress(success: { (response, json) -> () in
-                if json == nil {
-                    failure(errorMessage: "", error: NSError(domain: "Parse Error", code: 0, userInfo: nil))
-                } else {
-                    success(data: json!.rawValue)
-                }
-            }, failure: { (errorMessage, error) -> () in
-                failure(errorMessage: errorMessage, error: error)
-            })
+            parameters = [
+                "Page": "SS_ADDRESSES",
+                "Action": "C"
+            ]
+            getPersonalInformationWithParameters(parameters, kPersonalInfoAddressURL, parseAddress, successClosure, failure)
         case .Names:
             logVerbose(".Names")
-            getPersonalInformationName(success: { (response, json) -> () in
-                if json == nil {
-                    failure(errorMessage: "", error: NSError(domain: "Parse Error", code: 0, userInfo: nil))
-                } else {
-                    success(data: json!.rawValue)
-                }
-                }, failure: { (errorMessage, error) -> () in
-                    failure(errorMessage: errorMessage, error: error)
-            })
+            parameters = [
+                "Page": "SS_CC_NAME",
+                "Action": "C"
+            ]
+            getPersonalInformationWithParameters(parameters, kPersonalInfoNameURL,parseName, successClosure, failure)
         case .PhoneNumbers:
-            break
+            logVerbose(".Names")
+            parameters = [
+                "Page": "SS_CC_PERS_PHONE",
+                "Action": "U"
+            ]
+            getPersonalInformationWithParameters(parameters, kPersonalInfoPhoneNumbersURL,parsePhoneNumbers, successClosure, failure)
         case .EmailAddresses:
             break
         case .EmergencyContacts:
@@ -374,6 +381,7 @@ extension QuestClient {
         default: assert(false, "Wrong PersonalInformation Type")
         }
     }
+    
     func postPersonalInformation(success: ((response: AnyObject?, json: JSON?) -> ())? = nil, failure: ((errorMessage: String, error: NSError) -> ())? = nil) {
         logVerbose()
         if currentPostPage == .PersonalInformation {
@@ -392,29 +400,29 @@ extension QuestClient {
         })
     }
     
-    func getPersonalInformationAddress(success: ((response: AnyObject?, json: JSON?) -> ())? = nil, failure: ((errorMessage: String, error: NSError) -> ())? = nil) {
-        logVerbose()
-        if currentPostPage != .PersonalInformation {
-            self.postPersonalInformation(success: { (response, json) -> () in
-                self.getPersonalInformationAddress(success: success, failure: failure)
-            }, failure: failure)
-        }
-        let parameters = [
-            "Page": "SS_ADDRESSES",
-            "Action": "C"
-        ]
-        
-        self.GET(kPersonalInfoAddressURL, parameters: parameters, success: { (task, response) -> Void in
-            if self.updateState(response) {
-                logInfo("Success")
-                success?(response: response, json: self.parseAddress(response))
-            } else {
-                failure?(errorMessage: "Update State Failed", error: NSError(domain: "PersonalInformation", code: 1000, userInfo: nil))
+    func getPersonalInformationWithParameters(parameters: Dictionary<String, String>,
+        _ urlString: String,
+        _ parseFunction: (AnyObject) -> JSON?,
+        _ success: ((response: AnyObject?, json: JSON?) -> ())? = nil,
+        _ failure: ((errorMessage: String, error: NSError) -> ())? = nil) {
+            logVerbose()
+            if currentPostPage != .PersonalInformation {
+                self.postPersonalInformation(success: { (response, json) -> () in
+                    self.getPersonalInformationWithParameters(parameters, urlString, parseFunction,success, failure)
+                    }, failure: failure)
             }
-        }, failure: {(task, error) -> Void in
-            logError("Failed: \(error.localizedDescription)")
-            failure?(errorMessage: "POST Personal Information Failed", error: error)
-        })
+            
+            self.GET(urlString, parameters: parameters, success: { (task, response) -> Void in
+                if self.updateState(response) {
+                    logInfo("Success")
+                    success?(response: response, json: parseFunction(response))
+                } else {
+                    failure?(errorMessage: "Update State Failed", error: NSError(domain: "PersonalInformation", code: 1000, userInfo: nil))
+                }
+                }, failure: {(task, error) -> Void in
+                    logError("Failed: \(error.localizedDescription)")
+                    failure?(errorMessage: "POST Personal Information Failed", error: error)
+            })
     }
     
     /**
@@ -459,30 +467,6 @@ extension QuestClient {
         return JSON(dataArray)
     }
     
-    func getPersonalInformationName(success: ((response: AnyObject?, json: JSON?) -> ())? = nil, failure: ((errorMessage: String, error: NSError) -> ())? = nil) {
-        logVerbose()
-        if currentPostPage != .PersonalInformation {
-            self.postPersonalInformation(success: { (response, json) -> () in
-                self.getPersonalInformationName(success: success, failure: failure)
-                }, failure: failure)
-        }
-        let parameters = [
-            "Page": "SS_CC_NAME",
-            "Action": "C"
-        ]
-        
-        self.GET(kPersonalInfoNameURL, parameters: parameters, success: { (task, response) -> Void in
-            if self.updateState(response) {
-                logInfo("Success")
-                success?(response: response, json: self.parseName(response))
-            } else {
-                failure?(errorMessage: "Update State Failed", error: NSError(domain: "PersonalInformation", code: 1000, userInfo: nil))
-            }
-            }, failure: {(task, error) -> Void in
-                logError("Failed: \(error.localizedDescription)")
-                failure?(errorMessage: "POST Personal Information Failed", error: error)
-        })
-    }
     /**
     Parse address response to JSON data
     {"Message": "...", "Data": [{"Name Type": "...", "Name": "..."}]}
@@ -491,8 +475,66 @@ extension QuestClient {
     
     :returns: JSON data
     */
-    
     func parseName(response: AnyObject) -> JSON? {
+        let html = getHtmlContentFromResponse(response)
+        if html == nil {
+            return nil
+        }
+        var resultDict: Dictionary<String, AnyObject> = [
+            "Message": "",
+            "Data": [Dictionary<String, String>]()
+        ]
+        // Message
+        //*[@class="PAPAGEINSTRUCTIONS"]
+        let messageElements = html!.searchWithXPathQuery("//*[@class='PAPAGEINSTRUCTIONS']")
+        if messageElements.count > 0 {
+            let message: String? = (messageElements[0] as TFHppleElement).text()
+            if message != nil {
+                resultDict["Message"] = message
+            }
+        }
+        
+        // Names
+        //*[@id="SCC_NAMES_H$scroll$0"]//*/table//tr[position()>1]
+        let nameRows = html!.searchWithXPathQuery("//*[@id='SCC_NAMES_H$scroll$0']//*/table//tr[position()>1]")
+        var dataArray = [Dictionary<String, String>]()
+        var i = 0
+        while i < nameRows.count {
+            let eachNameRow = nameRows[i]
+            let columns = eachNameRow.childrenWithTagName("td")
+            if columns.count < 2 { return JSON(resultDict) }
+            
+            let typeRaw: String = (columns[0] as TFHppleElement).raw
+            var type: String? = typeRaw.clearHtmlTags()
+            if type == nil { return JSON(resultDict) }
+            type = type!.clearNewLines()
+            
+            let nameRaw: String = (columns[1] as TFHppleElement).raw
+            var name: String? = nameRaw.clearHtmlTags()
+            if name == nil { return JSON(resultDict) }
+            name = name!.clearNewLines()
+            
+            var nameDict = [
+                "Name Type": type!,
+                "Name": name!
+            ]
+            
+            dataArray.append(nameDict)
+            resultDict["Data"] = dataArray
+            i++
+        }
+        return JSON(resultDict)
+    }
+    
+    /**
+    Parse address response to JSON data
+    {"Message": "...", "Data": [{"Name Type": "...", "Name": "..."}]}
+    
+    :param: response network response
+    
+    :returns: JSON data
+    */
+    func parsePhoneNumbers(response: AnyObject) -> JSON? {
         let html = getHtmlContentFromResponse(response)
         if html == nil {
             return nil

@@ -55,6 +55,7 @@ class TitleSubTitleCollectionViewCell: UICollectionViewCell {
         // On iOS8, if bounds is zero, autoresizingmask will conflit with other constraints
         self.bounds = CGRectMake(0, 0, screenWidth, screenHeight)
         self.contentView.bounds = self.bounds
+        
         self.layer.masksToBounds = true
         self.layer.borderColor = UQCellBackgroundColor.CGColor
         self.layer.cornerRadius = kBorderCornerRadius
@@ -136,6 +137,25 @@ extension TitleSubTitleCollectionViewCell {
         }
         self.setNeedsLayout()
         self.layoutIfNeeded()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        var subTitleLabelMaxWidth: CGFloat = 0.0
+        // Set max sub title label width
+        for eachTuple in self.subLabelTuples {
+            var subTitleLabel = eachTuple.0
+            let widthOfTitle = subTitleLabel.exactSize().width
+            if widthOfTitle > subTitleLabelMaxWidth {
+                subTitleLabelMaxWidth = widthOfTitle
+            }
+        }
+        
+        // Set preferredMaxLayoutWidth for every sub content label
+        for eachTuple in self.subLabelTuples {
+            var subContentLabel = eachTuple.1
+            subContentLabel.preferredMaxLayoutWidth = self.bounds.width - 3 * kLabelHorizontalInsets - subTitleLabelMaxWidth
+        }
     }
 }
 

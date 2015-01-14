@@ -110,8 +110,9 @@ extension MainCollectionViewController: UICollectionViewDataSource, UICollection
         collectionView.delegate = self
         
         // Registeration
-        var descriptionCellNib = UINib(nibName: "DescriptionCollectionViewCell", bundle: nil)
-        collectionView.registerNib(descriptionCellNib, forCellWithReuseIdentifier: kDescriptionCellResueIdentifier)
+//        var descriptionCellNib = UINib(nibName: "DescriptionCollectionViewCell", bundle: nil)
+//        collectionView.registerNib(descriptionCellNib, forCellWithReuseIdentifier: kDescriptionCellResueIdentifier)
+        collectionView.registerClass(DescriptionCollectionViewCell.self, forCellWithReuseIdentifier: kDescriptionCellResueIdentifier)
     }
     
     // MARK: - UICollectionViewDataSource
