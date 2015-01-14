@@ -166,11 +166,11 @@ class PersonalInformation {
         var isPreferred: Bool
         var telephone: String
         
-        class var kPhoneType: String {return "phone_type"}
-        class var kCountry: String {return "country"}
-        class var kExtension: String {return "ext"}
-        class var kPreferred: String {return "preferred"}
-        class var kTelephone: String {return "telephone"}
+        class var kPhoneType: String {return "*Phone Type"}
+        class var kCountry: String {return "Country"}
+        class var kExtension: String {return "Ext"}
+        class var kPreferred: String {return "Preferred"}
+        class var kTelephone: String {return "*Telephone"}
         
         class func newPhoneNumber(rawDict: Dictionary<String, String>) -> PhoneNumber? {
             let phoneType: String? = rawDict[PhoneNumber.kPhoneType]

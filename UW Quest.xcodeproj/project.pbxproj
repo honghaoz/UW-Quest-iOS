@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1B17CEE31A55B77D0066F0C1 /* ZHAutoLinesLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B17CEE11A55B77D0066F0C1 /* ZHAutoLinesLabel.swift */; };
 		1B17CEE41A55B77D0066F0C1 /* ZHExtendViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B17CEE21A55B77D0066F0C1 /* ZHExtendViews.swift */; };
+		1B196A911A663A49003111FC /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B196A8F1A663A49003111FC /* NSString+HTML.m */; };
+		1B196A941A663B00003111FC /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B196A921A663B00003111FC /* GTMNSString+HTML.m */; };
 		1B1A3A5C1A54AD250077E8A9 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1A3A5B1A54AD250077E8A9 /* SwiftyJSON.swift */; };
 		1B1A3A5E1A5517970077E8A9 /* NameCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1A3A5D1A5517970077E8A9 /* NameCollectionViewCell.swift */; };
 		1B2152311A536C3200B7165A /* QuestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2152301A536C3200B7165A /* QuestClient.swift */; };
@@ -97,6 +99,10 @@
 		040AF5C3C6C827E481C73485 /* Pods-UW Quest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UW Quest.release.xcconfig"; path = "Pods/Target Support Files/Pods-UW Quest/Pods-UW Quest.release.xcconfig"; sourceTree = "<group>"; };
 		1B17CEE11A55B77D0066F0C1 /* ZHAutoLinesLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHAutoLinesLabel.swift; sourceTree = "<group>"; };
 		1B17CEE21A55B77D0066F0C1 /* ZHExtendViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHExtendViews.swift; sourceTree = "<group>"; };
+		1B196A8F1A663A49003111FC /* NSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTML.m"; sourceTree = "<group>"; };
+		1B196A901A663A49003111FC /* NSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTML.h"; sourceTree = "<group>"; };
+		1B196A921A663B00003111FC /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
+		1B196A931A663B00003111FC /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
 		1B1A3A5B1A54AD250077E8A9 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		1B1A3A5D1A5517970077E8A9 /* NameCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameCollectionViewCell.swift; sourceTree = "<group>"; };
 		1B2152301A536C3200B7165A /* QuestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestClient.swift; sourceTree = "<group>"; };
@@ -251,6 +257,10 @@
 				FAF2292119C937620041C36F /* UIApplication+AppVersion.m */,
 				FAF2292219C937620041C36F /* UIDevice-Hardware.h */,
 				FAF2292319C937620041C36F /* UIDevice-Hardware.m */,
+				1B196A901A663A49003111FC /* NSString+HTML.h */,
+				1B196A8F1A663A49003111FC /* NSString+HTML.m */,
+				1B196A931A663B00003111FC /* GTMNSString+HTML.h */,
+				1B196A921A663B00003111FC /* GTMNSString+HTML.m */,
 				1BEB05BE1A5397BC00986692 /* UIImage+ImageEffects */,
 			);
 			path = Extension;
@@ -672,7 +682,9 @@
 				1B520C4F19CE888300A0ADE6 /* MenuViewController.swift in Sources */,
 				1BEB05BB1A53979600986692 /* Range.swift in Sources */,
 				1B2152331A536F5900B7165A /* ZHLogger.swift in Sources */,
+				1B196A911A663A49003111FC /* NSString+HTML.m in Sources */,
 				FAE020D919DBACA40000253A /* EmergencyContactCollectionViewCell.swift in Sources */,
+				1B196A941A663B00003111FC /* GTMNSString+HTML.m in Sources */,
 				1B7CF10A19BCEF28007A157D /* AppDelegate.swift in Sources */,
 				FA32935F19FD60A800164369 /* MenuTitleCell.swift in Sources */,
 				FA21D6E419E7780C002FBF71 /* MEZoomAnimationController.m in Sources */,

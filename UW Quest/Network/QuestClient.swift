@@ -447,14 +447,14 @@ extension QuestClient {
             if columns.count < 3 { return JSON(dataArray) }
             
             let typeRaw: String = (columns[0] as TFHppleElement).raw
-            var type: String? = typeRaw.clearHtmlTags()
+            var type: String? = typeRaw.stringByConvertingHTMLToPlainText()
             if type == nil { return JSON(dataArray) }
-            type = type!.clearNewLines()
+//            type = type!.clearNewLines()
             
             let addressRaw: String = (columns[1] as TFHppleElement).raw
-            var address: String? = addressRaw.clearHtmlTags()
+            var address: String? = addressRaw.stringByConvertingHTMLToPlainText()
             if address == nil { return JSON(dataArray) }
-            address = address!.clearNewLines()
+//            address = address!.clearNewLines()
             
             var addrDict = [
                 "Address Type": type!,
@@ -505,14 +505,14 @@ extension QuestClient {
             if columns.count < 2 { return JSON(resultDict) }
             
             let typeRaw: String = (columns[0] as TFHppleElement).raw
-            var type: String? = typeRaw.clearHtmlTags()
+            var type: String? = typeRaw.stringByConvertingHTMLToPlainText()
             if type == nil { return JSON(resultDict) }
-            type = type!.clearNewLines()
+//            type = type!.clearNewLines()
             
             let nameRaw: String = (columns[1] as TFHppleElement).raw
-            var name: String? = nameRaw.clearHtmlTags()
+            var name: String? = nameRaw.stringByConvertingHTMLToPlainText()
             if name == nil { return JSON(resultDict) }
-            name = name!.clearNewLines()
+//            name = name!.clearNewLines()
             
             var nameDict = [
                 "Name Type": type!,
@@ -528,7 +528,7 @@ extension QuestClient {
     
     /**
     Parse address response to JSON data
-    {"Message": "...", "Data": [{"Name Type": "...", "Name": "..."}]}
+    [{"Phone Type": "Business", "Telephone": "519/781-2862", "Ext": "", "Country": "001", "Preferred": "Y"}]
     
     :param: response network response
     
@@ -539,49 +539,31 @@ extension QuestClient {
         if html == nil {
             return nil
         }
-        var resultDict: Dictionary<String, AnyObject> = [
-            "Message": "",
-            "Data": [Dictionary<String, String>]()
-        ]
-        // Message
-        //*[@class="PAPAGEINSTRUCTIONS"]
-        let messageElements = html!.searchWithXPathQuery("//*[@class='PAPAGEINSTRUCTIONS']")
-        if messageElements.count > 0 {
-            let message: String? = (messageElements[0] as TFHppleElement).text()
-            if message != nil {
-                resultDict["Message"] = message
+        
+        // Phone number table
+        let phoneTables = html!.searchWithXPathQuery("//*[@id='SCC_PERS_PHN_H$scroll$0']")
+        if phoneTables.count == 0 {
+            return nil
+        } else {
+            let phoneTable = phoneTables[0] as TFHppleElement
+            let tableArray = phoneTable.table2DArray()
+            if tableArray != nil {
+                var dataArray = [Dictionary<String, String>]()
+                if tableArray!.count > 1 {
+                    for i in 1 ..< tableArray!.count {
+                        var dict = Dictionary<String, String>()
+                        for j in 0 ..< 5 {
+                            dict[tableArray![0][j]] = tableArray![i][j]
+                        }
+                        dataArray.append(dict)
+                    }
+                    return JSON(dataArray)
+                } else {
+                    return JSON(dataArray)
+                }
+            } else {
+                return nil
             }
         }
-        
-        // Names
-        //*[@id="SCC_NAMES_H$scroll$0"]//*/table//tr[position()>1]
-        let nameRows = html!.searchWithXPathQuery("//*[@id='SCC_NAMES_H$scroll$0']//*/table//tr[position()>1]")
-        var dataArray = [Dictionary<String, String>]()
-        var i = 0
-        while i < nameRows.count {
-            let eachNameRow = nameRows[i]
-            let columns = eachNameRow.childrenWithTagName("td")
-            if columns.count < 2 { return JSON(resultDict) }
-            
-            let typeRaw: String = (columns[0] as TFHppleElement).raw
-            var type: String? = typeRaw.clearHtmlTags()
-            if type == nil { return JSON(resultDict) }
-            type = type!.clearNewLines()
-            
-            let nameRaw: String = (columns[1] as TFHppleElement).raw
-            var name: String? = nameRaw.clearHtmlTags()
-            if name == nil { return JSON(resultDict) }
-            name = name!.clearNewLines()
-            
-            var nameDict = [
-                "Name Type": type!,
-                "Name": name!
-            ]
-            
-            dataArray.append(nameDict)
-            resultDict["Data"] = dataArray
-            i++
-        }
-        return JSON(resultDict)
     }
 }

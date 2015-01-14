@@ -25,3 +25,5 @@
 #import <hpple/TFHpple.h>
 
 #import "UIImage+ImageEffects.h"
+#import "NSString+HTML.h"
+#import "GTMNSString+HTML.h"

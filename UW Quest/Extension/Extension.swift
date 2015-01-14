@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import ObjectiveC
 
 extension UIColor {
     /**
@@ -386,13 +387,13 @@ extension String {
         return newString
     }
     
-    func clearHtmlTags() -> String? {
-        return self.replacePattern("<.*?>", withString: "")
-    }
-    
-    func clearNewLines() -> String {
-        return (self as NSString).stringByReplacingOccurrencesOfString("\n", withString: "").stringByReplacingOccurrencesOfString("\r", withString: "").stringByReplacingOccurrencesOfString("&#13;", withString: "")
-    }
+//    func clearHtmlTags() -> String? {
+//        return self.replacePattern("<.*?>", withString: "")
+//    }
+//    
+//    func clearNewLines() -> String {
+//        return (self as NSString).stringByReplacingOccurrencesOfString("\n", withString: "").stringByReplacingOccurrencesOfString("\r", withString: "").stringByReplacingOccurrencesOfString("&#13;", withString: "")
+//    }
 }
 
 extension NSString {
@@ -416,6 +417,114 @@ extension NSString {
         } else {
             return true
         }
+    }
+}
+
+var associatedObjectKey: UInt8 = 0
+extension TFHppleElement {
+    /// Get realChildren, this will exclude nil child
+    var realChildren: [TFHppleElement] {
+        get {
+            var realChildren: [TFHppleElement]?
+            realChildren = objc_getAssociatedObject(self, &associatedObjectKey) as AnyObject? as? [TFHppleElement]
+            if realChildren != nil {
+                return realChildren!
+            } else {
+                realChildren = [TFHppleElement]()
+                for child in self.children {
+                    if let realChild: TFHppleElement = child as? TFHppleElement {
+                        if realChild.raw != nil {
+                            realChildren!.append(realChild)
+                        }
+                    }
+                }
+                objc_setAssociatedObject(self, &associatedObjectKey, realChildren, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
+                return realChildren!
+            }
+        }
+    }
+    
+    /**
+    Return displayed string for a single node, no children is contained
+    E.g., 
+    1:
+    <a name="sd" href="asd" title="asd">*Phone Type</a>
+    return: "*Phone Type"
+    
+    2:
+    <select name="DERIVED_SS_PD_PHONE_TYPE$0" id="DERIVED_SS_PD_PHONE_TYPE$0" tabindex="52" size="1" class="PSDROPDOWNLIST" style="width:221px; " onchange="addchg_win0(this);submitAction_win0(this.form,this.name);/*8000,200000*/">
+        <option value="BUSN" selected="selected">Business</option>
+        <option value="CELL">Cellular</option>
+        <option value="HOME">Home</option>
+        <option value="MAIL">Mailing</option>
+    </select>
+    return: "Business"
+    
+    3:
+    <input type="text" name="SCC_PERS_PHN_H_PHONE$0" id="SCC_PERS_PHN_H_PHONE$0" tabindex="53" value="519/781-2862" class="PSEDITBOX" style="width:163px; " maxlength="24" onchange="addchg_win0(this);oChange_win0=this;/*108800,0*/">
+    return: "519/781-2862"
+    
+    4:
+    <span id="DELETE$span$0" class="SSSBUTTON_ACTIONLINK" title="Delete Entry">
+        <a name="DELETE$0" id="DELETE$0" ptlinktgt="pt_peoplecode" tabindex="57" href="javascript:submitAction_win0(document.win0,'DELETE$0');" class="SSSBUTTON_ACTIONLINK">Delete</a>
+    </span>
+    return: "Delete"
+    
+    If this is a <div> and only contains one single node, will return the content for this single node, otherwise, return the first node's content
+    
+    :returns: The displayable content for this node
+    */
+    func displayableString() -> String? {
+        if self.realChildren.count > 0 {
+            // If self is select tag, continue
+            if self.tagName != "select" {
+                return realChildren[0].displayableString()
+            }
+        }
+        if self.tagName == "select" {
+            for childNode in self.realChildren {
+                if childNode.tagName == "option" && childNode.hasKey("selected") && childNode.objectForKey("selected") == "selected" {
+                    return (childNode.raw as String).stringByConvertingHTMLToPlainText()
+                }
+            }
+            return ""
+        } else if self.tagName == "input" {
+            return self.objectForKey("value")
+        } else {
+            return (self.raw as NSString).stringByConvertingHTMLToPlainText()
+        }
+    }
+    
+    /**
+    Return the first table 2d array in this element
+    
+    :returns: 2d array of the first table
+    */
+    func table2DArray() -> [[String]]? {
+        if self.tagName != "table" {
+            if !self.hasChildren() {
+                return nil
+            } else {
+                return (self.firstChild as TFHppleElement).table2DArray()
+             }
+        } else  {
+            var table = [[String]]()
+            for rowElement in self.childrenWithTagName("tr") {
+                var row = [String]()
+                for colElement in rowElement.childrenWithTagName("th") {
+                    row.append(colElement.displayableString() ?? "")
+                }
+                for colElement in rowElement.childrenWithTagName("td") {
+                    row.append(colElement.displayableString() ?? "")
+                }
+                table.append(row)
+            }
+            return table
+        }
+    }
+    
+    func hasKey(key: String) -> Bool {
+        return self.attributes.has(key)
     }
 }
 
