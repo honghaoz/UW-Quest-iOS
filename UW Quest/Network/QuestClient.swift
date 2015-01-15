@@ -364,7 +364,7 @@ extension QuestClient {
             ]
             getPersonalInformationWithParameters(parameters, kPersonalInfoNameURL,parseName, successClosure, failure)
         case .PhoneNumbers:
-            logVerbose(".Names")
+            logVerbose(".PhoneNumbers")
             parameters = [
                 "Page": "SS_CC_PERS_PHONE",
                 "Action": "U"
@@ -927,6 +927,13 @@ extension QuestClient {
         let html = getHtmlContentFromResponse(response)
         if html == nil {
             return nil
+        }
+        
+        //*[@id="win0divVISA_PMT_SUPPRT$0"]
+        let basicQueryString: NSString = "//*[@id='win0divVISA_PMT_SUPPRT$%d//Table']"
+        var i: Int = 0
+        while html!.peekAtSearchWithXPathQuery(NSString(format: basicQueryString, i)) != nil {
+            
         }
         return nil
     }
