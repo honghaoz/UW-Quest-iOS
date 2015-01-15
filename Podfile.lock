@@ -20,7 +20,6 @@ PODS:
   - AFNetworking/UIKit (2.5.0):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - Appsee (2.1.2)
   - ARAnalytics/CoreIOS (2.9.1)
   - ARAnalytics/Crashlytics (2.9.1):
     - ARAnalytics/CoreIOS
@@ -40,7 +39,6 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
-  - Appsee
   - ARAnalytics/Crashlytics
   - ARAnalytics/GoogleAnalytics
   - ECSlidingViewController
@@ -51,7 +49,6 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
-  Appsee: bdc4205eee4722e8d2659705690ee4b694e8452c
   ARAnalytics: a06e6d012b5999d8598ec9bacec45c8a8099f668
   Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
   ECSlidingViewController: e79fe856bfb1a99a39c995377a1943e50f7647eb

@@ -12,7 +12,7 @@ pod 'Parse'
 
 pod "ARAnalytics/GoogleAnalytics"
 pod "ARAnalytics/Crashlytics"
-pod 'Appsee'
+# pod 'Appsee'
 pod 'PureLayout'
 pod 'JGProgressHUD'
 pod 'ECSlidingViewController'

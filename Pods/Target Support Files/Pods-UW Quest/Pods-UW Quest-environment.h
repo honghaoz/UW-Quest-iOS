@@ -66,12 +66,6 @@
 #define COCOAPODS_VERSION_MINOR_ARAnalytics_GoogleAnalytics 9
 #define COCOAPODS_VERSION_PATCH_ARAnalytics_GoogleAnalytics 1
 
-// Appsee
-#define COCOAPODS_POD_AVAILABLE_Appsee
-#define COCOAPODS_VERSION_MAJOR_Appsee 2
-#define COCOAPODS_VERSION_MINOR_Appsee 1
-#define COCOAPODS_VERSION_PATCH_Appsee 2
-
 // Bolts
 #define COCOAPODS_POD_AVAILABLE_Bolts
 #define COCOAPODS_VERSION_MAJOR_Bolts 1

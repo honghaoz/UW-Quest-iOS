@@ -14,11 +14,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-UW Quest-Appsee.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-UW Quest-Bolts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -62,57 +57,52 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>13CB18C98E3D3EDF9B0D904D</key>
+		<key>0231D7ED12FEE093D43CCF92</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1C2FD47C38C70DDC5CC6CB4F</key>
+		<key>233805CFF29FE58A002E0A3B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>39CE4616C6A182AE2C7B10EC</key>
+		<key>4F7075320980FB793C4AA60A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4CEC1637A0AB6C9188A10220</key>
+		<key>5CCF0E0580D338F9400717EC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7FABC05BE3944FE3C2CB9ABF</key>
+		<key>756074EC038DF76482EAE5A3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9CFF2CE57A8BCE8E1AFD2F2D</key>
+		<key>7EB13C0BE0F13FC22C7BFDA4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AF4F25D8DF4A4CEB26C0464C</key>
+		<key>80FF4336BA1B44ACA28AFC08</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B4E60112B3DE1C8A3E783E84</key>
+		<key>B254E6CC146CAC8B701FDBAD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CA4E177514CD4F581CDE3D49</key>
+		<key>D352D7806A54EBB11129FB76</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CCDDAEC3A58DA503DB4EB9CE</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EEB86CD85FF2C92E4F5975FB</key>
+		<key>D4B4C98DB69FC6D20FCB0804</key>
 		<dict>
 			<key>primary</key>
 			<true/>

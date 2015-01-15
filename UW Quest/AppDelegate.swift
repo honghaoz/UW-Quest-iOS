@@ -44,8 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ARAnalytics.setupCrashlyticsWithAPIKey("d3ec53bc16086eec715f67dbf095bf3be047762c")
         ARAnalytics.setupParseAnalyticsWithApplicationID("JcvEfa2LZ6tdQQjDZ5nYAaJUslEOuU5qTrU9d4Yb", clientKey: "F66Ch6rXmkE75BcDXqS4cISJVcU4yh6CHmx5UZMP")
         
-        Appsee.start("7f914911dabe41878792302113000594")
-        
         ARAnalytics.event("App Launch")
         return true
     }

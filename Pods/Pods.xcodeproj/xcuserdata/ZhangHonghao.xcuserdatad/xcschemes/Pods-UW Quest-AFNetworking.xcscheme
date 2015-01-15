@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4CEC1637A0AB6C9188A10220"
+               BlueprintIdentifier = "0231D7ED12FEE093D43CCF92"
                BuildableName = "libPods-UW Quest-AFNetworking.a"
                BlueprintName = "Pods-UW Quest-AFNetworking"
                ReferencedContainer = "container:Pods.xcodeproj">
