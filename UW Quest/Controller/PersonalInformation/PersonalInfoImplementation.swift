@@ -67,7 +67,7 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
             case PersonalInformationType.EmergencyContacts:
                 return sharedPersonalInformation.emergencyContacts!.count == 0 ? 1 : sharedPersonalInformation.emergencyContacts!.count
             case PersonalInformationType.DemographicInformation:
-                return sharedPersonalInformation.demograhicInformation == nil ? 0 : (3 + (sharedPersonalInformation.demograhicInformation!.visaOrPermitData != nil ? 1 : 0) + sharedPersonalInformation.demograhicInformation!.nationalIdNumbers!.count)
+                return sharedPersonalInformation.demograhicInformation == nil ? 0 : sharedPersonalInformation.demograhicInformation!.keys.count + 1
             case PersonalInformationType.CitizenshipImmigrationDocuments:
                 return sharedPersonalInformation.citizenshipImmigrationDocument == nil ? 1 : ((sharedPersonalInformation.citizenshipImmigrationDocument!.requiredDocumentation.count > 0 ? 1 : 0) + (sharedPersonalInformation.citizenshipImmigrationDocument!.pastDocumentation.count > 0 ? 1 : 0))
             default:
@@ -149,29 +149,18 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
             cell = aCell
             break
         case PersonalInformationType.DemographicInformation:
-            let nationalIdsCount = sharedPersonalInformation.demograhicInformation!.nationalIdNumbers!.count
             let totalItemsCount = self.collectionView.numberOfItemsInSection(indexPath.section)
             // Last item should be description
             if indexPath.item == totalItemsCount - 1 {
-                var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(mainCollectionVC.kDescriptionCellResueIdentifier, forIndexPath: indexPath) as DescriptionCollectionViewCell
-                let description = sharedPersonalInformation.demograhicInformation?.note!
-                aCell.configSmall(description!, textAlignment: NSTextAlignment.Left)
-                cell = aCell
+                cell = collectionView.dequeueReusableCellWithReuseIdentifier(mainCollectionVC.kDescriptionCellResueIdentifier, forIndexPath: indexPath) as DescriptionCollectionViewCell
+                let description = sharedPersonalInformation.demograhicInformation!.message
+                (cell as DescriptionCollectionViewCell).configSmall(description, textAlignment: NSTextAlignment.Left)
             } else {
-                var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kDemograhicCellResueIdentifier, forIndexPath: indexPath) as DemographicCollectionCell
+                cell = collectionView.dequeueReusableCellWithReuseIdentifier(kDemograhicCellResueIdentifier, forIndexPath: indexPath) as DemographicCollectionCell
                 var demographicInfo = sharedPersonalInformation.demograhicInformation!
-                if indexPath.item == 0 {
-                    aCell.configDemographicInformation(demographicInfo)
-                } else if indexPath.item <= nationalIdsCount {
-                    aCell.configNationalIds(demographicInfo, index: indexPath.item - 1)
-                } else if indexPath.item == totalItemsCount - 2 && (sharedPersonalInformation.demograhicInformation!.visaOrPermitData != nil) {
-                    aCell.configVisa(demographicInfo)
-                } else {
-                    aCell.configCitizenship(demographicInfo)
-                }
-                cell = aCell
+                let key = demographicInfo.keys[indexPath.item]
+                (cell as DemographicCollectionCell).config(demographicInfo, withKey: key)
             }
-            break
         case PersonalInformationType.CitizenshipImmigrationDocuments:
             // For non international students
             if (sharedPersonalInformation.citizenshipImmigrationDocument == nil) {
@@ -291,39 +280,18 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
             cell = aCell
             break
         case PersonalInformationType.DemographicInformation:
-            let nationalIdsCount = sharedPersonalInformation.demograhicInformation!.nationalIdNumbers!.count
             let totalItemsCount = self.collectionView.numberOfItemsInSection(indexPath.section)
             // Last item should be description
             if indexPath.item == totalItemsCount - 1 {
-                let reuseIdentifier = mainCollectionVC.kDescriptionCellResueIdentifier
-                var aCell: DescriptionCollectionViewCell? = mainCollectionVC.offscreenCells[reuseIdentifier] as? DescriptionCollectionViewCell
-                if aCell == nil {
-                    aCell = NSBundle.mainBundle().loadNibNamed("DescriptionCollectionViewCell", owner: nil, options: nil)[0] as? DescriptionCollectionViewCell
-                    mainCollectionVC.offscreenCells[reuseIdentifier] = aCell
-                }
-                let description = sharedPersonalInformation.demograhicInformation?.note!
-                aCell!.configSmall(description!, textAlignment: NSTextAlignment.Left)
-                cell = aCell
+                cell = collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(mainCollectionVC.kDescriptionCellResueIdentifier)
+                let description = sharedPersonalInformation.demograhicInformation!.message
+                (cell as DescriptionCollectionViewCell).configSmall(description, textAlignment: NSTextAlignment.Left)
             } else {
-                let reuseIdentifier = kDemograhicCellResueIdentifier
-                var aCell: DemographicCollectionCell? = mainCollectionVC.offscreenCells[reuseIdentifier] as? DemographicCollectionCell
-                if aCell == nil {
-                    aCell = DemographicCollectionCell(frame: CGRectMake(0, 0, targetWidth, targetWidth))
-                    mainCollectionVC.offscreenCells[reuseIdentifier] = aCell
-                }
+                cell = collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(kDemograhicCellResueIdentifier)
                 var demographicInfo = sharedPersonalInformation.demograhicInformation!
-                if indexPath.item == 0 {
-                    aCell!.configDemographicInformation(demographicInfo)
-                } else if indexPath.item <= nationalIdsCount {
-                    aCell!.configNationalIds(demographicInfo, index: indexPath.item - 1)
-                } else if (indexPath.item == totalItemsCount - 2) && (sharedPersonalInformation.demograhicInformation!.visaOrPermitData != nil) {
-                    aCell!.configVisa(demographicInfo)
-                } else {
-                    aCell!.configCitizenship(demographicInfo)
-                }
-                cell = aCell
+                let key = demographicInfo.keys[indexPath.item]
+                (cell as DemographicCollectionCell).config(demographicInfo, withKey: key)
             }
-            break
         case PersonalInformationType.CitizenshipImmigrationDocuments:
             // For non international students
             if (sharedPersonalInformation.citizenshipImmigrationDocument == nil) {

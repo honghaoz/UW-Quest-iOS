@@ -18,13 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window!.backgroundColor = UIColor.whiteColor()
         
-//        Locator.sharedQuestService.loginWithUsename("z73huang", password: "920101hzY", success: { response, json in
-//            logDebug("Oh yeah")
-//            Locator.sharedQuestService.getPersonalInformationAddress(success: { (response, json) -> () in
-//                logDebug("Oh yeah!!!")
-//            }, failure: nil)
-//        })
-        
         var rootViewController: UIViewController?
         
         if (Locator.sharedLocator.user.isLoggedIn) {

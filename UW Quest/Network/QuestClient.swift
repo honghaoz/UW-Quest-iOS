@@ -385,9 +385,19 @@ extension QuestClient {
             ]
             getPersonalInformationWithParameters(parameters, kPersonalInfoEnergencyURL, parseEmergencyContacts, successClosure, failure)
         case .DemographicInformation:
-            break
+            logVerbose(".DemographicInformation")
+            parameters = [
+                "Page": "SS_CC_DEMOG_DATA",
+                "Action": "U"
+            ]
+            getPersonalInformationWithParameters(parameters, kPersonalInfoDemographicInfoURL, parseDemographicInfo, successClosure, failure)
         case .CitizenshipImmigrationDocuments:
-            break
+            logVerbose(".CitizenshipImmigrationDocuments")
+            parameters = [
+                "Page": "UW_SS_CC_VISA_DOC",
+                "Action": "U"
+            ]
+            getPersonalInformationWithParameters(parameters, kPersonalInfoCitizenshipURL, parseDe;'.Asd'mograpasdasdasdhicInfo, successClosure, failure)
         default: assert(false, "Wrong PersonalInformation Type")
         }
     }
@@ -706,5 +716,242 @@ extension QuestClient {
                 return nil
             }
         }
+    }
+    
+    /**
+    {"Demographic Information": {
+        "ID": "11111111"
+        "Gender": "Male"
+        Date of Birth: 01/01/1900
+        Birth Country: ""
+        Birth State: ""
+        Marital Status: Single
+        Military Status: ""
+    },
+    "National Identification Number": {
+        Country: Canada
+        National ID Type: SIN
+        National ID
+    },
+    "Ethnicity": {
+        Ethnic Group: ""
+        Description: ""
+        Primary: ""
+    },
+    "Citizenship Information": {
+        Description Student Permit
+        Country Canada
+        Description Citizen
+        Country China
+    }
+    "Driver's License": {
+        License #
+        Country
+        State
+    }
+    Visa or Permit Data: {
+        *Type: Student Visa - Visa
+        Country: Canada
+    },
+    "message": "If any of the information above is wrong, contact your administrative office."
+    
+    :param: response response network response
+    
+    :returns: JSON data
+    */
+    func parseDemographicInfo(response: AnyObject) -> JSON? {
+        let html = getHtmlContentFromResponse(response)
+        if html == nil {
+            return nil
+        }
+        
+        var responseDictionary = [String: AnyObject]()
+        
+        // Demographic
+        //*[@id="ACE_$ICField45"]
+        var tables = html!.searchWithXPathQuery("//*[@id='ACE_$ICField45']")
+        if tables.count == 0 {
+            return JSON(responseDictionary)
+        } else {
+            var demoTuples = [[String]]()
+            let demoTable = tables[0] as TFHppleElement
+            let tableArray = demoTable.table2DArray()
+            if tableArray != nil {
+                var oneDArray = transform2dTo1d(tableArray!)
+                var i: Int = 0
+                while i < oneDArray.count {
+                    let t = [oneDArray[i], oneDArray[i + 1]]
+                    demoTuples.append(t)
+                    i += 2
+                }
+            }
+            responseDictionary["Demographic Information"] = demoTuples
+        }
+        
+        // National Identification Number
+        //*[@id="ACE_$ICField1$0"]
+        tables = html!.searchWithXPathQuery("//*[@id='ACE_$ICField1$0']")
+        if tables.count == 0 {
+            return JSON(responseDictionary)
+        } else {
+            let table = tables[0] as TFHppleElement
+            let tableArray = table.table2DArray()
+            var tuples = [[String]]()
+            if tableArray != nil {
+                // [["", "", "", "", "", "", ""], ["", "Country", "National ID Type", "National ID"], ["", "Canada", "SIN", " "]]
+                for i in 2 ..< tableArray!.count {
+                    for j in 1 ..< tableArray![i].count {
+                        tuples.append([tableArray![1][j], tableArray![i][j]])
+                    }
+                }
+            }
+            responseDictionary["National Identification Number"] = tuples
+        }
+        
+        // Ethnicity
+        //*[@id="ACE_ETHNICITY$0"]
+        tables = html!.searchWithXPathQuery("//*[@id='ACE_ETHNICITY$0']")
+        if tables.count == 0 {
+            return JSON(responseDictionary)
+        } else {
+            let table = tables[0] as TFHppleElement
+            let tableArray = table.table2DArray()
+            var tuples = [[String]]()
+            if tableArray != nil {
+                // [["", "", "", "", "", "", ""], ["", "Ethnic Group", "Description", "Primary"], ["", " ", " ", " "]]
+                for i in 2 ..< tableArray!.count {
+                    for j in 1 ..< tableArray![i].count {
+                        tuples.append([tableArray![1][j], tableArray![i][j]])
+                    }
+                }
+            }
+            responseDictionary["Ethnicity"] = tuples
+        }
+        
+        // Citizenship Information
+        //*[@id="ACE_CITIZENSHIP$0"]
+        tables = html!.searchWithXPathQuery("//*[@id='ACE_CITIZENSHIP$0']")
+        if tables.count == 0 {
+            return JSON(responseDictionary)
+        } else {
+            let table = tables[0] as TFHppleElement
+            let tableArray = table.table2DArray()
+            // [["", "", "", "", ""],
+            // ["", "Description", "", "Country"], 
+            // ["", "Student Permit"], 
+            // ["", "Canada"], 
+            // ["", "Description", "Country"], 
+            // ["", "Citizen"], 
+            // ["", "China"]]
+            var tuples = [[String]]()
+            if tableArray != nil {
+                var i: Int = 2
+                while i < tableArray!.count {
+                    tuples.append([tableArray![i][1], tableArray![i + 1][1]])
+                    i += 3
+                }
+            }
+            responseDictionary["Citizenship Information"] = tuples
+        }
+        
+        // Driver's License
+        //*[@id="ACE_DRIVERS_LIC$0"]
+        
+        //*[@id="win0divDRIVERS_LIC_VW_DRIVERS_LIC_NBRlbl$0"]
+        //*[@id="win0divDRIVERS_LIC_VW_DRIVERS_LIC_NBR$0"]
+        
+        //*[@id="win0divCOUNTRY_TBL_DESCR$28$lbl$0"]
+        //*[@id="win0divCOUNTRY_TBL_DESCR$28$$0"]
+        
+        //*[@id="win0divDRIVERS_LIC_VW_STATElbl$0"]
+        //*[@id="win0divDRIVERS_LIC_VW_STATE$0"]
+        var tuples = [[String]]()
+        tuples.append(
+            [
+                html!.plainTextForXPathQuery("//*[@id='win0divDRIVERS_LIC_VW_DRIVERS_LIC_NBRlbl$0']"),
+                html!.plainTextForXPathQuery("//*[@id='win0divDRIVERS_LIC_VW_DRIVERS_LIC_NBR$0']")
+            ]
+        )
+        
+        tuples.append(
+            [
+                html!.plainTextForXPathQuery("//*[@id='win0divCOUNTRY_TBL_DESCR$28$lbl$0']"),
+                html!.plainTextForXPathQuery("//*[@id='win0divCOUNTRY_TBL_DESCR$28$$0']")
+            ]
+        )
+        
+        tuples.append(
+            [
+                html!.plainTextForXPathQuery("//*[@id='win0divDRIVERS_LIC_VW_STATElbl$0']"),
+                html!.plainTextForXPathQuery("//*[@id='win0divDRIVERS_LIC_VW_STATE$0']")
+            ]
+        )
+        
+        responseDictionary["Driver's License"] = tuples
+        
+        // Visa or Permit Data
+        //*[@id="VISA_PERMIT_TBL_DESCR$0"]
+        //*[@id="PSXLATITEM_XLATLONGNAME$36$$0"]
+        //*[@id="COUNTRY_TBL_DESCR$32$$0"]
+        
+        tuples = [[String]]()
+        var i: Int = 0
+        var basicXPathString1: NSString = "//*[@id='VISA_PERMIT_TBL_DESCR$%d']"
+        var basicXPathString2: NSString = "//*[@id='PSXLATITEM_XLATLONGNAME$36$$%d']"
+        var basicXPathString3: NSString = "//*[@id='COUNTRY_TBL_DESCR$32$$%d']"
+        
+        while html!.peekAtSearchWithXPathQuery(NSString(format: basicXPathString1, i)) != nil {
+            tuples.append(
+                [
+                    "Type",
+                    html!.peekAtSearchWithXPathQuery(NSString(format: basicXPathString1, i))!.raw.stringByConvertingHTMLToPlainText().trimmed() + " - " + html!.peekAtSearchWithXPathQuery(NSString(format: basicXPathString2, i))!.raw.stringByConvertingHTMLToPlainText().trimmed()
+                ]
+            )
+            tuples.append(
+                [
+                    "Country",
+                    html!.peekAtSearchWithXPathQuery(NSString(format: basicXPathString3, i))!.raw.stringByConvertingHTMLToPlainText().trimmed()
+                ]
+            )
+            i += 1
+        }
+        
+        responseDictionary["Visa or Permit Data"] = tuples
+        
+        // Message
+        //*[@id="win0div$ICField37"]
+        responseDictionary["Message"] = html!.plainTextForXPathQuery("//*[@id='win0div$ICField37']")
+        return JSON(responseDictionary)
+    }
+    
+    /**
+    {"Required Documentation": {
+        
+    }
+    
+    :param: response response network response
+    
+    :returns: JSON data
+    */
+    func parseDemographicInfo(response: AnyObject) -> JSON? {
+        let html = getHtmlContentFromResponse(response)
+        if html == nil {
+            return nil
+        }
+    }
+}
+
+// MARK: Helpers
+extension QuestClient {
+    func transform2dTo1d(twoDArray: [[String]]) -> [String] {
+        var oneDArray = [String]()
+        for row in twoDArray {
+            for col in row {
+                if col.length > 0 {
+                    oneDArray.append(col)
+                }
+            }
+        }
+        return oneDArray
     }
 }

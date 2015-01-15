@@ -387,6 +387,10 @@ extension String {
         return newString
     }
     
+    func plainTextForXPathQuery(query: String) -> String {
+        return (self as NSString).plainTextForXPathQuery(query)
+    }
+    
 //    func clearHtmlTags() -> String? {
 //        return self.replacePattern("<.*?>", withString: "")
 //    }
@@ -416,6 +420,16 @@ extension NSString {
             return false
         } else {
             return true
+        }
+    }
+    
+    func plainTextForXPathQuery(query: String) -> String {
+        let elements = self.searchWithXPathQuery(query)
+        if elements.count == 0 {
+            return ""
+        } else {
+            let element = elements[0] as TFHppleElement
+            return element.raw.stringByConvertingHTMLToPlainText().trimmed()
         }
     }
 }
