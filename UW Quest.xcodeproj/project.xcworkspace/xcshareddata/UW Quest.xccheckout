@@ -14,11 +14,11 @@
 		<string>https://github.com/honghaoz/UW-Quest-iOS.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>UW Quest/UW Quest.xcodeproj</string>
+	<string>UW Quest.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>4E66E3EBF678FBC03D2B7A05930E47EF37DCC3F2</key>
-		<string>../../..</string>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/honghaoz/UW-Quest-iOS.git</string>

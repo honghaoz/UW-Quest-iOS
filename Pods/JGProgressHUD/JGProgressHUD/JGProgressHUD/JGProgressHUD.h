@@ -9,21 +9,30 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@class JGProgressHUDIndicatorView;
-@class JGProgressHUDAnimation;
+#import "JGProgressHUDIndicatorView.h"
+#import "JGProgressHUDAnimation.h"
 
 /**
  Positions of the HUD.
  */
 typedef NS_ENUM(NSUInteger, JGProgressHUDPosition) {
+    /** Center position. */
     JGProgressHUDPositionCenter = 0,
+    /** Top left position. */
     JGProgressHUDPositionTopLeft,
+    /** Top center position. */
     JGProgressHUDPositionTopCenter,
+    /** Top right position. */
     JGProgressHUDPositionTopRight,
+    /** Center left position. */
     JGProgressHUDPositionCenterLeft,
+    /** Center right position. */
     JGProgressHUDPositionCenterRight,
+    /** Bottom left position. */
     JGProgressHUDPositionBottomLeft,
+    /** Bottom center position. */
     JGProgressHUDPositionBottomCenter,
+    /** Bottom right position. */
     JGProgressHUDPositionBottomRight
 };
 
@@ -31,8 +40,11 @@ typedef NS_ENUM(NSUInteger, JGProgressHUDPosition) {
  Appearance styles of the HUD.
  */
 typedef NS_ENUM(NSUInteger, JGProgressHUDStyle) {
+    /** Extra light HUD with dark elements. */
     JGProgressHUDStyleExtraLight = 0,
+    /** Light HUD with dark elemets. */
     JGProgressHUDStyleLight,
+    /** Dark HUD with light elements. */
     JGProgressHUDStyleDark
 };
 
@@ -40,8 +52,11 @@ typedef NS_ENUM(NSUInteger, JGProgressHUDStyle) {
  Interaction types.
  */
 typedef NS_ENUM(NSUInteger, JGProgressHUDInteractionType) {
+    /** Block all touches. No interaction behin the HUD is possible. */
     JGProgressHUDInteractionTypeBlockAllTouches = 0,
+    /** Block touches on the HUD view. */
     JGProgressHUDInteractionTypeBlockTouchesOnHUDView,
+    /** Block no touches. */
     JGProgressHUDInteractionTypeBlockNoTouches
 };
 

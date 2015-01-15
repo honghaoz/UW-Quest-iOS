@@ -166,14 +166,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func keyboardWillBeHidden(notification: NSNotification) {
-        logMethod()
         // Disable scrollable
         self.keyboardRect = CGRectZero
         self.scrollView.contentInset = UIEdgeInsetsZero
     }
     
     func keyboardWillChange(notification: NSNotification) {
-        logMethod()
         // Get keyboard end frame
         self.keyboardRect = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as AnyObject? as? NSValue)?.CGRectValue()
         self.makeActiveViewVisible(self.keyboardRect)
@@ -188,7 +186,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     :param: keyboardRect Current keyboard frame
     */
     func makeActiveViewVisible(keyboardRect: CGRect) {
-        logMethod()
         var keyboardHeight: CGFloat = keyboardRect.size.height
         if (isIOS7 && (self.interfaceOrientation == UIInterfaceOrientation.LandscapeLeft || self.interfaceOrientation == UIInterfaceOrientation.LandscapeRight)) {
             keyboardHeight = keyboardRect.size.width
@@ -242,7 +239,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
-        logMethod()
         self.activeView = textField;
         if !CGRectEqualToRect(self.keyboardRect, CGRectZero) {
             self.makeActiveViewVisible(self.keyboardRect)
@@ -250,7 +246,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
-        logMethod()
         self.activeView = nil;
     }
     
@@ -265,14 +260,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         Locator.sharedLocator.user.username = userIdTextField.text
         Locator.sharedLocator.user.password = passwordTextField.text
         Locator.sharedLocator.user.login({ () -> () in
-            println("Login Successfully")
+            logInfo("Login Successfully")
             if self.rememberSwitch.on {
                 Locator.sharedLocator.user.save()
             }
             JGProgressHUD.showSuccess("Success!", duration: 1.0)
             self.enterToMainScreen()
         }, failure: { (errorMessage, error) -> () in
-            println("Login Failed")
+            logInfo("Login Failed")
             JGProgressHUD.showFailure(errorMessage,  duration: 1.5)
         })
     }
@@ -298,7 +293,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func rememberSwitchChanged(sender: AnyObject?) {
-        println("Remember: \(rememberSwitch.on)")
+        logVerbose("Remember: \(rememberSwitch.on)")
         User.sharedUser.isRemembered = rememberSwitch.on
     }
     
@@ -309,7 +304,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             alert.dismissViewControllerAnimated(true, completion: nil)
         }))
         alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Cancel, handler: { alertAction in
-            println("Go to WATIAM website")
+            logInfo("Go to WATIAM website")
             ARAnalytics.event("Go to WATIAM website")
             UIApplication.sharedApplication().openURL(NSURL(string: watiamURLString)!)
             alert.dismissViewControllerAnimated(true, completion: nil)
@@ -325,7 +320,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 alert.dismissViewControllerAnimated(true, completion: nil)
             }))
             alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Cancel, handler: { alertAction in
-                println("Go to HonghaoZ website")
+                logInfo("Go to HonghaoZ website")
                 ARAnalytics.event("Go to HonghaoZ website")
                 UIApplication.sharedApplication().openURL(NSURL(string: honghaoLinkedInURLString)!)
                 alert.dismissViewControllerAnimated(true, completion: nil)

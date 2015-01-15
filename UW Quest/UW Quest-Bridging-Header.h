@@ -20,5 +20,9 @@
 #import <PureLayout/PureLayout.h>
 
 // Analytics
-#import <Appsee/Appsee.h>
 #import <ARAnalytics/ARAnalytics.h>
+#import <hpple/TFHpple.h>
+
+#import "UIImage+ImageEffects.h"
+#import "NSString+HTML.h"
+#import "GTMNSString+HTML.h"

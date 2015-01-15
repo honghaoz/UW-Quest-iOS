@@ -15,36 +15,25 @@
 #error "JGProgressHUD requires ARC!"
 #endif
 
-#ifndef __IPHONE_8_0
-#define __IPHONE_8_0 80000
-#endif
-
-#define kBaseSDKiOS8 (__IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0)
-
-#if kBaseSDKiOS8
-#define iOS8ex(available, unavailable) \
-if (iOS8) { \
-available \
-} \
-else { \
-unavailable \
-}
-#else
-#define iOS8ex(available, unavailable) \
-unavailable
-#endif
-
 #ifndef iPad
 #define iPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 #endif
 
-#ifndef kCFCoreFoundationVersionNumber_iOS_7_0
-#define kCFCoreFoundationVersionNumber_iOS_7_0 838.00
+#ifndef NSFoundationVersionNumber_iOS_7_0
+#define NSFoundationVersionNumber_iOS_7_0 1047.20
 #endif
 
-#define iOS7 (kCFCoreFoundationVersionNumber >= kCFCoreFoundationVersionNumber_iOS_7_0)
+#ifndef NSFoundationVersionNumber_iOS_8_0
+#define NSFoundationVersionNumber_iOS_8_0 1134.10
+#endif
 
-#define iOS8 ([UIVisualEffectView class] != Nil)
+#ifndef iOS7
+#define iOS7 (NSFoundationVersionNumber >= NSFoundationVersionNumber_iOS_7_0)
+#endif
+
+#ifndef iOS8
+#define iOS8 (NSFoundationVersionNumber >= NSFoundationVersionNumber_iOS_8_0)
+#endif
 
 @interface JGProgressHUD () {
     BOOL _transitioning;
@@ -52,6 +41,8 @@ unavailable
     
     BOOL _dismissAfterTransitionFinished;
     BOOL _dismissAfterTransitionFinishedWithAnimation;
+    
+    JGProgressHUDIndicatorView *_indicatorViewAfterTransitioning;
 }
 
 @end
@@ -324,11 +315,11 @@ static CGRect keyboardFrame = (CGRect){{0.0f, 0.0f}, {0.0f, 0.0f}};
 
 - (void)applyCornerRadius {
     self.HUDView.layer.cornerRadius = self.cornerRadius;
-    iOS8ex(
-           for (UIView *sub in self.HUDView.subviews) {
-               sub.layer.cornerRadius = self.cornerRadius;
-           }
-           ,);
+    if (iOS8) {
+        for (UIView *sub in self.HUDView.subviews) {
+            sub.layer.cornerRadius = self.cornerRadius;
+        }
+    };
 }
 
 #pragma mark - Showing
@@ -338,7 +329,12 @@ static CGRect keyboardFrame = (CGRect){{0.0f, 0.0f}, {0.0f, 0.0f}};
     
     _transitioning = NO;
     
-    if (_updateAfterAppear) {
+    if (_indicatorViewAfterTransitioning) {
+        self.indicatorView = _indicatorViewAfterTransitioning;
+        _indicatorViewAfterTransitioning = nil;
+        _updateAfterAppear = NO;
+    }
+    else if (_updateAfterAppear) {
         [self updateHUDAnimated:YES animateIndicatorViewFrame:YES];
         _updateAfterAppear = NO;
     }
@@ -374,8 +370,15 @@ static CGRect keyboardFrame = (CGRect){{0.0f, 0.0f}, {0.0f, 0.0f}};
 }
 
 - (void)showInRect:(CGRect)rect inView:(UIView *)view animated:(BOOL)animated {
-    NSAssert(!_transitioning, @"HUD is currently transitioning");
-    NSAssert(!self.targetView, @"HUD is already visible");
+    if (_transitioning) {
+        return;
+    }
+    else if (self.targetView != nil) {
+#if DEBUG
+        NSLog(@"[Warning] The HUD is already visible! Ignoring.");
+#endif
+        return;
+    }
     
     _targetView = view;
     
@@ -428,7 +431,9 @@ static CGRect keyboardFrame = (CGRect){{0.0f, 0.0f}, {0.0f, 0.0f}};
         return;
     }
     
-    NSAssert(self.targetView, @"HUD is not visible");
+    if (self.targetView == nil) {
+        return;
+    }
     
     _transitioning = YES;
     
@@ -522,35 +527,36 @@ static CGRect keyboardFrame = (CGRect){{0.0f, 0.0f}, {0.0f, 0.0f}};
 
 - (UIView *)HUDView {
     if (!_HUDView) {
-        iOS8ex(
-               UIBlurEffectStyle effect;
-               
-               if (self.style == JGProgressHUDStyleDark) {
-                   effect = UIBlurEffectStyleDark;
-               }
-               else if (self.style == JGProgressHUDStyleLight) {
-                   effect = UIBlurEffectStyleLight;
-               }
-               else {
-                   effect = UIBlurEffectStyleExtraLight;
-               }
-               
-               UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:effect];
-               
-               _HUDView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-               ,
-               _HUDView = [[UIView alloc] init];
-               
-               if (self.style == JGProgressHUDStyleDark) {
-                   _HUDView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.8f];
-               }
-               else if (self.style == JGProgressHUDStyleLight) {
-                   _HUDView.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.75f];
-               }
-               else {
-                   _HUDView.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.95f];
-               }
-               );
+        if (iOS8) {
+            UIBlurEffectStyle effect = 0;
+            
+            if (self.style == JGProgressHUDStyleDark) {
+                effect = UIBlurEffectStyleDark;
+            }
+            else if (self.style == JGProgressHUDStyleLight) {
+                effect = UIBlurEffectStyleLight;
+            }
+            else {
+                effect = UIBlurEffectStyleExtraLight;
+            }
+            
+            UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:effect];
+            
+            _HUDView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+        }
+        else {
+            _HUDView = [[UIView alloc] init];
+            
+            if (self.style == JGProgressHUDStyleDark) {
+                _HUDView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.8f];
+            }
+            else if (self.style == JGProgressHUDStyleLight) {
+                _HUDView.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.75f];
+            }
+            else {
+                _HUDView.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.95f];
+            }
+        }
         
         if (iOS7) {
             UIInterpolatingMotionEffect *x = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
@@ -583,7 +589,12 @@ static CGRect keyboardFrame = (CGRect){{0.0f, 0.0f}, {0.0f, 0.0f}};
 }
 
 - (UIView *)contentView {
-    iOS8ex(return ((UIVisualEffectView *)self.HUDView).contentView;, return self.HUDView;);
+    if (iOS8) {
+        return ((UIVisualEffectView *)self.HUDView).contentView;
+    }
+    else {
+        return self.HUDView;
+    }
 }
 
 - (UILabel *)textLabel {
@@ -673,6 +684,11 @@ static CGRect keyboardFrame = (CGRect){{0.0f, 0.0f}, {0.0f, 0.0f}};
 
 - (void)setIndicatorView:(JGProgressHUDIndicatorView *)indicatorView {
     if (self.indicatorView == indicatorView) {
+        return;
+    }
+    
+    if (_transitioning) {
+        _indicatorViewAfterTransitioning = indicatorView;
         return;
     }
     

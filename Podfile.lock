@@ -1,11 +1,11 @@
 PODS:
   - AFNetworking (2.5.0):
-    - AFNetworking/NSURLConnection
-    - AFNetworking/NSURLSession
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-    - AFNetworking/UIKit
+    - AFNetworking/NSURLConnection (= 2.5.0)
+    - AFNetworking/NSURLSession (= 2.5.0)
+    - AFNetworking/Reachability (= 2.5.0)
+    - AFNetworking/Security (= 2.5.0)
+    - AFNetworking/Serialization (= 2.5.0)
+    - AFNetworking/UIKit (= 2.5.0)
   - AFNetworking/NSURLConnection (2.5.0):
     - AFNetworking/Reachability
     - AFNetworking/Security
@@ -20,7 +20,6 @@ PODS:
   - AFNetworking/UIKit (2.5.0):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - Appsee (2.1.2)
   - ARAnalytics/CoreIOS (2.9.1)
   - ARAnalytics/Crashlytics (2.9.1):
     - ARAnalytics/CoreIOS
@@ -29,16 +28,17 @@ PODS:
     - GoogleAnalytics-iOS-SDK
   - Bolts (1.1.3)
   - ECSlidingViewController (2.0.3)
-  - GoogleAnalytics-iOS-SDK (3.10)
+  - GoogleAnalytics-iOS-SDK (3.10):
+    - GoogleAnalytics-iOS-SDK/Core (= 3.10)
+  - GoogleAnalytics-iOS-SDK/Core (3.10)
   - hpple (0.2.0)
-  - JGProgressHUD (1.2.2)
-  - Parse (1.5.0):
+  - JGProgressHUD (1.2.3)
+  - Parse (1.6.1):
     - Bolts (~> 1.1.3)
-  - PureLayout (2.0.3)
+  - PureLayout (2.0.4)
 
 DEPENDENCIES:
   - AFNetworking
-  - Appsee
   - ARAnalytics/Crashlytics
   - ARAnalytics/GoogleAnalytics
   - ECSlidingViewController
@@ -49,14 +49,13 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
-  Appsee: bdc4205eee4722e8d2659705690ee4b694e8452c
   ARAnalytics: a06e6d012b5999d8598ec9bacec45c8a8099f668
   Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
   ECSlidingViewController: e79fe856bfb1a99a39c995377a1943e50f7647eb
-  GoogleAnalytics-iOS-SDK: e5872d2acc120613d954320e206c7e3bc8357d7c
+  GoogleAnalytics-iOS-SDK: f422062075d9ccb1ea8d783fc5ba3829461e9502
   hpple: f4eb7c21a8db83ec264e5d614ec7509e10e5adec
-  JGProgressHUD: a7c58f711eec0b67f257a0821c0bac9194c72398
-  Parse: 7de25b6f70f0b233e5d25835f62eabfa91e4f9d7
-  PureLayout: 9658675ed95dabfcdf5154c0771ec9ed0980b370
+  JGProgressHUD: 733523c80f69b6dfc41b88a0f33883a89a8b4c3b
+  Parse: b0ec7666167e212edb6fc94f60ba170248bd1869
+  PureLayout: ddf4fedf7e2f5984f972bbd2205dda4fc3418347
 
-COCOAPODS: 0.34.4
+COCOAPODS: 0.35.0

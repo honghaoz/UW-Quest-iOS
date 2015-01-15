@@ -11,37 +11,36 @@ import UIKit
 class TitleSubTitleCollectionViewCell: UICollectionViewCell {
     // Constants
     let mainTitleColor: UIColor = UIColor(white: 0.3, alpha: 0.9)
-    let mainTitleFont: UIFont = UIFont(name: "HelveticaNeue", size: 16)!
+    let mainTitleFont: UIFont = UIFont.helveticaNenueFont(16)
     
     let subTitleColor: UIColor = UIColor(white: 0.3, alpha: 0.9)
     let subContentColor: UIColor = UIColor(white: 0.3, alpha: 0.9)
     
-    let subTitleFont: UIFont = UIFont(name: "HelveticaNeue-Light", size: 15)!
-    let subContentFont: UIFont = UIFont(name: "HelveticaNeue-Light", size: 14)!
+    let subTitleFont: UIFont = UIFont.helveticaNeueLightFont(15)
+    var subContentFont: UIFont = UIFont.helveticaNeueLightFont(14)
     
     let subContentEmptyColor: UIColor = UIColor(white: 0.3, alpha: 0.9)
-    let subContentEmptyFont: UIFont = UIFont(name: "HelveticaNeue-Light", size: 16)!
-    
-    var subTitleLabelMaxWidth: CGFloat = 0.0
+    let subContentEmptyFont: UIFont = UIFont.helveticaNeueLightFont(16)
     
     let kLabelVerticalInsets: CGFloat = 8.0
     let kLabelHorizontalInsets: CGFloat = 8.0
     
-    var mainTitleLabel: UILabel?
-    var subLabelTuples: [(UILabel, UILabel)]!
+    // MARK:
+    var mainTitleLabel: ZHAutoLinesLabel?
+    var subLabelTuples: [(ZHAutoLinesLabel, ZHAutoLinesLabel)]!
+    var emptyLabel: ZHAutoLinesLabel?
     
-    override init() {
-        super.init()
+    convenience override init() {
+        self.init(frame: CGRectZero)
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         self.setup()
     }
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.setup()
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
         self.setup()
     }
     
@@ -54,10 +53,11 @@ class TitleSubTitleCollectionViewCell: UICollectionViewCell {
             self.contentView.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth
         }
         // On iOS8, if bounds is zero, autoresizingmask will conflit with other constraints
-//        self.bounds = CGRectMake(0, 0, CGFloat(MAXFLOAT), CGFloat(MAXFLOAT))
-//        self.contentView.bounds = self.bounds
-        self.layer.borderColor = UQCellBackgroundColor.CGColor
+        self.bounds = CGRectMake(0, 0, screenWidth, screenHeight)
+        self.contentView.bounds = self.bounds
+        
         self.layer.masksToBounds = true
+        self.layer.borderColor = UQCellBackgroundColor.CGColor
         self.layer.cornerRadius = kBorderCornerRadius
         self.layer.borderWidth = kBorderWidth
         self.backgroundColor = UIColor.clearColor()
@@ -65,99 +65,10 @@ class TitleSubTitleCollectionViewCell: UICollectionViewCell {
         
         subLabelTuples = []
     }
-    
-    /**
-    Create a new main titleLabel, this label will be added to contentView automatically along with some necessary constraints
-    
-    :returns: new main title label
-    */
-    func createMainTitleLabel() -> UILabel {
-        var label = UILabel.newAutoLayoutView()
-        label.numberOfLines = 1
-        label.textAlignment = NSTextAlignment.Left
-        label.font = mainTitleFont
-        label.textColor = mainTitleColor
-        self.contentView.addSubview(label)
-        UIView.autoSetPriority(1000, forConstraints: { () -> Void in
-            label.autoSetContentCompressionResistancePriorityForAxis(ALAxis.Vertical)
-            label.autoSetContentCompressionResistancePriorityForAxis(ALAxis.Horizontal)
-            label.autoSetContentHuggingPriorityForAxis(ALAxis.Vertical)
-            label.autoPinEdgeToSuperviewEdge(ALEdge.Left, withInset: self.kLabelHorizontalInsets)
-            label.autoPinEdgeToSuperviewEdge(ALEdge.Right, withInset: self.kLabelHorizontalInsets)
-            label.autoPinEdgeToSuperviewEdge(ALEdge.Top, withInset: self.kLabelVerticalInsets)
-        })
-        return label
-    }
-    
-    /**
-    Create a new sub titleLabel, this label will be added to contentView automatically along with some necessary constraints
-    
-    :returns: new sub title label
-    */
-    func createASubTitleLabel() -> UILabel {
-        var label = UILabel.newAutoLayoutView()
-        label.numberOfLines = 1
-        label.textAlignment = NSTextAlignment.Left
-        label.font = subTitleFont
-        label.textColor = subTitleColor
-        self.contentView.addSubview(label)
-        UIView.autoSetPriority(1000, forConstraints: { () -> Void in
-            label.autoSetContentCompressionResistancePriorityForAxis(ALAxis.Vertical)
-            label.autoSetContentCompressionResistancePriorityForAxis(ALAxis.Horizontal)
-            label.autoSetContentHuggingPriorityForAxis(ALAxis.Vertical)
-            label.autoSetContentHuggingPriorityForAxis(ALAxis.Horizontal)
-            label.autoPinEdgeToSuperviewEdge(ALEdge.Left, withInset: self.kLabelHorizontalInsets)
-        })
-        return label
-    }
-    
-    /**
-    Create a new sub content Label, this label will be added to contentView automatically along with some necessary constraints
-    
-    :returns: new sub content label
-    */
-    func createASubContentLabel(verticalHuggingPriority: UILayoutPriority) -> UILabel {
-        var label = UILabel.newAutoLayoutView()
-        label.numberOfLines = 0
-        label.preferredMaxLayoutWidth = 100 // Need to change
-        label.textAlignment = NSTextAlignment.Right
-        label.font = subContentFont
-        label.textColor = subContentColor
-        self.contentView.addSubview(label)
-        UIView.autoSetPriority(1000, forConstraints: { () -> Void in
-            label.autoSetContentCompressionResistancePriorityForAxis(ALAxis.Vertical)
-            label.autoSetContentCompressionResistancePriorityForAxis(ALAxis.Horizontal)
-            label.autoPinEdgeToSuperviewEdge(ALEdge.Right, withInset: self.kLabelHorizontalInsets)
-        })
-        UIView.autoSetPriority(verticalHuggingPriority, forConstraints: { () -> Void in
-            label.autoSetContentHuggingPriorityForAxis(ALAxis.Vertical)
-        })
-        return label
-    }
-    
-    /**
-    Create a new empty content Label, this label will be added to contentView automatically along with some necessary constraints
-    
-    :returns: new sub empty content label
-    */
-    func createEmptyLabel() -> UILabel {
-        var label = UILabel.newAutoLayoutView()
-        label.numberOfLines = 0
-        label.preferredMaxLayoutWidth = 100 // Need to change
-        label.textAlignment = NSTextAlignment.Center
-        label.font = subContentEmptyFont
-        label.textColor = subContentColor
-        self.contentView.addSubview(label)
-        UIView.autoSetPriority(1000, forConstraints: { () -> Void in
-            label.autoSetContentCompressionResistancePriorityForAxis(ALAxis.Vertical)
-            label.autoSetContentCompressionResistancePriorityForAxis(ALAxis.Horizontal)
-            label.autoPinEdgeToSuperviewEdge(ALEdge.Left, withInset: self.kLabelHorizontalInsets)
-            label.autoPinEdgeToSuperviewEdge(ALEdge.Bottom, withInset: self.kLabelHorizontalInsets)
-            label.autoPinEdgeToSuperviewEdge(ALEdge.Right, withInset: self.kLabelHorizontalInsets)
-        })
-        return label
-    }
-    
+}
+
+// MARK: Config
+extension TitleSubTitleCollectionViewCell {
     /**
     Config labels
     
@@ -165,11 +76,9 @@ class TitleSubTitleCollectionViewCell: UICollectionViewCell {
     :param: subLabelTuples Array of tuples of sub labels, 0: sub title text, 1: sub content text
     :param: emptyStatement If there is no subLabelTuples, show an empty cell with emptyStatement
     */
-    func config(title: String? = "", subLabelTuples: [(String, String)], emptyStatement: String? = "No Content") {
+    func config(title: String? = nil, subLabelTuples: [(String, String)], emptyStatement: String? = "No Content") {
         // Remove all subviews (will remove all constraints)
-        for eachSubview in self.contentView.subviews {
-            eachSubview.removeFromSuperview()
-        }
+        self.contentView.removeAllSubviews()
         
         // For the first sub title label, the previous one should be mainTitleLabel or top of superView
         var previousView: UIView = self.contentView
@@ -182,81 +91,146 @@ class TitleSubTitleCollectionViewCell: UICollectionViewCell {
         }
         
         // Add sub labels
-        let subLabelsCount = subLabelTuples.count
-        
         self.subLabelTuples.removeAll(keepCapacity: false)
+        let subLabelsCount = subLabelTuples.count
         
         // No sub labels
         if subLabelsCount == 0 {
             var emptyLabel: UILabel = self.createEmptyLabel()
             emptyLabel.text = emptyStatement
-            UIView.autoSetPriority(1000, forConstraints: { () -> Void in
-                if previousView.isEqual(self.contentView) {
-                    emptyLabel.autoPinEdgeToSuperviewEdge(ALEdge.Top, withInset: self.kLabelVerticalInsets)
-                } else {
-                    emptyLabel.autoPinEdge(ALEdge.Top, toEdge: ALEdge.Bottom, ofView: previousView, withOffset: self.kLabelVerticalInsets)
-                }
-            })
+            if previousView == self.contentView {
+                emptyLabel.autoPinEdgeToSuperviewEdge(.Top, withInset: kLabelVerticalInsets)
+            } else {
+                emptyLabel.autoPinEdge(.Top, toEdge: .Bottom, ofView: previousView, withOffset: kLabelVerticalInsets)
+            }
             return
         }
         
         // There are sub labels
         for i in 0 ..< subLabelsCount {
-            var subTitleLabel: UILabel = self.createASubTitleLabel()
+            var subTitleLabel: ZHAutoLinesLabel = self.createASubTitleLabel()
             subTitleLabel.text = subLabelTuples[i].0
             
-            var subContentLabel: UILabel!
+            var subContentLabel = self.createASubContentLabel()
+            subContentLabel.text = subLabelTuples[i].1
             // Last label, add extra contraint for bottom and change vertical hugging priority
             if i == subLabelsCount - 1 {
-                subContentLabel = self.createASubContentLabel(998)
-                UIView.autoSetPriority(1000, forConstraints: { () -> Void in
-                    subContentLabel.autoPinEdgeToSuperviewEdge(ALEdge.Bottom, withInset: self.kLabelVerticalInsets)
+                // Reason why 900, since cell size maybe not exact the same size, the bottom constraint will be broken automatically
+                UIView.autoSetPriority(900, forConstraints: { () -> Void in
+                    subContentLabel.autoPinEdgeToSuperviewEdge(.Bottom, withInset: self.kLabelVerticalInsets)
                     return
                 })
-            } else {
-                // Normal label
-                subContentLabel = self.createASubContentLabel(999)
             }
             
-            subContentLabel.text = subLabelTuples[i].1
-            UIView.autoSetPriority(1000, forConstraints: { () -> Void in
-                if previousView.isEqual(self.contentView) {
-                    subTitleLabel.autoPinEdgeToSuperviewEdge(ALEdge.Top, withInset: self.kLabelVerticalInsets)
-                } else {
-                    subTitleLabel.autoPinEdge(ALEdge.Top, toEdge: ALEdge.Bottom, ofView: previousView, withOffset: self.kLabelVerticalInsets)
-                }
-                
-                subTitleLabel.autoPinEdge(ALEdge.Top, toEdge: ALEdge.Top, ofView: subContentLabel, withOffset: 0)
-                subTitleLabel.autoPinEdge(ALEdge.Right, toEdge: ALEdge.Left, ofView: subContentLabel, withOffset: -self.kLabelHorizontalInsets)
-            })
+            if previousView == self.contentView {
+                subTitleLabel.autoPinEdgeToSuperviewEdge(.Top, withInset: kLabelVerticalInsets)
+            } else {
+                subTitleLabel.autoPinEdge(.Top, toEdge: .Bottom, ofView: previousView, withOffset: kLabelVerticalInsets)
+            }
+            
+            subTitleLabel.autoPinEdge(.Top, toEdge: .Top, ofView: subContentLabel, withOffset: 0)
+            subTitleLabel.autoPinEdge(.Right, toEdge: .Left, ofView: subContentLabel, withOffset: -kLabelHorizontalInsets)
             
             previousView = subContentLabel
-            let newTuple = (subTitleLabel, subContentLabel!)
+            let newTuple = (subTitleLabel, subContentLabel)
             self.subLabelTuples.append(newTuple)
         }
         self.setNeedsLayout()
         self.layoutIfNeeded()
     }
     
-    /**
-    Key for set preferredMaxLayoutWidth for labels with multiple lines
-    */
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+        var subTitleLabelMaxWidth: CGFloat = 0.0
         // Set max sub title label width
         for eachTuple in self.subLabelTuples {
             var subTitleLabel = eachTuple.0
             let widthOfTitle = subTitleLabel.exactSize().width
-            if widthOfTitle > self.subTitleLabelMaxWidth {
-                self.subTitleLabelMaxWidth = widthOfTitle
+            if widthOfTitle > subTitleLabelMaxWidth {
+                subTitleLabelMaxWidth = widthOfTitle
             }
         }
         
         // Set preferredMaxLayoutWidth for every sub content label
         for eachTuple in self.subLabelTuples {
             var subContentLabel = eachTuple.1
-            subContentLabel.preferredMaxLayoutWidth = self.bounds.width - 3 * kLabelHorizontalInsets - self.subTitleLabelMaxWidth
+            subContentLabel.preferredMaxLayoutWidth = self.bounds.width - 3 * kLabelHorizontalInsets - subTitleLabelMaxWidth
         }
+    }
+}
+
+//MARK: Helpers
+extension TitleSubTitleCollectionViewCell {
+    /**
+    Create a new main titleLabel, this label will be added to contentView automatically along with some necessary constraints
+    
+    :returns: new main title label
+    */
+    func createMainTitleLabel() -> ZHAutoLinesLabel {
+        var label = ZHAutoLinesLabel.newAutoLayoutView()
+        label.numberOfLines = 1
+        label.textAlignment = .Left
+        label.font = mainTitleFont
+        label.textColor = mainTitleColor
+        
+        self.contentView.addSubview(label)
+        label.autoSetContentCompressionResistanceRequired()
+        label.autoSetContentHuggingResistanceRequiredForAixs(.Vertical)
+        label.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsetsMake(kLabelVerticalInsets, kLabelHorizontalInsets, 0, kLabelHorizontalInsets), excludingEdge: .Bottom)
+        
+        return label
+    }
+    
+    /**
+    Create a new empty content Label, this label will be added to contentView automatically along with some necessary constraints
+    
+    :returns: new sub empty content label
+    */
+    func createEmptyLabel() -> ZHAutoLinesLabel {
+        var label = ZHAutoLinesLabel.newAutoLayoutView()
+        label.numberOfLines = 0
+        label.textAlignment = NSTextAlignment.Center
+        label.font = subContentEmptyFont
+        label.textColor = subContentColor
+        self.contentView.addSubview(label)
+        label.autoSetContentCompressionHuggingResistanceRequired()
+        label.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsetsMake(0, kLabelHorizontalInsets, kLabelHorizontalInsets, kLabelHorizontalInsets), excludingEdge: .Top)
+        return label
+    }
+    
+    /**
+    Create a new sub titleLabel, this label will be added to contentView automatically along with some necessary constraints
+    
+    :returns: new sub title label
+    */
+    func createASubTitleLabel() -> ZHAutoLinesLabel {
+        var label = ZHAutoLinesLabel.newAutoLayoutView()
+        label.numberOfLines = 1
+        label.textAlignment = NSTextAlignment.Left
+        label.font = subTitleFont
+        label.textColor = subTitleColor
+        self.contentView.addSubview(label)
+        label.autoSetContentCompressionHuggingResistanceRequired()
+        label.autoPinEdgeToSuperviewEdge(.Left, withInset: kLabelHorizontalInsets)
+        return label
+    }
+    
+    /**
+    Create a new sub content Label, this label will be added to contentView automatically along with some necessary constraints
+    
+    :returns: new sub content label
+    */
+    func createASubContentLabel() -> ZHAutoLinesLabel {
+        var label = ZHAutoLinesLabel.newAutoLayoutView()
+        label.numberOfLines = 0
+        label.textAlignment = .Right
+        label.font = subContentFont
+        label.textColor = subContentColor
+        self.contentView.addSubview(label)
+        label.autoSetContentCompressionResistanceRequired()
+        label.autoSetContentHuggingResistanceRequiredForAixs(.Vertical)
+        self.setContentCompressionResistancePriority(250, forAxis: .Horizontal)
+        label.autoPinEdgeToSuperviewEdge(.Right, withInset: kLabelHorizontalInsets)
+        return label
     }
 }

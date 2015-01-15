@@ -66,12 +66,6 @@
 #define COCOAPODS_VERSION_MINOR_ARAnalytics_GoogleAnalytics 9
 #define COCOAPODS_VERSION_PATCH_ARAnalytics_GoogleAnalytics 1
 
-// Appsee
-#define COCOAPODS_POD_AVAILABLE_Appsee
-#define COCOAPODS_VERSION_MAJOR_Appsee 2
-#define COCOAPODS_VERSION_MINOR_Appsee 1
-#define COCOAPODS_VERSION_PATCH_Appsee 2
-
 // Bolts
 #define COCOAPODS_POD_AVAILABLE_Bolts
 #define COCOAPODS_VERSION_MAJOR_Bolts 1
@@ -90,23 +84,29 @@
 #define COCOAPODS_VERSION_MINOR_GoogleAnalytics_iOS_SDK 10
 #define COCOAPODS_VERSION_PATCH_GoogleAnalytics_iOS_SDK 0
 
+// GoogleAnalytics-iOS-SDK/Core
+#define COCOAPODS_POD_AVAILABLE_GoogleAnalytics_iOS_SDK_Core
+#define COCOAPODS_VERSION_MAJOR_GoogleAnalytics_iOS_SDK_Core 3
+#define COCOAPODS_VERSION_MINOR_GoogleAnalytics_iOS_SDK_Core 10
+#define COCOAPODS_VERSION_PATCH_GoogleAnalytics_iOS_SDK_Core 0
+
 // JGProgressHUD
 #define COCOAPODS_POD_AVAILABLE_JGProgressHUD
 #define COCOAPODS_VERSION_MAJOR_JGProgressHUD 1
 #define COCOAPODS_VERSION_MINOR_JGProgressHUD 2
-#define COCOAPODS_VERSION_PATCH_JGProgressHUD 2
+#define COCOAPODS_VERSION_PATCH_JGProgressHUD 3
 
 // Parse
 #define COCOAPODS_POD_AVAILABLE_Parse
 #define COCOAPODS_VERSION_MAJOR_Parse 1
-#define COCOAPODS_VERSION_MINOR_Parse 5
-#define COCOAPODS_VERSION_PATCH_Parse 0
+#define COCOAPODS_VERSION_MINOR_Parse 6
+#define COCOAPODS_VERSION_PATCH_Parse 1
 
 // PureLayout
 #define COCOAPODS_POD_AVAILABLE_PureLayout
 #define COCOAPODS_VERSION_MAJOR_PureLayout 2
 #define COCOAPODS_VERSION_MINOR_PureLayout 0
-#define COCOAPODS_VERSION_PATCH_PureLayout 3
+#define COCOAPODS_VERSION_PATCH_PureLayout 4
 
 // hpple
 #define COCOAPODS_POD_AVAILABLE_hpple

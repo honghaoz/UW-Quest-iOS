@@ -15,43 +15,29 @@ import UIKit
 protocol MainCollectionVCImplementation {
     var title: String { get }
     var mainCollectionVC: MainCollectionViewController! { get set }
-    var collectionView: UICollectionView! { get set }
-    
-    func setup(collectionVC: MainCollectionViewController)
-    
-    // UICollectionViewDataSource
+    var collectionView: ZHDynamicCollectionView! { get set }
+    func setUp(collectionVC: MainCollectionViewController)
+    // Data Source
     func numberOfSectionsInCollectionView() -> Int
     func numberOfItemsInSection(section: Int) -> Int
     func cellForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewCell
-    
-    // UICollectionViewDelegate
-    
-    
-    // UICollectionViewFlowLayout
-    func sizeForItemAtIndexPath(indexPath: NSIndexPath, layout collectionViewLayout: UICollectionViewLayout) -> CGSize
-    
-    // Others
     func titleForHeaderAtIndexPath(indexPath: NSIndexPath) -> String
+    // FlowLayout
+    func sizeForItemAtIndexPath(indexPath: NSIndexPath, layout collectionViewLayout: UICollectionViewLayout) -> CGSize
+    // Actions
     func headerViewTapped(headerView: UQCollectionReusableView)
 }
 
-class MainCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class MainCollectionViewController: UIViewController {
     
-    let kSectionHorizontalInsets: CGFloat = 10.0
-    let kSectionVerticalInsets: CGFloat = 10.0
-    
-    let kHeaderViewReuseIdentifier = "HeaderView"
-    let kDescriptionCellResueIdentifier = "DescriptionCell"
-    
+    var currentImplemention: PersonalInfoImplementation!
     var currentShowingSection: Int = -1
-    
-    var currentImplemention: MainCollectionVCImplementation!
     
     // A dictionary of offscreen cells that are used within the sizeForItemAtIndexPath method to handle the size calculations. These are never drawn onscreen. The dictionary is in the format:
     // { NSString *reuseIdentifier : UICollectionViewCell *offscreenCell, ... }
-    var offscreenCells = Dictionary<String, UICollectionViewCell>();
+    var offscreenCells = Dictionary<String, UICollectionViewCell>()
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionView: ZHDynamicCollectionView!
     
     init(implementation: MainCollectionVCImplementation) {
         super.init()
@@ -69,20 +55,17 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Locator.sharedLocator.client.getMyAcademic(.Grades, success: { (data, message) -> () in
-            println("\(data)")
-            println("\(message)")
-        }) { (errorMessage, error) -> () in
-            println("\(errorMessage)")
-        }
+        setupCollectionView()
+        setupAnimation()
         
-        currentImplemention.setup(self)
         self.navigationController?.title = currentImplemention.title
-        
+    }
+    
+    private func setupAnimation() {
         // Default animation
         self.navigationController?.view.addGestureRecognizer(self.slidingViewController().panGesture)
-
-        // Dynamic transition
+        
+//        // Dynamic transition
 //        var dynamicTransition = Locator.sharedLocator.dynamicTransition
 //        dynamicTransition.slidingViewController = self.slidingViewController()
 //        self.slidingViewController().delegate = dynamicTransition
@@ -92,19 +75,13 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
 //        var dynamicTransitionPanGesture = UIPanGestureRecognizer(target: dynamicTransition, action: "handlePanGesture:")
 //        self.slidingViewController().customAnchoredGestures = [dynamicTransitionPanGesture]
 //        self.navigationController?.view.addGestureRecognizer(dynamicTransitionPanGesture)
-        
-        // Zoom transition
+//        
+//        // Zoom transition
 //        let zoomTransition = Locator.sharedLocator.zoomTransition
 //        self.slidingViewController().delegate = zoomTransition
 //        self.slidingViewController().topViewAnchoredGesture = ECSlidingViewControllerAnchoredGesture.Tapping | ECSlidingViewControllerAnchoredGesture.Panning
 //        
 //        self.navigationController?.view.addGestureRecognizer(self.slidingViewController().panGesture)
-        
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        
-        var descriptionCellNib = UINib(nibName: "DescriptionCollectionViewCell", bundle: nil)
-        collectionView.registerNib(descriptionCellNib, forCellWithReuseIdentifier: kDescriptionCellResueIdentifier)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -116,8 +93,39 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
         super.viewDidAppear(animated)
     }
     
+    // MARK: Actions
     @IBAction func menuButtonTapped(sender: AnyObject) {
         self.slidingViewController().anchorTopViewToRightAnimated(true)
+    }
+    
+    // MARK: - Header tap gesture action
+    func headerViewTapped(tapGesture: UITapGestureRecognizer) {
+        var headerView = tapGesture.view as UQCollectionReusableView
+        currentShowingSection = currentShowingSection == headerView.indexPath.section ? -1 : headerView.indexPath.section
+        currentImplemention.headerViewTapped(headerView)
+    }
+}
+
+// MARK: CollectionView
+extension MainCollectionViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
+    var kSectionHorizontalInsets: CGFloat { return 10.0 }
+    var kSectionVerticalInsets: CGFloat { return 10.0 }
+    
+    var kHeaderViewReuseIdentifier: String { return "HeaderView" }
+    var kDescriptionCellResueIdentifier: String { return "DescriptionCell" }
+    
+    private func setupCollectionView() {
+        currentImplemention = PersonalInfoImplementation()
+        currentImplemention.setUp(self)
+        
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        
+        // Registeration
+//        var descriptionCellNib = UINib(nibName: "DescriptionCollectionViewCell", bundle: nil)
+//        collectionView.registerNib(descriptionCellNib, forCellWithReuseIdentifier: kDescriptionCellResueIdentifier)
+        collectionView.registerClass(DescriptionCollectionViewCell.self, forCellWithReuseIdentifier: kDescriptionCellResueIdentifier)
     }
     
     // MARK: - UICollectionViewDataSource
@@ -183,15 +191,10 @@ class MainCollectionViewController: UIViewController, UICollectionViewDataSource
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
         return kSectionVerticalInsets
     }
-    
-    // MARK: - Header tap gesture action
-    func headerViewTapped(tapGesture: UITapGestureRecognizer) {
-        var headerView = tapGesture.view as UQCollectionReusableView
-        currentShowingSection = currentShowingSection == headerView.indexPath.section ? -1 : headerView.indexPath.section
-        currentImplemention.headerViewTapped(headerView)
-    }
-    
-    // MARK: - Rotation
+}
+
+// MARK: Rotation
+extension MainCollectionViewController {
     // iOS7
     override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
         collectionView.collectionViewLayout.invalidateLayout()
