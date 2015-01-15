@@ -33,6 +33,8 @@
 		1B8615AC19CFC6A20064505C /* PersonalInformations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8615AB19CFC6A20064505C /* PersonalInformations.swift */; };
 		1B8615AE19CFD79A0064505C /* AddressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8615AD19CFD79A0064505C /* AddressCollectionViewCell.swift */; };
 		1B907FB31A675306004CC43D /* ZHHParseDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B907FB21A675306004CC43D /* ZHHParseDevice.m */; };
+		1B907FB61A6759B3004CC43D /* DescriptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B907FB41A6759B3004CC43D /* DescriptionCollectionViewCell.swift */; };
+		1B907FB71A6759B3004CC43D /* TitleSubTitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B907FB51A6759B3004CC43D /* TitleSubTitleCollectionViewCell.swift */; };
 		1BCCB62E1A6716E6009811D0 /* EmailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCCB62D1A6716E6009811D0 /* EmailCollectionViewCell.swift */; };
 		1BD1D1461A6713F900996B9B /* PhoneNumberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD1D1451A6713F900996B9B /* PhoneNumberCollectionViewCell.swift */; };
 		1BEB05B31A53979600986692 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEB05A71A53979600986692 /* Array.swift */; };
@@ -65,7 +67,6 @@
 		FA32935F19FD60A800164369 /* MenuTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA32935E19FD60A800164369 /* MenuTitleCell.swift */; };
 		FA4D1F5819DA620C006AA190 /* EmailCollectionViewCell_deprecated.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D1F5619DA620C006AA190 /* EmailCollectionViewCell_deprecated.swift */; };
 		FA4D1F5919DA620C006AA190 /* EmailCollectionViewCell_deprecated.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA4D1F5719DA620C006AA190 /* EmailCollectionViewCell_deprecated.xib */; };
-		FA4D1F5C19DA6B32006AA190 /* DescriptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D1F5A19DA6B32006AA190 /* DescriptionCollectionViewCell.swift */; };
 		FA79657619C9079F00852C84 /* Locator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA79657519C9079F00852C84 /* Locator.swift */; };
 		FA79657819C90BB000852C84 /* LaunchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA79657719C90BB000852C84 /* LaunchView.xib */; };
 		FA7E99FB19DCFD4000D65565 /* DemographicCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7E99FA19DCFD4000D65565 /* DemographicCollectionCell.swift */; };
@@ -131,6 +132,8 @@
 		1B8615AD19CFD79A0064505C /* AddressCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCollectionViewCell.swift; sourceTree = "<group>"; };
 		1B907FB11A675306004CC43D /* ZHHParseDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHHParseDevice.h; sourceTree = "<group>"; };
 		1B907FB21A675306004CC43D /* ZHHParseDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHHParseDevice.m; sourceTree = "<group>"; };
+		1B907FB41A6759B3004CC43D /* DescriptionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionCollectionViewCell.swift; sourceTree = "<group>"; };
+		1B907FB51A6759B3004CC43D /* TitleSubTitleCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleSubTitleCollectionViewCell.swift; sourceTree = "<group>"; };
 		1BCCB62D1A6716E6009811D0 /* EmailCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailCollectionViewCell.swift; sourceTree = "<group>"; };
 		1BD1D1451A6713F900996B9B /* PhoneNumberCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberCollectionViewCell.swift; sourceTree = "<group>"; };
 		1BEB05A71A53979600986692 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
@@ -169,7 +172,6 @@
 		FA32935E19FD60A800164369 /* MenuTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTitleCell.swift; sourceTree = "<group>"; };
 		FA4D1F5619DA620C006AA190 /* EmailCollectionViewCell_deprecated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailCollectionViewCell_deprecated.swift; sourceTree = "<group>"; };
 		FA4D1F5719DA620C006AA190 /* EmailCollectionViewCell_deprecated.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmailCollectionViewCell_deprecated.xib; sourceTree = "<group>"; };
-		FA4D1F5A19DA6B32006AA190 /* DescriptionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA79657519C9079F00852C84 /* Locator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locator.swift; sourceTree = "<group>"; };
 		FA79657719C90BB000852C84 /* LaunchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchView.xib; sourceTree = "<group>"; };
 		FA7E99FA19DCFD4000D65565 /* DemographicCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemographicCollectionCell.swift; sourceTree = "<group>"; };
@@ -447,8 +449,6 @@
 		FA367B6619F1731000AC58D0 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				FAE020DA19DBAEF90000253A /* TitleSubTitleCollectionViewCell.swift */,
-				FA4D1F5A19DA6B32006AA190 /* DescriptionCollectionViewCell.swift */,
 				1B8615AD19CFD79A0064505C /* AddressCollectionViewCell.swift */,
 				FADDD6CD19D476BB003EC88D /* AddressCollectionViewCell.xib */,
 				1B1A3A5D1A5517970077E8A9 /* NameCollectionViewCell.swift */,
@@ -467,7 +467,6 @@
 			children = (
 				FA8C1D6319C75B0800D6E158 /* User.swift */,
 				1B8615AB19CFC6A20064505C /* PersonalInformations.swift */,
-				FAAACD711A0AC5C7002E021B /* MyAcademics.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -475,9 +474,8 @@
 		FAAACD6A1A0AC4CD002E021B /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				FAAACD6B1A0AC4CD002E021B /* DescriptionCollectionViewCell.swift */,
-				FAAACD6C1A0AC4CD002E021B /* DescriptionCollectionViewCell.xib */,
-				FAAACD6D1A0AC4CD002E021B /* TitleSubTitleCollectionViewCell.swift */,
+				1B907FB41A6759B3004CC43D /* DescriptionCollectionViewCell.swift */,
+				1B907FB51A6759B3004CC43D /* TitleSubTitleCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -518,7 +516,6 @@
 		FAE341B219FDB1BB00D828E7 /* MyAcademics */ = {
 			isa = PBXGroup;
 			children = (
-				FAAACD681A0AC47E002E021B /* MyAcademicsImplementation.swift */,
 			);
 			path = MyAcademics;
 			sourceTree = "<group>";
@@ -682,8 +679,6 @@
 			files = (
 				1B907FB31A675306004CC43D /* ZHHParseDevice.m in Sources */,
 				1BEB05B41A53979600986692 /* Dictionary.swift in Sources */,
-				FAE020DB19DBAEF90000253A /* TitleSubTitleCollectionViewCell.swift in Sources */,
-				FA4D1F5C19DA6B32006AA190 /* DescriptionCollectionViewCell.swift in Sources */,
 				FACE198719C9EB05001FD4C9 /* QuestClient_deprecated.swift in Sources */,
 				1B2FCD1C19C4A64400FDF4D8 /* Extension.swift in Sources */,
 				1BF1B17919CF814E00411109 /* UQCollectionReusableView.swift in Sources */,
@@ -692,6 +687,7 @@
 				1BEB05BA1A53979600986692 /* NSArray.swift in Sources */,
 				FA21D6E319E7780C002FBF71 /* MEDynamicTransition.m in Sources */,
 				FA7E99FD19DCFD9800D65565 /* CitizenshipCollectionViewCell.swift in Sources */,
+				1B907FB61A6759B3004CC43D /* DescriptionCollectionViewCell.swift in Sources */,
 				FA4D1F5819DA620C006AA190 /* EmailCollectionViewCell_deprecated.swift in Sources */,
 				1B2152311A536C3200B7165A /* QuestClient.swift in Sources */,
 				1B5BF35219C3F8470005626F /* LoginViewController.swift in Sources */,
@@ -715,7 +711,6 @@
 				FA32935F19FD60A800164369 /* MenuTitleCell.swift in Sources */,
 				FA21D6E419E7780C002FBF71 /* MEZoomAnimationController.m in Sources */,
 				FAF2292519C937620041C36F /* UIDevice-Hardware.m in Sources */,
-				FAAACD701A0AC4CD002E021B /* TitleSubTitleCollectionViewCell.swift in Sources */,
 				FA79657619C9079F00852C84 /* Locator.swift in Sources */,
 				FA23729E19C74167000F5D4F /* Constant.swift in Sources */,
 				1BFABA591A55E3DF004BB928 /* ZHDynamicCollectionView.swift in Sources */,
@@ -725,6 +720,7 @@
 				1B64007D19D8E48E00C35E44 /* PhoneNumberCollectionViewCell_deprecated.swift in Sources */,
 				1BEB05B71A53979600986692 /* Float.swift in Sources */,
 				FA8C1D6419C75B0800D6E158 /* User.swift in Sources */,
+				1B907FB71A6759B3004CC43D /* TitleSubTitleCollectionViewCell.swift in Sources */,
 				1BEB05B51A53979600986692 /* Double.swift in Sources */,
 				1BEB05C11A5397BC00986692 /* UIImage+ImageEffects.m in Sources */,
 				1B1A3A5E1A5517970077E8A9 /* NameCollectionViewCell.swift in Sources */,

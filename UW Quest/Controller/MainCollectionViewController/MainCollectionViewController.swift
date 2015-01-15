@@ -30,7 +30,7 @@ protocol MainCollectionVCImplementation {
 
 class MainCollectionViewController: UIViewController {
     
-    var currentImplemention: PersonalInfoImplementation!
+    var currentImplemention: MainCollectionVCImplementation!
     var currentShowingSection: Int = -1
     
     // A dictionary of offscreen cells that are used within the sizeForItemAtIndexPath method to handle the size calculations. These are never drawn onscreen. The dictionary is in the format:
