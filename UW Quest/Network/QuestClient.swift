@@ -342,7 +342,7 @@ extension QuestClient {
         var parseFunction: ((AnyObject) -> JSON?)!
         var successClosure: (response: AnyObject?, json: JSON?) -> () = { (response, json) -> () in
             if json == nil {
-                failure(errorMessage: "", error: NSError(domain: "Parse Error", code: 0, userInfo: nil))
+                failure(errorMessage: "Parse Error", error: NSError(domain: "Parse Error", code: 0, userInfo: nil))
             } else {
                 success(data: json!.rawValue)
             }
@@ -397,7 +397,7 @@ extension QuestClient {
                 "Page": "UW_SS_CC_VISA_DOC",
                 "Action": "U"
             ]
-            getPersonalInformationWithParameters(parameters, kPersonalInfoCitizenshipURL, parseDe;'.Asd'mograpasdasdasdhicInfo, successClosure, failure)
+            getPersonalInformationWithParameters(parameters, kPersonalInfoCitizenshipURL, parseCitizenship, successClosure, failure)
         default: assert(false, "Wrong PersonalInformation Type")
         }
     }
@@ -563,27 +563,21 @@ extension QuestClient {
         // Phone number table
         let phoneTables = html!.searchWithXPathQuery("//*[@id='SCC_PERS_PHN_H$scroll$0']")
         if phoneTables.count == 0 {
-            return nil
+            return JSON([])
         } else {
             let phoneTable = phoneTables[0] as TFHppleElement
             let tableArray = phoneTable.table2DArray()
+            var dataArray = [Dictionary<String, String>]()
             if tableArray != nil {
-                var dataArray = [Dictionary<String, String>]()
-                if tableArray!.count > 1 {
-                    for i in 1 ..< tableArray!.count {
-                        var dict = Dictionary<String, String>()
-                        for j in 0 ..< 5 {
-                            dict[tableArray![0][j]] = tableArray![i][j]
-                        }
-                        dataArray.append(dict)
+                for i in 1 ..< tableArray!.count {
+                    var dict = Dictionary<String, String>()
+                    for j in 0 ..< 5 {
+                        dict[tableArray![0][j]] = tableArray![i][j]
                     }
-                    return JSON(dataArray)
-                } else {
-                    return JSON(dataArray)
+                    dataArray.append(dict)
                 }
-            } else {
-                return nil
             }
+            return JSON(dataArray)
         }
     }
     
@@ -698,12 +692,12 @@ extension QuestClient {
         //*[@id="win0divSCC_EMERG_CNT_H$0"]
         let tables = html!.searchWithXPathQuery("//*[@id='win0divSCC_EMERG_CNT_H$0']")
         if tables.count == 0 {
-            return nil
+            return JSON([])
         } else {
             let contactTable = tables[0] as TFHppleElement
             let tableArray = contactTable.table2DArray()
+            var dataArray = [Dictionary<String, String>]()
             if tableArray != nil {
-                var dataArray = [Dictionary<String, String>]()
                 for i in 1 ..< tableArray!.count {
                     var dict = Dictionary<String, String>()
                     for j in 0 ..< 6 {
@@ -711,10 +705,8 @@ extension QuestClient {
                     }
                     dataArray.append(dict)
                 }
-                return JSON(dataArray)
-            } else {
-                return nil
             }
+            return JSON(dataArray)
         }
     }
     
@@ -926,18 +918,19 @@ extension QuestClient {
     
     /**
     {"Required Documentation": {
-        
+    
     }
     
     :param: response response network response
     
     :returns: JSON data
     */
-    func parseDemographicInfo(response: AnyObject) -> JSON? {
+    func parseCitizenship(response: AnyObject) -> JSON? {
         let html = getHtmlContentFromResponse(response)
         if html == nil {
             return nil
         }
+        return nil
     }
 }
 

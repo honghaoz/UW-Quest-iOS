@@ -139,15 +139,14 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
                 }
                 aCell.configLarge(message, textAlignment: NSTextAlignment.Center)
                 cell = aCell
-                break
+            } else {
+                // Show content
+                var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kEmergencyContactCellResueIdentifier, forIndexPath: indexPath) as EmergencyContactCollectionViewCell
+                
+                let emergencyContact: PersonalInformation.EmergencyContact = sharedPersonalInformation.emergencyContacts![indexPath.item]
+                aCell.config(emergencyContact)
+                cell = aCell
             }
-            // Show content
-            var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kEmergencyContactCellResueIdentifier, forIndexPath: indexPath) as EmergencyContactCollectionViewCell
-            
-            let emergencyContact: PersonalInformation.EmergencyContact = sharedPersonalInformation.emergencyContacts![indexPath.item]
-            aCell.config(emergencyContact)
-            cell = aCell
-            break
         case PersonalInformationType.DemographicInformation:
             let totalItemsCount = self.collectionView.numberOfItemsInSection(indexPath.section)
             // Last item should be description
@@ -252,33 +251,17 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
         case PersonalInformationType.EmergencyContacts:
             // Show message
             if sharedPersonalInformation.emergencyContacts.count == 0 {
-                let reuseIdentifier = mainCollectionVC.kDescriptionCellResueIdentifier
-                var aCell: DescriptionCollectionViewCell? = mainCollectionVC.offscreenCells[reuseIdentifier] as? DescriptionCollectionViewCell
-                if aCell == nil {
-                    aCell = NSBundle.mainBundle().loadNibNamed("DescriptionCollectionViewCell", owner: nil, options: nil)[0] as? DescriptionCollectionViewCell
-                    mainCollectionVC.offscreenCells[reuseIdentifier] = aCell
-                }
-                
+                cell = collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(mainCollectionVC.kDescriptionCellResueIdentifier)
                 var message = "No current emergency contact information found."
                 if let realMessage = sharedPersonalInformation.emergencyContactsMessage {
                     message = realMessage
                 }
-                aCell!.configLarge(message, textAlignment: NSTextAlignment.Center)
-                cell = aCell
-                break
+                (cell as DescriptionCollectionViewCell).configLarge(message, textAlignment: NSTextAlignment.Center)
+            } else {
+                cell = mainCollectionVC.offscreenCells[kEmergencyContactCellResueIdentifier] as? EmergencyContactCollectionViewCell
+                let emergencyContact: PersonalInformation.EmergencyContact = sharedPersonalInformation.emergencyContacts![indexPath.item]
+                (cell as EmergencyContactCollectionViewCell).config(emergencyContact)
             }
-            
-            let reuseIdentifier = kEmergencyContactCellResueIdentifier
-            var aCell: EmergencyContactCollectionViewCell? = mainCollectionVC.offscreenCells[reuseIdentifier] as? EmergencyContactCollectionViewCell
-            if aCell == nil {
-                aCell = EmergencyContactCollectionViewCell(frame: CGRectMake(0, 0, targetWidth, targetWidth))
-                mainCollectionVC.offscreenCells[reuseIdentifier] = aCell
-            }
-            
-            let emergencyContact: PersonalInformation.EmergencyContact = sharedPersonalInformation.emergencyContacts![indexPath.item]
-            aCell!.config(emergencyContact)
-            cell = aCell
-            break
         case PersonalInformationType.DemographicInformation:
             let totalItemsCount = self.collectionView.numberOfItemsInSection(indexPath.section)
             // Last item should be description
