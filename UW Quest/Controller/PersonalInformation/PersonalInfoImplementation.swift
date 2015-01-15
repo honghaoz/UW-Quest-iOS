@@ -257,7 +257,7 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
                 }
                 (cell as DescriptionCollectionViewCell).configLarge(message, textAlignment: NSTextAlignment.Center)
             } else {
-                cell = mainCollectionVC.offscreenCells[kEmergencyContactCellResueIdentifier] as? EmergencyContactCollectionViewCell
+                cell = collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(kEmergencyContactCellResueIdentifier)
                 let emergencyContact: PersonalInformation.EmergencyContact = sharedPersonalInformation.emergencyContacts![indexPath.item]
                 (cell as EmergencyContactCollectionViewCell).config(emergencyContact)
             }
