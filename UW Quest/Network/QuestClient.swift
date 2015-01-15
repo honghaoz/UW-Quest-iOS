@@ -527,12 +527,10 @@ extension QuestClient {
             let typeRaw: String = (columns[0] as TFHppleElement).raw
             var type: String? = typeRaw.stringByConvertingHTMLToPlainText()
             if type == nil { return JSON(resultDict) }
-//            type = type!.clearNewLines()
             
             let nameRaw: String = (columns[1] as TFHppleElement).raw
             var name: String? = nameRaw.stringByConvertingHTMLToPlainText()
             if name == nil { return JSON(resultDict) }
-//            name = name!.clearNewLines()
             
             var nameDict = [
                 "Name Type": type!,

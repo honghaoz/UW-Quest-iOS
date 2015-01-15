@@ -305,19 +305,19 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
                 }
                 cell = aCell
             }
-            break
         default:
             assert(false, "Wrong PersonalInformation Type")
-            break
         }
         
         // Cell's size is determined in nib file, need to set it's width (in this case), and inside, use this cell's width to set label's preferredMaxLayoutWidth, thus, height can be determined, this size will be returned for real cell initialization
         cell!.bounds = CGRectMake(0, 0, targetWidth, cell!.bounds.height)
         cell!.contentView.bounds = cell!.bounds
                 
-        var size = cell!.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
+        var size = cell!.contentView.systemLayoutSizeFittingSize(CGSizeMake(targetWidth, cell!.bounds.height))
         // Still need to force the width, since width can be smalled due to break mode of labels
-        size.width = targetWidth
+        if abs(size.width - targetWidth) > 1 {
+            size.width = targetWidth
+        }
         return size
     }
     
@@ -337,25 +337,18 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
             switch tappedCase {
             case PersonalInformationType.Addresses:
                 println("addresses count: \(self.sharedPersonalInformation.addresses.count)")
-                break
             case PersonalInformationType.Names:
                 println("names count: \(self.sharedPersonalInformation.names.count)")
-                break
             case PersonalInformationType.PhoneNumbers:
                 println("phoneNumbers count: \(self.sharedPersonalInformation.phoneNumbers.count)")
-                break
             case PersonalInformationType.EmailAddresses:
                 println("emails: \(self.sharedPersonalInformation.emailAddresses != nil)")
-                break
             case PersonalInformationType.EmergencyContacts:
                 println("emergency count: \(self.sharedPersonalInformation.emergencyContacts.count)")
-                break
             case PersonalInformationType.DemographicInformation:
                 println("demographic: \(self.sharedPersonalInformation.demograhicInformation != nil)")
-                break
             case PersonalInformationType.CitizenshipImmigrationDocuments:
                 println("citizenshipDoc: \(self.sharedPersonalInformation.citizenshipImmigrationDocument)")
-                break
             default:
                 assert(false, "Wrong PersonalInformation Type")
             }
