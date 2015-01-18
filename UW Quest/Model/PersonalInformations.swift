@@ -584,84 +584,100 @@ class PersonalInformation {
         }
     }
 
+//    class CitizenshipImmigrationDocument {
+//        class visaDocument {
+//            var country: String
+//            var dateReceived: String?
+//            var expirationDate: String?
+//            var visaType: String
+//            
+//            class var kCountry: String {return "country"}
+//            class var kDateReceived: String {return "date_received"}
+//            class var kExpirationDate: String {return "expiration_date"}
+//            class var kVisaType: String {return "visa_type"}
+//            
+//            class func newDocument(rawDict: Dictionary<String, String>) -> visaDocument? {
+//                let country: String? = rawDict[visaDocument.kCountry]
+//                let dateReceived: String? = rawDict[visaDocument.kDateReceived]
+//                let expirationDate: String? = rawDict[visaDocument.kExpirationDate]
+//                let visaType: String? = rawDict[visaDocument.kVisaType]
+//                if (country != nil) && (visaType != nil) {
+//                    return visaDocument(country: country!, dateReceived: dateReceived, expirationDate: expirationDate, visaType: visaType!)
+//                } else {
+//                    return nil
+//                }
+//            }
+//            
+//            init (country: String, dateReceived: String?, expirationDate: String?, visaType: String) {
+//                self.country = country
+//                self.dateReceived = dateReceived
+//                self.expirationDate = expirationDate
+//                self.visaType = visaType
+//            }
+//        }
+//        var requiredDocumentation: [visaDocument]!
+//        var pastDocumentation: [visaDocument]!
+//        init() {
+//            self.requiredDocumentation = []
+//            self.pastDocumentation = []
+//        }
+//    }
+//    
+//    func initCitizenshipImmigrationDocument(rawData: AnyObject, message: String? = nil) -> Bool {
+//        self.citizenshipImmigrationDocumentMessage = message
+//        println(self.citizenshipImmigrationDocumentMessage)
+//        let pastDocList: [Dictionary<String, String>]? = rawData["past_documentation"] as AnyObject? as? [Dictionary<String, String>]
+//        println(pastDocList)
+//        let requiredDocList: [Dictionary<String, String>]? = rawData["required_documentation"] as AnyObject? as? [Dictionary<String, String>]
+//        println(requiredDocList)
+//        if (requiredDocList == nil) && (pastDocList == nil) && (self.citizenshipImmigrationDocumentMessage != nil) {
+//            println("should here")
+//            return true
+//        }
+//        self.citizenshipImmigrationDocument = CitizenshipImmigrationDocument()
+//        if requiredDocList != nil {
+//            var tempDocList: [CitizenshipImmigrationDocument.visaDocument] = []
+//            for eachDoc in requiredDocList! {
+//                var newDoc: CitizenshipImmigrationDocument.visaDocument? = CitizenshipImmigrationDocument.visaDocument.newDocument(eachDoc)
+//                if newDoc != nil {
+//                    tempDocList.append(newDoc!)
+//                } else {
+//                    return false
+//                }
+//            }
+//            self.citizenshipImmigrationDocument!.requiredDocumentation = tempDocList
+//        } else {
+//            return false
+//        }
+//        
+//        if pastDocList != nil {
+//            var tempDocList: [CitizenshipImmigrationDocument.visaDocument] = []
+//            for eachDoc in pastDocList! {
+//                var newDoc: CitizenshipImmigrationDocument.visaDocument? = CitizenshipImmigrationDocument.visaDocument.newDocument(eachDoc)
+//                if newDoc != nil {
+//                    tempDocList.append(newDoc!)
+//                } else {
+//                    return false
+//                }
+//            }
+//            self.citizenshipImmigrationDocument!.pastDocumentation = tempDocList
+//        }
+//        return true
+//    }
+    
     class CitizenshipImmigrationDocument {
-        class visaDocument {
-            var country: String
-            var dateReceived: String?
-            var expirationDate: String?
-            var visaType: String
-            
-            class var kCountry: String {return "country"}
-            class var kDateReceived: String {return "date_received"}
-            class var kExpirationDate: String {return "expiration_date"}
-            class var kVisaType: String {return "visa_type"}
-            
-            class func newDocument(rawDict: Dictionary<String, String>) -> visaDocument? {
-                let country: String? = rawDict[visaDocument.kCountry]
-                let dateReceived: String? = rawDict[visaDocument.kDateReceived]
-                let expirationDate: String? = rawDict[visaDocument.kExpirationDate]
-                let visaType: String? = rawDict[visaDocument.kVisaType]
-                if (country != nil) && (visaType != nil) {
-                    return visaDocument(country: country!, dateReceived: dateReceived, expirationDate: expirationDate, visaType: visaType!)
-                } else {
-                    return nil
-                }
-            }
-            
-            init (country: String, dateReceived: String?, expirationDate: String?, visaType: String) {
-                self.country = country
-                self.dateReceived = dateReceived
-                self.expirationDate = expirationDate
-                self.visaType = visaType
-            }
-        }
-        var requiredDocumentation: [visaDocument]!
-        var pastDocumentation: [visaDocument]!
-        init() {
-            self.requiredDocumentation = []
-            self.pastDocumentation = []
+        var docs: [Dictionary<String, AnyObject>]
+        init(rawData: [Dictionary<String, AnyObject>]) {
+            docs = rawData
         }
     }
     
     func initCitizenshipImmigrationDocument(rawData: AnyObject, message: String? = nil) -> Bool {
-        self.citizenshipImmigrationDocumentMessage = message
-        println(self.citizenshipImmigrationDocumentMessage)
-        let pastDocList: [Dictionary<String, String>]? = rawData["past_documentation"] as AnyObject? as? [Dictionary<String, String>]
-        println(pastDocList)
-        let requiredDocList: [Dictionary<String, String>]? = rawData["required_documentation"] as AnyObject? as? [Dictionary<String, String>]
-        println(requiredDocList)
-        if (requiredDocList == nil) && (pastDocList == nil) && (self.citizenshipImmigrationDocumentMessage != nil) {
-            println("should here")
+        if let docList: [Dictionary<String, AnyObject>] = rawData as? [Dictionary<String, AnyObject>] {
+            citizenshipImmigrationDocument = CitizenshipImmigrationDocument(rawData: docList)
             return true
-        }
-        self.citizenshipImmigrationDocument = CitizenshipImmigrationDocument()
-        if requiredDocList != nil {
-            var tempDocList: [CitizenshipImmigrationDocument.visaDocument] = []
-            for eachDoc in requiredDocList! {
-                var newDoc: CitizenshipImmigrationDocument.visaDocument? = CitizenshipImmigrationDocument.visaDocument.newDocument(eachDoc)
-                if newDoc != nil {
-                    tempDocList.append(newDoc!)
-                } else {
-                    return false
-                }
-            }
-            self.citizenshipImmigrationDocument!.requiredDocumentation = tempDocList
         } else {
             return false
         }
-        
-        if pastDocList != nil {
-            var tempDocList: [CitizenshipImmigrationDocument.visaDocument] = []
-            for eachDoc in pastDocList! {
-                var newDoc: CitizenshipImmigrationDocument.visaDocument? = CitizenshipImmigrationDocument.visaDocument.newDocument(eachDoc)
-                if newDoc != nil {
-                    tempDocList.append(newDoc!)
-                } else {
-                    return false
-                }
-            }
-            self.citizenshipImmigrationDocument!.pastDocumentation = tempDocList
-        }
-        return true
     }
 }

@@ -915,9 +915,19 @@ extension QuestClient {
     }
     
     /**
-    {"Required Documentation": {
-    
-    }
+    [
+        {"Type": "Required Documentation",
+         "Data": [
+                    {
+                        "Title": "Canada - Student Visa",
+                        "Date Received": "09/13/2013",
+                        "Expiration Date": "09/13/2013"
+                    }, 
+                    ...
+                 ]
+        },
+        ...
+    ]
     
     :param: response response network response
     
@@ -929,13 +939,45 @@ extension QuestClient {
             return nil
         }
         
+        var dataArray = [Dictionary<String, AnyObject>]()
+        
         //*[@id="win0divVISA_PMT_SUPPRT$0"]
-        let basicQueryString: NSString = "//*[@id='win0divVISA_PMT_SUPPRT$%d//Table']"
+        let basicQueryString: NSString = "//*[@id='win0divVISA_PMT_SUPPRT$%d']//table"
         var i: Int = 0
-        while html!.peekAtSearchWithXPathQuery(NSString(format: basicQueryString, i)) != nil {
+        var tables = html!.searchWithXPathQuery(NSString(format: basicQueryString, i))
+        while tables.count >= 2 {
+            var headerTable = tables[0] as TFHppleElement
             
+            var docDict = Dictionary<String, AnyObject>()
+            // Get header
+            var type = headerTable.displayableString()?.trimmed()
+            docDict["Type"] = type
+            var datas = [Dictionary<String, String>]()
+            docDict["Data"] = datas
+            
+            for x in 1 ..< tables.count {
+                var contentTable = tables[x] as TFHppleElement
+                // Content
+                let contentArray = contentTable.table2DArray()
+                if contentArray == nil || contentArray!.count < 2 { return JSON(dataArray) }
+                // [["  ", "  ", "Date Received ", "Expiration Date "], 
+                // ["Canada", "Student Visa", "2013/09/13", "2015/12/31"]]
+                // ...
+                for j in 1 ..< contentArray!.count {
+                    if !(contentArray![0].count == 4) { return JSON(dataArray) }
+                    var visaDict = Dictionary<String, String>()
+                    visaDict["Title"] = contentArray![j][0] + " - " + contentArray![j][1]
+                    visaDict[contentArray![0][2]] = contentArray![j][2]
+                    visaDict[contentArray![0][3]] = contentArray![j][3]
+                    datas.append(visaDict)
+                }
+            }
+            docDict["Data"] = datas
+            dataArray.append(docDict)
+            i += 1
+            tables = html!.searchWithXPathQuery(NSString(format: basicQueryString, i))
         }
-        return nil
+        return JSON(dataArray)
     }
 }
 

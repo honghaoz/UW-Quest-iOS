@@ -498,14 +498,14 @@ extension TFHppleElement {
         if self.tagName == "select" {
             for childNode in self.realChildren {
                 if childNode.tagName == "option" && childNode.hasKey("selected") && childNode.objectForKey("selected") == "selected" {
-                    return (childNode.raw as String).stringByConvertingHTMLToPlainText()
+                    return (childNode.raw as String).stringByConvertingHTMLToPlainText().trimmed()
                 }
             }
             return ""
         } else if self.tagName == "input" {
             return self.objectForKey("value")
         } else {
-            return (self.raw as NSString).stringByConvertingHTMLToPlainText()
+            return (self.raw as NSString).stringByConvertingHTMLToPlainText().trimmed()
         }
     }
     
@@ -539,6 +539,10 @@ extension TFHppleElement {
     
     func hasKey(key: String) -> Bool {
         return self.attributes.has(key)
+    }
+    
+    func searchWithXPathQuery(queryString: String) -> [TFHppleElement] {
+        return self.raw.searchWithXPathQuery(queryString)
     }
 }
 

@@ -70,7 +70,7 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
             case PersonalInformationType.DemographicInformation:
                 return sharedPersonalInformation.demograhicInformation == nil ? 0 : sharedPersonalInformation.demograhicInformation!.keys.count + 1
             case PersonalInformationType.CitizenshipImmigrationDocuments:
-                return sharedPersonalInformation.citizenshipImmigrationDocument == nil ? 1 : ((sharedPersonalInformation.citizenshipImmigrationDocument!.requiredDocumentation.count > 0 ? 1 : 0) + (sharedPersonalInformation.citizenshipImmigrationDocument!.pastDocumentation.count > 0 ? 1 : 0))
+                return sharedPersonalInformation.citizenshipImmigrationDocument == nil ? 1 : sharedPersonalInformation.citizenshipImmigrationDocument!.docs.count == 0 ? 1 : sharedPersonalInformation.citizenshipImmigrationDocument!.docs.count
             default:
                 assert(false, "Wrong PersonalInformation Type")
                 return 0
@@ -163,29 +163,20 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
             }
         case PersonalInformationType.CitizenshipImmigrationDocuments:
             // For non international students
-            if (sharedPersonalInformation.citizenshipImmigrationDocument == nil) {
-                var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(mainCollectionVC.kDescriptionCellResueIdentifier, forIndexPath: indexPath) as DescriptionCollectionViewCell
+            if (sharedPersonalInformation.citizenshipImmigrationDocument == nil || sharedPersonalInformation.citizenshipImmigrationDocument!.docs.count == 0) {
+                cell = collectionView.dequeueReusableCellWithReuseIdentifier(mainCollectionVC.kDescriptionCellResueIdentifier, forIndexPath: indexPath) as DescriptionCollectionViewCell
                 var message = "No Contents"
                 if let realMessage = sharedPersonalInformation.citizenshipImmigrationDocumentMessage {
                     message = realMessage
                 }
-                aCell.configLarge(message, textAlignment: NSTextAlignment.Center)
-                cell = aCell
+                (cell as DescriptionCollectionViewCell).configLarge(message, textAlignment: NSTextAlignment.Center)
             } else {
-                var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kCitizenshipCellResueIdentifier, forIndexPath: indexPath) as CitizenshipCollectionViewCell
-                if indexPath.item == 0 {
-                    aCell.configRequiredDoc(self.sharedPersonalInformation.citizenshipImmigrationDocument!)
-                } else if indexPath.item == 1 {
-                    aCell.configPastDoc(self.sharedPersonalInformation.citizenshipImmigrationDocument!)
-                } else {
-                    assert(false, "Wrong CitizenshipImmigrationDocuments row")
-                }
-                cell = aCell
+                cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCitizenshipCellResueIdentifier, forIndexPath: indexPath) as CitizenshipCollectionViewCell
+                let doc = sharedPersonalInformation.citizenshipImmigrationDocument!.docs[indexPath.item]
+                (cell as CitizenshipCollectionViewCell).configDoc(doc)
             }
-            break
         default:
             assert(false, "Wrong PersonalInformation Type")
-            break
         }
         cell.layoutIfNeeded()
         return cell
@@ -276,34 +267,13 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
             }
         case PersonalInformationType.CitizenshipImmigrationDocuments:
             // For non international students
-            if (sharedPersonalInformation.citizenshipImmigrationDocument == nil) {
-                let reuseIdentifier = mainCollectionVC.kDescriptionCellResueIdentifier
-                var aCell: DescriptionCollectionViewCell? = mainCollectionVC.offscreenCells[reuseIdentifier] as? DescriptionCollectionViewCell
-                if aCell == nil {
-                    aCell = NSBundle.mainBundle().loadNibNamed("DescriptionCollectionViewCell", owner: nil, options: nil)[0] as? DescriptionCollectionViewCell
-                    mainCollectionVC.offscreenCells[reuseIdentifier] = aCell
-                }
-                var message = "No Contents"
-                if let realMessage = sharedPersonalInformation.citizenshipImmigrationDocumentMessage {
-                    message = realMessage
-                }
-                aCell!.configLarge(message, textAlignment: NSTextAlignment.Center)
-                cell = aCell
+            if (sharedPersonalInformation.citizenshipImmigrationDocument == nil || sharedPersonalInformation.citizenshipImmigrationDocument!.docs.count == 0) {
+                cell = collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(mainCollectionVC.kDescriptionCellResueIdentifier)
+                (cell as DescriptionCollectionViewCell).configSmall("No Contents", textAlignment: NSTextAlignment.Center)
             } else {
-                let reuseIdentifier = kCitizenshipCellResueIdentifier
-                var aCell: CitizenshipCollectionViewCell? = mainCollectionVC.offscreenCells[reuseIdentifier] as? CitizenshipCollectionViewCell
-                if aCell == nil {
-                    aCell = CitizenshipCollectionViewCell(frame: CGRectMake(0, 0, targetWidth, targetWidth))
-                    mainCollectionVC.offscreenCells[reuseIdentifier] = aCell
-                }
-                if indexPath.item == 0 {
-                    aCell!.configRequiredDoc(self.sharedPersonalInformation.citizenshipImmigrationDocument!)
-                } else if indexPath.item == 1 {
-                    aCell!.configPastDoc(self.sharedPersonalInformation.citizenshipImmigrationDocument!)
-                } else {
-                    assert(false, "Wrong CitizenshipImmigrationDocuments row")
-                }
-                cell = aCell
+                cell = collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(kCitizenshipCellResueIdentifier) as CitizenshipCollectionViewCell
+                let doc = sharedPersonalInformation.citizenshipImmigrationDocument!.docs[indexPath.item]
+                (cell as CitizenshipCollectionViewCell).configDoc(doc)
             }
         default:
             assert(false, "Wrong PersonalInformation Type")
