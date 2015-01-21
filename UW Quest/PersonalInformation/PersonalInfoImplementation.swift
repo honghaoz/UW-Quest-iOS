@@ -29,7 +29,7 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
     
     func setUp(collectionVC: MainCollectionViewController) {
         // Setup
-        sharedPersonalInformation = Locator.sharedLocator.user.personalInformation
+        sharedPersonalInformation = Locator.user.personalInformation
         self.mainCollectionVC = collectionVC
         self.collectionView = collectionVC.collectionView
         self.registerCells()
@@ -302,22 +302,22 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
         
         mainCollectionVC.showHud(nil)
         
-        Locator.sharedLocator.user.getPersonalInformation(tappedCase, success:{ _ in
+        Locator.user.getPersonalInformation(tappedCase, success:{ _ in
             JGProgressHUD.dismiss(0, animated: true)
             switch tappedCase {
-            case PersonalInformationType.Addresses:
+            case .Addresses:
                 println("addresses count: \(self.sharedPersonalInformation.addresses.count)")
-            case PersonalInformationType.Names:
+            case .Names:
                 println("names count: \(self.sharedPersonalInformation.names.count)")
-            case PersonalInformationType.PhoneNumbers:
+            case .PhoneNumbers:
                 println("phoneNumbers count: \(self.sharedPersonalInformation.phoneNumbers.count)")
-            case PersonalInformationType.EmailAddresses:
+            case .EmailAddresses:
                 println("emails: \(self.sharedPersonalInformation.emailAddresses != nil)")
-            case PersonalInformationType.EmergencyContacts:
+            case .EmergencyContacts:
                 println("emergency count: \(self.sharedPersonalInformation.emergencyContacts.count)")
-            case PersonalInformationType.DemographicInformation:
+            case .DemographicInformation:
                 println("demographic: \(self.sharedPersonalInformation.demograhicInformation != nil)")
-            case PersonalInformationType.CitizenshipImmigrationDocuments:
+            case .CitizenshipImmigrationDocuments:
                 println("citizenshipDoc: \(self.sharedPersonalInformation.citizenshipImmigrationDocument)")
             default:
                 assert(false, "Wrong PersonalInformation Type")

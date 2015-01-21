@@ -679,6 +679,7 @@ var isIphone6Plus: Bool { return screenHeight ~= 736.0 }
 
 //
 var keyWindow: UIWindow { return UIApplication.sharedApplication().keyWindow! }
+var appDelegate: AppDelegate { return UIApplication.sharedApplication().delegate! as AppDelegate}
 
 // Debug Helpers
 

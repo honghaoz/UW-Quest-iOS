@@ -45,7 +45,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         usernameLabel.layer.shadowRadius = 6.0
         usernameLabel.layer.shadowOffset = CGSizeZero
         usernameLabel.layer.shadowOpacity = 0.8
-        usernameLabel.text = Locator.sharedLocator.user.username
+        usernameLabel.text = Locator.user.username
         usernameLabel.textColor = titleColor
         
         // Table view
@@ -58,7 +58,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         footerView.layer.shadowColor = UIColor.blackColor().CGColor
         footerView.layer.shadowOffset = CGSize(width: 0, height: -3.0)
         footerView.layer.shadowRadius = 5.0
-        footerView.layer.shadowOpacity = 0.3
+        footerView.layer.shadowOpacity = 0.15
     }
     
     override func viewWillAppear(animated: Bool) {

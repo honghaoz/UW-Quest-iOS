@@ -104,11 +104,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.delegate = self
         
         // Model
-        if Locator.sharedLocator.user.load() {
-            userIdTextField.text = Locator.sharedLocator.user.username
-            passwordTextField.text = Locator.sharedLocator.user.password
+        if Locator.user.load() {
+            userIdTextField.text = Locator.user.username
+            passwordTextField.text = Locator.user.password
         } else {
-            Locator.sharedLocator.user.isRemembered = rememberSwitch.on
+            Locator.user.isRemembered = rememberSwitch.on
         }
         
         // TextField target
@@ -257,12 +257,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func loginButtonPressed(sender: AnyObject) {
         dismissKeyboard()
         self.showHud("Login...   ")
-        Locator.sharedLocator.user.username = userIdTextField.text
-        Locator.sharedLocator.user.password = passwordTextField.text
-        Locator.sharedLocator.user.login({ () -> () in
+        Locator.user.username = userIdTextField.text
+        Locator.user.password = passwordTextField.text
+        Locator.user.login({ () -> () in
             logInfo("Login Successfully")
             if self.rememberSwitch.on {
-                Locator.sharedLocator.user.save()
+                Locator.user.save()
             }
             JGProgressHUD.showSuccess("Success!", duration: 1.0)
             self.enterToMainScreen()
@@ -344,9 +344,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func enterToMainScreen() {
         // Enter
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1.25 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
-            Locator.sharedLocator.appDelegate.window?.rootViewController = Locator.sharedLocator.slidingViewController
-            UIView.transitionWithView(Locator.sharedLocator.appDelegate.window!, duration: 0.3, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
-                Locator.sharedLocator.appDelegate.window!.rootViewController = Locator.sharedLocator.slidingViewController
+            appDelegate.window?.rootViewController = Locator.slidingViewController
+            UIView.transitionWithView(appDelegate.window!, duration: 0.3, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
+                appDelegate.window!.rootViewController = Locator.slidingViewController
                 }, completion: nil)
         })
     }
