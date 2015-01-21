@@ -10,7 +10,7 @@ import Foundation
 
 // Colors
 
-let UQMainColor = UQGreenColor
+let UQMainColor = UIColor(red:0/255.0, green:90/255.0, blue:127/255.0, alpha:255/255.0)
 let UQBackgroundColor = UQLightWhiteGrayColor
 let UQTextFieldFontColor = UQFontGrayColor
 let UQLabelFontColor = UQFontGrayColor
