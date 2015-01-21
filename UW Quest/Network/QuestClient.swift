@@ -85,17 +85,14 @@ class QuestClient: AFHTTPSessionManager {
         self.requestSerializer = AFHTTPRequestSerializer()
         self.reachabilityManager.setReachabilityStatusChangeBlock { (status) -> Void in
             switch status {
-            case AFNetworkReachabilityStatus.ReachableViaWWAN, AFNetworkReachabilityStatus.ReachableViaWiFi:
+            case .ReachableViaWWAN, AFNetworkReachabilityStatus.ReachableViaWiFi:
                 logInfo(".Reachable")
                 self.operationQueue.suspended = false
-                break
-            case AFNetworkReachabilityStatus.NotReachable:
+            case .NotReachable:
                 logInfo(".NotReachable")
                 self.operationQueue.suspended = true
-                break
-            case AFNetworkReachabilityStatus.Unknown:
+            case .Unknown:
                 logInfo(".Unknown")
-                break
             default:
                 break
             }

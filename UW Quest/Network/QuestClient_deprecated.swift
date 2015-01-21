@@ -52,14 +52,11 @@
 //            case AFNetworkReachabilityStatus.ReachableViaWWAN, AFNetworkReachabilityStatus.ReachableViaWiFi:
 //                println("AFNetworkReachabilityStatus.Reachable")
 //                self.operationQueue.suspended = false
-//                break
 //            case AFNetworkReachabilityStatus.NotReachable:
 //                println("AFNetworkReachabilityStatus.NotReachable")
 //                self.operationQueue.suspended = true
-//                break
 //            case AFNetworkReachabilityStatus.Unknown:
 //                println("AFNetworkReachabilityStatus.Unknown")
-//                break
 //            default:
 //                break
 //            }

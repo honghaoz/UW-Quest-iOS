@@ -349,6 +349,13 @@ extension UIViewController {
     }
 }
 
+extension UICollectionView {
+    enum DequeueCellFunctionType {
+        case SizeFor
+        case CellFor
+    }
+}
+
 extension NSDateFormatter {
     class func estDateFormatter() -> NSDateFormatter {
         let dateFormatter = NSDateFormatter()
@@ -685,9 +692,9 @@ var appDelegate: AppDelegate { return UIApplication.sharedApplication().delegate
 
 func addShadow(view: UIView) {
     let shadowPath = UIBezierPath(rect: view.bounds)
-    view.layer.masksToBounds = false;
-    view.layer.shadowColor = UIColor.blackColor().CGColor;
-    view.layer.shadowOffset = CGSizeMake(-5.0, 0.0);
-    view.layer.shadowOpacity = 1.0;
-    view.layer.shadowPath = shadowPath.CGPath;
+    view.layer.masksToBounds = false
+    view.layer.shadowColor = UIColor.blackColor().CGColor
+    view.layer.shadowOffset = CGSizeMake(-5.0, 0.0)
+    view.layer.shadowOpacity = 1.0
+    view.layer.shadowPath = shadowPath.CGPath
 }

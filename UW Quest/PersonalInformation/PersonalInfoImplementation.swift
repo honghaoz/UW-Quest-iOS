@@ -9,15 +9,15 @@
 import Foundation
 
 class PersonalInfoImplementation: MainCollectionVCImplementation {
-    var sharedPersonalInformation: PersonalInformation!
+    var sharedPI: PersonalInformation = Locator.user.personalInformation
 
-    let kAddressCellReuseIdentifier = "AddressCell"
-    let kNameCellResueIdentifier = "NameCell"
-    let kPhoneNumberCellResueIdentifier = "PhoneNumberCell"
-    let kEmailAddressCellResueIdentifier = "EmailAddressCell"
-    let kEmergencyContactCellResueIdentifier = "EmergencyContactCell"
-    let kDemograhicCellResueIdentifier = "DemographicCell"
-    let kCitizenshipCellResueIdentifier = "CitizenshipCell"
+    let kAddressCellIdentifier = "AddressCell"
+    let kNameCellIdentifier = "NameCell"
+    let kPhoneNumberCellIdentifier = "PhoneNumberCell"
+    let kEmailAddressCellIdentifier = "EmailAddressCell"
+    let kEmergencyContactCellIdentifier = "EmergencyContactCell"
+    let kDemograhicCellIdentifier = "DemographicCell"
+    let kCitizenshipCellIdentifier = "CitizenshipCell"
     
     let title: String = "Personal Information"
     var mainCollectionVC: MainCollectionViewController!
@@ -29,48 +29,47 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
     
     func setUp(collectionVC: MainCollectionViewController) {
         // Setup
-        sharedPersonalInformation = Locator.user.personalInformation
-        self.mainCollectionVC = collectionVC
-        self.collectionView = collectionVC.collectionView
-        self.registerCells()
+        mainCollectionVC = collectionVC
+        collectionView = collectionVC.collectionView
+        registerCells()
     }
     
     func registerCells() {
         // Register cells
         var addressCellNib = UINib(nibName: "AddressCollectionViewCell", bundle: nil)
-        collectionView.registerNib(addressCellNib, forCellWithReuseIdentifier: kAddressCellReuseIdentifier)
+        collectionView.registerNib(addressCellNib, forCellWithReuseIdentifier: kAddressCellIdentifier)
         
-        collectionView.registerClass(NameCollectionViewCell.self, forCellWithReuseIdentifier: kNameCellResueIdentifier)
-        collectionView.registerClass(PhoneNumberCollectionViewCell.self, forCellWithReuseIdentifier: kPhoneNumberCellResueIdentifier)
-        collectionView.registerClass(EmailCollectionViewCell.self, forCellWithReuseIdentifier: kEmailAddressCellResueIdentifier)
-        collectionView.registerClass(EmergencyContactCollectionViewCell.self, forCellWithReuseIdentifier: kEmergencyContactCellResueIdentifier)
-        collectionView.registerClass(DemographicCollectionCell.self, forCellWithReuseIdentifier: kDemograhicCellResueIdentifier)
-        collectionView.registerClass(CitizenshipCollectionViewCell.self, forCellWithReuseIdentifier: kCitizenshipCellResueIdentifier)
+        collectionView.registerClass(NameCollectionViewCell.self, forCellWithReuseIdentifier: kNameCellIdentifier)
+        collectionView.registerClass(PhoneNumberCollectionViewCell.self, forCellWithReuseIdentifier: kPhoneNumberCellIdentifier)
+        collectionView.registerClass(EmailCollectionViewCell.self, forCellWithReuseIdentifier: kEmailAddressCellIdentifier)
+        collectionView.registerClass(EmergencyContactCollectionViewCell.self, forCellWithReuseIdentifier: kEmergencyContactCellIdentifier)
+        collectionView.registerClass(DemographicCollectionCell.self, forCellWithReuseIdentifier: kDemograhicCellIdentifier)
+        collectionView.registerClass(CitizenshipCollectionViewCell.self, forCellWithReuseIdentifier: kCitizenshipCellIdentifier)
     }
     
     // MARK: - UICollectionViewDataSource
     func numberOfSectionsInCollectionView() -> Int {
-        return sharedPersonalInformation.categories.count
+        return sharedPI.categories.count
     }
     
     func numberOfItemsInSection(section: Int) -> Int {
         if section == mainCollectionVC.currentShowingSection {
-            let choosedCase: PersonalInformationType = PersonalInformationType(rawValue: sharedPersonalInformation.categories[section])!
+            let choosedCase: PersonalInformationType = PersonalInformationType(rawValue: sharedPI.categories[section])!
             switch choosedCase {
-            case PersonalInformationType.Addresses:
-                return sharedPersonalInformation.addresses!.count
-            case PersonalInformationType.Names:
-                return (sharedPersonalInformation.namesMessage == nil) ? 1 : 2
-            case PersonalInformationType.PhoneNumbers:
-                return sharedPersonalInformation.phoneNumbers!.count
-            case PersonalInformationType.EmailAddresses:
-                return sharedPersonalInformation.emailAddresses == nil ? 0 : (sharedPersonalInformation.emailAddresses?.alternateEmailAddress.count == 0 ? 2 : 4)
-            case PersonalInformationType.EmergencyContacts:
-                return sharedPersonalInformation.emergencyContacts!.count == 0 ? 1 : sharedPersonalInformation.emergencyContacts!.count
-            case PersonalInformationType.DemographicInformation:
-                return sharedPersonalInformation.demograhicInformation == nil ? 0 : sharedPersonalInformation.demograhicInformation!.keys.count + 1
-            case PersonalInformationType.CitizenshipImmigrationDocuments:
-                return sharedPersonalInformation.citizenshipImmigrationDocument == nil ? 1 : sharedPersonalInformation.citizenshipImmigrationDocument!.docs.count == 0 ? 1 : sharedPersonalInformation.citizenshipImmigrationDocument!.docs.count
+            case .Addresses:
+                return sharedPI.addresses!.count
+            case .Names:
+                return (sharedPI.namesMessage == nil) ? 1 : 2
+            case .PhoneNumbers:
+                return sharedPI.phoneNumbers!.count
+            case .EmailAddresses:
+                return sharedPI.emailAddresses == nil ? 0 : (sharedPI.emailAddresses?.alternateEmailAddress.count == 0 ? 2 : 4)
+            case .EmergencyContacts:
+                return sharedPI.emergencyContacts!.count == 0 ? 1 : sharedPI.emergencyContacts!.count
+            case .DemographicInformation:
+                return sharedPI.demograhicInformation == nil ? 0 : sharedPI.demograhicInformation!.keys.count + 1
+            case .CitizenshipImmigrationDocuments:
+                return sharedPI.citizenshipImmigrationDocument == nil ? 1 : sharedPI.citizenshipImmigrationDocument!.docs.count == 0 ? 1 : sharedPI.citizenshipImmigrationDocument!.docs.count
             default:
                 assert(false, "Wrong PersonalInformation Type")
                 return 0
@@ -81,209 +80,26 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
     }
     
     func cellForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewCell {
-        let type: PersonalInformationType = PersonalInformationType(rawValue: sharedPersonalInformation.categories[indexPath.section])!
-        var cell: UICollectionViewCell!
-        switch type {
-        case PersonalInformationType.Addresses:
-            cell = collectionView.dequeueReusableCellWithReuseIdentifier(kAddressCellReuseIdentifier, forIndexPath: indexPath) as UICollectionViewCell
-            let address: PersonalInformation.Address = sharedPersonalInformation.addresses![indexPath.item]
-            (cell as AddressCollectionViewCell).config(address)
-            break
-        case PersonalInformationType.Names:
-            switch indexPath.item {
-            case 0:
-                cell = collectionView.dequeueReusableCellWithReuseIdentifier(kNameCellResueIdentifier, forIndexPath: indexPath) as UICollectionViewCell
-                (cell as NameCollectionViewCell) .config(sharedPersonalInformation.names)
-            case 1:
-                cell = collectionView.dequeueReusableCellWithReuseIdentifier(mainCollectionVC.kDescriptionCellResueIdentifier, forIndexPath: indexPath) as UICollectionViewCell
-                let description = sharedPersonalInformation.namesMessage!
-                (cell as DescriptionCollectionViewCell).configSmall(description, textAlignment: NSTextAlignment.Left)
-            default:
-                assertionFailure("Wrong indexPath.item")
-            }
-        case PersonalInformationType.PhoneNumbers:
-            cell = collectionView.dequeueReusableCellWithReuseIdentifier(kPhoneNumberCellResueIdentifier, forIndexPath: indexPath) as PhoneNumberCollectionViewCell
-            
-            let phoneNumber: PersonalInformation.PhoneNumber = sharedPersonalInformation.phoneNumbers![indexPath.item]
-            (cell as PhoneNumberCollectionViewCell).config(phoneNumber)
-        case PersonalInformationType.EmailAddresses:
-            switch indexPath.item {
-            case 0:
-                var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kEmailAddressCellResueIdentifier, forIndexPath: indexPath) as EmailCollectionViewCell
-                let emails: [(String, String)] = [("Campus Email", sharedPersonalInformation.emailAddresses!.campusEmailAddress.campusEmail), ("Delivered to", sharedPersonalInformation.emailAddresses!.campusEmailAddress.deliveredTo)]
-                aCell.config("Campus Email Address", emails: emails)
-                cell = aCell
-            case 2:
-                var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kEmailAddressCellResueIdentifier, forIndexPath: indexPath) as EmailCollectionViewCell
-                var emails: [(String, String)] = []
-                for eachEmail in sharedPersonalInformation.emailAddresses!.alternateEmailAddress {
-                    let newTuple = (eachEmail.type, eachEmail.address)
-                    emails.append(newTuple)
-                }
-                aCell.config("Alternate Email Address", emails: emails)
-                cell = aCell
-            case 1, 3: // Description
-                var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(mainCollectionVC.kDescriptionCellResueIdentifier, forIndexPath: indexPath) as DescriptionCollectionViewCell
-                let description = indexPath.item == 1 ? sharedPersonalInformation.emailAddresses!.campusEmailDescription : sharedPersonalInformation.emailAddresses!.alternateEmailDescription
-                aCell.configSmall(description!, textAlignment: NSTextAlignment.Left)
-                cell = aCell
-            default:
-                assert(false, "Wrong indexPath.item")
-            }
-        case PersonalInformationType.EmergencyContacts:
-            // Show message
-            if sharedPersonalInformation.emergencyContacts.count == 0 {
-                var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(mainCollectionVC.kDescriptionCellResueIdentifier, forIndexPath: indexPath) as DescriptionCollectionViewCell
-                var message = "No current emergency contact information found."
-                if let realMessage = sharedPersonalInformation.emergencyContactsMessage {
-                    message = realMessage
-                }
-                aCell.configLarge(message, textAlignment: NSTextAlignment.Center)
-                cell = aCell
-            } else {
-                // Show content
-                var aCell = collectionView.dequeueReusableCellWithReuseIdentifier(kEmergencyContactCellResueIdentifier, forIndexPath: indexPath) as EmergencyContactCollectionViewCell
-                
-                let emergencyContact: PersonalInformation.EmergencyContact = sharedPersonalInformation.emergencyContacts![indexPath.item]
-                aCell.config(emergencyContact)
-                cell = aCell
-            }
-        case PersonalInformationType.DemographicInformation:
-            let totalItemsCount = self.collectionView.numberOfItemsInSection(indexPath.section)
-            // Last item should be description
-            if indexPath.item == totalItemsCount - 1 {
-                cell = collectionView.dequeueReusableCellWithReuseIdentifier(mainCollectionVC.kDescriptionCellResueIdentifier, forIndexPath: indexPath) as DescriptionCollectionViewCell
-                let description = sharedPersonalInformation.demograhicInformation!.message
-                (cell as DescriptionCollectionViewCell).configSmall(description, textAlignment: NSTextAlignment.Left)
-            } else {
-                cell = collectionView.dequeueReusableCellWithReuseIdentifier(kDemograhicCellResueIdentifier, forIndexPath: indexPath) as DemographicCollectionCell
-                var demographicInfo = sharedPersonalInformation.demograhicInformation!
-                let key = demographicInfo.keys[indexPath.item]
-                (cell as DemographicCollectionCell).config(demographicInfo, withKey: key)
-            }
-        case PersonalInformationType.CitizenshipImmigrationDocuments:
-            // For non international students
-            if (sharedPersonalInformation.citizenshipImmigrationDocument == nil || sharedPersonalInformation.citizenshipImmigrationDocument!.docs.count == 0) {
-                cell = collectionView.dequeueReusableCellWithReuseIdentifier(mainCollectionVC.kDescriptionCellResueIdentifier, forIndexPath: indexPath) as DescriptionCollectionViewCell
-                var message = "No Contents"
-                if let realMessage = sharedPersonalInformation.citizenshipImmigrationDocumentMessage {
-                    message = realMessage
-                }
-                (cell as DescriptionCollectionViewCell).configLarge(message, textAlignment: NSTextAlignment.Center)
-            } else {
-                cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCitizenshipCellResueIdentifier, forIndexPath: indexPath) as CitizenshipCollectionViewCell
-                let doc = sharedPersonalInformation.citizenshipImmigrationDocument!.docs[indexPath.item]
-                (cell as CitizenshipCollectionViewCell).configDoc(doc)
-            }
-        default:
-            assert(false, "Wrong PersonalInformation Type")
-        }
+        var cell = dequeueAndConfigCell(.CellFor, indexPath: indexPath)
         cell.layoutIfNeeded()
         return cell
     }
+    
     // MARK: - UICollectionViewDelegate
+    
     
     // MARK: - UICollectionViewFlowLayout Delegate
     func sizeForItemAtIndexPath(indexPath: NSIndexPath, layout collectionViewLayout: UICollectionViewLayout) -> CGSize {
         // Set up desired width
         let targetWidth: CGFloat = collectionView.bounds.width - 2 * mainCollectionVC.kSectionHorizontalInsets
         
-        let type: PersonalInformationType = PersonalInformationType(rawValue: sharedPersonalInformation.categories[indexPath.section])!
-        var cell: UICollectionViewCell!
-        switch type {
-        case PersonalInformationType.Addresses:
-            cell = collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(kAddressCellReuseIdentifier)
-            let address: PersonalInformation.Address = sharedPersonalInformation.addresses![indexPath.item]
-            (cell as AddressCollectionViewCell).config(address)
-        case PersonalInformationType.Names:
-            switch indexPath.item {
-            case 0:
-                cell = collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(kNameCellResueIdentifier)
-                (cell as NameCollectionViewCell).config(sharedPersonalInformation.names)
-            case 1:
-                cell = collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(mainCollectionVC.kDescriptionCellResueIdentifier)
-                let description = sharedPersonalInformation.namesMessage!
-                (cell as DescriptionCollectionViewCell).configSmall(description, textAlignment: NSTextAlignment.Left)
-            default:
-                assertionFailure("Wrong PersonalInformation Type")
-            }
-            
-        case PersonalInformationType.PhoneNumbers:
-            cell = collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(kPhoneNumberCellResueIdentifier)
-            let phoneNumber: PersonalInformation.PhoneNumber = sharedPersonalInformation.phoneNumbers![indexPath.item]
-            (cell as PhoneNumberCollectionViewCell).config(phoneNumber)
-        case PersonalInformationType.EmailAddresses:
-            switch indexPath.item {
-            case 0, 2:
-                // Prepare cell
-                cell = collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(kEmailAddressCellResueIdentifier)
-                if indexPath.item == 0 {
-                    let emails: [(String, String)] = [("Campus Email", sharedPersonalInformation.emailAddresses!.campusEmailAddress.campusEmail), ("Delivered to", sharedPersonalInformation.emailAddresses!.campusEmailAddress.deliveredTo)]
-                    (cell as EmailCollectionViewCell).config("Campus Email Address", emails: emails)
-                } else {
-                    var emails: [(String, String)] = []
-                    for eachEmail in sharedPersonalInformation.emailAddresses!.alternateEmailAddress {
-                        let newTuple = (eachEmail.type, eachEmail.address)
-                        emails.append(newTuple)
-                    }
-                    (cell as EmailCollectionViewCell).config("Alternate Email Address", emails: emails)
-                }
-            case 1, 3:
-                // Prepare cell
-                cell = collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(mainCollectionVC.kDescriptionCellResueIdentifier)
-                let description = indexPath.item == 1 ? sharedPersonalInformation.emailAddresses!.campusEmailDescription : sharedPersonalInformation.emailAddresses!.alternateEmailDescription
-                (cell as DescriptionCollectionViewCell).configSmall(description!, textAlignment: NSTextAlignment.Left)
-            default:
-                assert(false, "Wrong PersonalInformation Type")
-                break
-            }
-            break
-        case PersonalInformationType.EmergencyContacts:
-            // Show message
-            if sharedPersonalInformation.emergencyContacts.count == 0 {
-                cell = collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(mainCollectionVC.kDescriptionCellResueIdentifier)
-                var message = "No current emergency contact information found."
-                if let realMessage = sharedPersonalInformation.emergencyContactsMessage {
-                    message = realMessage
-                }
-                (cell as DescriptionCollectionViewCell).configLarge(message, textAlignment: NSTextAlignment.Center)
-            } else {
-                cell = collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(kEmergencyContactCellResueIdentifier)
-                let emergencyContact: PersonalInformation.EmergencyContact = sharedPersonalInformation.emergencyContacts![indexPath.item]
-                (cell as EmergencyContactCollectionViewCell).config(emergencyContact)
-            }
-        case PersonalInformationType.DemographicInformation:
-            let totalItemsCount = self.collectionView.numberOfItemsInSection(indexPath.section)
-            // Last item should be description
-            if indexPath.item == totalItemsCount - 1 {
-                cell = collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(mainCollectionVC.kDescriptionCellResueIdentifier)
-                let description = sharedPersonalInformation.demograhicInformation!.message
-                (cell as DescriptionCollectionViewCell).configSmall(description, textAlignment: NSTextAlignment.Left)
-            } else {
-                cell = collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(kDemograhicCellResueIdentifier)
-                var demographicInfo = sharedPersonalInformation.demograhicInformation!
-                let key = demographicInfo.keys[indexPath.item]
-                (cell as DemographicCollectionCell).config(demographicInfo, withKey: key)
-            }
-        case PersonalInformationType.CitizenshipImmigrationDocuments:
-            // For non international students
-            if (sharedPersonalInformation.citizenshipImmigrationDocument == nil || sharedPersonalInformation.citizenshipImmigrationDocument!.docs.count == 0) {
-                cell = collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(mainCollectionVC.kDescriptionCellResueIdentifier)
-                (cell as DescriptionCollectionViewCell).configSmall("No Contents", textAlignment: NSTextAlignment.Center)
-            } else {
-                cell = collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(kCitizenshipCellResueIdentifier) as CitizenshipCollectionViewCell
-                let doc = sharedPersonalInformation.citizenshipImmigrationDocument!.docs[indexPath.item]
-                (cell as CitizenshipCollectionViewCell).configDoc(doc)
-            }
-        default:
-            assert(false, "Wrong PersonalInformation Type")
-        }
+        var cell = dequeueAndConfigCell(.SizeFor, indexPath: indexPath)
         
         // Cell's size is determined in nib file, need to set it's width (in this case), and inside, use this cell's width to set label's preferredMaxLayoutWidth, thus, height can be determined, this size will be returned for real cell initialization
-        cell!.bounds = CGRectMake(0, 0, targetWidth, cell!.bounds.height)
-        cell!.contentView.bounds = cell!.bounds
+        cell.bounds = CGRectMake(0, 0, targetWidth, cell.bounds.height)
+        cell.contentView.bounds = cell.bounds
                 
-        var size = cell!.contentView.systemLayoutSizeFittingSize(CGSizeMake(targetWidth, cell!.bounds.height))
+        var size = cell.contentView.systemLayoutSizeFittingSize(CGSizeMake(targetWidth, cell.bounds.height))
         // Still need to force the width, since width can be smalled due to break mode of labels
         if abs(size.width - targetWidth) > 1 {
             size.width = targetWidth
@@ -291,34 +107,155 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
         return size
     }
     
+    // MARK: UICollectionView Helper
+    
+    /**
+    Dequeue a proper cell for sizeFor/CellFor and make a configuration for this cell
+    This method is for consolidating configurations for sizeForCell and cellFor..
+    
+    :param: dequeueType calling function, e.g. size for / cell for
+    :param: indexPath   indexPath for cell
+    
+    :returns: configured UICollectionViewCell
+    */
+    private func dequeueAndConfigCell(dequeueType: UICollectionView.DequeueCellFunctionType, indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        /**
+        Dequeue a cell according to cell identifier and deque function type
+        
+        :param: identifier  cell identifier
+        :param: dequeueType calling function, e.g. size for / cell for
+        :param: indexPath   indexPath for this cell
+        
+        :returns: UICollectionCell
+        */
+        func dequeueCell(identifier: String, dequeueType: UICollectionView.DequeueCellFunctionType, indexPath: NSIndexPath) -> UICollectionViewCell {
+            var cell: UICollectionViewCell!
+            switch dequeueType {
+            case .SizeFor:
+                cell = collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(identifier)
+            case .CellFor:
+                cell = collectionView.dequeueReusableCellWithReuseIdentifier(identifier, forIndexPath: indexPath) as UICollectionViewCell
+            }
+            return cell
+        }
+        
+        let piType: PersonalInformationType = PersonalInformationType(rawValue: sharedPI.categories[indexPath.section])!
+        var cell: UICollectionViewCell!
+        
+        // Dequeue cell and make configuration
+        switch piType {
+        case .Addresses:
+            cell = dequeueCell(kAddressCellIdentifier, dequeueType, indexPath)
+            let address: PersonalInformation.Address = sharedPI.addresses![indexPath.item]
+            (cell as AddressCollectionViewCell).config(address)
+        case .Names:
+            switch indexPath.item {
+            case 0:
+                cell = dequeueCell(kNameCellIdentifier, dequeueType, indexPath)
+                (cell as NameCollectionViewCell).config(sharedPI.names)
+            case 1:
+                cell = dequeueCell(mainCollectionVC.kDescriptionCellResueIdentifier, dequeueType, indexPath)
+                let description = sharedPI.namesMessage!
+                (cell as DescriptionCollectionViewCell).configSmall(description, textAlignment: NSTextAlignment.Left)
+            default:
+                assertionFailure("Wrong PersonalInformation Type")
+            }
+        case .PhoneNumbers:
+            cell = dequeueCell(kPhoneNumberCellIdentifier, dequeueType, indexPath)
+            let phoneNumber: PersonalInformation.PhoneNumber = sharedPI.phoneNumbers![indexPath.item]
+            (cell as PhoneNumberCollectionViewCell).config(phoneNumber)
+        case .EmailAddresses:
+            switch indexPath.item {
+            case 0:
+                cell = dequeueCell(kEmailAddressCellIdentifier, dequeueType, indexPath)
+                let emails: [(String, String)] = [("Campus Email", sharedPI.emailAddresses!.campusEmailAddress.campusEmail), ("Delivered to", sharedPI.emailAddresses!.campusEmailAddress.deliveredTo)]
+                (cell as EmailCollectionViewCell).config("Campus Email Address", emails: emails)
+            case 2:
+                cell = dequeueCell(kEmailAddressCellIdentifier, dequeueType, indexPath)
+                var emails: [(String, String)] = []
+                for eachEmail in sharedPI.emailAddresses!.alternateEmailAddress {
+                    let newTuple = (eachEmail.type, eachEmail.address)
+                    emails.append(newTuple)
+                }
+                (cell as EmailCollectionViewCell).config("Alternate Email Address", emails: emails)
+            case 1, 3:
+                cell = dequeueCell(mainCollectionVC.kDescriptionCellResueIdentifier, dequeueType, indexPath)
+                let description = indexPath.item == 1 ? sharedPI.emailAddresses!.campusEmailDescription : sharedPI.emailAddresses!.alternateEmailDescription
+                (cell as DescriptionCollectionViewCell).configSmall(description!, textAlignment: NSTextAlignment.Left)
+            default:
+                assert(false, "Wrong PersonalInformation Type")
+            }
+        case .EmergencyContacts:
+            // Show message
+            if sharedPI.emergencyContacts.count == 0 {
+                cell = dequeueCell(mainCollectionVC.kDescriptionCellResueIdentifier, dequeueType, indexPath)
+                var message = "No current emergency contact information found."
+                if let realMessage = sharedPI.emergencyContactsMessage {
+                    message = realMessage
+                }
+                (cell as DescriptionCollectionViewCell).configLarge(message, textAlignment: NSTextAlignment.Center)
+            } else {
+                cell = dequeueCell(kEmergencyContactCellIdentifier, dequeueType, indexPath)
+                let emergencyContact: PersonalInformation.EmergencyContact = sharedPI.emergencyContacts![indexPath.item]
+                (cell as EmergencyContactCollectionViewCell).config(emergencyContact)
+            }
+        case .DemographicInformation:
+            let totalItemsCount = self.collectionView.numberOfItemsInSection(indexPath.section)
+            // Last item should be description
+            if indexPath.item == totalItemsCount - 1 {
+                cell = dequeueCell(mainCollectionVC.kDescriptionCellResueIdentifier, dequeueType, indexPath)
+                let description = sharedPI.demograhicInformation!.message
+                (cell as DescriptionCollectionViewCell).configSmall(description, textAlignment: NSTextAlignment.Left)
+            } else {
+                cell = dequeueCell(kDemograhicCellIdentifier, dequeueType, indexPath)
+                var demographicInfo = sharedPI.demograhicInformation!
+                let key = demographicInfo.keys[indexPath.item]
+                (cell as DemographicCollectionCell).config(demographicInfo, withKey: key)
+            }
+        case .CitizenshipImmigrationDocuments:
+            // For non international students
+            if (sharedPI.citizenshipImmigrationDocument == nil || sharedPI.citizenshipImmigrationDocument!.docs.count == 0) {
+                cell = dequeueCell(mainCollectionVC.kDescriptionCellResueIdentifier, dequeueType, indexPath)
+                (cell as DescriptionCollectionViewCell).configSmall("No Contents", textAlignment: NSTextAlignment.Center)
+            } else {
+                cell = dequeueCell(kCitizenshipCellIdentifier, dequeueType, indexPath)
+                let doc = sharedPI.citizenshipImmigrationDocument!.docs[indexPath.item]
+                (cell as CitizenshipCollectionViewCell).configDoc(doc)
+            }
+        default:
+            assert(false, "Wrong PersonalInformation Type")
+        }
+        return cell
+    }
+    
     // MARK: - Others
     func titleForHeaderAtIndexPath(indexPath: NSIndexPath) -> String {
-        return sharedPersonalInformation.categories[indexPath.section]
+        return sharedPI.categories[indexPath.section]
     }
 
     func headerViewTapped(headerView: UQCollectionReusableView) {
-        let tappedCase: PersonalInformationType = PersonalInformationType(rawValue: sharedPersonalInformation.categories[headerView.indexPath.section])!
-        println("tapped header: \(tappedCase.rawValue)")
+        let tappedCase: PersonalInformationType = PersonalInformationType(rawValue: sharedPI.categories[headerView.indexPath.section])!
+        logInfo("tapped header: \(tappedCase.rawValue)")
         
         mainCollectionVC.showHud(nil)
-        
         Locator.user.getPersonalInformation(tappedCase, success:{ _ in
             JGProgressHUD.dismiss(0, animated: true)
             switch tappedCase {
             case .Addresses:
-                println("addresses count: \(self.sharedPersonalInformation.addresses.count)")
+                logDebug("addresses count: \(self.sharedPI.addresses.count)")
             case .Names:
-                println("names count: \(self.sharedPersonalInformation.names.count)")
+                logDebug("names count: \(self.sharedPI.names.count)")
             case .PhoneNumbers:
-                println("phoneNumbers count: \(self.sharedPersonalInformation.phoneNumbers.count)")
+                logDebug("phoneNumbers count: \(self.sharedPI.phoneNumbers.count)")
             case .EmailAddresses:
-                println("emails: \(self.sharedPersonalInformation.emailAddresses != nil)")
+                logDebug("emails: \(self.sharedPI.emailAddresses != nil)")
             case .EmergencyContacts:
-                println("emergency count: \(self.sharedPersonalInformation.emergencyContacts.count)")
+                logDebug("emergency count: \(self.sharedPI.emergencyContacts.count)")
             case .DemographicInformation:
-                println("demographic: \(self.sharedPersonalInformation.demograhicInformation != nil)")
+                logDebug("demographic: \(self.sharedPI.demograhicInformation != nil)")
             case .CitizenshipImmigrationDocuments:
-                println("citizenshipDoc: \(self.sharedPersonalInformation.citizenshipImmigrationDocument)")
+                logDebug("citizenshipDoc: \(self.sharedPI.citizenshipImmigrationDocument)")
             default:
                 assert(false, "Wrong PersonalInformation Type")
             }
