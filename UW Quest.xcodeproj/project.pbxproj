@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		023605BC1A6F323F00088C83 /* MyAcademicsImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023605BB1A6F323F00088C83 /* MyAcademicsImplementation.swift */; };
+		023605BE1A6F326400088C83 /* MyAcademics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023605BD1A6F326400088C83 /* MyAcademics.swift */; };
 		1B17CEE31A55B77D0066F0C1 /* ZHAutoLinesLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B17CEE11A55B77D0066F0C1 /* ZHAutoLinesLabel.swift */; };
 		1B17CEE41A55B77D0066F0C1 /* ZHExtendViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B17CEE21A55B77D0066F0C1 /* ZHExtendViews.swift */; };
 		1B196A911A663A49003111FC /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B196A8F1A663A49003111FC /* NSString+HTML.m */; };
@@ -98,6 +100,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		023605BB1A6F323F00088C83 /* MyAcademicsImplementation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAcademicsImplementation.swift; sourceTree = "<group>"; };
+		023605BD1A6F326400088C83 /* MyAcademics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAcademics.swift; sourceTree = "<group>"; };
 		040AF5C3C6C827E481C73485 /* Pods-UW Quest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UW Quest.release.xcconfig"; path = "Pods/Target Support Files/Pods-UW Quest/Pods-UW Quest.release.xcconfig"; sourceTree = "<group>"; };
 		1B17CEE11A55B77D0066F0C1 /* ZHAutoLinesLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHAutoLinesLabel.swift; sourceTree = "<group>"; };
 		1B17CEE21A55B77D0066F0C1 /* ZHExtendViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHExtendViews.swift; sourceTree = "<group>"; };
@@ -229,26 +233,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1B2AFE8C19BD27E4008A75EF /* Controller */ = {
+		023605B71A6F2FC200088C83 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				FA21D6DE19E7780C002FBF71 /* Transitions */,
 				1B7CF10D19BCEF28007A157D /* Login.storyboard */,
 				1B5BF35119C3F8470005626F /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		023605B91A6F31AC00088C83 /* ResuableViews */ = {
+			isa = PBXGroup;
+			children = (
+				1BF1B17819CF814E00411109 /* UQCollectionReusableView.swift */,
+			);
+			path = ResuableViews;
+			sourceTree = "<group>";
+		};
+		023605BA1A6F323F00088C83 /* MyAcademics */ = {
+			isa = PBXGroup;
+			children = (
+				023605BB1A6F323F00088C83 /* MyAcademicsImplementation.swift */,
+			);
+			path = MyAcademics;
+			sourceTree = "<group>";
+		};
+		1B2AFE8C19BD27E4008A75EF /* Main */ = {
+			isa = PBXGroup;
+			children = (
 				1B520C5619CE8EB900A0ADE6 /* MainSlide.storyboard */,
+				FA21D6DE19E7780C002FBF71 /* Transitions */,
 				FA32936019FD60B600164369 /* LeftMenu */,
 				FAE341B119FDB0E300D828E7 /* MainCollectionViewController */,
-				1BF1B17719CF811400411109 /* PersonalInformation */,
-				FAE341B219FDB1BB00D828E7 /* MyAcademics */,
 			);
-			path = Controller;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		1B2AFE8E19BD2826008A75EF /* View */ = {
 			isa = PBXGroup;
 			children = (
 				1B563F9519C496BF001785D9 /* BaseButton.swift */,
-				1BF1B17819CF814E00411109 /* UQCollectionReusableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -304,7 +328,10 @@
 				FACE198519C9EB05001FD4C9 /* Network */,
 				FA8C1D6219C75B0800D6E158 /* Model */,
 				1B2AFE8E19BD2826008A75EF /* View */,
-				1B2AFE8C19BD27E4008A75EF /* Controller */,
+				1B2AFE8C19BD27E4008A75EF /* Main */,
+				023605B71A6F2FC200088C83 /* Login */,
+				1BF1B17719CF811400411109 /* PersonalInformation */,
+				023605BA1A6F323F00088C83 /* MyAcademics */,
 				1B7CF10719BCEF28007A157D /* Supporting Files */,
 			);
 			path = "UW Quest";
@@ -440,8 +467,8 @@
 		FA32936019FD60B600164369 /* LeftMenu */ = {
 			isa = PBXGroup;
 			children = (
-				1B520C4E19CE888300A0ADE6 /* MenuViewController.swift */,
 				FA32935E19FD60A800164369 /* MenuTitleCell.swift */,
+				1B520C4E19CE888300A0ADE6 /* MenuViewController.swift */,
 			);
 			path = LeftMenu;
 			sourceTree = "<group>";
@@ -467,6 +494,7 @@
 			children = (
 				FA8C1D6319C75B0800D6E158 /* User.swift */,
 				1B8615AB19CFC6A20064505C /* PersonalInformations.swift */,
+				023605BD1A6F326400088C83 /* MyAcademics.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -506,18 +534,12 @@
 		FAE341B119FDB0E300D828E7 /* MainCollectionViewController */ = {
 			isa = PBXGroup;
 			children = (
+				023605B91A6F31AC00088C83 /* ResuableViews */,
 				FAAACD6A1A0AC4CD002E021B /* Cells */,
 				FADCAA8719FDA44000538C98 /* MainCollectionViewController.storyboard */,
 				1B520C5219CE8A2000A0ADE6 /* MainCollectionViewController.swift */,
 			);
 			path = MainCollectionViewController;
-			sourceTree = "<group>";
-		};
-		FAE341B219FDB1BB00D828E7 /* MyAcademics */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = MyAcademics;
 			sourceTree = "<group>";
 		};
 		FAF2291C19C937050041C36F /* OpenSource */ = {
@@ -693,6 +715,7 @@
 				1B5BF35219C3F8470005626F /* LoginViewController.swift in Sources */,
 				1BCCB62E1A6716E6009811D0 /* EmailCollectionViewCell.swift in Sources */,
 				1B520C5319CE8A2000A0ADE6 /* MainCollectionViewController.swift in Sources */,
+				023605BE1A6F326400088C83 /* MyAcademics.swift in Sources */,
 				1BEB05B91A53979600986692 /* Int.swift in Sources */,
 				1B8615AE19CFD79A0064505C /* AddressCollectionViewCell.swift in Sources */,
 				1BEB05B61A53979600986692 /* ExSwift.swift in Sources */,
@@ -702,6 +725,7 @@
 				1B563F9619C496BF001785D9 /* BaseButton.swift in Sources */,
 				1BEB05BD1A53979600986692 /* String.swift in Sources */,
 				1B520C4F19CE888300A0ADE6 /* MenuViewController.swift in Sources */,
+				023605BC1A6F323F00088C83 /* MyAcademicsImplementation.swift in Sources */,
 				1BEB05BB1A53979600986692 /* Range.swift in Sources */,
 				1B2152331A536F5900B7165A /* ZHLogger.swift in Sources */,
 				1B196A911A663A49003111FC /* NSString+HTML.m in Sources */,
@@ -763,7 +787,7 @@
 				1B7CF10E19BCEF28007A157D /* Base */,
 			);
 			name = Login.storyboard;
-			path = "UW Quest/Controller";
+			path = "UW Quest/Login";
 			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXVariantGroup section */
@@ -856,6 +880,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/**",
@@ -866,6 +891,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "UW Quest/UW Quest-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -879,6 +905,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/**",
@@ -888,6 +915,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "UW Quest/UW Quest-Bridging-Header.h";
 			};
 			name = Release;

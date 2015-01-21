@@ -9,6 +9,7 @@
 import Foundation
 
 // Colors
+
 let UQMainColor = UQGreenColor
 let UQBackgroundColor = UQLightWhiteGrayColor
 let UQTextFieldFontColor = UQFontGrayColor

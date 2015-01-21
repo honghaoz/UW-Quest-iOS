@@ -35,5 +35,4 @@ class MenuTitleCell: UITableViewCell {
             })
         }
     }
-
 }

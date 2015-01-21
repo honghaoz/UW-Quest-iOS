@@ -11,6 +11,7 @@ import UIKit
 class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var headerShadownView: UIView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var footerView: UIView!
@@ -22,20 +23,42 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViews()
+    }
+    
+    private func setupViews() {
         self.view.backgroundColor = backgroundColor
         
-        self.usernameLabel.layer.shadowColor = UIColor.whiteColor().CGColor
-        self.usernameLabel.layer.shadowRadius = 6.0
-        self.usernameLabel.layer.shadowOffset = CGSizeZero
-        self.usernameLabel.layer.shadowOpacity = 0.8
+        // Header View
+        headerView.backgroundColor = self.view.backgroundColor
+
+        // Add a shadow under segBackgroundView
+        headerShadownView.clipsToBounds = false
+        headerShadownView.layer.shadowColor = UIColor.blackColor().CGColor
+        headerShadownView.layer.shadowOffset = CGSize(width: 0, height: 3.0)
+        headerShadownView.layer.shadowRadius = 5.0
+        headerShadownView.layer.shadowOpacity = 0.3
         
-        self.headerView.backgroundColor = UIColor.clearColor()
-        self.tableView.backgroundColor = UIColor.clearColor()
-        self.footerView.backgroundColor = UIColor.clearColor()
+        // Username label
+        usernameLabel.clipsToBounds = false
+        usernameLabel.layer.shadowColor = UIColor.whiteColor().CGColor
+        usernameLabel.layer.shadowRadius = 6.0
+        usernameLabel.layer.shadowOffset = CGSizeZero
+        usernameLabel.layer.shadowOpacity = 0.8
         usernameLabel.text = Locator.sharedLocator.user.username
         usernameLabel.textColor = titleColor
         
-        self.tableView.selectRowAtIndexPath(NSIndexPath(forRow: 4, inSection: 0), animated: true, scrollPosition: UITableViewScrollPosition.Top)
+        // Table view
+        tableView.backgroundColor = UIColor.clearColor()
+        tableView.selectRowAtIndexPath(NSIndexPath(forRow: 4, inSection: 0), animated: true, scrollPosition: .Top)
+        
+        footerView.backgroundColor = self.view.backgroundColor
+        
+        footerView.clipsToBounds = false
+        footerView.layer.shadowColor = UIColor.blackColor().CGColor
+        footerView.layer.shadowOffset = CGSize(width: 0, height: -3.0)
+        footerView.layer.shadowRadius = 5.0
+        footerView.layer.shadowOpacity = 0.3
     }
     
     override func viewWillAppear(animated: Bool) {
