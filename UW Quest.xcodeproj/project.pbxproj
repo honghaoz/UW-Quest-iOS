@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		023605BC1A6F323F00088C83 /* MyAcademicsImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023605BB1A6F323F00088C83 /* MyAcademicsImplementation.swift */; };
 		023605BE1A6F326400088C83 /* MyAcademics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023605BD1A6F326400088C83 /* MyAcademics.swift */; };
+		023EF9091A6F713F006FE653 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023EF9081A6F713E006FE653 /* BaseViewController.swift */; };
+		02FD32631A6F64CE006EA751 /* SearchClass.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02FD32621A6F64CE006EA751 /* SearchClass.storyboard */; };
+		02FD32671A6F6749006EA751 /* SearchClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FD32661A6F6749006EA751 /* SearchClassViewController.swift */; };
 		1B17CEE31A55B77D0066F0C1 /* ZHAutoLinesLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B17CEE11A55B77D0066F0C1 /* ZHAutoLinesLabel.swift */; };
 		1B17CEE41A55B77D0066F0C1 /* ZHExtendViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B17CEE21A55B77D0066F0C1 /* ZHExtendViews.swift */; };
 		1B196A911A663A49003111FC /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B196A8F1A663A49003111FC /* NSString+HTML.m */; };
@@ -102,6 +105,9 @@
 /* Begin PBXFileReference section */
 		023605BB1A6F323F00088C83 /* MyAcademicsImplementation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAcademicsImplementation.swift; sourceTree = "<group>"; };
 		023605BD1A6F326400088C83 /* MyAcademics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAcademics.swift; sourceTree = "<group>"; };
+		023EF9081A6F713E006FE653 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		02FD32621A6F64CE006EA751 /* SearchClass.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchClass.storyboard; sourceTree = "<group>"; };
+		02FD32661A6F6749006EA751 /* SearchClassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchClassViewController.swift; sourceTree = "<group>"; };
 		040AF5C3C6C827E481C73485 /* Pods-UW Quest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UW Quest.release.xcconfig"; path = "Pods/Target Support Files/Pods-UW Quest/Pods-UW Quest.release.xcconfig"; sourceTree = "<group>"; };
 		1B17CEE11A55B77D0066F0C1 /* ZHAutoLinesLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHAutoLinesLabel.swift; sourceTree = "<group>"; };
 		1B17CEE21A55B77D0066F0C1 /* ZHExtendViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHExtendViews.swift; sourceTree = "<group>"; };
@@ -258,6 +264,15 @@
 			path = MyAcademics;
 			sourceTree = "<group>";
 		};
+		02FD32611A6F6495006EA751 /* SearchClasses */ = {
+			isa = PBXGroup;
+			children = (
+				02FD32621A6F64CE006EA751 /* SearchClass.storyboard */,
+				02FD32661A6F6749006EA751 /* SearchClassViewController.swift */,
+			);
+			path = SearchClasses;
+			sourceTree = "<group>";
+		};
 		1B2AFE8C19BD27E4008A75EF /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -265,6 +280,7 @@
 				FA21D6DE19E7780C002FBF71 /* Transitions */,
 				FA32936019FD60B600164369 /* LeftMenu */,
 				FAE341B119FDB0E300D828E7 /* MainCollectionViewController */,
+				023EF9081A6F713E006FE653 /* BaseViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -331,6 +347,7 @@
 				1B2AFE8C19BD27E4008A75EF /* Main */,
 				023605B71A6F2FC200088C83 /* Login */,
 				1BF1B17719CF811400411109 /* PersonalInformation */,
+				02FD32611A6F6495006EA751 /* SearchClasses */,
 				023605BA1A6F323F00088C83 /* MyAcademics */,
 				1B7CF10719BCEF28007A157D /* Supporting Files */,
 			);
@@ -644,6 +661,7 @@
 				1B64007E19D8E48E00C35E44 /* PhoneNumberCollectionViewCell_deprecated.xib in Resources */,
 				1B7CF10F19BCEF28007A157D /* Login.storyboard in Resources */,
 				FADDD6CF19D476BB003EC88D /* AddressCollectionViewCell.xib in Resources */,
+				02FD32631A6F64CE006EA751 /* SearchClass.storyboard in Resources */,
 				FA4D1F5919DA620C006AA190 /* EmailCollectionViewCell_deprecated.xib in Resources */,
 				FA79657819C90BB000852C84 /* LaunchView.xib in Resources */,
 				1B64007A19D8977D00C35E44 /* NameCollectionViewCell_deprecated.xib in Resources */,
@@ -704,6 +722,7 @@
 				FACE198719C9EB05001FD4C9 /* QuestClient_deprecated.swift in Sources */,
 				1B2FCD1C19C4A64400FDF4D8 /* Extension.swift in Sources */,
 				1BF1B17919CF814E00411109 /* UQCollectionReusableView.swift in Sources */,
+				023EF9091A6F713F006FE653 /* BaseViewController.swift in Sources */,
 				FAE341B419FDB24300D828E7 /* PersonalInfoImplementation.swift in Sources */,
 				1B8615AC19CFC6A20064505C /* PersonalInformations.swift in Sources */,
 				1BEB05BA1A53979600986692 /* NSArray.swift in Sources */,
@@ -747,6 +766,7 @@
 				1B907FB71A6759B3004CC43D /* TitleSubTitleCollectionViewCell.swift in Sources */,
 				1BEB05B51A53979600986692 /* Double.swift in Sources */,
 				1BEB05C11A5397BC00986692 /* UIImage+ImageEffects.m in Sources */,
+				02FD32671A6F6749006EA751 /* SearchClassViewController.swift in Sources */,
 				1B1A3A5E1A5517970077E8A9 /* NameCollectionViewCell.swift in Sources */,
 				1BEB05B31A53979600986692 /* Array.swift in Sources */,
 				1BD1D1461A6713F900996B9B /* PhoneNumberCollectionViewCell.swift in Sources */,

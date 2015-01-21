@@ -27,8 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             rootViewController = Locator.loginViewController
         }
         
+        // Setup basic view appearance
         UINavigationBar.appearance().barTintColor = UQMainColor
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: UIFont.helveticaNeueLightFont(20), NSForegroundColorAttributeName: UIColor(white: 1.0, alpha: 0.9)]
+        UINavigationBar.appearance().translucent = false
         
         self.window!.rootViewController = rootViewController
         self.window!.makeKeyAndVisible()

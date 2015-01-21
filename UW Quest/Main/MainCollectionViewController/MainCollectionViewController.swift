@@ -52,8 +52,6 @@ class MainCollectionViewController: UIViewController {
         super.viewDidLoad()
         
         setupCollectionView()
-        setupAnimation()
-        
         self.navigationController?.title = currentImplemention.title
     }
     
@@ -83,6 +81,7 @@ class MainCollectionViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
+        setupAnimation()
     }
     
     override func viewDidAppear(animated: Bool) {

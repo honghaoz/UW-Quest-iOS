@@ -47,7 +47,7 @@
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6yT-Bn-ISb" userLabel="titleLabel">
                                             <rect key="frame" x="12" y="1" width="351" height="42"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                             <color key="textColor" red="0.29803921570000003" green="0.29803921570000003" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -83,11 +83,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Personal Information" id="dcq-cm-2F4">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="yXa-9a-U17">
+                        <barButtonItem key="leftBarButtonItem" image="Hamburger" id="yXa-9a-U17" userLabel="Menu">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="menuButtonTapped:" destination="O1B-dy-mrh" id="sEt-a6-QZ3"/>
                             </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="z26-81-63e">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -104,17 +107,17 @@
             </objects>
             <point key="canvasLocation" x="349.5" y="529.5"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Base View Controller-->
         <scene sceneID="7MR-84-1QW">
             <objects>
-                <navigationController storyboardIdentifier="MainNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="rtV-Hm-13Q" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MainNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="rtV-Hm-13Q" customClass="BaseViewController" customModule="UW_Quest" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Fn9-Tc-31U">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.0" green="0.57056949010000002" blue="0.90249794409999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.054901960780000002" green="0.25098039220000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                             <color key="textColor" white="1" alpha="0.90000000000000002" colorSpace="calibratedWhite"/>
@@ -130,4 +133,7 @@
             <point key="canvasLocation" x="-135.5" y="530.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Hamburger" width="25" height="18"/>
+    </resources>
 </document>

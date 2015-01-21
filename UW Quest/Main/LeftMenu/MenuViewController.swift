@@ -75,7 +75,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 6
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -91,6 +91,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             titleCell.titleLabel.text = "Search for Classes"
         case 4:
             titleCell.titleLabel.text = "Personal Information"
+        case 5:
+            titleCell.titleLabel.text = "Finances"
         default:
             assert(false, "Wrong row number")
         }
@@ -100,5 +102,31 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // MARK: - TableView delegate
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
         return 40.0
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        switch indexPath.row {
+        case 0:
+            // "News"
+            break
+        case 1:
+            // "My Academics"
+            break
+        case 2:
+            // "My Class Schedule"
+            break
+        case 3:
+            // "Search for Classes"
+            Locator.slidingViewController.topViewController = Locator.searchClassNavigationViewController
+        case 4:
+            // "Personal Information"
+            Locator.slidingViewController.topViewController = Locator.personalInformationNavigationViewController
+        case 5:
+            // "Finances"
+            break
+        default:
+            assert(false, "Wrong row number")
+        }
+        Locator.slidingViewController.resetTopViewAnimated(true)
     }
 }

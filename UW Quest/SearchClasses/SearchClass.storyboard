@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="00M-Fe-jfl">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <scenes>
+        <!--Search for Classes-->
+        <scene sceneID="qYk-uy-zGG">
+            <objects>
+                <viewController storyboardIdentifier="SearchClassViewController" id="ntY-yI-HW4" customClass="SearchClassViewController" customModule="UW_Quest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LlB-Es-0p1"/>
+                        <viewControllerLayoutGuide type="bottom" id="r6U-wa-vTQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="b6l-zM-DD1">
+                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Search for Classes" id="WHe-rK-6Fd">
+                        <barButtonItem key="leftBarButtonItem" image="Hamburger" id="6aO-Rk-12s" userLabel="Menu">
+                            <connections>
+                                <action selector="menuButtonTapped:" destination="ntY-yI-HW4" id="nm3-2G-0k3"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Search" id="sdH-af-aJp"/>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K7M-gf-P8T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="709" y="303"/>
+        </scene>
+        <!--Base View Controller-->
+        <scene sceneID="bo6-Mg-tyJ">
+            <objects>
+                <navigationController storyboardIdentifier="SearchClassNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="00M-Fe-jfl" customClass="BaseViewController" customModule="UW_Quest" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" userInteractionEnabled="NO" contentMode="scaleToFill" id="d62-kH-onQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.054901960780000002" green="0.25098039220000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ntY-yI-HW4" kind="relationship" relationship="rootViewController" id="iOz-AS-nXg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wi4-kB-MQV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="276" y="303"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Hamburger" width="25" height="18"/>
+    </resources>
+</document>

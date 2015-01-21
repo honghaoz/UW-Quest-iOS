@@ -30,16 +30,34 @@ class Locator {
     private lazy var _slidingViewController: ECSlidingViewController = {
         logVerbose("slidingViewController inited")
         var controller = UIViewController.viewControllerInStoryboard("MainSlide", viewControllerName: "SlidingViewController") as ECSlidingViewController
-        var navigationVC: UINavigationController = UIViewController.viewControllerInStoryboard("MainCollectionViewController", viewControllerName: "MainNavigationViewController") as UINavigationController
-        (navigationVC.topViewController as MainCollectionViewController).setup(PersonalInfoImplementation())
         
-        controller.topViewController = navigationVC
+        controller.topViewController = Locator.personalInformationNavigationViewController
         controller.anchorRightRevealAmount = 200.0
         return controller
     }()
     
     class var slidingViewController: ECSlidingViewController {
         return _sharedLocator._slidingViewController
+    }
+    
+    // Personal Information
+    private lazy var _personalInformationNavigationViewController: UINavigationController = {
+        var navigationVC = UIViewController.viewControllerInStoryboard("MainCollectionViewController", viewControllerName: "MainNavigationViewController") as UINavigationController
+        (navigationVC.topViewController as MainCollectionViewController).setup(PersonalInfoImplementation())
+        return navigationVC
+    }()
+    
+    class var personalInformationNavigationViewController: UINavigationController {
+        return _sharedLocator._personalInformationNavigationViewController
+    }
+    
+    // Search for Classes
+    private lazy var _searchClassNavigationViewController: UINavigationController = {
+        return UIViewController.viewControllerInStoryboard("SearchClass", viewControllerName: "SearchClassNavigationViewController") as UINavigationController
+    }()
+    
+    class var searchClassNavigationViewController: UINavigationController {
+        return _sharedLocator._searchClassNavigationViewController
     }
     
     lazy var dynamicTransition: MEDynamicTransition = {
