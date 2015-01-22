@@ -10,6 +10,8 @@
 		023605BC1A6F323F00088C83 /* MyAcademicsImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023605BB1A6F323F00088C83 /* MyAcademicsImplementation.swift */; };
 		023605BE1A6F326400088C83 /* MyAcademics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023605BD1A6F326400088C83 /* MyAcademics.swift */; };
 		023EF9091A6F713F006FE653 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023EF9081A6F713E006FE653 /* BaseViewController.swift */; };
+		023EF90B1A700943006FE653 /* ZHDynamicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023EF90A1A700943006FE653 /* ZHDynamicTableView.swift */; };
+		023EF90D1A700BA9006FE653 /* SearchClassInstitutionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023EF90C1A700BA9006FE653 /* SearchClassInstitutionCell.swift */; };
 		02FD32631A6F64CE006EA751 /* SearchClass.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02FD32621A6F64CE006EA751 /* SearchClass.storyboard */; };
 		02FD32671A6F6749006EA751 /* SearchClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FD32661A6F6749006EA751 /* SearchClassViewController.swift */; };
 		1B17CEE31A55B77D0066F0C1 /* ZHAutoLinesLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B17CEE11A55B77D0066F0C1 /* ZHAutoLinesLabel.swift */; };
@@ -106,6 +108,8 @@
 		023605BB1A6F323F00088C83 /* MyAcademicsImplementation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAcademicsImplementation.swift; sourceTree = "<group>"; };
 		023605BD1A6F326400088C83 /* MyAcademics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAcademics.swift; sourceTree = "<group>"; };
 		023EF9081A6F713E006FE653 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		023EF90A1A700943006FE653 /* ZHDynamicTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHDynamicTableView.swift; sourceTree = "<group>"; };
+		023EF90C1A700BA9006FE653 /* SearchClassInstitutionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchClassInstitutionCell.swift; sourceTree = "<group>"; };
 		02FD32621A6F64CE006EA751 /* SearchClass.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchClass.storyboard; sourceTree = "<group>"; };
 		02FD32661A6F6749006EA751 /* SearchClassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchClassViewController.swift; sourceTree = "<group>"; };
 		040AF5C3C6C827E481C73485 /* Pods-UW Quest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UW Quest.release.xcconfig"; path = "Pods/Target Support Files/Pods-UW Quest/Pods-UW Quest.release.xcconfig"; sourceTree = "<group>"; };
@@ -268,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				02FD32621A6F64CE006EA751 /* SearchClass.storyboard */,
+				023EF90C1A700BA9006FE653 /* SearchClassInstitutionCell.swift */,
 				02FD32661A6F6749006EA751 /* SearchClassViewController.swift */,
 			);
 			path = SearchClasses;
@@ -543,6 +548,7 @@
 				1B17CEE11A55B77D0066F0C1 /* ZHAutoLinesLabel.swift */,
 				1B17CEE21A55B77D0066F0C1 /* ZHExtendViews.swift */,
 				1BFABA581A55E3DF004BB928 /* ZHDynamicCollectionView.swift */,
+				023EF90A1A700943006FE653 /* ZHDynamicTableView.swift */,
 				FACE198919C9EC2D001FD4C9 /* Crashlytics.framework */,
 			);
 			path = ThirdParty;
@@ -746,6 +752,7 @@
 				1B520C4F19CE888300A0ADE6 /* MenuViewController.swift in Sources */,
 				023605BC1A6F323F00088C83 /* MyAcademicsImplementation.swift in Sources */,
 				1BEB05BB1A53979600986692 /* Range.swift in Sources */,
+				023EF90D1A700BA9006FE653 /* SearchClassInstitutionCell.swift in Sources */,
 				1B2152331A536F5900B7165A /* ZHLogger.swift in Sources */,
 				1B196A911A663A49003111FC /* NSString+HTML.m in Sources */,
 				FAE020D919DBACA40000253A /* EmergencyContactCollectionViewCell.swift in Sources */,
@@ -759,6 +766,7 @@
 				1BFABA591A55E3DF004BB928 /* ZHDynamicCollectionView.swift in Sources */,
 				1B1A3A5C1A54AD250077E8A9 /* SwiftyJSON.swift in Sources */,
 				1BEB05BC1A53979600986692 /* Sequence.swift in Sources */,
+				023EF90B1A700943006FE653 /* ZHDynamicTableView.swift in Sources */,
 				FA7E99FB19DCFD4000D65565 /* DemographicCollectionCell.swift in Sources */,
 				1B64007D19D8E48E00C35E44 /* PhoneNumberCollectionViewCell_deprecated.swift in Sources */,
 				1BEB05B71A53979600986692 /* Float.swift in Sources */,

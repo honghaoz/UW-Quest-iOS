@@ -16,7 +16,71 @@
                     <view key="view" contentMode="scaleToFill" id="b6l-zM-DD1">
                         <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="92" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="CFT-44-P1F" userLabel="tableView" customClass="ZHDynamicTableView" customModule="UW_Quest" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="InstitutionCell" rowHeight="92" id="pPS-Bl-mSP" customClass="SearchClassInstitutionCell" customModule="UW_Quest" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pPS-Bl-mSP" id="A7Z-aY-K6V">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="94k-Hk-Gqy" userLabel="Container" customClass="ZHExtendView" customModule="UW_Quest" customModuleProvider="target">
+                                                    <rect key="frame" x="10" y="10" width="300" height="72"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Institution" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y1J-pa-t2r">
+                                                            <rect key="frame" x="10" y="10" width="71" height="21"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                                            <color key="textColor" red="0.42352941176470588" green="0.42352941176470588" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Term" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KqY-6a-RMl">
+                                                            <rect key="frame" x="10" y="41" width="36" height="21"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                                            <color key="textColor" red="0.42352941179999998" green="0.42352941179999998" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="KqY-6a-RMl" firstAttribute="top" secondItem="y1J-pa-t2r" secondAttribute="bottom" constant="10" id="JPL-dV-a94"/>
+                                                        <constraint firstItem="y1J-pa-t2r" firstAttribute="leading" secondItem="KqY-6a-RMl" secondAttribute="leading" id="Vou-5T-omR"/>
+                                                        <constraint firstItem="y1J-pa-t2r" firstAttribute="leading" secondItem="94k-Hk-Gqy" secondAttribute="leading" constant="10" id="ew0-6y-eTE"/>
+                                                        <constraint firstItem="y1J-pa-t2r" firstAttribute="top" secondItem="94k-Hk-Gqy" secondAttribute="top" constant="10" id="fX5-tp-xpi"/>
+                                                        <constraint firstAttribute="bottom" secondItem="KqY-6a-RMl" secondAttribute="bottom" constant="10" id="nQV-VA-cPv"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isRounded" value="NO"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="94k-Hk-Gqy" firstAttribute="top" secondItem="A7Z-aY-K6V" secondAttribute="top" constant="10" id="5x9-XU-rYE"/>
+                                                <constraint firstItem="94k-Hk-Gqy" firstAttribute="leading" secondItem="A7Z-aY-K6V" secondAttribute="leading" constant="10" id="ZPe-WH-p0G"/>
+                                                <constraint firstAttribute="bottom" secondItem="94k-Hk-Gqy" secondAttribute="bottom" constant="10" id="qLa-p3-PSa"/>
+                                                <constraint firstAttribute="trailing" secondItem="94k-Hk-Gqy" secondAttribute="trailing" constant="10" id="sfI-U5-pT0"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ntY-yI-HW4" id="IsK-Kj-IfW"/>
+                                    <outlet property="delegate" destination="ntY-yI-HW4" id="DUu-UC-GmT"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CFT-44-P1F" firstAttribute="leading" secondItem="b6l-zM-DD1" secondAttribute="leading" id="8gp-mw-lvK"/>
+                            <constraint firstItem="r6U-wa-vTQ" firstAttribute="top" secondItem="CFT-44-P1F" secondAttribute="bottom" id="bWC-vF-TbZ"/>
+                            <constraint firstAttribute="trailing" secondItem="CFT-44-P1F" secondAttribute="trailing" id="lIy-fy-qHX"/>
+                            <constraint firstItem="CFT-44-P1F" firstAttribute="top" secondItem="b6l-zM-DD1" secondAttribute="top" id="xsm-bO-UA5"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Search for Classes" id="WHe-rK-6Fd">
                         <barButtonItem key="leftBarButtonItem" image="Hamburger" id="6aO-Rk-12s" userLabel="Menu">
@@ -27,10 +91,13 @@
                         <barButtonItem key="rightBarButtonItem" title="Search" id="sdH-af-aJp"/>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="tableView" destination="CFT-44-P1F" id="zuC-kl-lOk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K7M-gf-P8T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="709" y="303"/>
+            <point key="canvasLocation" x="709" y="299"/>
         </scene>
         <!--Base View Controller-->
         <scene sceneID="bo6-Mg-tyJ">

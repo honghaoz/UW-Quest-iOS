@@ -9,10 +9,14 @@
 import UIKit
 
 class SearchClassViewController: UIViewController {
-
+    
+    @IBOutlet weak var tableView: ZHDynamicTableView!
+    
+    let kInstitutionCellIdentifier = "InstitutionCell"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupTableView()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -22,29 +26,48 @@ class SearchClassViewController: UIViewController {
     
     private func setupAnimation() {
         // Default animation
-        self.navigationController?.view.addGestureRecognizer(self.slidingViewController().panGesture)
-        
-        //        // Dynamic transition
-        //        var dynamicTransition = Locator.sharedLocator.dynamicTransition
-        //        dynamicTransition.slidingViewController = self.slidingViewController()
-        //        self.slidingViewController().delegate = dynamicTransition
-        //
-        //        self.slidingViewController().topViewAnchoredGesture = ECSlidingViewControllerAnchoredGesture.Tapping | ECSlidingViewControllerAnchoredGesture.Custom
-        //
-        //        var dynamicTransitionPanGesture = UIPanGestureRecognizer(target: dynamicTransition, action: "handlePanGesture:")
-        //        self.slidingViewController().customAnchoredGestures = [dynamicTransitionPanGesture]
-        //        self.navigationController?.view.addGestureRecognizer(dynamicTransitionPanGesture)
-        //
-        //        // Zoom transition
-        //        let zoomTransition = Locator.sharedLocator.zoomTransition
-        //        self.slidingViewController().delegate = zoomTransition
-        //        self.slidingViewController().topViewAnchoredGesture = ECSlidingViewControllerAnchoredGesture.Tapping | ECSlidingViewControllerAnchoredGesture.Panning
-        //
-        //        self.navigationController?.view.addGestureRecognizer(self.slidingViewController().panGesture)
+        navigationController?.view.addGestureRecognizer(self.slidingViewController().panGesture)
     }
     
     // MARK: Actions
     @IBAction func menuButtonTapped(sender: AnyObject) {
         self.slidingViewController().anchorTopViewToRightAnimated(true)
+    }
+}
+
+extension SearchClassViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func setupTableView() {
+        // Do extra setups
+        tableView.backgroundColor = UQBackgroundColor
+    }
+    
+    // Data Source
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCellWithIdentifier(kInstitutionCellIdentifier) as SearchClassInstitutionCell
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return nil
+    }
+    
+    // Delegate
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 92
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let cell = self.tableView.dequeueReusableOffScreenCellWithIdentifier(kInstitutionCellIdentifier) as SearchClassInstitutionCell
+        var size = cell.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
+        return size.height
     }
 }
