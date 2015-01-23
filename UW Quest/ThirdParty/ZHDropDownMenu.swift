@@ -64,7 +64,6 @@ class ZHDropDownMenu: UIControl {
                     self.indicatorView.transform = CGAffineTransformMakeRotation(CGFloat(180.0).radianDegree)
                 })
             } else {
-                removeOpaqueOverlayViewForView(rootSuperView)
                 // Move table view back to self
                 cTableViewTop.constant = 0
                 cTableViewHeight.constant = 2.0
@@ -76,6 +75,7 @@ class ZHDropDownMenu: UIControl {
                 }, completion: { finished -> Void in
                     self.indicatorView.transform = CGAffineTransformMakeRotation(CGFloat(0).radianDegree)
                     self.tableView.removeFromSuperview()
+                    self.removeOpaqueOverlayViewForView(rootSuperView)
                 })
             }
         }
