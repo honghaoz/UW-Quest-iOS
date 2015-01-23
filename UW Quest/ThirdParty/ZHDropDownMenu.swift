@@ -38,13 +38,13 @@ class ZHDropDownMenu: UIControl {
         }
     }
     var kAnimationDuration: NSTimeInterval = 0.25
-    var isExpanding: Bool = false {
+    var expanded: Bool = false {
         didSet {
             if self.superview == nil {
                 return
             }
             let rootSuperView = self.rootView()!
-            if isExpanding {
+            if expanded {
                 addOpaqueOverlayViewForView(rootSuperView)
                 // Move table view to the top
                 rootSuperView.insertSubview(tableView, belowSubview: self)
@@ -161,7 +161,7 @@ class ZHDropDownMenu: UIControl {
     }
     
     func tapped(sender: AnyObject, forEvent event: UIEvent) {
-        isExpanding = !isExpanding
+        expanded = !expanded
     }
 }
 
@@ -287,6 +287,6 @@ extension ZHDropDownMenu {
     }
     
     func rootViewIsTouched(gesture: UIGestureRecognizer) {
-        isExpanding = false
+        expanded = false
     }
 }
