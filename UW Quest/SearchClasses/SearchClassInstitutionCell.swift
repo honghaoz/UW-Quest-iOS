@@ -17,5 +17,8 @@ class SearchClassInstitutionCell: UITableViewCell {
         super.awakeFromNib()
         self.backgroundColor = UIColor.clearColor()
         self.contentView.backgroundColor = UIColor.clearColor()
+        
+        institutionMenu.textColor = UQLabelFontColor
+        termMenu.textColor = UQLabelFontColor
     }
 }

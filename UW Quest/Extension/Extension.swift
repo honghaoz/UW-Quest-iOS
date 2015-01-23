@@ -137,6 +137,8 @@ extension UIView {
         
         overlayView.tag = blurOverlayViewTagNumber // Special number for taging this overlayView
         overlayView.alpha = 0
+        overlayView.clipsToBounds = self.clipsToBounds
+        overlayView.layer.cornerRadius = self.layer.cornerRadius
         
         // Setup constraints
         self.addSubview(overlayView!)

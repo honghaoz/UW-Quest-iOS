@@ -19,22 +19,33 @@ protocol ZHDropDownMenuDelegate {
 
 class ZHDropDownMenu: UIControl {
     var titleLabel: UILabel!
-    var color: UIColor = UIColor.blackColor() {
+    var textColor: UIColor = UIColor(white: 0.0, alpha: 0.7) {
         didSet {
-            titleLabel.textColor = color
-            indicatorLayer = createTriangleIndicatorWithColor(color, width: kIndicatorWidth)
+            titleLabel.textColor = textColor
+            indicatorLayer = createTriangleIndicatorWithColor(textColor, width: kIndicatorWidth)
         }
     }
     
     private var indicatorView: UIView!
     private var indicatorLayer: CAShapeLayer!
-    private var contentInset: UIEdgeInsets = UIEdgeInsetsMake(8, 8, 8, 8)
+    private var contentInset: UIEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
     private let kIndicatorWidth: CGFloat = 8.0
     
+    var cornerRaidus: CGFloat = 4 {
+        didSet {
+            self.layer.cornerRadius = cornerRaidus
+            self.tableView.layer.cornerRadius = cornerRaidus
+        }
+    }
+    
     // Data
-    var currentTitle: String = " " {
+    var currentTitle: String = "(Not selected)" {
         didSet {
             if currentTitle.length == 0 { currentTitle = " " }
+            UIView.animateWithDuration(kAnimationDuration, animations: { () -> Void in
+                self.titleLabel.text = self.currentTitle
+                self.layoutIfNeeded()
+            })
         }
     }
     var kAnimationDuration: NSTimeInterval = 0.25
@@ -49,14 +60,18 @@ class ZHDropDownMenu: UIControl {
                 // Move table view to the top
                 rootSuperView.insertSubview(tableView, belowSubview: self)
                 rootSuperView.addConstraints([cTableViewWidth, cTableViewCenterX, cTableViewTop])
+                tableView.addBackupBlurView(animated: false, completion: nil)
                 rootSuperView.setNeedsLayout()
                 rootSuperView.layoutIfNeeded()
                 
-                cTableViewTop.constant = self.bounds.height
+                cTableViewTop.constant = self.bounds.height + 2
                 let rowsCount: Int = tableView.numberOfRowsInSection(0)
                 cTableViewHeight.constant = rowHeight * CGFloat(min(rowsCount, maxExpandingItems))
+                
+                // Animation
+                tableView.setHidden(false, animated: true, animationDuration: kAnimationDuration + 0.15, completion: nil)
+                self.addBackupBlurView(animated: true, completion: nil)
                 UIView.animateWithDuration(kAnimationDuration, animations: { () -> Void in
-                    self.tableView.alpha = 1.0
                     // Choose 179.9 to make sure rotation is clockwise
                     self.indicatorView.transform = CGAffineTransformMakeRotation(CGFloat(179.9).radianDegree)
                     rootSuperView.layoutIfNeeded()
@@ -67,13 +82,17 @@ class ZHDropDownMenu: UIControl {
                 // Move table view back to self
                 cTableViewTop.constant = 0
                 cTableViewHeight.constant = 2.0
+                
+                // Animation
+                tableView.setHidden(true, animated: true, animationDuration: kAnimationDuration - 0.15, completion: nil)
+                self.removeBackBlurView(animated: true, completion: nil)
                 UIView.animateWithDuration(kAnimationDuration, animations: { () -> Void in
-                    self.tableView.alpha = 0.0
                     // Choose 0.1 to make sure rotation is counter-clockwise
                     self.indicatorView.transform = CGAffineTransformMakeRotation(CGFloat(0.1).radianDegree)
                     rootSuperView.layoutIfNeeded()
                 }, completion: { finished -> Void in
                     self.indicatorView.transform = CGAffineTransformMakeRotation(CGFloat(0).radianDegree)
+                    self.tableView.removeBackBlurView(animated: false, completion: nil)
                     self.tableView.removeFromSuperview()
                     self.removeOpaqueOverlayViewForView(rootSuperView)
                 })
@@ -150,10 +169,12 @@ class ZHDropDownMenu: UIControl {
         titleLabel.text = currentTitle
         
         // Triangle Indicator
-        indicatorLayer = createTriangleIndicatorWithColor(color, width: kIndicatorWidth)
+        indicatorLayer = createTriangleIndicatorWithColor(textColor, width: kIndicatorWidth)
         indicatorView.layer.addSublayer(indicatorLayer)
         
         setupTableView()
+        self.clipsToBounds = true
+        cornerRaidus = 4.0
     }
     
     private func setupActions() {
@@ -167,11 +188,65 @@ class ZHDropDownMenu: UIControl {
 
 // MARK: TableView
 extension ZHDropDownMenu: UITableViewDataSource, UITableViewDelegate {
+    class ZHDropDownItemCell: UITableViewCell {
+        var titleLabel: UILabel!
+        var cTitleLabelRight: NSLayoutConstraint!
+        var titleLabelRightPadding: CGFloat = 8 {
+            didSet {
+                cTitleLabelRight.constant = -titleLabelRightPadding
+            }
+        }
+        
+        override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+            super.init(style: style, reuseIdentifier: reuseIdentifier)
+            setup()
+        }
+        
+        convenience override init() {
+            self.init(frame: CGRectZero)
+        }
+        
+        override init(frame: CGRect) {
+            super.init(frame: frame)
+            setup()
+        }
+
+        required init(coder aDecoder: NSCoder) {
+            super.init(coder: aDecoder)
+            setup()
+        }
+        
+        private func setup() {
+            titleLabel = UILabel()
+            titleLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+            self.contentView.addSubview(titleLabel)
+            
+            let centerY = NSLayoutConstraint(item: titleLabel, attribute: .CenterY, relatedBy: .Equal, toItem: self.contentView, attribute: .CenterY, multiplier: 1.0, constant: 0.0)
+            cTitleLabelRight = NSLayoutConstraint(item: titleLabel, attribute: .Right, relatedBy: .Equal, toItem: self.contentView, attribute: .Right, multiplier: 1.0, constant: -titleLabelRightPadding)
+            self.contentView.addConstraints([centerY, cTitleLabelRight])
+            
+            titleLabel.setContentHuggingPriority(1000, forAxis: .Horizontal)
+            titleLabel.setContentHuggingPriority(1000, forAxis: .Vertical)
+            titleLabel.setContentCompressionResistancePriority(1000, forAxis: .Horizontal)
+            titleLabel.setContentCompressionResistancePriority(1000, forAxis: .Vertical)
+            
+            titleLabel.textAlignment = .Right
+            titleLabel.font = UIFont.helveticaNenueFont(15)
+            
+            self.selectedBackgroundView = UIView()
+            self.selectedBackgroundView.backgroundColor = UIColor(white: 0.5, alpha: 0.1)
+        }
+        
+        override func setSelected(selected: Bool, animated: Bool) {
+            super.setSelected(selected, animated: animated)
+        }
+    }
+    
     var rowHeight: CGFloat { return self.titleLabel.bounds.height + 10 }
     
     private func setupTableView() {
         tableView = UITableView(frame: CGRectZero, style: .Plain)
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: kCellIdentifier)
+        tableView.registerClass(ZHDropDownItemCell.self , forCellReuseIdentifier: kCellIdentifier)
         tableView.setTranslatesAutoresizingMaskIntoConstraints(false)
         
         // Setup constraints, but won't add to view, will add it when expanding
@@ -183,6 +258,9 @@ extension ZHDropDownMenu: UITableViewDataSource, UITableViewDelegate {
         cTableViewTop = NSLayoutConstraint(item: tableView, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1.0, constant: 0.0)
         
         tableView.alpha = 0.0
+        tableView.clipsToBounds = true
+        tableView.layer.cornerRadius = cornerRaidus
+        tableView.backgroundColor = UIColor.clearColor()
         
         tableView.separatorStyle = .None
         
@@ -204,8 +282,15 @@ extension ZHDropDownMenu: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as AnyObject! as UITableViewCell
-        cell.textLabel?.text = "1234567"
+        let cell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as AnyObject! as ZHDropDownItemCell
+        cell.titleLabel?.text = "1234567"
+        cell.titleLabelRightPadding = contentInset.right * 2 + kIndicatorWidth
+        cell.titleLabel.textColor = textColor
+        cell.titleLabel.font = self.titleLabel.font
+        cell.backgroundColor = UIColor.clearColor()
+//        cell.selectedBackgroundView = 
+        cell.setNeedsLayout()
+        cell.layoutIfNeeded()
         return cell
     }
     
@@ -221,6 +306,8 @@ extension ZHDropDownMenu: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         delegate?.zhDropDownMenu(self, didSelectIndex: indexPath.row)
+        self.expanded = false
+        self.currentTitle = "1234567"
     }
 }
 
@@ -259,6 +346,7 @@ extension ZHDropDownMenu {
         return currentSuperView
     }
     
+    // MARK: added overlay view for root view
     /// This number is used for tagging overlay view
     var magicTagNumber: Int { return 9999 }
     
@@ -268,17 +356,11 @@ extension ZHDropDownMenu {
         overlayView.tag = magicTagNumber
         view.addSubview(overlayView)
         
-        let top = NSLayoutConstraint(item: overlayView, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: 0)
-        let left = NSLayoutConstraint(item: overlayView, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1.0, constant: 0)
-        let bottom = NSLayoutConstraint(item: overlayView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1.0, constant: 0)
-        let right = NSLayoutConstraint(item: overlayView, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1.0, constant: 0)
-        view.addConstraints([top, left, bottom, right])
+        overlayView.fullSizeAsSuperView()
         
         let touchSelector = Selector("rootViewIsTouched:")
         let tapGesture = UITapGestureRecognizer(target: self, action: touchSelector)
-        let panGesture = UIPanGestureRecognizer(target: self, action: touchSelector)
         overlayView.addGestureRecognizer(tapGesture)
-        overlayView.addGestureRecognizer(panGesture)
     }
     
     func removeOpaqueOverlayViewForView(view: UIView) {
@@ -288,5 +370,99 @@ extension ZHDropDownMenu {
     
     func rootViewIsTouched(gesture: UIGestureRecognizer) {
         expanded = false
+    }
+    
+    // MARK: Add cover view for current showing title
+}
+
+extension UIView {
+    func fullSizeAsSuperView() {
+        if self.superview == nil {
+            return
+        }
+        self.superview!.addConstraints(self.constrainsFromFullSizeAsView(self.superview!))
+    }
+    
+    func constrainsFromFullSizeAsView(view: UIView) -> [NSLayoutConstraint] {
+        let top = NSLayoutConstraint(item: self, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: 0)
+        let left = NSLayoutConstraint(item: self, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1.0, constant: 0)
+        let bottom = NSLayoutConstraint(item: self, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1.0, constant: 0)
+        let right = NSLayoutConstraint(item: self, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1.0, constant: 0)
+        return [top, left, bottom, right]
+    }
+    
+    // MARK: Add blur view
+    var blurViewTagNumber: Int { return 3141592653 }
+    
+    func addBackupBlurView(animated: Bool = false, completion: ((Bool) -> Void)? = nil) {
+        if self.superview == nil {
+            assertionFailure("The view must have a super view")
+        }
+        var blurView: UIView!
+        if isIOS8 {
+            var blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+            blurView = UIVisualEffectView(effect: blurEffect)
+        } else {
+            blurView = UIView()
+            blurView.backgroundColor = UIColor(white: 1.0, alpha: 0.2)
+        }
+        blurView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        
+        blurView.tag = blurViewTagNumber // Special number for taging this blurView
+        blurView.alpha = 0
+        blurView.clipsToBounds = self.clipsToBounds
+        blurView.layer.cornerRadius = self.layer.cornerRadius
+        
+        // Setup constraints
+        self.superview!.insertSubview(blurView!, belowSubview: self)
+        self.superview!.addConstraints(blurView!.constrainsFromFullSizeAsView(self))
+        blurView!.setNeedsLayout()
+        blurView!.layoutIfNeeded()
+        
+        if animated {
+            UIView.animateWithDuration(0.25, animations: { () -> Void in
+                blurView.alpha = 1.0
+                }, completion: { finished -> Void in
+                    if completion != nil { completion!(finished) }
+            })
+        } else {
+            blurView.alpha = 1.0
+        }
+    }
+    
+    func removeBackBlurView(animated: Bool = false, completion: ((Bool) -> Void)? = nil) {
+        if self.superview == nil {
+            assertionFailure("The view must have a super view")
+        }
+        if let blurView = self.superview!.viewWithTag(blurViewTagNumber) {
+            if animated {
+                UIView.animateWithDuration(0.25, animations: { () -> Void in
+                    blurView.alpha = 0.0
+                    }, completion: { finished -> Void in
+                        blurView.removeFromSuperview()
+                        if completion != nil { completion!(finished) }
+                })
+            } else {
+                blurView.removeFromSuperview()
+            }
+        }
+    }
+    
+    // Hidden
+    func setHidden(hidden: Bool, animated: Bool = false, animationDuration: NSTimeInterval = 0.25, completion: ((Bool) -> Void)? = nil) {
+        if animated {
+            // If hidden is going to be false, show it first and animate alpha
+            if hidden == false {
+                self.hidden = false
+            }
+            UIView.animateWithDuration(animationDuration, animations: { () -> Void in
+                self.alpha = hidden ? 0.0 : 1.0
+                }, completion: { finished -> Void in
+                    self.hidden = hidden
+                    if completion != nil { completion!(finished) }
+            })
+        } else {
+            self.hidden = hidden
+        }
     }
 }
