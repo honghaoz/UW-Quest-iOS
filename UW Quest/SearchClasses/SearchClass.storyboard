@@ -42,14 +42,34 @@
                                                             <color key="textColor" red="0.42352941179999998" green="0.42352941179999998" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="mss-Xa-l70" userLabel="InstitutionMenu" customClass="ZHDropDownMenu" customModule="UW_Quest" customModuleProvider="target">
+                                                            <rect key="frame" x="91" y="8" width="199" height="25"/>
+                                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="25" placeholder="YES" id="m3B-Qo-RHX"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="WuU-Ld-Bbm" userLabel="termMenu" customClass="ZHDropDownMenu" customModule="UW_Quest" customModuleProvider="target">
+                                                            <rect key="frame" x="56" y="39" width="234" height="25"/>
+                                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="25" placeholder="YES" id="GsH-Ty-buL"/>
+                                                            </constraints>
+                                                        </view>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
+                                                        <constraint firstItem="WuU-Ld-Bbm" firstAttribute="trailing" secondItem="mss-Xa-l70" secondAttribute="trailing" id="0xn-Ue-4b0"/>
+                                                        <constraint firstItem="WuU-Ld-Bbm" firstAttribute="leading" secondItem="KqY-6a-RMl" secondAttribute="trailing" constant="10" id="4hc-ZP-ig2"/>
+                                                        <constraint firstItem="mss-Xa-l70" firstAttribute="leading" secondItem="y1J-pa-t2r" secondAttribute="trailing" constant="10" id="CUB-Hp-fxY"/>
                                                         <constraint firstItem="KqY-6a-RMl" firstAttribute="top" secondItem="y1J-pa-t2r" secondAttribute="bottom" constant="10" id="JPL-dV-a94"/>
+                                                        <constraint firstItem="mss-Xa-l70" firstAttribute="centerY" secondItem="y1J-pa-t2r" secondAttribute="centerY" id="Ocm-5s-4XJ"/>
                                                         <constraint firstItem="y1J-pa-t2r" firstAttribute="leading" secondItem="KqY-6a-RMl" secondAttribute="leading" id="Vou-5T-omR"/>
                                                         <constraint firstItem="y1J-pa-t2r" firstAttribute="leading" secondItem="94k-Hk-Gqy" secondAttribute="leading" constant="10" id="ew0-6y-eTE"/>
                                                         <constraint firstItem="y1J-pa-t2r" firstAttribute="top" secondItem="94k-Hk-Gqy" secondAttribute="top" constant="10" id="fX5-tp-xpi"/>
+                                                        <constraint firstAttribute="trailing" secondItem="mss-Xa-l70" secondAttribute="trailing" constant="10" id="gDl-LH-PBQ"/>
                                                         <constraint firstAttribute="bottom" secondItem="KqY-6a-RMl" secondAttribute="bottom" constant="10" id="nQV-VA-cPv"/>
+                                                        <constraint firstItem="WuU-Ld-Bbm" firstAttribute="centerY" secondItem="KqY-6a-RMl" secondAttribute="centerY" id="rur-vJ-cXO"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isRounded" value="NO"/>
@@ -66,6 +86,10 @@
                                                 <constraint firstAttribute="trailing" secondItem="94k-Hk-Gqy" secondAttribute="trailing" constant="10" id="sfI-U5-pT0"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="institutionMenu" destination="mss-Xa-l70" id="KGH-ZU-abN"/>
+                                            <outlet property="termMenu" destination="WuU-Ld-Bbm" id="DZb-Je-dhY"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

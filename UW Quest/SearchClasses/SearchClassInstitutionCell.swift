@@ -10,6 +10,9 @@ import UIKit
 
 class SearchClassInstitutionCell: UITableViewCell {
 
+    @IBOutlet weak var institutionMenu: ZHDropDownMenu!
+    @IBOutlet weak var termMenu: ZHDropDownMenu!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = UIColor.clearColor()

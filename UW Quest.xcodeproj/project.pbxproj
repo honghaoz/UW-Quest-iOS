@@ -12,6 +12,7 @@
 		023EF9091A6F713F006FE653 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023EF9081A6F713E006FE653 /* BaseViewController.swift */; };
 		023EF90B1A700943006FE653 /* ZHDynamicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023EF90A1A700943006FE653 /* ZHDynamicTableView.swift */; };
 		023EF90D1A700BA9006FE653 /* SearchClassInstitutionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023EF90C1A700BA9006FE653 /* SearchClassInstitutionCell.swift */; };
+		02D51DE71A71DA1E00C3C252 /* ZHDropDownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D51DE61A71DA1E00C3C252 /* ZHDropDownMenu.swift */; };
 		02FD32631A6F64CE006EA751 /* SearchClass.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02FD32621A6F64CE006EA751 /* SearchClass.storyboard */; };
 		02FD32671A6F6749006EA751 /* SearchClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FD32661A6F6749006EA751 /* SearchClassViewController.swift */; };
 		1B17CEE31A55B77D0066F0C1 /* ZHAutoLinesLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B17CEE11A55B77D0066F0C1 /* ZHAutoLinesLabel.swift */; };
@@ -110,6 +111,7 @@
 		023EF9081A6F713E006FE653 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		023EF90A1A700943006FE653 /* ZHDynamicTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHDynamicTableView.swift; sourceTree = "<group>"; };
 		023EF90C1A700BA9006FE653 /* SearchClassInstitutionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchClassInstitutionCell.swift; sourceTree = "<group>"; };
+		02D51DE61A71DA1E00C3C252 /* ZHDropDownMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZHDropDownMenu.swift; path = "UW Quest/ThirdParty/ZHDropDownMenu.swift"; sourceTree = SOURCE_ROOT; };
 		02FD32621A6F64CE006EA751 /* SearchClass.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchClass.storyboard; sourceTree = "<group>"; };
 		02FD32661A6F6749006EA751 /* SearchClassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchClassViewController.swift; sourceTree = "<group>"; };
 		040AF5C3C6C827E481C73485 /* Pods-UW Quest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UW Quest.release.xcconfig"; path = "Pods/Target Support Files/Pods-UW Quest/Pods-UW Quest.release.xcconfig"; sourceTree = "<group>"; };
@@ -549,6 +551,7 @@
 				1B17CEE21A55B77D0066F0C1 /* ZHExtendViews.swift */,
 				1BFABA581A55E3DF004BB928 /* ZHDynamicCollectionView.swift */,
 				023EF90A1A700943006FE653 /* ZHDynamicTableView.swift */,
+				02D51DE61A71DA1E00C3C252 /* ZHDropDownMenu.swift */,
 				FACE198919C9EC2D001FD4C9 /* Crashlytics.framework */,
 			);
 			path = ThirdParty;
@@ -771,6 +774,7 @@
 				1B64007D19D8E48E00C35E44 /* PhoneNumberCollectionViewCell_deprecated.swift in Sources */,
 				1BEB05B71A53979600986692 /* Float.swift in Sources */,
 				FA8C1D6419C75B0800D6E158 /* User.swift in Sources */,
+				02D51DE71A71DA1E00C3C252 /* ZHDropDownMenu.swift in Sources */,
 				1B907FB71A6759B3004CC43D /* TitleSubTitleCollectionViewCell.swift in Sources */,
 				1BEB05B51A53979600986692 /* Double.swift in Sources */,
 				1BEB05C11A5397BC00986692 /* UIImage+ImageEffects.m in Sources */,
