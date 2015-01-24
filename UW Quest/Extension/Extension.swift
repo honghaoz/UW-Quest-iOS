@@ -99,21 +99,21 @@ extension UIView {
         views.map({self.addSubview($0 as UIView)})
     }
     
-    func hideAllSubviews(toHidden: Bool, duration: NSTimeInterval? = 0.25, completion:((Bool) -> Void)? = nil) {
-        
-        UIView.animateWithDuration(duration!, animations: { () -> Void in
-            self.subviews.map({
-                ($0 as UIView).alpha = toHidden ? 0.0 : 1.0
-            })
-            return
-            }) { (finished) -> Void in
-                self.subviews.map({
-                    ($0 as UIView).hidden = toHidden
-                })
-                completion?(finished)
-                return
-        }
-    }
+//    func hideAllSubviews(toHidden: Bool, duration: NSTimeInterval? = 0.25, completion:((Bool) -> Void)? = nil) {
+//        
+//        UIView.animateWithDuration(duration!, animations: { () -> Void in
+//            self.subviews.map({
+//                ($0 as UIView).alpha = toHidden ? 0.0 : 1.0
+//            })
+//            return
+//            }) { (finished) -> Void in
+//                self.subviews.map({
+//                    ($0 as UIView).hidden = toHidden
+//                })
+//                completion?(finished)
+//                return
+//        }
+//    }
     
     var blurOverlayViewTagNumber: Int { return 3141592653 }
     

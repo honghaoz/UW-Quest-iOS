@@ -18,7 +18,21 @@ protocol ZHDropDownMenuDelegate {
 }
 
 class ZHDropDownMenu: UIControl {
+    // WrapperView is used for holding all of views to make a better animation
+    private var wrapperView: UIView!
+    private var cWrapperViewTop: NSLayoutConstraint!
+    private var cWrapperViewLeft: NSLayoutConstraint!
+    private var cWrapperViewBottom: NSLayoutConstraint!
+    private var cWrapperViewRight: NSLayoutConstraint!
+    
     var titleLabel: UILabel!
+    
+    private var indicatorLayer: CAShapeLayer!
+    private var indicatorView: UIView!
+    private let kIndicatorWidth: CGFloat = 8.0
+    private var contentInset: UIEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
+    private var kAnimationDuration: NSTimeInterval = 0.25
+    
     var textColor: UIColor = UIColor(white: 0.0, alpha: 0.7) {
         didSet {
             titleLabel.textColor = textColor
@@ -26,29 +40,49 @@ class ZHDropDownMenu: UIControl {
         }
     }
     
-    private var indicatorView: UIView!
-    private var indicatorLayer: CAShapeLayer!
-    private var contentInset: UIEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
-    private let kIndicatorWidth: CGFloat = 8.0
+    var titleFont: UIFont = UIFont(name: "HelveticaNeue-Light", size: 17)! {
+        didSet {
+            titleLabel.font = titleFont
+        }
+    }
+    
+    var selectedFont: UIFont = UIFont(name: "HelveticaNeue", size: 17)!
     
     var cornerRaidus: CGFloat = 4 {
         didSet {
-            self.layer.cornerRadius = cornerRaidus
-            self.tableView.layer.cornerRadius = cornerRaidus
+            wrapperView.layer.cornerRadius = cornerRaidus
+            tableView.layer.cornerRadius = cornerRaidus
         }
     }
     
     // Data
-    var currentTitle: String = "(Not selected)" {
+    var currentSelectedIndex: Int = 0 {
         didSet {
-            if currentTitle.length == 0 { currentTitle = " " }
-            UIView.animateWithDuration(kAnimationDuration, animations: { () -> Void in
-                self.titleLabel.text = self.currentTitle
-                self.layoutIfNeeded()
-            })
+            if self.dataSource != nil {
+                tableView.selectRowAtIndexPath(NSIndexPath(forRow: currentSelectedIndex, inSection: 0), animated: true, scrollPosition: .None)
+                currentTitle = self.dataSource!.zhDropDownMenu(self, itemTitleForIndex: currentSelectedIndex)
+            }
         }
     }
-    var kAnimationDuration: NSTimeInterval = 0.25
+    
+    var currentTitle: String = "(Not selected)" {
+        didSet {
+            if titleLabel.layer.animationForKey("TextTransition") == nil {
+                // Add transition (must be called after myLabel has been displayed)
+                let animation = CATransition()
+                animation.duration = kAnimationDuration
+                animation.type = kCATransitionFade
+                animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+                titleLabel.layer.addAnimation(animation, forKey: "TextTransition")
+            }
+            
+            if currentTitle.length == 0 { currentTitle = " " }
+            
+            titleLabel.text = currentTitle
+        }
+    }
+    
+    var isExpandingOngoing: Bool = false
     var expanded: Bool = false {
         didSet {
             if self.superview == nil {
@@ -56,12 +90,16 @@ class ZHDropDownMenu: UIControl {
             }
             let rootSuperView = self.rootView()!
             if expanded {
+                isExpandingOngoing = true
                 addOpaqueOverlayViewForView(rootSuperView)
+                // Move wrapper view to top most
+                rootSuperView.addSubview(wrapperView)
+                rootSuperView.addConstraints([cWrapperViewTop, cWrapperViewLeft, cWrapperViewBottom, cWrapperViewRight])
+                
                 // Move table view to the top
-                rootSuperView.insertSubview(tableView, belowSubview: self)
+                rootSuperView.insertSubview(tableView, belowSubview: wrapperView)
                 rootSuperView.addConstraints([cTableViewWidth, cTableViewCenterX, cTableViewTop])
-                tableView.addBackupBlurView(animated: false, completion: nil)
-                rootSuperView.setNeedsLayout()
+                tableView.addBackupBlurView(tag: 101, animated: false, completion: nil)
                 rootSuperView.layoutIfNeeded()
                 
                 cTableViewTop.constant = self.bounds.height + 2
@@ -69,46 +107,57 @@ class ZHDropDownMenu: UIControl {
                 cTableViewHeight.constant = rowHeight * CGFloat(min(rowsCount, maxExpandingItems))
                 
                 // Animation
-                tableView.setHidden(false, animated: true, animationDuration: kAnimationDuration + 0.15, completion: nil)
-                self.addBackupBlurView(animated: true, completion: nil)
+                wrapperView.addBackupBlurView(tag: 100, animated: true, completion: nil)
                 UIView.animateWithDuration(kAnimationDuration, animations: { () -> Void in
+                    self.wrapperView.backgroundColor = UIColor(white: 1.0, alpha: 0.5)
+                    self.tableView.alpha = 1.0
                     // Choose 179.9 to make sure rotation is clockwise
                     self.indicatorView.transform = CGAffineTransformMakeRotation(CGFloat(179.9).radianDegree)
                     rootSuperView.layoutIfNeeded()
                 }, completion: { finished -> Void in
                     self.indicatorView.transform = CGAffineTransformMakeRotation(CGFloat(180.0).radianDegree)
+                    self.isExpandingOngoing = false
                 })
             } else {
+                isExpandingOngoing = true
+                
                 // Move table view back to self
                 cTableViewTop.constant = 0
                 cTableViewHeight.constant = 2.0
                 
                 // Animation
-                tableView.setHidden(true, animated: true, animationDuration: kAnimationDuration - 0.15, completion: nil)
-                self.removeBackBlurView(animated: true, completion: nil)
+                wrapperView.removeBackBlurView(tag: 100, animated: true, completion: nil)
                 UIView.animateWithDuration(kAnimationDuration, animations: { () -> Void in
+                    self.wrapperView.backgroundColor = UIColor.clearColor()
+                    self.tableView.alpha = 0
                     // Choose 0.1 to make sure rotation is counter-clockwise
                     self.indicatorView.transform = CGAffineTransformMakeRotation(CGFloat(0.1).radianDegree)
                     rootSuperView.layoutIfNeeded()
                 }, completion: { finished -> Void in
                     self.indicatorView.transform = CGAffineTransformMakeRotation(CGFloat(0).radianDegree)
-                    self.tableView.removeBackBlurView(animated: false, completion: nil)
+                    self.tableView.removeBackBlurView(tag: 101, animated: false, completion: nil)
                     self.tableView.removeFromSuperview()
+                    self.addSubview(self.wrapperView)
+                    self.addConstraints([self.cWrapperViewTop, self.cWrapperViewLeft, self.cWrapperViewBottom, self.cWrapperViewRight])
+                    self.layoutIfNeeded()
                     self.removeOpaqueOverlayViewForView(rootSuperView)
+                    self.isExpandingOngoing = false
                 })
             }
         }
     }
+    
+    // tableView is for showing options, it will be below wrapper view
     var tableView: UITableView!
     let kCellIdentifier = "CellIndentifier"
     
     var maxExpandingItems: Int = 4
     
     // tableView.top <=> self.top
-    var cTableViewTop: NSLayoutConstraint!
-    var cTableViewCenterX: NSLayoutConstraint!
-    var cTableViewWidth: NSLayoutConstraint!
-    var cTableViewHeight: NSLayoutConstraint!
+    private var cTableViewTop: NSLayoutConstraint!
+    private var cTableViewCenterX: NSLayoutConstraint!
+    private var cTableViewWidth: NSLayoutConstraint!
+    private var cTableViewHeight: NSLayoutConstraint!
     
     var dataSource: ZHDropDownMenuDataSource?
     var delegate: ZHDropDownMenuDelegate?
@@ -133,30 +182,44 @@ class ZHDropDownMenu: UIControl {
     }
     
     private func setupViews() {
-        self.backgroundColor = UIColor.clearColor()
+        backgroundColor = UIColor.clearColor()
+        
+        // WrapperView
+        wrapperView = UIView()
+        wrapperView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.addSubview(wrapperView)
+        
+        cWrapperViewTop = NSLayoutConstraint(item: wrapperView, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1.0, constant: 0)
+        cWrapperViewLeft = NSLayoutConstraint(item: wrapperView, attribute: .Left, relatedBy: .Equal, toItem: self, attribute: .Left, multiplier: 1.0, constant: 0)
+        cWrapperViewBottom = NSLayoutConstraint(item: wrapperView, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1.0, constant: 0)
+        cWrapperViewRight = NSLayoutConstraint(item: wrapperView, attribute: .Right, relatedBy: .Equal, toItem: self, attribute: .Right, multiplier: 1.0, constant: 0)
+        self.addConstraints([cWrapperViewTop, cWrapperViewLeft, cWrapperViewBottom, cWrapperViewRight])
+        
+        wrapperView.userInteractionEnabled = false
+        wrapperView.backgroundColor = UIColor.clearColor()
         
         // TitleLabel
         titleLabel = UILabel()
         titleLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
-        self.addSubview(titleLabel)
+        wrapperView.addSubview(titleLabel)
         // Triangle Indicator
         indicatorView = UIView()
         indicatorView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        self.addSubview(indicatorView)
+        wrapperView.addSubview(indicatorView)
         
-        let top = NSLayoutConstraint(item: titleLabel, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1.0, constant: contentInset.top)
-        let left = NSLayoutConstraint(item: titleLabel, attribute: .Left, relatedBy: .Equal, toItem: self, attribute: .Left, multiplier: 1.0, constant: contentInset.left)
-        let bottom = NSLayoutConstraint(item: titleLabel, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1.0, constant: -contentInset.bottom)
+        let top = NSLayoutConstraint(item: titleLabel, attribute: .Top, relatedBy: .Equal, toItem: wrapperView, attribute: .Top, multiplier: 1.0, constant: contentInset.top)
+        let left = NSLayoutConstraint(item: titleLabel, attribute: .Left, relatedBy: .Equal, toItem: wrapperView, attribute: .Left, multiplier: 1.0, constant: contentInset.left)
+        let bottom = NSLayoutConstraint(item: titleLabel, attribute: .Bottom, relatedBy: .Equal, toItem: wrapperView, attribute: .Bottom, multiplier: 1.0, constant: -contentInset.bottom)
         let right = NSLayoutConstraint(item: titleLabel, attribute: .Right, relatedBy: .Equal, toItem: indicatorView, attribute: .Left, multiplier: 1.0, constant: -contentInset.right)
-        self.addConstraints([top, left, bottom, right])
+        wrapperView.addConstraints([top, left, bottom, right])
         
         let width = NSLayoutConstraint(item: indicatorView, attribute: .Width, relatedBy: .Equal, toItem: indicatorView, attribute: .Width, multiplier: 0, constant: kIndicatorWidth)
         let height = NSLayoutConstraint(item: indicatorView, attribute: .Height, relatedBy: .Equal, toItem: indicatorView, attribute: .Height, multiplier: 0, constant: (ceil(sin((60.0 as CGFloat).radianDegree) as CGFloat) as CGFloat) * kIndicatorWidth)
         indicatorView.addConstraints([width, height])
         
         let verticalCenter = NSLayoutConstraint(item: titleLabel, attribute: .CenterY, relatedBy: .Equal, toItem: indicatorView, attribute: .CenterY, multiplier: 1.0, constant: 0.0)
-        let indicatorViewRight = NSLayoutConstraint(item: indicatorView, attribute: .Right, relatedBy: .Equal, toItem: self, attribute: .Right, multiplier: 1.0, constant: -contentInset.right)
-        self.addConstraints([verticalCenter, indicatorViewRight])
+        let indicatorViewRight = NSLayoutConstraint(item: indicatorView, attribute: .Right, relatedBy: .Equal, toItem: wrapperView, attribute: .Right, multiplier: 1.0, constant: -contentInset.right)
+        wrapperView.addConstraints([verticalCenter, indicatorViewRight])
         
         titleLabel.setContentHuggingPriority(250, forAxis: .Horizontal)
         titleLabel.setContentHuggingPriority(1000, forAxis: .Vertical)
@@ -164,7 +227,7 @@ class ZHDropDownMenu: UIControl {
         titleLabel.setContentCompressionResistancePriority(1000, forAxis: .Vertical)
         
         titleLabel.textAlignment = .Right
-        titleLabel.font = UIFont.helveticaNenueFont(15)
+        titleLabel.font = titleFont
         
         titleLabel.text = currentTitle
         
@@ -173,7 +236,7 @@ class ZHDropDownMenu: UIControl {
         indicatorView.layer.addSublayer(indicatorLayer)
         
         setupTableView()
-        self.clipsToBounds = true
+        wrapperView.clipsToBounds = true
         cornerRaidus = 4.0
     }
     
@@ -182,7 +245,9 @@ class ZHDropDownMenu: UIControl {
     }
     
     func tapped(sender: AnyObject, forEvent event: UIEvent) {
-        expanded = !expanded
+        if !isExpandingOngoing {
+            expanded = !expanded
+        }
     }
 }
 
@@ -196,6 +261,15 @@ extension ZHDropDownMenu: UITableViewDataSource, UITableViewDelegate {
                 cTitleLabelRight.constant = -titleLabelRightPadding
             }
         }
+        
+        var selectedColor: UIColor = UIColor(white: 0.7, alpha: 0.2) {
+            didSet {
+                self.selectedBackgroundView.backgroundColor = selectedColor.colorWithAlphaComponent(0.1)
+            }
+        }
+        
+        var normalFont: UIFont = UIFont(name: "HelveticaNeue-Light", size: 17)!
+        var selectedFont: UIFont = UIFont(name: "HelveticaNeue", size: 17)!
         
         override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
             super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -231,14 +305,19 @@ extension ZHDropDownMenu: UITableViewDataSource, UITableViewDelegate {
             titleLabel.setContentCompressionResistancePriority(1000, forAxis: .Vertical)
             
             titleLabel.textAlignment = .Right
-            titleLabel.font = UIFont.helveticaNenueFont(15)
+            titleLabel.font = normalFont
             
             self.selectedBackgroundView = UIView()
-            self.selectedBackgroundView.backgroundColor = UIColor(white: 0.5, alpha: 0.1)
+            self.selectedBackgroundView.backgroundColor = selectedColor
         }
         
         override func setSelected(selected: Bool, animated: Bool) {
             super.setSelected(selected, animated: animated)
+            if selected {
+                titleLabel.font = selectedFont
+            } else {
+                titleLabel.font = normalFont
+            }
         }
     }
     
@@ -253,14 +332,14 @@ extension ZHDropDownMenu: UITableViewDataSource, UITableViewDelegate {
         cTableViewHeight = NSLayoutConstraint(item: tableView, attribute: .Height, relatedBy: .Equal, toItem: tableView, attribute: .Height, multiplier: 0.0, constant: 2.0)
         tableView.addConstraint(cTableViewHeight)
         
-        cTableViewWidth = NSLayoutConstraint(item: tableView, attribute: .Width, relatedBy: .Equal, toItem: self, attribute: .Width, multiplier: 1.0, constant: 0.0)
-        cTableViewCenterX = NSLayoutConstraint(item: tableView, attribute: .CenterX, relatedBy: .Equal, toItem: self, attribute: .CenterX, multiplier: 1.0, constant: 0.0)
-        cTableViewTop = NSLayoutConstraint(item: tableView, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1.0, constant: 0.0)
+        cTableViewWidth = NSLayoutConstraint(item: tableView, attribute: .Width, relatedBy: .Equal, toItem: wrapperView, attribute: .Width, multiplier: 1.0, constant: 0.0)
+        cTableViewCenterX = NSLayoutConstraint(item: tableView, attribute: .CenterX, relatedBy: .Equal, toItem: wrapperView, attribute: .CenterX, multiplier: 1.0, constant: 0.0)
+        cTableViewTop = NSLayoutConstraint(item: tableView, attribute: .Top, relatedBy: .Equal, toItem: wrapperView, attribute: .Top, multiplier: 1.0, constant: 0.0)
         
         tableView.alpha = 0.0
         tableView.clipsToBounds = true
         tableView.layer.cornerRadius = cornerRaidus
-        tableView.backgroundColor = UIColor.clearColor()
+        tableView.backgroundColor = UIColor(white: 1.0, alpha: 0.5)
         
         tableView.separatorStyle = .None
         
@@ -274,21 +353,23 @@ extension ZHDropDownMenu: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if dataSource != nil {
-            return dataSource!.numberOfItemsInDropDownMenu(self)
+        if dataSource == nil {
+            assertionFailure("dataSource cannot be nil")
         } else {
-            return 5
+            return dataSource!.numberOfItemsInDropDownMenu(self)
         }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as AnyObject! as ZHDropDownItemCell
-        cell.titleLabel?.text = "1234567"
         cell.titleLabelRightPadding = contentInset.right * 2 + kIndicatorWidth
         cell.titleLabel.textColor = textColor
+        cell.selectedColor = textColor
         cell.titleLabel.font = self.titleLabel.font
         cell.backgroundColor = UIColor.clearColor()
-//        cell.selectedBackgroundView = 
+        
+        cell.titleLabel?.text = self.dataSource!.zhDropDownMenu(self, itemTitleForIndex: indexPath.row)
+        
         cell.setNeedsLayout()
         cell.layoutIfNeeded()
         return cell
@@ -305,9 +386,9 @@ extension ZHDropDownMenu: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        delegate?.zhDropDownMenu(self, didSelectIndex: indexPath.row)
         self.expanded = false
-        self.currentTitle = "1234567"
+        currentSelectedIndex = indexPath.row
+        delegate?.zhDropDownMenu(self, didSelectIndex: indexPath.row)
     }
 }
 
@@ -369,7 +450,9 @@ extension ZHDropDownMenu {
     }
     
     func rootViewIsTouched(gesture: UIGestureRecognizer) {
-        expanded = false
+        if !isExpandingOngoing {
+            expanded = false
+        }
     }
     
     // MARK: Add cover view for current showing title
@@ -392,11 +475,9 @@ extension UIView {
     }
     
     // MARK: Add blur view
-    var blurViewTagNumber: Int { return 3141592653 }
-    
-    func addBackupBlurView(animated: Bool = false, completion: ((Bool) -> Void)? = nil) {
+    func addBackupBlurView(#tag: Int, animated: Bool = false, completion: ((Bool) -> Void)? = nil) {
         if self.superview == nil {
-            assertionFailure("The view must have a super view")
+            return
         }
         var blurView: UIView!
         if isIOS8 {
@@ -408,10 +489,11 @@ extension UIView {
         }
         blurView.setTranslatesAutoresizingMaskIntoConstraints(false)
         
-        blurView.tag = blurViewTagNumber // Special number for taging this blurView
+        blurView.tag = tag // Special number for taging this blurView
         blurView.alpha = 0
         blurView.clipsToBounds = self.clipsToBounds
         blurView.layer.cornerRadius = self.layer.cornerRadius
+        blurView.userInteractionEnabled = false
         
         // Setup constraints
         self.superview!.insertSubview(blurView!, belowSubview: self)
@@ -430,11 +512,11 @@ extension UIView {
         }
     }
     
-    func removeBackBlurView(animated: Bool = false, completion: ((Bool) -> Void)? = nil) {
+    func removeBackBlurView(#tag: Int, animated: Bool = false, completion: ((Bool) -> Void)? = nil) {
         if self.superview == nil {
-            assertionFailure("The view must have a super view")
+            return
         }
-        if let blurView = self.superview!.viewWithTag(blurViewTagNumber) {
+        if let blurView = self.superview!.viewWithTag(tag) {
             if animated {
                 UIView.animateWithDuration(0.25, animations: { () -> Void in
                     blurView.alpha = 0.0
@@ -445,24 +527,6 @@ extension UIView {
             } else {
                 blurView.removeFromSuperview()
             }
-        }
-    }
-    
-    // Hidden
-    func setHidden(hidden: Bool, animated: Bool = false, animationDuration: NSTimeInterval = 0.25, completion: ((Bool) -> Void)? = nil) {
-        if animated {
-            // If hidden is going to be false, show it first and animate alpha
-            if hidden == false {
-                self.hidden = false
-            }
-            UIView.animateWithDuration(animationDuration, animations: { () -> Void in
-                self.alpha = hidden ? 0.0 : 1.0
-                }, completion: { finished -> Void in
-                    self.hidden = hidden
-                    if completion != nil { completion!(finished) }
-            })
-        } else {
-            self.hidden = hidden
         }
     }
 }

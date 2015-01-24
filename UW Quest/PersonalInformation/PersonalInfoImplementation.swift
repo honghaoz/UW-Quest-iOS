@@ -217,7 +217,7 @@ class PersonalInfoImplementation: MainCollectionVCImplementation {
             // For non international students
             if (sharedPI.citizenshipImmigrationDocument == nil || sharedPI.citizenshipImmigrationDocument!.docs.count == 0) {
                 cell = dequeueCell(mainCollectionVC.kDescriptionCellResueIdentifier, dequeueType, indexPath)
-                (cell as DescriptionCollectionViewCell).configSmall("No Contents", textAlignment: NSTextAlignment.Center)
+                (cell as DescriptionCollectionViewCell).configLarge("No Documents", textAlignment: NSTextAlignment.Center)
             } else {
                 cell = dequeueCell(kCitizenshipCellIdentifier, dequeueType, indexPath)
                 let doc = sharedPI.citizenshipImmigrationDocument!.docs[indexPath.item]

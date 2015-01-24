@@ -37,6 +37,8 @@ class QuestClient: AFHTTPSessionManager {
     enum PostPage {
         case None
         case PersonalInformation
+        case Finance
+        // ...
     }
     var currentPostPage: PostPage = .None
     
@@ -444,7 +446,7 @@ extension QuestClient {
     
     /**
     Parse address response to JSON data
-    [{"Address Type": "...", "Address": "..."}]
+    [{"Address Type": "...", "Address": "..."} ...]
     
     :param: response network response
     
@@ -706,7 +708,7 @@ extension QuestClient {
     }
     
     /**
-    {"Demographic Information": {
+    ["Demographic Information": {
         "ID": "11111111"
         "Gender": "Male"
         Date of Birth: 01/01/1900
@@ -739,7 +741,8 @@ extension QuestClient {
     Visa or Permit Data: {
         *Type: Student Visa - Visa
         Country: Canada
-    },
+    }, ...
+    ]
     "message": "If any of the information above is wrong, contact your administrative office."
     
     :param: response response network response
