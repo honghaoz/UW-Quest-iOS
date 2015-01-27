@@ -56,7 +56,7 @@ class ZHDropDownMenu: UIControl {
     }
     
     // Data
-    var currentSelectedIndex: Int = 0 {
+    var currentSelectedIndex: Int = -1 {
         didSet {
             if self.dataSource != nil {
                 tableView.selectRowAtIndexPath(NSIndexPath(forRow: currentSelectedIndex, inSection: 0), animated: true, scrollPosition: .None)
@@ -342,6 +342,7 @@ extension ZHDropDownMenu: UITableViewDataSource, UITableViewDelegate {
         tableView.backgroundColor = UIColor(white: 1.0, alpha: 0.5)
         
         tableView.separatorStyle = .None
+        tableView.scrollIndicatorInsets = UIEdgeInsetsMake(2, 2, 2, self.contentInset.right)
         
         tableView.dataSource = self
         tableView.delegate = self
