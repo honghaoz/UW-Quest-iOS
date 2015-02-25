@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchClassViewController: UIViewController {
+class SearchClassViewController: BaseRootViewController {
     
     @IBOutlet weak var tableView: ZHDynamicTableView!
     
@@ -30,9 +30,6 @@ class SearchClassViewController: UIViewController {
     }
     
     // MARK: Actions
-    @IBAction func menuButtonTapped(sender: AnyObject) {
-        self.slidingViewController().anchorTopViewToRightAnimated(true)
-    }
 }
 
 extension SearchClassViewController: UITableViewDataSource, UITableViewDelegate {

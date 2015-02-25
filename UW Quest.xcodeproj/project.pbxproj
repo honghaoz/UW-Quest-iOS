@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		022F04581A9D3C8F00CEA09E /* MyClassScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022F04571A9D3C8F00CEA09E /* MyClassScheduleViewController.swift */; };
+		022F045A1A9D3CA100CEA09E /* MyClassSchedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 022F04591A9D3CA100CEA09E /* MyClassSchedule.storyboard */; };
+		022F045C1A9D404800CEA09E /* TermTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022F045B1A9D404800CEA09E /* TermTableViewCell.swift */; };
+		022F045F1A9D447400CEA09E /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022F045E1A9D447400CEA09E /* BaseNavigationController.swift */; };
+		022F04611A9D44A500CEA09E /* BaseRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022F04601A9D44A500CEA09E /* BaseRootViewController.swift */; };
+		022F04631A9D4ACD00CEA09E /* MyClassScheduleTermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022F04621A9D4ACD00CEA09E /* MyClassScheduleTermViewController.swift */; };
 		023605BC1A6F323F00088C83 /* MyAcademicsImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023605BB1A6F323F00088C83 /* MyAcademicsImplementation.swift */; };
 		023605BE1A6F326400088C83 /* MyAcademics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023605BD1A6F326400088C83 /* MyAcademics.swift */; };
 		023EF9091A6F713F006FE653 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023EF9081A6F713E006FE653 /* BaseViewController.swift */; };
@@ -106,6 +112,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		022F04571A9D3C8F00CEA09E /* MyClassScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyClassScheduleViewController.swift; sourceTree = "<group>"; };
+		022F04591A9D3CA100CEA09E /* MyClassSchedule.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyClassSchedule.storyboard; sourceTree = "<group>"; };
+		022F045B1A9D404800CEA09E /* TermTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermTableViewCell.swift; sourceTree = "<group>"; };
+		022F045E1A9D447400CEA09E /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		022F04601A9D44A500CEA09E /* BaseRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRootViewController.swift; sourceTree = "<group>"; };
+		022F04621A9D4ACD00CEA09E /* MyClassScheduleTermViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyClassScheduleTermViewController.swift; sourceTree = "<group>"; };
 		023605BB1A6F323F00088C83 /* MyAcademicsImplementation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAcademicsImplementation.swift; sourceTree = "<group>"; };
 		023605BD1A6F326400088C83 /* MyAcademics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAcademics.swift; sourceTree = "<group>"; };
 		023EF9081A6F713E006FE653 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -245,6 +257,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		022F04561A9D3C4F00CEA09E /* MyClassSchedule */ = {
+			isa = PBXGroup;
+			children = (
+				022F04591A9D3CA100CEA09E /* MyClassSchedule.storyboard */,
+				022F045B1A9D404800CEA09E /* TermTableViewCell.swift */,
+				022F04571A9D3C8F00CEA09E /* MyClassScheduleViewController.swift */,
+				022F04621A9D4ACD00CEA09E /* MyClassScheduleTermViewController.swift */,
+			);
+			path = MyClassSchedule;
+			sourceTree = "<group>";
+		};
+		022F045D1A9D444E00CEA09E /* BaseClasses */ = {
+			isa = PBXGroup;
+			children = (
+				022F045E1A9D447400CEA09E /* BaseNavigationController.swift */,
+				022F04601A9D44A500CEA09E /* BaseRootViewController.swift */,
+			);
+			path = BaseClasses;
+			sourceTree = "<group>";
+		};
 		023605B71A6F2FC200088C83 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,8 +384,10 @@
 				FA8C1D6219C75B0800D6E158 /* Model */,
 				1B2AFE8E19BD2826008A75EF /* View */,
 				1B2AFE8C19BD27E4008A75EF /* Main */,
+				022F045D1A9D444E00CEA09E /* BaseClasses */,
 				023605B71A6F2FC200088C83 /* Login */,
 				1BF1B17719CF811400411109 /* PersonalInformation */,
+				022F04561A9D3C4F00CEA09E /* MyClassSchedule */,
 				02FD32611A6F6495006EA751 /* SearchClasses */,
 				023605BA1A6F323F00088C83 /* MyAcademics */,
 				1B7CF10719BCEF28007A157D /* Supporting Files */,
@@ -672,6 +706,7 @@
 				FADDD6CF19D476BB003EC88D /* AddressCollectionViewCell.xib in Resources */,
 				02FD32631A6F64CE006EA751 /* SearchClass.storyboard in Resources */,
 				FA4D1F5919DA620C006AA190 /* EmailCollectionViewCell_deprecated.xib in Resources */,
+				022F045A1A9D3CA100CEA09E /* MyClassSchedule.storyboard in Resources */,
 				FA79657819C90BB000852C84 /* LaunchView.xib in Resources */,
 				1B64007A19D8977D00C35E44 /* NameCollectionViewCell_deprecated.xib in Resources */,
 				1BEB05B81A53979600986692 /* Info.plist in Resources */,
@@ -727,6 +762,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B907FB31A675306004CC43D /* ZHHParseDevice.m in Sources */,
+				022F04611A9D44A500CEA09E /* BaseRootViewController.swift in Sources */,
 				1BEB05B41A53979600986692 /* Dictionary.swift in Sources */,
 				FACE198719C9EB05001FD4C9 /* QuestClient_deprecated.swift in Sources */,
 				1B2FCD1C19C4A64400FDF4D8 /* Extension.swift in Sources */,
@@ -734,15 +770,18 @@
 				023EF9091A6F713F006FE653 /* BaseViewController.swift in Sources */,
 				FAE341B419FDB24300D828E7 /* PersonalInfoImplementation.swift in Sources */,
 				1B8615AC19CFC6A20064505C /* PersonalInformations.swift in Sources */,
+				022F045F1A9D447400CEA09E /* BaseNavigationController.swift in Sources */,
 				1BEB05BA1A53979600986692 /* NSArray.swift in Sources */,
 				FA21D6E319E7780C002FBF71 /* MEDynamicTransition.m in Sources */,
 				FA7E99FD19DCFD9800D65565 /* CitizenshipCollectionViewCell.swift in Sources */,
+				022F045C1A9D404800CEA09E /* TermTableViewCell.swift in Sources */,
 				1B907FB61A6759B3004CC43D /* DescriptionCollectionViewCell.swift in Sources */,
 				FA4D1F5819DA620C006AA190 /* EmailCollectionViewCell_deprecated.swift in Sources */,
 				1B2152311A536C3200B7165A /* QuestClient.swift in Sources */,
 				1B5BF35219C3F8470005626F /* LoginViewController.swift in Sources */,
 				1BCCB62E1A6716E6009811D0 /* EmailCollectionViewCell.swift in Sources */,
 				1B520C5319CE8A2000A0ADE6 /* MainCollectionViewController.swift in Sources */,
+				022F04631A9D4ACD00CEA09E /* MyClassScheduleTermViewController.swift in Sources */,
 				023605BE1A6F326400088C83 /* MyAcademics.swift in Sources */,
 				1BEB05B91A53979600986692 /* Int.swift in Sources */,
 				1B8615AE19CFD79A0064505C /* AddressCollectionViewCell.swift in Sources */,
@@ -763,6 +802,7 @@
 				1B7CF10A19BCEF28007A157D /* AppDelegate.swift in Sources */,
 				FA32935F19FD60A800164369 /* MenuTitleCell.swift in Sources */,
 				FA21D6E419E7780C002FBF71 /* MEZoomAnimationController.m in Sources */,
+				022F04581A9D3C8F00CEA09E /* MyClassScheduleViewController.swift in Sources */,
 				FAF2292519C937620041C36F /* UIDevice-Hardware.m in Sources */,
 				FA79657619C9079F00852C84 /* Locator.swift in Sources */,
 				FA23729E19C74167000F5D4F /* Constant.swift in Sources */,

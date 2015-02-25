@@ -114,7 +114,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             break
         case 2:
             // "My Class Schedule"
-            break
+            Locator.slidingViewController.topViewController = Locator.myClassScheduleNavigationViewController
         case 3:
             // "Search for Classes"
             Locator.slidingViewController.topViewController = Locator.searchClassNavigationViewController

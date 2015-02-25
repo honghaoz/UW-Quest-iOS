@@ -40,7 +40,7 @@ class Locator {
         return _sharedLocator._slidingViewController
     }
     
-    // Personal Information
+    // MARK: Personal Information
     private lazy var _personalInformationNavigationViewController: UINavigationController = {
         var navigationVC = UIViewController.viewControllerInStoryboard("MainCollectionViewController", viewControllerName: "MainNavigationViewController") as UINavigationController
         (navigationVC.topViewController as MainCollectionViewController).setup(PersonalInfoImplementation())
@@ -51,7 +51,7 @@ class Locator {
         return _sharedLocator._personalInformationNavigationViewController
     }
     
-    // Search for Classes
+    // MARK: Search for Classes
     private lazy var _searchClassNavigationViewController: UINavigationController = {
         return UIViewController.viewControllerInStoryboard("SearchClass", viewControllerName: "SearchClassNavigationViewController") as UINavigationController
     }()
@@ -59,6 +59,17 @@ class Locator {
     class var searchClassNavigationViewController: UINavigationController {
         return _sharedLocator._searchClassNavigationViewController
     }
+    
+    // MARK: My Classes Schedule
+    private lazy var _myClassScheduleNavigationViewController: UINavigationController = {
+        return UIViewController.viewControllerInStoryboard("MyClassSchedule", viewControllerName: "MyClassScheduleNavigationViewController") as UINavigationController
+        }()
+    
+    class var myClassScheduleNavigationViewController: UINavigationController {
+        return _sharedLocator._myClassScheduleNavigationViewController
+    }
+    
+    // MARK:
     
     lazy var dynamicTransition: MEDynamicTransition = {
         var dynamicTransition: MEDynamicTransition = MEDynamicTransition()
