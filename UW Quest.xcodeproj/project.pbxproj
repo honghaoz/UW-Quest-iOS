@@ -13,6 +13,7 @@
 		022F045F1A9D447400CEA09E /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022F045E1A9D447400CEA09E /* BaseNavigationController.swift */; };
 		022F04611A9D44A500CEA09E /* BaseRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022F04601A9D44A500CEA09E /* BaseRootViewController.swift */; };
 		022F04631A9D4ACD00CEA09E /* MyClassScheduleTermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022F04621A9D4ACD00CEA09E /* MyClassScheduleTermViewController.swift */; };
+		022F04651A9D519100CEA09E /* CourseCollectionViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022F04641A9D519100CEA09E /* CourseCollectionViewCells.swift */; };
 		023605BC1A6F323F00088C83 /* MyAcademicsImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023605BB1A6F323F00088C83 /* MyAcademicsImplementation.swift */; };
 		023605BE1A6F326400088C83 /* MyAcademics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023605BD1A6F326400088C83 /* MyAcademics.swift */; };
 		023EF9091A6F713F006FE653 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023EF9081A6F713E006FE653 /* BaseViewController.swift */; };
@@ -118,6 +119,7 @@
 		022F045E1A9D447400CEA09E /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		022F04601A9D44A500CEA09E /* BaseRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRootViewController.swift; sourceTree = "<group>"; };
 		022F04621A9D4ACD00CEA09E /* MyClassScheduleTermViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyClassScheduleTermViewController.swift; sourceTree = "<group>"; };
+		022F04641A9D519100CEA09E /* CourseCollectionViewCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseCollectionViewCells.swift; sourceTree = "<group>"; };
 		023605BB1A6F323F00088C83 /* MyAcademicsImplementation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAcademicsImplementation.swift; sourceTree = "<group>"; };
 		023605BD1A6F326400088C83 /* MyAcademics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAcademics.swift; sourceTree = "<group>"; };
 		023EF9081A6F713E006FE653 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -261,9 +263,10 @@
 			isa = PBXGroup;
 			children = (
 				022F04591A9D3CA100CEA09E /* MyClassSchedule.storyboard */,
-				022F045B1A9D404800CEA09E /* TermTableViewCell.swift */,
 				022F04571A9D3C8F00CEA09E /* MyClassScheduleViewController.swift */,
+				022F045B1A9D404800CEA09E /* TermTableViewCell.swift */,
 				022F04621A9D4ACD00CEA09E /* MyClassScheduleTermViewController.swift */,
+				022F04641A9D519100CEA09E /* CourseCollectionViewCells.swift */,
 			);
 			path = MyClassSchedule;
 			sourceTree = "<group>";
@@ -785,6 +788,7 @@
 				023605BE1A6F326400088C83 /* MyAcademics.swift in Sources */,
 				1BEB05B91A53979600986692 /* Int.swift in Sources */,
 				1B8615AE19CFD79A0064505C /* AddressCollectionViewCell.swift in Sources */,
+				022F04651A9D519100CEA09E /* CourseCollectionViewCells.swift in Sources */,
 				1BEB05B61A53979600986692 /* ExSwift.swift in Sources */,
 				1B17CEE41A55B77D0066F0C1 /* ZHExtendViews.swift in Sources */,
 				FAF2292419C937620041C36F /* UIApplication+AppVersion.m in Sources */,
