@@ -1,5 +1,5 @@
 //
-//  CourseCollectionViewCell.swift
+//  CourseComponentCell.swift
 //  UW Quest
 //
 //  Created by Honghao Zhang on 2/24/15.
@@ -7,10 +7,6 @@
 //
 
 import UIKit
-
-class CourseHeaderCell: UICollectionViewCell {
-    
-}
 
 class CourseComponentCell: UICollectionViewCell {
     let labelColor: UIColor = UIColor(white: 0.3, alpha: 0.9)

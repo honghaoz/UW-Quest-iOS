@@ -45,7 +45,7 @@ extension MyClassScheduleTermViewController: UICollectionViewDataSource, UIColle
         collectionView.delegate = self
         
         // Registeration
-        collectionView.registerClass(CourseHeaderCell.self, forCellWithReuseIdentifier: kCourseHeaderCell)
+        collectionView.registerNib(UINib(nibName: "CourseHeaderCell", bundle: nil), forCellWithReuseIdentifier: kCourseHeaderCell)
         collectionView.registerClass(CourseComponentCell.self, forCellWithReuseIdentifier: kCourseComponentCell)
     }
     
@@ -92,7 +92,7 @@ extension MyClassScheduleTermViewController: UICollectionViewDataSource, UIColle
             let cell = self.collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(kCourseHeaderCell) as CourseHeaderCell
             cell.bounds = CGRectMake(0, 0, targetWidth, cell.bounds.height)
             cell.contentView.bounds = cell.bounds
-            var size = cell.contentView.systemLayoutSizeFittingSize(CGSizeMake(targetWidth, cell.bounds.height))
+            var size = cell.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
             if abs(size.width - targetWidth) > 1 {
                 size.width = targetWidth
             }

@@ -13,12 +13,14 @@
 		022F045F1A9D447400CEA09E /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022F045E1A9D447400CEA09E /* BaseNavigationController.swift */; };
 		022F04611A9D44A500CEA09E /* BaseRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022F04601A9D44A500CEA09E /* BaseRootViewController.swift */; };
 		022F04631A9D4ACD00CEA09E /* MyClassScheduleTermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022F04621A9D4ACD00CEA09E /* MyClassScheduleTermViewController.swift */; };
-		022F04651A9D519100CEA09E /* CourseCollectionViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022F04641A9D519100CEA09E /* CourseCollectionViewCells.swift */; };
+		022F04651A9D519100CEA09E /* CourseComponentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022F04641A9D519100CEA09E /* CourseComponentCell.swift */; };
 		023605BC1A6F323F00088C83 /* MyAcademicsImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023605BB1A6F323F00088C83 /* MyAcademicsImplementation.swift */; };
 		023605BE1A6F326400088C83 /* MyAcademics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023605BD1A6F326400088C83 /* MyAcademics.swift */; };
 		023EF9091A6F713F006FE653 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023EF9081A6F713E006FE653 /* BaseViewController.swift */; };
 		023EF90B1A700943006FE653 /* ZHDynamicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023EF90A1A700943006FE653 /* ZHDynamicTableView.swift */; };
 		023EF90D1A700BA9006FE653 /* SearchClassInstitutionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023EF90C1A700BA9006FE653 /* SearchClassInstitutionCell.swift */; };
+		0281D4BA1AA2D86800F5CA5A /* CourseHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281D4B81AA2D86800F5CA5A /* CourseHeaderCell.swift */; };
+		0281D4BB1AA2D86800F5CA5A /* CourseHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0281D4B91AA2D86800F5CA5A /* CourseHeaderCell.xib */; };
 		02D51DE71A71DA1E00C3C252 /* ZHDropDownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D51DE61A71DA1E00C3C252 /* ZHDropDownMenu.swift */; };
 		02FD32631A6F64CE006EA751 /* SearchClass.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02FD32621A6F64CE006EA751 /* SearchClass.storyboard */; };
 		02FD32671A6F6749006EA751 /* SearchClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FD32661A6F6749006EA751 /* SearchClassViewController.swift */; };
@@ -119,12 +121,14 @@
 		022F045E1A9D447400CEA09E /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		022F04601A9D44A500CEA09E /* BaseRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRootViewController.swift; sourceTree = "<group>"; };
 		022F04621A9D4ACD00CEA09E /* MyClassScheduleTermViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyClassScheduleTermViewController.swift; sourceTree = "<group>"; };
-		022F04641A9D519100CEA09E /* CourseCollectionViewCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseCollectionViewCells.swift; sourceTree = "<group>"; };
+		022F04641A9D519100CEA09E /* CourseComponentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseComponentCell.swift; sourceTree = "<group>"; };
 		023605BB1A6F323F00088C83 /* MyAcademicsImplementation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAcademicsImplementation.swift; sourceTree = "<group>"; };
 		023605BD1A6F326400088C83 /* MyAcademics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAcademics.swift; sourceTree = "<group>"; };
 		023EF9081A6F713E006FE653 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		023EF90A1A700943006FE653 /* ZHDynamicTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHDynamicTableView.swift; sourceTree = "<group>"; };
 		023EF90C1A700BA9006FE653 /* SearchClassInstitutionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchClassInstitutionCell.swift; sourceTree = "<group>"; };
+		0281D4B81AA2D86800F5CA5A /* CourseHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseHeaderCell.swift; sourceTree = "<group>"; };
+		0281D4B91AA2D86800F5CA5A /* CourseHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseHeaderCell.xib; sourceTree = "<group>"; };
 		02D51DE61A71DA1E00C3C252 /* ZHDropDownMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZHDropDownMenu.swift; path = "UW Quest/ThirdParty/ZHDropDownMenu.swift"; sourceTree = SOURCE_ROOT; };
 		02FD32621A6F64CE006EA751 /* SearchClass.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchClass.storyboard; sourceTree = "<group>"; };
 		02FD32661A6F6749006EA751 /* SearchClassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchClassViewController.swift; sourceTree = "<group>"; };
@@ -266,7 +270,9 @@
 				022F04571A9D3C8F00CEA09E /* MyClassScheduleViewController.swift */,
 				022F045B1A9D404800CEA09E /* TermTableViewCell.swift */,
 				022F04621A9D4ACD00CEA09E /* MyClassScheduleTermViewController.swift */,
-				022F04641A9D519100CEA09E /* CourseCollectionViewCells.swift */,
+				0281D4B81AA2D86800F5CA5A /* CourseHeaderCell.swift */,
+				0281D4B91AA2D86800F5CA5A /* CourseHeaderCell.xib */,
+				022F04641A9D519100CEA09E /* CourseComponentCell.swift */,
 			);
 			path = MyClassSchedule;
 			sourceTree = "<group>";
@@ -707,6 +713,7 @@
 				1B64007E19D8E48E00C35E44 /* PhoneNumberCollectionViewCell_deprecated.xib in Resources */,
 				1B7CF10F19BCEF28007A157D /* Login.storyboard in Resources */,
 				FADDD6CF19D476BB003EC88D /* AddressCollectionViewCell.xib in Resources */,
+				0281D4BB1AA2D86800F5CA5A /* CourseHeaderCell.xib in Resources */,
 				02FD32631A6F64CE006EA751 /* SearchClass.storyboard in Resources */,
 				FA4D1F5919DA620C006AA190 /* EmailCollectionViewCell_deprecated.xib in Resources */,
 				022F045A1A9D3CA100CEA09E /* MyClassSchedule.storyboard in Resources */,
@@ -788,7 +795,7 @@
 				023605BE1A6F326400088C83 /* MyAcademics.swift in Sources */,
 				1BEB05B91A53979600986692 /* Int.swift in Sources */,
 				1B8615AE19CFD79A0064505C /* AddressCollectionViewCell.swift in Sources */,
-				022F04651A9D519100CEA09E /* CourseCollectionViewCells.swift in Sources */,
+				022F04651A9D519100CEA09E /* CourseComponentCell.swift in Sources */,
 				1BEB05B61A53979600986692 /* ExSwift.swift in Sources */,
 				1B17CEE41A55B77D0066F0C1 /* ZHExtendViews.swift in Sources */,
 				FAF2292419C937620041C36F /* UIApplication+AppVersion.m in Sources */,
@@ -807,6 +814,7 @@
 				FA32935F19FD60A800164369 /* MenuTitleCell.swift in Sources */,
 				FA21D6E419E7780C002FBF71 /* MEZoomAnimationController.m in Sources */,
 				022F04581A9D3C8F00CEA09E /* MyClassScheduleViewController.swift in Sources */,
+				0281D4BA1AA2D86800F5CA5A /* CourseHeaderCell.swift in Sources */,
 				FAF2292519C937620041C36F /* UIDevice-Hardware.m in Sources */,
 				FA79657619C9079F00852C84 /* Locator.swift in Sources */,
 				FA23729E19C74167000F5D4F /* Constant.swift in Sources */,
