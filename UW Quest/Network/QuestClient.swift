@@ -28,6 +28,7 @@ class QuestClient: AFHTTPSessionManager {
         case None
         case PersonalInformation
         case Enroll
+        case MyClassScheduleTerm
         case Finance
         // ...
     }
@@ -101,9 +102,9 @@ class QuestClient: AFHTTPSessionManager {
 
 // MARK: Helper methods
 extension QuestClient {
-    func getHtmlContentFromResponse(response: AnyObject) -> String? {
-        let html: String = NSString(data: response as! NSData, encoding: NSUTF8StringEncoding)! as String
-        return html
+    func getHtmlContentFromResponse(response: AnyObject) -> NSString? {
+        let htmlNSString = NSString(data: response as! NSData, encoding: NSUTF8StringEncoding)
+        return htmlNSString
     }
     
     func getICSID(response: AnyObject) -> String? {

@@ -97,10 +97,12 @@ extension QuestClient {
         
         self.POST(kStudentCenterURL_HRMS, parameters: parameters, success: { (task, response) -> Void in
             logInfo("Success")
+            self.currentStateNum += 1
             self.currentPostPage = .PersonalInformation
-            }, failure: { (task, error) -> Void in
-                logError("Failed: \(error.localizedDescription)")
-                failure?(errorMessage: "POST Personal Information Failed", error: error)
+            success?(response: response, json: nil)
+        }, failure: { (task, error) -> Void in
+            logError("Failed: \(error.localizedDescription)")
+            failure?(errorMessage: "POST Personal Information Failed", error: error)
         })
     }
     
@@ -114,6 +116,7 @@ extension QuestClient {
                 self.postPersonalInformation(success: { (response, json) -> () in
                     self.getPersonalInformationWithParameters(parameters, urlString, parseFunction,success, failure)
                     }, failure: failure)
+                return
             }
             
             self.GET(urlString, parameters: parameters, success: { (task, response) -> Void in

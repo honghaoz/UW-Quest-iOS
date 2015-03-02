@@ -87,6 +87,9 @@ extension TitleSubTitleCollectionViewCell {
         if (title != nil) && !(title!.isEmpty) {
             self.mainTitleLabel = self.createMainTitleLabel()
             self.mainTitleLabel!.text = title
+            if title!.isEmpty {
+                self.mainTitleLabel!.text = " "
+            }
             previousView = self.mainTitleLabel!
         }
         
@@ -98,6 +101,9 @@ extension TitleSubTitleCollectionViewCell {
         if subLabelsCount == 0 {
             var emptyLabel: UILabel = self.createEmptyLabel()
             emptyLabel.text = emptyStatement
+            if emptyStatement!.isEmpty {
+                emptyLabel.text = " "
+            }
             if previousView == self.contentView {
                 emptyLabel.autoPinEdgeToSuperviewEdge(.Top, withInset: kLabelVerticalInsets)
             } else {
@@ -110,9 +116,15 @@ extension TitleSubTitleCollectionViewCell {
         for i in 0 ..< subLabelsCount {
             var subTitleLabel: ZHAutoLinesLabel = self.createASubTitleLabel()
             subTitleLabel.text = subLabelTuples[i].0
+            if subTitleLabel.text!.isEmpty {
+                subTitleLabel.text = " "
+            }
             
             var subContentLabel = self.createASubContentLabel()
             subContentLabel.text = subLabelTuples[i].1
+            if subContentLabel.text!.isEmpty {
+                subContentLabel.text = " "
+            }
             // Last label, add extra contraint for bottom and change vertical hugging priority
             if i == subLabelsCount - 1 {
                 // Reason why 900, since cell size maybe not exact the same size, the bottom constraint will be broken automatically

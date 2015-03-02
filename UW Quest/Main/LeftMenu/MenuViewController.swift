@@ -114,6 +114,18 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             break
         case 2:
             // "My Class Schedule"
+            Locator.sharedQuestClient.postMyClassScheduleWithIndex(0, success: { (response, json) -> () in
+//                let html: String = NSString(data: response as! NSData, encoding: NSUTF8StringEncoding)! as String
+//                logDebug("\(html)")
+            }, failure: { (errorMessage, error) -> () in
+                //
+            })
+            
+//            Locator.sharedQuestClient.getMyClassSchedule(success: { a, b in
+//                let html: String = NSString(data: a as! NSData, encoding: NSUTF8StringEncoding)! as String
+//                logDebug("\(html)")
+//                
+//                }, failure: nil)
             Locator.slidingViewController.topViewController = Locator.myClassScheduleNavigationViewController
         case 3:
             // "Search for Classes"
