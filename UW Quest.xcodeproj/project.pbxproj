@@ -22,6 +22,10 @@
 		0281D4BA1AA2D86800F5CA5A /* CourseHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281D4B81AA2D86800F5CA5A /* CourseHeaderCell.swift */; };
 		0281D4BB1AA2D86800F5CA5A /* CourseHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0281D4B91AA2D86800F5CA5A /* CourseHeaderCell.xib */; };
 		02D51DE71A71DA1E00C3C252 /* ZHDropDownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D51DE61A71DA1E00C3C252 /* ZHDropDownMenu.swift */; };
+		02DBFA891AA41D7000BDC288 /* TableCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DBFA851AA41D7000BDC288 /* TableCollectionView.swift */; };
+		02DBFA8A1AA41D7000BDC288 /* TableCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DBFA861AA41D7000BDC288 /* TableCollectionViewCell.swift */; };
+		02DBFA8B1AA41D7000BDC288 /* TableCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DBFA871AA41D7000BDC288 /* TableCollectionViewLayout.swift */; };
+		02DBFA8C1AA41D7000BDC288 /* TableCollectionViewSeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DBFA881AA41D7000BDC288 /* TableCollectionViewSeparatorView.swift */; };
 		02FD32631A6F64CE006EA751 /* SearchClass.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02FD32621A6F64CE006EA751 /* SearchClass.storyboard */; };
 		02FD32671A6F6749006EA751 /* SearchClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FD32661A6F6749006EA751 /* SearchClassViewController.swift */; };
 		1B17CEE31A55B77D0066F0C1 /* ZHAutoLinesLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B17CEE11A55B77D0066F0C1 /* ZHAutoLinesLabel.swift */; };
@@ -130,6 +134,10 @@
 		0281D4B81AA2D86800F5CA5A /* CourseHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseHeaderCell.swift; sourceTree = "<group>"; };
 		0281D4B91AA2D86800F5CA5A /* CourseHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseHeaderCell.xib; sourceTree = "<group>"; };
 		02D51DE61A71DA1E00C3C252 /* ZHDropDownMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZHDropDownMenu.swift; path = "UW Quest/ThirdParty/ZHDropDownMenu.swift"; sourceTree = SOURCE_ROOT; };
+		02DBFA851AA41D7000BDC288 /* TableCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableCollectionView.swift; sourceTree = "<group>"; };
+		02DBFA861AA41D7000BDC288 /* TableCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableCollectionViewCell.swift; sourceTree = "<group>"; };
+		02DBFA871AA41D7000BDC288 /* TableCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableCollectionViewLayout.swift; sourceTree = "<group>"; };
+		02DBFA881AA41D7000BDC288 /* TableCollectionViewSeparatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableCollectionViewSeparatorView.swift; sourceTree = "<group>"; };
 		02FD32621A6F64CE006EA751 /* SearchClass.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchClass.storyboard; sourceTree = "<group>"; };
 		02FD32661A6F6749006EA751 /* SearchClassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchClassViewController.swift; sourceTree = "<group>"; };
 		040AF5C3C6C827E481C73485 /* Pods-UW Quest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UW Quest.release.xcconfig"; path = "Pods/Target Support Files/Pods-UW Quest/Pods-UW Quest.release.xcconfig"; sourceTree = "<group>"; };
@@ -309,6 +317,17 @@
 				023605BB1A6F323F00088C83 /* MyAcademicsImplementation.swift */,
 			);
 			path = MyAcademics;
+			sourceTree = "<group>";
+		};
+		02DBFA841AA41D7000BDC288 /* ZHTableLayout */ = {
+			isa = PBXGroup;
+			children = (
+				02DBFA851AA41D7000BDC288 /* TableCollectionView.swift */,
+				02DBFA861AA41D7000BDC288 /* TableCollectionViewCell.swift */,
+				02DBFA871AA41D7000BDC288 /* TableCollectionViewLayout.swift */,
+				02DBFA881AA41D7000BDC288 /* TableCollectionViewSeparatorView.swift */,
+			);
+			path = ZHTableLayout;
 			sourceTree = "<group>";
 		};
 		02FD32611A6F6495006EA751 /* SearchClasses */ = {
@@ -595,6 +614,7 @@
 				1BFABA581A55E3DF004BB928 /* ZHDynamicCollectionView.swift */,
 				023EF90A1A700943006FE653 /* ZHDynamicTableView.swift */,
 				02D51DE61A71DA1E00C3C252 /* ZHDropDownMenu.swift */,
+				02DBFA841AA41D7000BDC288 /* ZHTableLayout */,
 				FACE198919C9EC2D001FD4C9 /* Crashlytics.framework */,
 			);
 			path = ThirdParty;
@@ -794,6 +814,7 @@
 				022F04631A9D4ACD00CEA09E /* MyClassScheduleTermViewController.swift in Sources */,
 				023605BE1A6F326400088C83 /* MyAcademics.swift in Sources */,
 				1BEB05B91A53979600986692 /* Int.swift in Sources */,
+				02DBFA8B1AA41D7000BDC288 /* TableCollectionViewLayout.swift in Sources */,
 				1B8615AE19CFD79A0064505C /* AddressCollectionViewCell.swift in Sources */,
 				022F04651A9D519100CEA09E /* CourseComponentCell.swift in Sources */,
 				1BEB05B61A53979600986692 /* ExSwift.swift in Sources */,
@@ -811,8 +832,10 @@
 				FAE020D919DBACA40000253A /* EmergencyContactCollectionViewCell.swift in Sources */,
 				1B196A941A663B00003111FC /* GTMNSString+HTML.m in Sources */,
 				1B7CF10A19BCEF28007A157D /* AppDelegate.swift in Sources */,
+				02DBFA891AA41D7000BDC288 /* TableCollectionView.swift in Sources */,
 				FA32935F19FD60A800164369 /* MenuTitleCell.swift in Sources */,
 				FA21D6E419E7780C002FBF71 /* MEZoomAnimationController.m in Sources */,
+				02DBFA8C1AA41D7000BDC288 /* TableCollectionViewSeparatorView.swift in Sources */,
 				022F04581A9D3C8F00CEA09E /* MyClassScheduleViewController.swift in Sources */,
 				0281D4BA1AA2D86800F5CA5A /* CourseHeaderCell.swift in Sources */,
 				FAF2292519C937620041C36F /* UIDevice-Hardware.m in Sources */,
@@ -823,6 +846,7 @@
 				1BEB05BC1A53979600986692 /* Sequence.swift in Sources */,
 				023EF90B1A700943006FE653 /* ZHDynamicTableView.swift in Sources */,
 				FA7E99FB19DCFD4000D65565 /* DemographicCollectionCell.swift in Sources */,
+				02DBFA8A1AA41D7000BDC288 /* TableCollectionViewCell.swift in Sources */,
 				1B64007D19D8E48E00C35E44 /* PhoneNumberCollectionViewCell_deprecated.swift in Sources */,
 				1BEB05B71A53979600986692 /* Float.swift in Sources */,
 				FA8C1D6419C75B0800D6E158 /* User.swift in Sources */,

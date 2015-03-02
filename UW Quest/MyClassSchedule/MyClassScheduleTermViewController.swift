@@ -51,7 +51,7 @@ extension MyClassScheduleTermViewController: UICollectionViewDataSource, UIColle
     
     // MARK: - UICollectionViewDataSource
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
+        return 3
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -78,7 +78,22 @@ extension MyClassScheduleTermViewController: UICollectionViewDataSource, UIColle
                 assertionFailure("wrong indexPath.item")
             }
         default:
-            assertionFailure("wrong indexPath.section")
+            switch indexPath.item {
+            case 0:
+                let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCourseHeaderCell, forIndexPath: indexPath) as CourseHeaderCell
+                // Cell configuration
+                return cell
+            case 1:
+                let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCourseComponentCell, forIndexPath: indexPath) as CourseComponentCell
+                // Cell configuration
+                return cell
+            case 2:
+                let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCourseComponentCell, forIndexPath: indexPath) as CourseComponentCell
+                // Cell configuration
+                return cell
+            default:
+                assertionFailure("wrong indexPath.item")
+            }
         }
     }
     
