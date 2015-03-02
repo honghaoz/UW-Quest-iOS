@@ -63,15 +63,15 @@ extension MyClassScheduleTermViewController: UICollectionViewDataSource, UIColle
         case 0:
             switch indexPath.item {
             case 0:
-                let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCourseHeaderCell, forIndexPath: indexPath) as CourseHeaderCell
+                let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCourseHeaderCell, forIndexPath: indexPath) as! CourseHeaderCell
                 // Cell configuration
                 return cell
             case 1:
-                let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCourseComponentCell, forIndexPath: indexPath) as CourseComponentCell
+                let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCourseComponentCell, forIndexPath: indexPath) as! CourseComponentCell
                 // Cell configuration
                 return cell
             case 2:
-                let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCourseComponentCell, forIndexPath: indexPath) as CourseComponentCell
+                let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCourseComponentCell, forIndexPath: indexPath) as! CourseComponentCell
                 // Cell configuration
                 return cell
             default:
@@ -80,15 +80,15 @@ extension MyClassScheduleTermViewController: UICollectionViewDataSource, UIColle
         default:
             switch indexPath.item {
             case 0:
-                let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCourseHeaderCell, forIndexPath: indexPath) as CourseHeaderCell
+                let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCourseHeaderCell, forIndexPath: indexPath) as! CourseHeaderCell
                 // Cell configuration
                 return cell
             case 1:
-                let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCourseComponentCell, forIndexPath: indexPath) as CourseComponentCell
+                let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCourseComponentCell, forIndexPath: indexPath) as! CourseComponentCell
                 // Cell configuration
                 return cell
             case 2:
-                let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCourseComponentCell, forIndexPath: indexPath) as CourseComponentCell
+                let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCourseComponentCell, forIndexPath: indexPath) as! CourseComponentCell
                 // Cell configuration
                 return cell
             default:
@@ -104,7 +104,7 @@ extension MyClassScheduleTermViewController: UICollectionViewDataSource, UIColle
         switch indexPath.item {
         case 0:
             let targetWidth: CGFloat = collectionView.bounds.width - 2 * kSectionHorizontalInsets
-            let cell = self.collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(kCourseHeaderCell) as CourseHeaderCell
+            let cell = self.collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(kCourseHeaderCell) as! CourseHeaderCell
             cell.bounds = CGRectMake(0, 0, targetWidth, cell.bounds.height)
             cell.contentView.bounds = cell.bounds
             var size = cell.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
@@ -114,7 +114,7 @@ extension MyClassScheduleTermViewController: UICollectionViewDataSource, UIColle
             return size
         default:
             let targetWidth: CGFloat = collectionView.bounds.width - 2 * kSectionHorizontalInsets
-            let cell = self.collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(kCourseComponentCell) as CourseComponentCell
+            let cell = self.collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(kCourseComponentCell) as! CourseComponentCell
             cell.bounds = CGRectMake(0, 0, targetWidth, cell.bounds.height)
             cell.contentView.bounds = cell.bounds
             var size = cell.contentView.systemLayoutSizeFittingSize(CGSizeMake(targetWidth, cell.bounds.height))

@@ -49,7 +49,7 @@ extension SearchClassViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier(kInstitutionCellIdentifier) as SearchClassInstitutionCell
+        var cell = tableView.dequeueReusableCellWithIdentifier(kInstitutionCellIdentifier) as! SearchClassInstitutionCell
         return cell
     }
     
@@ -63,7 +63,7 @@ extension SearchClassViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let cell = self.tableView.dequeueReusableOffScreenCellWithIdentifier(kInstitutionCellIdentifier) as SearchClassInstitutionCell
+        let cell = self.tableView.dequeueReusableOffScreenCellWithIdentifier(kInstitutionCellIdentifier) as! SearchClassInstitutionCell
         var size = cell.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
         return size.height
     }

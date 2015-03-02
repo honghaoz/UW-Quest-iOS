@@ -88,7 +88,7 @@ extension UIView {
     }
     
     func containSubview(view: UIView) -> Bool {
-        return self.subviews.filter({$0 as UIView == view}).count > 0
+        return self.subviews.filter({$0 as! UIView == view}).count > 0
     }
     
     func removeAllSubviews() {
@@ -146,7 +146,7 @@ extension UIView {
         overlayView.layoutIfNeeded()
         
         if !isIOS8 {
-            (overlayView as UIImageView).image = self.blurImage
+            (overlayView as! UIImageView).image = self.blurImage
         }
         
         if animated {
@@ -210,20 +210,20 @@ extension UIView {
         })
     }
     
-    var copy: UIView {
-        var data: NSData = NSKeyedArchiver.archivedDataWithRootObject(self)
-        var copy: UIView = NSKeyedUnarchiver.unarchiveObjectWithData(data) as UIView
-        return copy
-    }
+//    var copy: UIView {
+//        var data: NSData = NSKeyedArchiver.archivedDataWithRootObject(self)
+//        var copy: UIView = NSKeyedUnarchiver.unarchiveObjectWithData(data) as! UIView
+//        return copy
+//    }
 }
 
-extension UINib {
-    var copy: UINib {
-        var data: NSData = NSKeyedArchiver.archivedDataWithRootObject(self)
-        var copy: UINib = NSKeyedUnarchiver.unarchiveObjectWithData(data) as UINib
-        return copy
-    }
-}
+//extension UINib {
+//    var copy: UINib {
+//        var data: NSData = NSKeyedArchiver.archivedDataWithRootObject(self)
+//        var copy: UINib = NSKeyedUnarchiver.unarchiveObjectWithData(data) as! UINib
+//        return copy
+//    }
+//}
 
 extension UILabel {
     /**
@@ -327,7 +327,7 @@ extension UIViewController {
     */
     class func viewControllerInStoryboard(storyboardName: String , viewControllerName: String) -> UIViewController {
         var storyboard: UIStoryboard = UIStoryboard(name: storyboardName, bundle: nil)
-        var viewController = storyboard.instantiateViewControllerWithIdentifier(viewControllerName) as UIViewController
+        var viewController = storyboard.instantiateViewControllerWithIdentifier(viewControllerName) as! UIViewController
         return viewController
     }
     
@@ -339,7 +339,7 @@ extension UIViewController {
     :returns: True if contained, false otherwise
     */
     func containChildViewController(childViewController: UIViewController) -> Bool {
-        return self.childViewControllers.filter({$0 as UIViewController == childViewController}).count > 0
+        return self.childViewControllers.filter({$0 as! UIViewController == childViewController}).count > 0
     }
     
     func showHud(title: String?) {
@@ -414,7 +414,7 @@ extension NSString {
         let htmlData = self.dataUsingEncoding(NSUTF8StringEncoding)
         let doc = TFHpple(HTMLData: htmlData)
         let elements = doc.searchWithXPathQuery(query)
-        return elements as [TFHppleElement]
+        return elements as! [TFHppleElement]
     }
     
     func peekAtSearchWithXPathQuery(query: String) -> TFHppleElement? {
@@ -558,7 +558,7 @@ extension TFHppleElement {
 extension NSHTTPCookieStorage {
     class func cookieForKey(key: String, urlString: String) -> NSHTTPCookie? {
         let cookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
-        let cookies = cookieStorage.cookiesForURL(NSURL(string: urlString)!) as [NSHTTPCookie]?
+        let cookies = cookieStorage.cookiesForURL(NSURL(string: urlString)!) as! [NSHTTPCookie]?
         if cookies != nil {
             for cookie: NSHTTPCookie in cookies! {
                 if cookie.name == key {
@@ -688,7 +688,7 @@ var isIphone6Plus: Bool { return screenHeight ~= 736.0 }
 
 //
 var keyWindow: UIWindow { return UIApplication.sharedApplication().keyWindow! }
-var appDelegate: AppDelegate { return UIApplication.sharedApplication().delegate! as AppDelegate}
+var appDelegate: AppDelegate { return UIApplication.sharedApplication().delegate! as! AppDelegate}
 
 // Debug Helpers
 

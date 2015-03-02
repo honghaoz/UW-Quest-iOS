@@ -58,8 +58,8 @@ class QuestClient: AFHTTPSessionManager {
         ]
     }
     
-    override init(baseURL url: NSURL!) {
-        super.init(baseURL: url)
+    init(baseURL url: NSURL!) {
+        super.init(baseURL: url, sessionConfiguration: nil)
     }
     
     override init(baseURL url: NSURL!, sessionConfiguration configuration: NSURLSessionConfiguration!) {
@@ -101,7 +101,7 @@ class QuestClient: AFHTTPSessionManager {
 // MARK: Helper methods
 extension QuestClient {
     func getHtmlContentFromResponse(response: AnyObject) -> String? {
-        let html: String = NSString(data: response as NSData, encoding: NSUTF8StringEncoding)!
+        let html: String = NSString(data: response as! NSData, encoding: NSUTF8StringEncoding)! as String
         return html
     }
     
@@ -253,7 +253,7 @@ extension QuestClient {
         currentURLString = kQuestLogoutURL
         self.POST(kQuestLoginURL, parameters: parameters, success: { (task, response) -> Void in
             logVerbose("success")
-            self.getStudentCenter(success, failure)
+            self.getStudentCenter(success: success, failure: failure)
         }, failure: { (task, error) -> Void in
             logVerbose("failed: \(error.localizedDescription)")
             failure?(errorMessage: "Login Failed", error: error)
@@ -301,8 +301,8 @@ extension QuestClient {
             if !self.isOnLoginPage(response) {
                 if self.pageIsValid(response) {
                     logInfo("isUndergrad: \(self.checkIsUndergraduate(response))")
-                    logInfo("ICSID: \(self.getICSID(response)?)")
-                    logInfo("StateNum: \(self.getStateNum(response)?)")
+                    logInfo("ICSID: \(self.getICSID(response))")
+                    logInfo("StateNum: \(self.getStateNum(response))")
                     if self.updateState(response) {
                         success?(response: response, json: nil)
                     } else {

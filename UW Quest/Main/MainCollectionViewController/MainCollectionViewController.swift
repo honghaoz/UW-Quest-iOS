@@ -95,7 +95,7 @@ class MainCollectionViewController: UIViewController {
     
     // MARK: - Header tap gesture action
     func headerViewTapped(tapGesture: UITapGestureRecognizer) {
-        var headerView = tapGesture.view as UQCollectionReusableView
+        var headerView = tapGesture.view as! UQCollectionReusableView
         currentShowingSection = currentShowingSection == headerView.indexPath.section ? -1 : headerView.indexPath.section
         currentImplemention.headerViewTapped(headerView)
     }
@@ -135,7 +135,7 @@ extension MainCollectionViewController: UICollectionViewDataSource, UICollection
     }
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        var headerView: UQCollectionReusableView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: kHeaderViewReuseIdentifier, forIndexPath: indexPath) as UQCollectionReusableView
+        var headerView: UQCollectionReusableView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: kHeaderViewReuseIdentifier, forIndexPath: indexPath) as! UQCollectionReusableView
         
         // First section header, hide topSeparator line
         if (indexPath.section == 0) {

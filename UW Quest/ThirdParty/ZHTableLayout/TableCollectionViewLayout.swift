@@ -42,7 +42,7 @@ class TableCollectionViewLayout: UICollectionViewLayout {
         return self.collectionView!.dataSource!
     }
     var dataSourceTableLayout: TableLayoutDataSource {
-        return (self.collectionView! as TableCollectionView).tableLayoutDataSource
+        return (self.collectionView! as! TableCollectionView).tableLayoutDataSource
     }
     
     var sections: Int {

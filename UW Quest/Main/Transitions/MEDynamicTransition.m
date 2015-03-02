@@ -168,7 +168,7 @@
         UIView *containerView = [transitionContext containerView];
         CGFloat finalLeftEdge = CGRectGetMinX([transitionContext finalFrameForViewController:topViewController]);
         CGFloat initialLeftEdge = CGRectGetMinX([transitionContext initialFrameForViewController:topViewController]);
-        CGFloat fullWidth = fabsf(finalLeftEdge - initialLeftEdge);
+        CGFloat fullWidth = fabs(finalLeftEdge - initialLeftEdge);
         
         CGRect underViewFrame;
         if (CGRectIsEmpty(underViewInitialFrame)) {

@@ -79,7 +79,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var titleCell: MenuTitleCell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as MenuTitleCell
+        var titleCell: MenuTitleCell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as! MenuTitleCell
         switch indexPath.row {
         case 0:
             titleCell.titleLabel.text = "News"
@@ -100,7 +100,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     // MARK: - TableView delegate
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 40.0
     }
     

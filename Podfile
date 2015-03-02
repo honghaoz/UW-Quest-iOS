@@ -18,6 +18,9 @@ pod 'JGProgressHUD'
 pod 'ECSlidingViewController'
 pod 'hpple'
 
+# pod 'ExSwift', :git => 'https://github.com/pNre/ExSwift.git', :branch => 'Swift-1.2'
+# pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git', :branch => 'xcode6.3'
+
 end
 
 target "UW QuestTests" do

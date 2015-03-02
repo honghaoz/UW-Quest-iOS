@@ -362,7 +362,7 @@ extension ZHDropDownMenu: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as AnyObject! as ZHDropDownItemCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as AnyObject! as! ZHDropDownItemCell
         cell.titleLabelRightPadding = contentInset.right * 2 + kIndicatorWidth
         cell.titleLabel.textColor = textColor
         cell.selectedColor = textColor

@@ -150,12 +150,12 @@ extension QuestClient {
             let columns = eachAddressRow.childrenWithTagName("td")
             if columns.count < 3 { return JSON(dataArray) }
             
-            let typeRaw: String = (columns[0] as TFHppleElement).raw
+            let typeRaw: String = (columns[0] as! TFHppleElement).raw
             var type: String? = typeRaw.stringByConvertingHTMLToPlainText()
             if type == nil { return JSON(dataArray) }
             //            type = type!.clearNewLines()
             
-            let addressRaw: String = (columns[1] as TFHppleElement).raw
+            let addressRaw: String = (columns[1] as! TFHppleElement).raw
             var address: String? = addressRaw.stringByConvertingHTMLToPlainText()
             if address == nil { return JSON(dataArray) }
             //            address = address!.clearNewLines()
@@ -208,11 +208,11 @@ extension QuestClient {
             let columns = eachNameRow.childrenWithTagName("td")
             if columns.count < 2 { return JSON(resultDict) }
             
-            let typeRaw: String = (columns[0] as TFHppleElement).raw
+            let typeRaw: String = (columns[0] as! TFHppleElement).raw
             var type: String? = typeRaw.stringByConvertingHTMLToPlainText()
             if type == nil { return JSON(resultDict) }
             
-            let nameRaw: String = (columns[1] as TFHppleElement).raw
+            let nameRaw: String = (columns[1] as! TFHppleElement).raw
             var name: String? = nameRaw.stringByConvertingHTMLToPlainText()
             if name == nil { return JSON(resultDict) }
             
@@ -575,17 +575,17 @@ extension QuestClient {
         var basicXPathString2: NSString = "//*[@id='PSXLATITEM_XLATLONGNAME$36$$%d']"
         var basicXPathString3: NSString = "//*[@id='COUNTRY_TBL_DESCR$32$$%d']"
         
-        while html!.peekAtSearchWithXPathQuery(NSString(format: basicXPathString1, i)) != nil {
+        while html!.peekAtSearchWithXPathQuery(NSString(format: basicXPathString1, i) as String) != nil {
             tuples.append(
                 [
                     "Type",
-                    html!.peekAtSearchWithXPathQuery(NSString(format: basicXPathString1, i))!.raw.stringByConvertingHTMLToPlainText().trimmed() + " - " + html!.peekAtSearchWithXPathQuery(NSString(format: basicXPathString2, i))!.raw.stringByConvertingHTMLToPlainText().trimmed()
+                    html!.peekAtSearchWithXPathQuery(NSString(format: basicXPathString1, i) as String)!.raw.stringByConvertingHTMLToPlainText().trimmed() + " - " + html!.peekAtSearchWithXPathQuery(NSString(format: basicXPathString2, i) as String)!.raw.stringByConvertingHTMLToPlainText().trimmed()
                 ]
             )
             tuples.append(
                 [
                     "Country",
-                    html!.peekAtSearchWithXPathQuery(NSString(format: basicXPathString3, i))!.raw.stringByConvertingHTMLToPlainText().trimmed()
+                    html!.peekAtSearchWithXPathQuery(NSString(format: basicXPathString3, i) as String)!.raw.stringByConvertingHTMLToPlainText().trimmed()
                 ]
             )
             i += 1
@@ -629,7 +629,7 @@ extension QuestClient {
         //*[@id="win0divVISA_PMT_SUPPRT$0"]
         let basicQueryString: NSString = "//*[@id='win0divVISA_PMT_SUPPRT$%d']//table"
         var i: Int = 0
-        var tables = html!.searchWithXPathQuery(NSString(format: basicQueryString, i))
+        var tables = html!.searchWithXPathQuery(NSString(format: basicQueryString, i) as String)
         while tables.count >= 2 {
             var headerTable = tables[0] as TFHppleElement
             
@@ -660,7 +660,7 @@ extension QuestClient {
             docDict["Data"] = datas
             dataArray.append(docDict)
             i += 1
-            tables = html!.searchWithXPathQuery(NSString(format: basicQueryString, i))
+            tables = html!.searchWithXPathQuery(NSString(format: basicQueryString, i) as String)
         }
         return JSON(dataArray)
     }

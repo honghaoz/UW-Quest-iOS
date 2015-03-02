@@ -37,13 +37,13 @@ extension TableCollectionView: UICollectionViewDataSource {
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellIdentifier, forIndexPath: indexPath) as TableCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellIdentifier, forIndexPath: indexPath) as! TableCollectionViewCell
         if indexPath.item == 0 {
-            cell.textLabel.font = (self.collectionViewLayout as TableCollectionViewLayout).titleFont
-            cell.textLabel.text = tableLayoutDataSource.collectionView(collectionView, layout: collectionView.collectionViewLayout as TableCollectionViewLayout, titleForColumn: indexPath.section)
+            cell.textLabel.font = (self.collectionViewLayout as! TableCollectionViewLayout).titleFont
+            cell.textLabel.text = tableLayoutDataSource.collectionView(collectionView, layout: collectionView.collectionViewLayout as! TableCollectionViewLayout, titleForColumn: indexPath.section)
         } else {
-            cell.textLabel.font = (self.collectionViewLayout as TableCollectionViewLayout).contentFont
-            cell.textLabel.text = tableLayoutDataSource.collectionView(collectionView, layout: collectionView.collectionViewLayout as TableCollectionViewLayout, contentForColumn: indexPath.section, row: indexPath.item - 1)
+            cell.textLabel.font = (self.collectionViewLayout as! TableCollectionViewLayout).contentFont
+            cell.textLabel.text = tableLayoutDataSource.collectionView(collectionView, layout: collectionView.collectionViewLayout as! TableCollectionViewLayout, contentForColumn: indexPath.section, row: indexPath.item - 1)
         }
         cell.textLabel.textColor = UIColor(white: 0.0, alpha: 0.5)
         cell.textLabel.textAlignment = .Center

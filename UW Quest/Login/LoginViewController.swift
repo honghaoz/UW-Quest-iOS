@@ -228,7 +228,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     // MARK: UITextFieldDelegate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         let newTag = textField.tag + 1
-        var nextTextField: UITextField? = textField.superview?.viewWithTag(newTag) as UITextField?
+        var nextTextField: UITextField? = textField.superview?.viewWithTag(newTag) as! UITextField?
         if let realTextField = nextTextField {
             nextTextField?.becomeFirstResponder()
         } else {

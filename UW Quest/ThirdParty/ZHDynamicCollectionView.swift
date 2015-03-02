@@ -16,7 +16,7 @@ class ZHDynamicCollectionView: UICollectionView {
     
     override func registerClass(cellClass: AnyClass?, forCellWithReuseIdentifier identifier: String) {
         super.registerClass(cellClass, forCellWithReuseIdentifier: identifier)
-        registeredCellClasses[identifier] = cellClass as UICollectionViewCell.Type!
+        registeredCellClasses[identifier] = cellClass as! UICollectionViewCell.Type!
     }
     
     override func registerNib(nib: UINib?, forCellWithReuseIdentifier identifier: String) {

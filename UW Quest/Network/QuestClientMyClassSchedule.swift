@@ -17,7 +17,7 @@ extension QuestClient {
         logVerbose()
         if currentPostPage != .Enroll {
             self.postEnroll(success: { (response, json) -> () in
-                self.getMyClassSchedule(success, failure)
+                self.getMyClassSchedule(success, failure: failure)
             }, failure: failure)
         }
         var parameters = [

@@ -43,10 +43,10 @@ class User {
         self.isRemembered = defaults.boolForKey(kIsRemembered)
         if self.isRemembered {
             if let username: AnyObject = defaults.objectForKey(kUsername) {
-                self.username = username as String
+                self.username = username as! String
             }
             if let password: AnyObject = defaults.objectForKey(kPassword) {
-                self.password = password as String
+                self.password = password as! String
             }
             return true
         }

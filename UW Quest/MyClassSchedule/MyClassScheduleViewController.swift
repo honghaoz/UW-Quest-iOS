@@ -54,7 +54,7 @@ extension MyClassScheduleViewController: UITableViewDataSource, UITableViewDeleg
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as TermTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as! TermTableViewCell
         // Configuration
         return cell
     }

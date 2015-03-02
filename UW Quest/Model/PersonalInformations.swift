@@ -572,12 +572,12 @@ class PersonalInformation {
         if var dict: Dictionary<String, AnyObject> = rawData as? Dictionary<String, AnyObject> {
             self.demograhicInformation = DemographicInformation()
             if dict.has("Message") {
-                demograhicInformation!.message = dict["Message"] as String
+                demograhicInformation!.message = dict["Message"] as! String
                 dict.removeValueForKey("Message")
             }
             
 //            self.demograhicInformation!.keys = Array(dict.keys)
-            self.demograhicInformation!.dictionary = dict as Dictionary<String, [[String]]>
+            self.demograhicInformation!.dictionary = dict as! Dictionary<String, [[String]]>
             return true
         } else {
             return false

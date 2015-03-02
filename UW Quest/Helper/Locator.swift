@@ -29,7 +29,7 @@ class Locator {
     
     private lazy var _slidingViewController: ECSlidingViewController = {
         logVerbose("slidingViewController inited")
-        var controller = UIViewController.viewControllerInStoryboard("MainSlide", viewControllerName: "SlidingViewController") as ECSlidingViewController
+        var controller = UIViewController.viewControllerInStoryboard("MainSlide", viewControllerName: "SlidingViewController") as! ECSlidingViewController
         
         controller.topViewController = Locator.myClassScheduleNavigationViewController
         controller.anchorRightRevealAmount = 200.0
@@ -42,8 +42,8 @@ class Locator {
     
     // MARK: Personal Information
     private lazy var _personalInformationNavigationViewController: UINavigationController = {
-        var navigationVC = UIViewController.viewControllerInStoryboard("MainCollectionViewController", viewControllerName: "MainNavigationViewController") as UINavigationController
-        (navigationVC.topViewController as MainCollectionViewController).setup(PersonalInfoImplementation())
+        var navigationVC = UIViewController.viewControllerInStoryboard("MainCollectionViewController", viewControllerName: "MainNavigationViewController") as! UINavigationController
+        (navigationVC.topViewController as! MainCollectionViewController).setup(PersonalInfoImplementation())
         return navigationVC
     }()
     
@@ -53,7 +53,7 @@ class Locator {
     
     // MARK: Search for Classes
     private lazy var _searchClassNavigationViewController: UINavigationController = {
-        return UIViewController.viewControllerInStoryboard("SearchClass", viewControllerName: "SearchClassNavigationViewController") as UINavigationController
+        return UIViewController.viewControllerInStoryboard("SearchClass", viewControllerName: "SearchClassNavigationViewController") as! UINavigationController
     }()
     
     class var searchClassNavigationViewController: UINavigationController {
@@ -62,7 +62,7 @@ class Locator {
     
     // MARK: My Classes Schedule
     private lazy var _myClassScheduleNavigationViewController: UINavigationController = {
-        return UIViewController.viewControllerInStoryboard("MyClassSchedule", viewControllerName: "MyClassScheduleNavigationViewController") as UINavigationController
+        return UIViewController.viewControllerInStoryboard("MyClassSchedule", viewControllerName: "MyClassScheduleNavigationViewController") as! UINavigationController
         }()
     
     class var myClassScheduleNavigationViewController: UINavigationController {

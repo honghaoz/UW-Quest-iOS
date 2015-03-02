@@ -10,8 +10,8 @@ import UIKit
 
 class CitizenshipCollectionViewCell: TitleSubTitleCollectionViewCell {
     func configDoc(doc: Dictionary<String, AnyObject>) {
-        let mainTitle = doc["Type"] as String
-        let data = doc["Data"] as [Dictionary<String, String>]
+        let mainTitle = doc["Type"] as! String
+        let data = doc["Data"] as! [Dictionary<String, String>]
         var tuples: [(String, String)] = []
         for eachData in data {
             tuples.append(eachData["Title"]!, " ")
