@@ -115,7 +115,7 @@ extension UIView {
 //        }
 //    }
     
-    var blurOverlayViewTagNumber: Int { return 3141592653 }
+    var blurOverlayViewTagNumber: Int { return 314159 }
     
     var blurImage: UIImage {
         UIGraphicsBeginImageContextWithOptions(self.window!.bounds.size, true, 1)

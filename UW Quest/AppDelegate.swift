@@ -20,12 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var rootViewController: UIViewController?
         
-//        if (Locator.user.isLoggedIn) {
+        if (Locator.user.isLoggedIn) {
             rootViewController = Locator.slidingViewController
-//        }
-//        else {
-//            rootViewController = Locator.loginViewController
-//        }
+        }
+        else {
+            rootViewController = Locator.loginViewController
+        }
         
         // Setup basic view appearance
         UINavigationBar.appearance().barTintColor = UQMainColor

@@ -451,9 +451,12 @@ extension QuestClient {
             var demoTuples = [[String]]()
             let demoTable = tables[0] as TFHppleElement
             let tableArray = demoTable.table2DArray()
+            logDebug("\(tableArray)")
             if tableArray != nil {
                 var oneDArray = transform2dTo1d(tableArray!)
                 var i: Int = 0
+                logDebug("\(oneDArray)")
+                // FIXME: Array is changeable
                 while i < oneDArray.count {
                     let t = [oneDArray[i], oneDArray[i + 1]]
                     demoTuples.append(t)

@@ -13,6 +13,24 @@ let kEnrollSearchForClassesURL = "https://quest.pecs.uwaterloo.ca/psc/SS/ACADEMI
 
 // MARK: My Class Schedule
 extension QuestClient {
+    func postEnroll(success: ((response: AnyObject?, json: JSON?) -> ())? = nil, failure: ((errorMessage: String, error: NSError) -> ())? = nil) {
+        logVerbose()
+        if currentPostPage == .Enroll {
+            success?(response: nil, json: nil)
+            return
+        }
+        var parameters = self.getBasicParameters()
+        parameters["ICAction"] = "DERIVED_SSS_SCR_SSS_LINK_ANCHOR2"
+        
+        self.POST(kStudentCenterURL_HRMS, parameters: parameters, success: { (task, response) -> Void in
+            logInfo("Success")
+            self.currentPostPage = .Enroll
+            }, failure: { (task, error) -> Void in
+                logError("Failed: \(error.localizedDescription)")
+                failure?(errorMessage: "POST Enroll Failed", error: error)
+        })
+    }
+    
     func getMyClassSchedule(success:(data: AnyObject!) -> (), failure:(errorMessage: String, error: NSError?) -> ()) {
         logVerbose()
         if currentPostPage != .Enroll {
@@ -34,24 +52,6 @@ extension QuestClient {
             }, failure: {(task, error) -> Void in
                 logError("Failed: \(error.localizedDescription)")
                 failure(errorMessage: "GET Enroll Failed", error: error)
-        })
-    }
-    
-    func postEnroll(success: ((response: AnyObject?, json: JSON?) -> ())? = nil, failure: ((errorMessage: String, error: NSError) -> ())? = nil) {
-        logVerbose()
-        if currentPostPage == .Enroll {
-            success?(response: nil, json: nil)
-            return
-        }
-        var parameters = self.getBasicParameters()
-        parameters["ICAction"] = "DERIVED_SSS_SCR_SSS_LINK_ANCHOR2"
-        
-        self.POST(kStudentCenterURL_HRMS, parameters: parameters, success: { (task, response) -> Void in
-            logInfo("Success")
-            self.currentPostPage = .Enroll
-            }, failure: { (task, error) -> Void in
-                logError("Failed: \(error.localizedDescription)")
-                failure?(errorMessage: "POST Enroll Failed", error: error)
         })
     }
 }

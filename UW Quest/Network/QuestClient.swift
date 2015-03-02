@@ -60,6 +60,7 @@ class QuestClient: AFHTTPSessionManager {
     
     init(baseURL url: NSURL!) {
         super.init(baseURL: url, sessionConfiguration: nil)
+        setup()
     }
     
     override init(baseURL url: NSURL!, sessionConfiguration configuration: NSURLSessionConfiguration!) {
