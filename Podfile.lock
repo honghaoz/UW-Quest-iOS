@@ -38,7 +38,7 @@ PODS:
   - PureLayout (2.0.5)
 
 DEPENDENCIES:
-  - AFNetworking
+  - AFNetworking (from `https://github.com/AFNetworking/AFNetworking.git`, branch `master`)
   - ARAnalytics/Crashlytics
   - ARAnalytics/GoogleAnalytics
   - ECSlidingViewController
@@ -47,8 +47,18 @@ DEPENDENCIES:
   - Parse
   - PureLayout
 
+EXTERNAL SOURCES:
+  AFNetworking:
+    :branch: master
+    :git: https://github.com/AFNetworking/AFNetworking.git
+
+CHECKOUT OPTIONS:
+  AFNetworking:
+    :commit: 3a1785ccccbd0489dc7bf937d577b6f7ca89cacf
+    :git: https://github.com/AFNetworking/AFNetworking.git
+
 SPEC CHECKSUMS:
-  AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
+  AFNetworking: 10e85a00bb0f475124e4ff2677bf15693b2c1523
   ARAnalytics: a06e6d012b5999d8598ec9bacec45c8a8099f668
   Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
   ECSlidingViewController: e79fe856bfb1a99a39c995377a1943e50f7647eb

@@ -7,12 +7,11 @@ platform :ios, "7.0"
 
 target "UW Quest" do
 
-pod 'AFNetworking' #, '~> 2.4'
+pod 'AFNetworking', :git => 'https://github.com/AFNetworking/AFNetworking.git', :branch => 'master'
 pod 'Parse'
 
 pod "ARAnalytics/GoogleAnalytics"
 pod "ARAnalytics/Crashlytics"
-# pod 'Appsee'
 pod 'PureLayout'
 pod 'JGProgressHUD'
 pod 'ECSlidingViewController'
