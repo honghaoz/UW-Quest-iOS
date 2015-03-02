@@ -26,6 +26,8 @@
 		02DBFA8A1AA41D7000BDC288 /* TableCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DBFA861AA41D7000BDC288 /* TableCollectionViewCell.swift */; };
 		02DBFA8B1AA41D7000BDC288 /* TableCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DBFA871AA41D7000BDC288 /* TableCollectionViewLayout.swift */; };
 		02DBFA8C1AA41D7000BDC288 /* TableCollectionViewSeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DBFA881AA41D7000BDC288 /* TableCollectionViewSeparatorView.swift */; };
+		02DBFA8E1AA42FFF00BDC288 /* QuestClientMyClassSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DBFA8D1AA42FFF00BDC288 /* QuestClientMyClassSchedule.swift */; };
+		02DBFA901AA4301800BDC288 /* QuestClientPersonalInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DBFA8F1AA4301800BDC288 /* QuestClientPersonalInformation.swift */; };
 		02FD32631A6F64CE006EA751 /* SearchClass.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02FD32621A6F64CE006EA751 /* SearchClass.storyboard */; };
 		02FD32671A6F6749006EA751 /* SearchClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FD32661A6F6749006EA751 /* SearchClassViewController.swift */; };
 		1B17CEE31A55B77D0066F0C1 /* ZHAutoLinesLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B17CEE11A55B77D0066F0C1 /* ZHAutoLinesLabel.swift */; };
@@ -138,6 +140,8 @@
 		02DBFA861AA41D7000BDC288 /* TableCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableCollectionViewCell.swift; sourceTree = "<group>"; };
 		02DBFA871AA41D7000BDC288 /* TableCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableCollectionViewLayout.swift; sourceTree = "<group>"; };
 		02DBFA881AA41D7000BDC288 /* TableCollectionViewSeparatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableCollectionViewSeparatorView.swift; sourceTree = "<group>"; };
+		02DBFA8D1AA42FFF00BDC288 /* QuestClientMyClassSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestClientMyClassSchedule.swift; sourceTree = "<group>"; };
+		02DBFA8F1AA4301800BDC288 /* QuestClientPersonalInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestClientPersonalInformation.swift; sourceTree = "<group>"; };
 		02FD32621A6F64CE006EA751 /* SearchClass.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchClass.storyboard; sourceTree = "<group>"; };
 		02FD32661A6F6749006EA751 /* SearchClassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchClassViewController.swift; sourceTree = "<group>"; };
 		040AF5C3C6C827E481C73485 /* Pods-UW Quest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UW Quest.release.xcconfig"; path = "Pods/Target Support Files/Pods-UW Quest/Pods-UW Quest.release.xcconfig"; sourceTree = "<group>"; };
@@ -598,6 +602,8 @@
 			isa = PBXGroup;
 			children = (
 				1B2152301A536C3200B7165A /* QuestClient.swift */,
+				02DBFA8F1AA4301800BDC288 /* QuestClientPersonalInformation.swift */,
+				02DBFA8D1AA42FFF00BDC288 /* QuestClientMyClassSchedule.swift */,
 				FACE198619C9EB05001FD4C9 /* QuestClient_deprecated.swift */,
 			);
 			path = Network;
@@ -809,6 +815,7 @@
 				FA4D1F5819DA620C006AA190 /* EmailCollectionViewCell_deprecated.swift in Sources */,
 				1B2152311A536C3200B7165A /* QuestClient.swift in Sources */,
 				1B5BF35219C3F8470005626F /* LoginViewController.swift in Sources */,
+				02DBFA901AA4301800BDC288 /* QuestClientPersonalInformation.swift in Sources */,
 				1BCCB62E1A6716E6009811D0 /* EmailCollectionViewCell.swift in Sources */,
 				1B520C5319CE8A2000A0ADE6 /* MainCollectionViewController.swift in Sources */,
 				022F04631A9D4ACD00CEA09E /* MyClassScheduleTermViewController.swift in Sources */,
@@ -826,6 +833,7 @@
 				1B520C4F19CE888300A0ADE6 /* MenuViewController.swift in Sources */,
 				023605BC1A6F323F00088C83 /* MyAcademicsImplementation.swift in Sources */,
 				1BEB05BB1A53979600986692 /* Range.swift in Sources */,
+				02DBFA8E1AA42FFF00BDC288 /* QuestClientMyClassSchedule.swift in Sources */,
 				023EF90D1A700BA9006FE653 /* SearchClassInstitutionCell.swift in Sources */,
 				1B2152331A536F5900B7165A /* ZHLogger.swift in Sources */,
 				1B196A911A663A49003111FC /* NSString+HTML.m in Sources */,

@@ -96,6 +96,7 @@ class CourseComponentCell: UICollectionViewCell {
         let tableLayout = TableCollectionViewLayout()
         tableLayout.titleFont = titleFont
         tableLayout.contentFont = contentFont
+        tableLayout.separatorLineWidth = 0.5
         scheduleCollectionView = TableCollectionView(frame: CGRectZero, collectionViewLayout: tableLayout)
         scheduleCollectionView.tableLayoutDataSource = self
         scheduleCollectionView.setTranslatesAutoresizingMaskIntoConstraints(false)
