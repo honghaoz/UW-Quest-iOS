@@ -80,7 +80,12 @@ extension QuestClient {
                 logInfo("Success")
                 self.currentStateNum += 1
                 self.currentPostPage = .Enroll
-                success?(response: response, json: self.parseMyClassSchedule(response))
+                if let resultJson = self.parseMyClassSchedule(response) {
+                    success?(response: response, json: resultJson)
+                } else {
+                    logError("Failed: Parse schedule data error")
+                    failure?(errorMessage: "Parse class schedule data failed", error: NSError(domain: "Schedule", code: 1000, userInfo: nil))
+                }
             }, failure: { (task, error) -> Void in
                 logError("Failed: \(error.localizedDescription)")
                 failure?(errorMessage: "POST My Class Schedule Term Failed", error: error)
@@ -127,11 +132,11 @@ extension QuestClient {
                     resultDict["Level"] = (headers[1] as! String).trimmed()
                     resultDict["Location"] = (headers[2] as! String).trimmed()
                 } else {
-                    //
+                    return nil
                 }
             }
         } else {
-            //
+            return nil
         }
         
         var coursesArray = [Dictionary<String, AnyObject>]()
@@ -156,7 +161,7 @@ extension QuestClient {
                         courseDict["CourseNumber"] = (components[0] as! String).trimmed()
                         courseDict["CourseTitle"] = (components[1] as! String).trimmed()
                     } else {
-                        //
+                        return nil
                     }
                     
                     // Info
@@ -168,7 +173,7 @@ extension QuestClient {
 //                        logDebug("\(infoTable)")
                         courseDict["InformationTable"] = infoTable
                     } else {
-                        //
+                        return nil
                     }
                     
                     // Component
@@ -180,7 +185,7 @@ extension QuestClient {
 //                        logDebug("\(componentTable)")
                         courseDict["ComponentsTable"] = componentTable
                     } else {
-                        //
+                        return nil
                     }
                     coursesArray.append(courseDict)
                 } else {
@@ -189,7 +194,7 @@ extension QuestClient {
                 i += 1
             }
         } else {
-            //
+            return nil
         }
         resultDict["Courses"] = coursesArray
         logDebug("\(resultDict)")

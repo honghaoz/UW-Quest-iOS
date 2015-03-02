@@ -22,6 +22,8 @@ class User {
     
     var personalInformation: PersonalInformation = PersonalInformation()
     
+    var classSchedule: ClassSchedule!
+    
     init() {
         logInfo("User inited")
     }
@@ -130,4 +132,18 @@ class User {
 //                    return
 //            }
 //    }
+    
+    func getMyClassScheduleTermList() {
+        // TODO
+    }
+    
+    func getMyClassScheduleWithTermIndex(index: Int, success:(() -> ())?, failure:((errorMessage: String, error: NSError?) -> ())?) {
+        logVerbose("termIndex: \(index)")
+        Locator.sharedQuestClient.postMyClassScheduleWithIndex(index, success: { (response, json) -> () in
+            self.classSchedule = ClassSchedule(json: json!)
+            success?()
+        }, failure: { (errorMessage, error) -> () in
+            failure?(errorMessage: errorMessage, error: error)
+        })
+    }
 }

@@ -21,6 +21,7 @@
 		023EF90D1A700BA9006FE653 /* SearchClassInstitutionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023EF90C1A700BA9006FE653 /* SearchClassInstitutionCell.swift */; };
 		0281D4BA1AA2D86800F5CA5A /* CourseHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281D4B81AA2D86800F5CA5A /* CourseHeaderCell.swift */; };
 		0281D4BB1AA2D86800F5CA5A /* CourseHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0281D4B91AA2D86800F5CA5A /* CourseHeaderCell.xib */; };
+		02AC68851AA5066A00037407 /* ClassSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AC68841AA5066A00037407 /* ClassSchedule.swift */; };
 		02B6B1581AA43B360005D9D3 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B6B14A1AA43B360005D9D3 /* Array.swift */; };
 		02B6B1591AA43B360005D9D3 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B6B14B1AA43B360005D9D3 /* Character.swift */; };
 		02B6B15A1AA43B360005D9D3 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B6B14C1AA43B360005D9D3 /* Dictionary.swift */; };
@@ -137,6 +138,7 @@
 		023EF90C1A700BA9006FE653 /* SearchClassInstitutionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchClassInstitutionCell.swift; sourceTree = "<group>"; };
 		0281D4B81AA2D86800F5CA5A /* CourseHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseHeaderCell.swift; sourceTree = "<group>"; };
 		0281D4B91AA2D86800F5CA5A /* CourseHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseHeaderCell.xib; sourceTree = "<group>"; };
+		02AC68841AA5066A00037407 /* ClassSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassSchedule.swift; sourceTree = "<group>"; };
 		02B6B14A1AA43B360005D9D3 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		02B6B14B1AA43B360005D9D3 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		02B6B14C1AA43B360005D9D3 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
@@ -590,6 +592,7 @@
 			children = (
 				FA8C1D6319C75B0800D6E158 /* User.swift */,
 				1B8615AB19CFC6A20064505C /* PersonalInformations.swift */,
+				02AC68841AA5066A00037407 /* ClassSchedule.swift */,
 				023605BD1A6F326400088C83 /* MyAcademics.swift */,
 			);
 			path = Model;
@@ -870,6 +873,7 @@
 				02D51DE71A71DA1E00C3C252 /* ZHDropDownMenu.swift in Sources */,
 				1B907FB71A6759B3004CC43D /* TitleSubTitleCollectionViewCell.swift in Sources */,
 				1BEB05C11A5397BC00986692 /* UIImage+ImageEffects.m in Sources */,
+				02AC68851AA5066A00037407 /* ClassSchedule.swift in Sources */,
 				02FD32671A6F6749006EA751 /* SearchClassViewController.swift in Sources */,
 				1B1A3A5E1A5517970077E8A9 /* NameCollectionViewCell.swift in Sources */,
 				1BD1D1461A6713F900996B9B /* PhoneNumberCollectionViewCell.swift in Sources */,

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyClassScheduleTermViewController: UIViewController {
+class MyClassScheduleTermViewController: BaseRootViewController {
 
     @IBOutlet weak var headerTermLabel: UILabel!
     @IBOutlet weak var headerLevelLabel: UILabel!

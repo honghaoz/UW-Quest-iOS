@@ -31,7 +31,7 @@ class Locator {
         logVerbose("slidingViewController inited")
         var controller = UIViewController.viewControllerInStoryboard("MainSlide", viewControllerName: "SlidingViewController") as! ECSlidingViewController
         
-        controller.topViewController = Locator.myClassScheduleNavigationViewController
+        controller.topViewController = Locator.personalInformationNavigationViewController
         controller.anchorRightRevealAmount = 200.0
         return controller
     }()
