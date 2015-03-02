@@ -20,6 +20,7 @@ class TableCollectionView: UICollectionView {
         self.registerClass(TableCollectionViewCell.self, forCellWithReuseIdentifier: kCellIdentifier)
         
         self.backgroundColor = UIColor.clearColor()
+//        scrollIndicatorInsets = UIEdgeInsetsMake(5, 2, -5, -2)
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -33,7 +34,7 @@ extension TableCollectionView: UICollectionViewDataSource {
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return tableLayoutDataSource.collectionView(collectionView, numberOfRowsInSection: section) + 1
+        return tableLayoutDataSource.collectionView(collectionView, numberOfRowsInColumn: section) + 1
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {

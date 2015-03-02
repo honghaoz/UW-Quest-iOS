@@ -10,8 +10,8 @@ import UIKit
 
 @objc protocol TableLayoutDataSource {
     func numberOfColumnsInCollectionView(collectionView: UICollectionView) -> Int
-    func collectionView(collectionView: UICollectionView, numberOfRowsInSection section: Int) -> Int
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: TableCollectionViewLayout, titleForColumn section: Int) -> String
+    func collectionView(collectionView: UICollectionView, numberOfRowsInColumn column: Int) -> Int
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: TableCollectionViewLayout, titleForColumn column: Int) -> String
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: TableCollectionViewLayout, contentForColumn column: Int, row: Int) -> String
 }
 

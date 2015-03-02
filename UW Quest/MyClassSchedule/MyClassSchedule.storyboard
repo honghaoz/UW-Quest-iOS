@@ -146,7 +146,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qLF-ou-tdi" userLabel="Header">
-                                <rect key="frame" x="0.0" y="64" width="320" height="107"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="61"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Winter 2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63g-wQ-ZbW" userLabel="term">
                                         <rect key="frame" x="10" y="10" width="85" height="19"/>
@@ -166,29 +166,20 @@
                                         <color key="textColor" red="0.054901960780000002" green="0.25098039220000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Any information will be displayed here. Blac bla bla bla bla" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="S21-dg-bE3" userLabel="information" customClass="ZHAutoLinesLabel" customModule="UW_Quest" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="63" width="300" height="34"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
-                                        <color key="textColor" red="0.054901960780000002" green="0.25098039220000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.054901960780000002" green="0.25098039220000001" blue="0.40000000000000002" alpha="0.12" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="S21-dg-bE3" firstAttribute="top" secondItem="LMI-E9-lDB" secondAttribute="bottom" constant="10" id="4iR-77-oZf"/>
-                                    <constraint firstItem="S21-dg-bE3" firstAttribute="leading" secondItem="qLF-ou-tdi" secondAttribute="leading" constant="10" id="AFu-d2-Kft"/>
                                     <constraint firstAttribute="trailing" secondItem="ps6-ys-YIX" secondAttribute="trailing" constant="10" id="Co9-BO-7te"/>
-                                    <constraint firstAttribute="trailing" secondItem="S21-dg-bE3" secondAttribute="trailing" constant="10" id="SaP-41-R2K"/>
                                     <constraint firstItem="LMI-E9-lDB" firstAttribute="leading" secondItem="63g-wQ-ZbW" secondAttribute="leading" id="SdE-aJ-5B2"/>
                                     <constraint firstItem="63g-wQ-ZbW" firstAttribute="top" secondItem="qLF-ou-tdi" secondAttribute="top" constant="10" id="WsD-PS-Eg2"/>
+                                    <constraint firstAttribute="bottom" secondItem="LMI-E9-lDB" secondAttribute="bottom" constant="8" id="Zs5-iG-hGr"/>
                                     <constraint firstItem="LMI-E9-lDB" firstAttribute="top" secondItem="63g-wQ-ZbW" secondAttribute="bottom" constant="5" id="hoF-QB-jOI"/>
-                                    <constraint firstAttribute="bottom" secondItem="S21-dg-bE3" secondAttribute="bottom" constant="10" id="k1g-jd-KyD"/>
                                     <constraint firstItem="ps6-ys-YIX" firstAttribute="top" secondItem="qLF-ou-tdi" secondAttribute="top" constant="10" id="lPY-0N-Mam"/>
                                     <constraint firstItem="63g-wQ-ZbW" firstAttribute="leading" secondItem="qLF-ou-tdi" secondAttribute="leading" constant="10" id="pwR-Gm-dsZ"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="f47-NS-A3h" customClass="ZHDynamicCollectionView" customModule="UW_Quest" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="171" width="320" height="397"/>
+                                <rect key="frame" x="0.0" y="125" width="320" height="443"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="D7R-XQ-3LK">
                                     <size key="itemSize" width="287" height="272"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -211,7 +202,6 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="f47-NS-A3h" id="hdm-kR-DFm"/>
-                        <outlet property="headerInformationLabel" destination="S21-dg-bE3" id="4mm-Wk-FEG"/>
                         <outlet property="headerLevelLabel" destination="ps6-ys-YIX" id="UkS-cU-zgi"/>
                         <outlet property="headerLocationLabel" destination="LMI-E9-lDB" id="qwm-nx-LkD"/>
                         <outlet property="headerTermLabel" destination="63g-wQ-ZbW" id="eXx-fq-uNb"/>

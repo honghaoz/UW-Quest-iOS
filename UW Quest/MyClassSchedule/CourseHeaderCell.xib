@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7519.1" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7513.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -62,8 +61,8 @@
                         <color key="textColor" red="0.42352941179999998" green="0.42352941179999998" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Numeric Grading Basis" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDS-sR-JdV" userLabel="GradingValue">
-                        <rect key="frame" x="65" y="73" width="145" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="900" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Numeric Grading Basis" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDS-sR-JdV" userLabel="GradingValue" customClass="ZHAutoLinesLabel" customModule="UW_Quest" customModuleProvider="target">
+                        <rect key="frame" x="65" y="73" width="225" height="17"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                         <color key="textColor" red="0.42352941179999998" green="0.42352941179999998" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -89,11 +88,20 @@
                 <constraint firstItem="BtC-pt-2r3" firstAttribute="leading" secondItem="Xs2-Yd-gZo" secondAttribute="leading" constant="8" id="dWi-wX-VOg"/>
                 <constraint firstItem="lmf-n3-b28" firstAttribute="leading" secondItem="fKQ-ml-GrG" secondAttribute="trailing" constant="5" id="fK6-9Y-ANl"/>
                 <constraint firstItem="BtC-pt-2r3" firstAttribute="top" secondItem="Xs2-Yd-gZo" secondAttribute="top" constant="8" id="fYD-Ga-OyD"/>
+                <constraint firstAttribute="trailing" secondItem="dDS-sR-JdV" secondAttribute="trailing" constant="8" id="g0y-NN-hXL"/>
                 <constraint firstAttribute="trailing" secondItem="AVl-UA-vje" secondAttribute="trailing" constant="8" id="kb8-ga-EXa"/>
                 <constraint firstItem="sn4-aQ-M78" firstAttribute="baseline" secondItem="lmf-n3-b28" secondAttribute="baseline" id="tUi-Dn-x1b"/>
                 <constraint firstItem="Hy1-VL-LDr" firstAttribute="top" secondItem="fKQ-ml-GrG" secondAttribute="bottom" constant="1" id="uaz-2s-F5L"/>
             </constraints>
             <size key="customSize" width="298" height="98"/>
+            <connections>
+                <outlet property="courseNameLabel" destination="Ize-er-hYo" id="p7q-DZ-bqz"/>
+                <outlet property="courseNumberLabel" destination="BtC-pt-2r3" id="5UX-8S-N7P"/>
+                <outlet property="enrollStateLabel" destination="AVl-UA-vje" id="Rfz-v1-CC6"/>
+                <outlet property="gradeValueLabel" destination="VOi-gp-OS4" id="bi2-wu-2NO"/>
+                <outlet property="gradingValueLabel" destination="dDS-sR-JdV" id="Ga5-rs-roQ"/>
+                <outlet property="unitValueLabel" destination="lmf-n3-b28" id="Umi-a7-A75"/>
+            </connections>
             <point key="canvasLocation" x="432" y="214"/>
         </collectionViewCell>
     </objects>

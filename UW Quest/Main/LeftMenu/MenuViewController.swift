@@ -114,12 +114,13 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             break
         case 2:
             // "My Class Schedule"
-            let termVC = UIViewController.viewControllerInStoryboard("MyClassSchedule", viewControllerName: "MyClassScheduleTermViewController")
+            let termVC = UIViewController.viewControllerInStoryboard("MyClassSchedule", viewControllerName: "MyClassScheduleTermViewController") as! MyClassScheduleTermViewController
             let naviVC = UINavigationController(rootViewController: termVC)
             Locator.slidingViewController.topViewController = naviVC
             termVC.showHud("Loading...")
             Locator.user.getMyClassScheduleWithTermIndex(0, success: { () -> () in
                 logDebug("Success!!!")
+                termVC.update()
                 JGProgressHUD.dismiss(0, animated: true)
             }, failure: { (errorMessage, error) -> () in
                 logDebug("Failed!!!")
