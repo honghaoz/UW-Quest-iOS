@@ -97,25 +97,14 @@ extension QuestClient {
         "Term": "Winter 2015",
         "Level": "Graduate",
         "Location": "University of Waterloo",
-        "Schedule": [
+        "Courses": [
             {
                 "CourseNumber": "CS 686"
                 "CourseTitle": "Intro Artificial Intelligence"
-                "Status": "Enrolled"
-                "Units": "0.50"
-                "Grade": "92"
-                "Grading": "Numeric Grading Basis"
-                "Components": [
-                    {
-                        "ClassNumber": "5148"
-                        "Section": "001"
-                        "Component": "LEC"
-                        "DaysTimes": "Th 8:30AM - 11:20AM"
-                        "Room": "RCH   308"
-                        "Instructor": "Catherine Gebotys"
-                        "StartEndDate": "2015/01/05 - 2015/04/06"
-                    }
-                ]
+                ////////////////////////////////////
+                "InformationTable": [["Status", "Units", "Grading", "Grade"], ["Enrolled", "0.50", "Numeric Grading Basis", ""]]
+                "ComponentsTable": [["Class Nbr", "Section", "Component", "Days & Times", "Room", "Instructor", "Start/End Date"], ["5711", "001", "LEC", "TTh 11:30AM - 12:50PM", "PHY   313", "Kate Larson", "2015/01/05 - 2015/04/06"]]
+                ///////////////////////////////////
             }
         ]
     }
@@ -127,12 +116,9 @@ extension QuestClient {
         }
         var resultDict = Dictionary<String, AnyObject>()
         
-        logDebug("\(html)")
-        
         // Header text
         //*[@id="DERIVED_REGFRM1_SSR_STDNTKEY_DESCR$5$"]
         let headerElement = html!.searchWithXPathQuery("//*[@id='DERIVED_REGFRM1_SSR_STDNTKEY_DESCR$5$']")
-        logDebug("count: \(headerElement.count)")
         if headerElement.count > 0 {
             if let titleText = (headerElement[0] as TFHppleElement).text() {
                 let headers = (titleText as NSString).componentsSeparatedByString("|")
@@ -141,19 +127,17 @@ extension QuestClient {
                     resultDict["Level"] = (headers[1] as! String).trimmed()
                     resultDict["Location"] = (headers[2] as! String).trimmed()
                 } else {
-                    assertionFailure("")
+                    //
                 }
             }
         } else {
-            assertionFailure("")
+            //
         }
         
-        logDebug("\(resultDict)")
-        
-        // Schedule
+        var coursesArray = [Dictionary<String, AnyObject>]()
+        // Courses
         //*[@id="ACE_STDNT_ENRL_SSV2$0"]
         let scheduleTables = html!.searchWithXPathQuery("//*[@id='ACE_STDNT_ENRL_SSV2$0']")
-        logDebug("count: \(scheduleTables.count)")
         if scheduleTables.count == 1 {
             let schedule = scheduleTables[0] as TFHppleElement
             var i = 0
@@ -161,21 +145,55 @@ extension QuestClient {
                 //*[@id="win0divDERIVED_REGFRM1_DESCR20$0"]
                 let courseDivs = schedule.searchWithXPathQuery("//*[@id='win0divDERIVED_REGFRM1_DESCR20$\(i)']")
                 if courseDivs.count > 0 {
+                    var courseDict = Dictionary<String, AnyObject>()
                     let courseDiv = courseDivs[0] as TFHppleElement
+                    
+                    // Title
                     //*[@id="win0divDERIVED_REGFRM1_DESCR20$0"]/table/tbody/tr[1]/td
-//                    let titleText = courseDiv.searchWithXPathQuery("//table/tbody/tr[1]/td")[0].displayableString()
-//                    logDebug("\(titleText)")
+                    let titleText = courseDiv.firstChildWithTagName("table").firstChildWithTagName("tr").firstChildWithTagName("td").displayableString()!
+                    var components = (titleText as NSString).componentsSeparatedByString("-")
+                    if components.count == 2 {
+                        courseDict["CourseNumber"] = (components[0] as! String).trimmed()
+                        courseDict["CourseTitle"] = (components[1] as! String).trimmed()
+                    } else {
+                        //
+                    }
+                    
+                    // Info
+                    //*[@id="win0divSSR_DUMMY_RECVW$0"]
+                    //*[@id="SSR_DUMMY_RECVW$scroll$0"]
+                    let infomationElements = courseDiv.searchWithXPathQuery("//*[@id='SSR_DUMMY_RECVW$scroll$\(i)']")
+                    if infomationElements.count > 0 {
+                        let infoTable = infomationElements[0].table2DArray()
+//                        logDebug("\(infoTable)")
+                        courseDict["InformationTable"] = infoTable
+                    } else {
+                        //
+                    }
+                    
+                    // Component
+                    //*[@id="CLASS_MTG_VW$scroll$0"]
+                    //*[@id="CLASS_MTG_VW$scroll$1"]
+                    let componentElements = courseDiv.searchWithXPathQuery("//*[@id='CLASS_MTG_VW$scroll$\(i)']")
+                    if componentElements.count > 0 {
+                        let componentTable = componentElements[0].table2DArray()
+//                        logDebug("\(componentTable)")
+                        courseDict["ComponentsTable"] = componentTable
+                    } else {
+                        //
+                    }
+                    coursesArray.append(courseDict)
                 } else {
                     break
                 }
-                
                 i += 1
             }
         } else {
-            assertionFailure("")
+            //
         }
+        resultDict["Courses"] = coursesArray
+        logDebug("\(resultDict)")
         
-        
-        return nil
+        return JSON(resultDict)
     }
 }
