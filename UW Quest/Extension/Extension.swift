@@ -10,6 +10,21 @@ import Foundation
 import UIKit
 import ObjectiveC
 
+var associatedKey: UInt8 = 0
+extension NSObject {
+    func attachObject(object: NSObject) {
+        objc_setAssociatedObject(self, &associatedKey, object, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
+    }
+    
+    func retrieveObject() -> NSObject? {
+        return objc_getAssociatedObject(self, &associatedKey) as? NSObject
+    }
+    
+    func removeAttachedObjects() {
+        objc_removeAssociatedObjects(self)
+    }
+}
+
 extension UIColor {
     /**
     Get a UIColor with same RGB values but specified Alpha value

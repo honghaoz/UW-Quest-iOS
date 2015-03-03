@@ -16,12 +16,12 @@ class MyClassScheduleTermViewController: BaseRootViewController {
 //    @IBOutlet weak var headerInformationLabel: ZHAutoLinesLabel!
     
     @IBOutlet weak var collectionView: ZHDynamicCollectionView!
+    var cellCollectionViewContentOffset = [NSIndexPath: CGPoint]()
     
     weak var classSchedule: ClassSchedule!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Spring 2014"
         setupView()
         setupCollectionView()
     }
@@ -39,10 +39,6 @@ class MyClassScheduleTermViewController: BaseRootViewController {
         self.headerLocationLabel.text = classSchedule.location
         
         self.collectionView.reloadData()
-        
-        logDebug("\(classSchedule.courses.count)")
-        logDebug("\(classSchedule.courses[0].courseScheduleComponentTable.count)")
-        logDebug("\(classSchedule.courses[0].courseScheduleComponentTable[0].count)")
     }
 }
 
@@ -80,37 +76,20 @@ extension MyClassScheduleTermViewController: UICollectionViewDataSource, UIColle
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        switch indexPath.section {
+        switch indexPath.item {
         case 0:
-            switch indexPath.item {
-            case 0:
-                let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCourseHeaderCell, forIndexPath: indexPath) as! CourseHeaderCell
-                // Cell configuration
-                configCourseHeaderCell(cell, sectionNumber: indexPath.section)
-                return cell
-            case 1:
-                let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCourseComponentCell, forIndexPath: indexPath) as! CourseComponentCell
-                // Cell configuration
-                cell.delegate = self
-                return cell
-            default:
-                assertionFailure("wrong indexPath.item")
-            }
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCourseHeaderCell, forIndexPath: indexPath) as! CourseHeaderCell
+            // Cell configuration
+            configCourseHeaderCell(cell, sectionNumber: indexPath.section)
+            return cell
+        case 1:
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCourseComponentCell, forIndexPath: indexPath) as! CourseComponentCell
+            // Cell configuration
+            logDebug("cell: \(cell), indexPath: \(indexPath)")
+            configCourseComponentCell(cell, indexPath: indexPath, requireReloadData: true)
+            return cell
         default:
-            switch indexPath.item {
-            case 0:
-                let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCourseHeaderCell, forIndexPath: indexPath) as! CourseHeaderCell
-                // Cell configuration
-                configCourseHeaderCell(cell, sectionNumber: indexPath.section)
-                return cell
-            case 1:
-                let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCourseComponentCell, forIndexPath: indexPath) as! CourseComponentCell
-                // Cell configuration
-                cell.delegate = self
-                return cell
-            default:
-                assertionFailure("wrong indexPath.item")
-            }
+            assertionFailure("wrong indexPath.item")
         }
     }
     
@@ -123,6 +102,7 @@ extension MyClassScheduleTermViewController: UICollectionViewDataSource, UIColle
             let targetWidth: CGFloat = collectionView.bounds.width - 2 * kSectionHorizontalInsets
             let cell = self.collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(kCourseHeaderCell) as! CourseHeaderCell
             configCourseHeaderCell(cell, sectionNumber: indexPath.section)
+            
             cell.bounds = CGRectMake(0, 0, targetWidth, cell.bounds.height)
             cell.contentView.bounds = cell.bounds
             var size = cell.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
@@ -133,15 +113,7 @@ extension MyClassScheduleTermViewController: UICollectionViewDataSource, UIColle
         default:
             let targetWidth: CGFloat = collectionView.bounds.width - 2 * kSectionHorizontalInsets
             let cell = self.collectionView.dequeueReusableOffScreenCellWithReuseIdentifier(kCourseComponentCell) as! CourseComponentCell
-//            cell.delegate = self
-            
-            // Calculate collectionHeight
-            var height: CGFloat = 0
-            var numberOfRows = classSchedule.courses[indexPath.section].courseScheduleComponentTable.count - 1
-            height += cell.tableLayout.titleLabelHeight + cell.tableLayout.verticalPadding * 2
-            height += cell.tableLayout.separatorLineWidth
-            height += (cell.tableLayout.contentLabelHeight + 2 * cell.tableLayout.verticalPadding) * CGFloat(numberOfRows)
-            cell.cCollectionViewHeight.constant = height + 8
+            configCourseComponentCell(cell, indexPath: indexPath, requireReloadData: false)
             
             cell.bounds = CGRectMake(0, 0, targetWidth, cell.bounds.height)
             cell.contentView.bounds = cell.bounds
@@ -176,12 +148,42 @@ extension MyClassScheduleTermViewController: UICollectionViewDataSource, UIColle
         cell.gradeValueLabel.text = course.grade.isEmpty ? "-" : course.grade
         cell.gradingValueLabel.text = course.grading
     }
+    
+    func configCourseComponentCell(cell: CourseComponentCell, indexPath: NSIndexPath, requireReloadData: Bool) {
+        cell.delegate = self
+        if requireReloadData {
+            // Must call reload data to avoid crash
+            cell.scheduleCollectionView.collectionViewLayout.invalidateLayout()
+            cell.scheduleCollectionView.reloadData()
+            (cell.scheduleCollectionView as UIScrollView).delegate = self
+        }
+        
+        // Record schedule collectionView contentOffset
+        if cellCollectionViewContentOffset.has(indexPath) {
+            cell.scheduleCollectionView.setContentOffset(cellCollectionViewContentOffset[indexPath]!, animated: false)
+        } else {
+            cell.scheduleCollectionView.setContentOffset(CGPointZero, animated: false)
+            cellCollectionViewContentOffset[indexPath] = cell.scheduleCollectionView.contentOffset
+        }
+
+        // Calculate collectionHeight
+        var height: CGFloat = 0
+        var numberOfRows = classSchedule.courses[indexPath.section].courseScheduleComponentTable.count - 1
+        height += cell.tableLayout.titleLabelHeight + cell.tableLayout.verticalPadding * 2
+        height += cell.tableLayout.separatorLineWidth
+        height += (cell.tableLayout.contentLabelHeight + 2 * cell.tableLayout.verticalPadding) * CGFloat(numberOfRows)
+        height += 8 // Add extra space for indicator
+        cell.cCollectionViewHeight.constant = height
+    }
 }
 
 extension MyClassScheduleTermViewController: CourseComponentCellDelegate {
     func numberOfColumnsInCell(cell: CourseComponentCell) -> Int {
-        let indexPath = self.collectionView.indexPathForCell(cell)
-        return classSchedule.courses[indexPath!.section].courseScheduleComponentTable[0].count
+        if let indexPath = self.collectionView.indexPathForCell(cell) {
+            return classSchedule.courses[indexPath.section].courseScheduleComponentTable[0].count
+        } else {
+            return 0
+        }
     }
     
     func numberOfRowsInColumn(column: Int, cell: CourseComponentCell) -> Int {
@@ -197,5 +199,18 @@ extension MyClassScheduleTermViewController: CourseComponentCellDelegate {
     func contentForColumn(column: Int, row: Int, cell: CourseComponentCell) -> String {
         let indexPath = self.collectionView.indexPathForCell(cell)
         return classSchedule.courses[indexPath!.section].courseScheduleComponentTable[row + 1][column]
+    }
+}
+
+extension MyClassScheduleTermViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        // Record last contentOffset for schedule collectionView
+        if scrollView.isKindOfClass(TableCollectionView) {
+            if let cell = scrollView.retrieveObject() as? CourseComponentCell {
+                if let indexPath = self.collectionView.indexPathForCell(cell) {
+                   cellCollectionViewContentOffset[indexPath] = scrollView.contentOffset
+                }
+            }
+        }
     }
 }

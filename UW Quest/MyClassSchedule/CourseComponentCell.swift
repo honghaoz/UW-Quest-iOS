@@ -48,6 +48,7 @@ class CourseComponentCell: UICollectionViewCell {
     }
     
     func setup() {
+        logDebug()
         self.contentView.backgroundColor = UQCellBackgroundColor
         
 //        // Component
@@ -132,6 +133,7 @@ class CourseComponentCell: UICollectionViewCell {
         tableLayout.separatorLineWidth = 0.5
         scheduleCollectionView = TableCollectionView(frame: CGRectZero, collectionViewLayout: tableLayout)
         scheduleCollectionView.tableLayoutDataSource = self
+        scheduleCollectionView.attachObject(self)
         
         scheduleCollectionView.setTranslatesAutoresizingMaskIntoConstraints(false)
         views["scheduleCollectionView"] = scheduleCollectionView
