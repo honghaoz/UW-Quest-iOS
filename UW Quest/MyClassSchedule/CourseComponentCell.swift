@@ -131,6 +131,7 @@ class CourseComponentCell: UICollectionViewCell {
         tableLayout.titleFont = titleFont
         tableLayout.contentFont = contentFont
         tableLayout.separatorLineWidth = 0.5
+        tableLayout.separatorColor = labelColor
         scheduleCollectionView = TableCollectionView(frame: CGRectZero, collectionViewLayout: tableLayout)
         scheduleCollectionView.tableLayoutDataSource = self
         scheduleCollectionView.attachObject(self)

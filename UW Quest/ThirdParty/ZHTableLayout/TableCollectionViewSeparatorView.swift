@@ -9,7 +9,7 @@
 import UIKit
 
 class TableCollectionViewSeparatorView: UICollectionReusableView {
-//    static var separatorColor = UIColor(white: 0.0, alpha: 0.5)
+    static var separatorColor = UIColor(white: 0.0, alpha: 0.5)
     
     convenience override init() {
         self.init(frame: CGRectZero)
@@ -26,6 +26,6 @@ class TableCollectionViewSeparatorView: UICollectionReusableView {
     }
     
     func setup() {
-        self.backgroundColor = UIColor(white: 0.3, alpha: 0.9)//TableCollectionViewSeparatorView.separatorColor
+        self.backgroundColor = TableCollectionViewSeparatorView.separatorColor
     }
 }

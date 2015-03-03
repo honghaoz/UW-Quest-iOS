@@ -79,13 +79,10 @@ extension MyClassScheduleTermViewController: UICollectionViewDataSource, UIColle
         switch indexPath.item {
         case 0:
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCourseHeaderCell, forIndexPath: indexPath) as! CourseHeaderCell
-            // Cell configuration
             configCourseHeaderCell(cell, sectionNumber: indexPath.section)
             return cell
         case 1:
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCourseComponentCell, forIndexPath: indexPath) as! CourseComponentCell
-            // Cell configuration
-            logDebug("cell: \(cell), indexPath: \(indexPath)")
             configCourseComponentCell(cell, indexPath: indexPath, requireReloadData: true)
             return cell
         default:
