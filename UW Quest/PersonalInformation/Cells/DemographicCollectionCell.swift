@@ -13,6 +13,7 @@ class DemographicCollectionCell: TitleSubTitleCollectionViewCell {
         var mainTitle: String = key
         var tuples = [(String, String)]()
         for t in (demograohicInfo.dictionary[key]! as [[String]]) {
+            
             let tt = (t[0], t[1])
             tuples.append(tt)
         }

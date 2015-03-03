@@ -331,12 +331,18 @@ extension QuestClient {
 extension QuestClient {
     func transform2dTo1d(twoDArray: [[String]]) -> [String] {
         var oneDArray = [String]()
-        for row in twoDArray {
-            for col in row {
+        let rowsCount = twoDArray.count
+        for row in 1 ..< rowsCount {
+            var stringToAppend = ""
+            for col in twoDArray[row] {
                 if col.length > 0 {
-                    oneDArray.append(col)
+                    stringToAppend = col
                 }
             }
+//            if stringToAppend.isEmpty {
+//                stringToAppend = "-"
+//            }
+            oneDArray.append(stringToAppend)
         }
         return oneDArray
     }

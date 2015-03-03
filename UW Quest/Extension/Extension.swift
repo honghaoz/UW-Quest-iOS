@@ -114,6 +114,14 @@ extension UIView {
         views.map({self.addSubview($0 as UIView)})
     }
     
+    func roundCorners(corners:UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.frame = self.bounds
+        mask.path = path.CGPath
+        self.layer.mask = mask
+    }
+    
 //    func hideAllSubviews(toHidden: Bool, duration: NSTimeInterval? = 0.25, completion:((Bool) -> Void)? = nil) {
 //        
 //        UIView.animateWithDuration(duration!, animations: { () -> Void in

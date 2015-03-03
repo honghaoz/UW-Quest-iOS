@@ -18,6 +18,11 @@ class CourseHeaderCell: UICollectionViewCell {
     @IBOutlet weak var gradeValueLabel: UILabel!
     @IBOutlet weak var gradingValueLabel: UILabel!
     
+    override func layoutSubviews() {
+        self.contentView.roundCorners(UIRectCorner.TopLeft | .TopRight, radius: 4.0)
+        super.layoutSubviews()
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.contentView.backgroundColor = UQCellBackgroundColor

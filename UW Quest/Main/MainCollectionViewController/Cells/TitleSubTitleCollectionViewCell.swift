@@ -88,7 +88,7 @@ extension TitleSubTitleCollectionViewCell {
             self.mainTitleLabel = self.createMainTitleLabel()
             self.mainTitleLabel!.text = title
             if title!.isEmpty {
-                self.mainTitleLabel!.text = " "
+                self.mainTitleLabel!.text = "-"
             }
             previousView = self.mainTitleLabel!
         }
@@ -102,7 +102,7 @@ extension TitleSubTitleCollectionViewCell {
             var emptyLabel: UILabel = self.createEmptyLabel()
             emptyLabel.text = emptyStatement
             if emptyStatement!.isEmpty {
-                emptyLabel.text = " "
+                emptyLabel.text = "-"
             }
             if previousView == self.contentView {
                 emptyLabel.autoPinEdgeToSuperviewEdge(.Top, withInset: kLabelVerticalInsets)
@@ -117,13 +117,13 @@ extension TitleSubTitleCollectionViewCell {
             var subTitleLabel: ZHAutoLinesLabel = self.createASubTitleLabel()
             subTitleLabel.text = subLabelTuples[i].0
             if subTitleLabel.text!.isEmpty {
-                subTitleLabel.text = " "
+                subTitleLabel.text = "-"
             }
             
             var subContentLabel = self.createASubContentLabel()
             subContentLabel.text = subLabelTuples[i].1
             if subContentLabel.text!.isEmpty {
-                subContentLabel.text = " "
+                subContentLabel.text = "-"
             }
             // Last label, add extra contraint for bottom and change vertical hugging priority
             if i == subLabelsCount - 1 {

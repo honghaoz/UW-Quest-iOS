@@ -33,6 +33,11 @@ class CourseComponentCell: UICollectionViewCell {
     
     weak var delegate: CourseComponentCellDelegate?
     
+    override func layoutSubviews() {
+        self.contentView.roundCorners(.BottomLeft | .BottomRight, radius: 4.0)
+        super.layoutSubviews()
+    }
+    
     convenience override init() {
         self.init(frame: CGRectZero)
     }

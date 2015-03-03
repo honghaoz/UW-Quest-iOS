@@ -123,7 +123,7 @@ extension MyClassScheduleTermViewController: UICollectionViewDataSource, UIColle
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(kSectionVerticalInsets, kSectionHorizontalInsets, kSectionVerticalInsets, kSectionHorizontalInsets)
+        return UIEdgeInsetsMake(kSectionVerticalInsets, kSectionHorizontalInsets, 0, kSectionHorizontalInsets)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
